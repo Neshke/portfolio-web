@@ -7,6 +7,7 @@ This is a Vue 3 + TypeScript portfolio website built with Vite. The project foll
 ## Tech Stack
 
 ### Core
+
 - **Vue 3** (^3.5.22) - Composition API with `<script setup>` syntax
 - **TypeScript** (configured with strict mode)
 - **Vite** (^7.1.11) - Build tool and dev server
@@ -14,19 +15,23 @@ This is a Vue 3 + TypeScript portfolio website built with Vite. The project foll
 - **Vue Router** (^4.6.3) - Client-side routing
 
 ### Styling
+
 - **Tailwind CSS** (^4.1.17) - Utility-first CSS framework
 - **PostCSS** (^8.5.6) + **Autoprefixer** (^10.4.22)
 
 ### Utilities & Composition
+
 - **@vueuse/core** (^14.0.0) - Collection of essential Vue Composition Utilities
 
 ### Testing
+
 - **Vitest** - Unit testing framework
 - **@vue/test-utils** - Vue component testing utilities
 - **jsdom** - DOM implementation for testing
 - **@vitest/ui** - Vitest UI for visual test running
 
 ### Development Tools
+
 - **Prettier** - Code formatting (configured in `prettier.config.js`)
 - **Vue DevTools** - Vite plugin for Vue DevTools integration
 
@@ -62,10 +67,11 @@ src/
 ### Vue Components
 
 1. **Always use Composition API with `<script setup lang="ts">`**
+
    ```vue
    <script setup lang="ts">
    import { ref, computed } from 'vue'
-   
+
    const count = ref(0)
    const doubled = computed(() => count.value * 2)
    </script>
@@ -97,23 +103,25 @@ src/
 ### Styling
 
 1. **Use Tailwind CSS with `@apply` directive** inside `<style scoped>` blocks instead of utility classes directly in templates
+
    ```vue
    <template>
      <div class="card">
        <h1 class="card-title">Title</h1>
      </div>
    </template>
-   
+
    <style scoped>
    .card {
      @apply bg-white rounded-lg shadow-md p-6;
    }
-   
+
    .card-title {
      @apply text-2xl font-bold text-gray-800;
    }
    </style>
    ```
+
 2. **Benefits of this approach:**
    - Cleaner templates with semantic class names
    - Better component encapsulation
@@ -129,21 +137,22 @@ src/
 ### State Management (Pinia)
 
 1. **Store structure:**
+
    ```typescript
    import { defineStore } from 'pinia'
-   
+
    export const useMyStore = defineStore('myStore', () => {
      // State (refs)
      const count = ref(0)
-     
+
      // Getters (computed)
      const doubled = computed(() => count.value * 2)
-     
+
      // Actions (functions)
      function increment() {
        count.value++
      }
-     
+
      return { count, doubled, increment }
    })
    ```
