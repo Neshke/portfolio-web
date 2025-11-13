@@ -1,8 +1,789 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Google Fonts - Matrix + Windows aesthetic */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 
-body {
-  margin: 0;
-  padding: 0;
+@import 'tailwindcss';
+
+/* Tailwind v4 Theme Configuration */
+@theme {
+  /* Matrix-inspired Colors */
+  --color-background: #0a0f0a;
+  --color-background-dark: #050805;
+  --color-background-elevated: #111a11;
+
+  --color-primary: #00ff88;
+  --color-primary-light: #33ffaa;
+  --color-primary-dark: #00cc6a;
+
+  --color-secondary: #9ba9b4;
+  --color-secondary-light: #b8c5d0;
+  --color-secondary-dark: #7a8894;
+
+  --color-glass: rgb(255 255 255 / 0.1);
+  --color-glass-light: rgb(255 255 255 / 0.15);
+  --color-glass-dark: rgb(255 255 255 / 0.05);
+  --color-glass-border: rgb(255 255 255 / 0.2);
+
+  --color-text-base: #e0e8e0;
+  --color-text-muted: #7fa77f;
+  --color-text-accent: #00ff88;
+  --color-text-secondary: #9ba9b4;
+  --color-text-dim: #4a5a4a;
+
+  --color-success: #00ffaa;
+  --color-success-dark: #00cc88;
+  --color-error: #ff4c4c;
+  --color-error-dark: #cc3333;
+  --color-warning: #ffaa00;
+  --color-warning-dark: #cc8800;
+  --color-info: #00aaff;
+  --color-info-dark: #0088cc;
+
+  --color-border: rgb(0 255 136 / 0.2);
+  --color-border-light: rgb(0 255 136 / 0.3);
+
+  /* Font Families */
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  --font-sans: Inter, 'Segoe UI', Roboto, sans-serif;
+  --font-display: Orbitron, sans-serif;
+
+  /* Shadows - Glow Effects */
+  --shadow-glow-sm: 0 0 10px rgb(0 255 136 / 0.3);
+  --shadow-glow: 0 0 15px rgb(0 255 136 / 0.4);
+  --shadow-glow-md: 0 0 20px rgb(0 255 136 / 0.5);
+  --shadow-glow-lg: 0 0 30px rgb(0 255 136 / 0.6);
+  --shadow-glow-xl: 0 0 40px rgb(0 255 136 / 0.7);
+  --shadow-glass: 0 8px 32px 0 rgb(0 0 0 / 0.37);
+  --shadow-glass-hover: 0 8px 32px 0 rgb(0 255 136 / 0.2);
+  --shadow-matrix: 0 0 20px rgb(0 255 136 / 0.3), 0 0 40px rgb(0 255 136 / 0.1);
+  --shadow-inner-glow: inset 0 0 20px rgb(0 255 136 / 0.2);
+
+  /* Border Radius */
+  --radius-glass: 16px;
+  --radius-window: 12px;
+
+  /* Backdrop Blur */
+  --blur-glass: 12px;
+  --blur-xs: 2px;
+
+  /* Animations */
+  --animate-matrix-glow: matrix-glow 2s ease-in-out infinite;
+  --animate-matrix-flicker: matrix-flicker 3s ease-in-out infinite;
+  --animate-glass-shimmer: glass-shimmer 3s ease-in-out infinite;
+  --animate-float: float 3s ease-in-out infinite;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text-base);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: var(--color-background-dark);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(0 255 136 / 0.3);
+    border-radius: 0.25rem;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(0 255 136 / 0.5);
+  }
+
+  ::selection {
+    background-color: rgb(0 255 136 / 0.3);
+    color: var(--color-primary);
+  }
+}
+
+@layer components {
+  .glass-card {
+    background-color: var(--color-glass);
+    backdrop-filter: blur(var(--blur-glass));
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-glass);
+    box-shadow: var(--shadow-glass);
+    transition: all 0.3s;
+  }
+
+  .glass-card:hover {
+    box-shadow: var(--shadow-glass-hover);
+    border-color: rgb(0 255 136 / 0.3);
+  }
+
+  .btn-matrix {
+    background-color: rgb(0 255 136 / 0.1);
+    color: var(--color-primary);
+    border: 1px solid rgb(0 255 136 / 0.5);
+    border-radius: var(--radius-window);
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .btn-matrix:hover {
+    background-color: rgb(0 255 136 / 0.2);
+    box-shadow: var(--shadow-glow);
+    border-color: var(--color-primary);
+  }
+
+  .btn-matrix:active {
+    transform: scale(0.95);
+  }
+
+  .btn-matrix-solid {
+    background-color: var(--color-primary);
+    color: var(--color-background-dark);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-window);
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .btn-matrix-solid:hover {
+    box-shadow: var(--shadow-glow-md);
+    filter: brightness(1.1);
+  }
+
+  .btn-matrix-solid:active {
+    transform: scale(0.95);
+  }
+
+  .btn-windows {
+    background-color: rgb(155 169 180 / 0.1);
+    color: var(--color-secondary);
+    border: 1px solid rgb(155 169 180 / 0.5);
+    border-radius: var(--radius-window);
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .btn-windows:hover {
+    background-color: rgb(155 169 180 / 0.2);
+    border-color: var(--color-secondary);
+  }
+
+  .btn-windows:active {
+    transform: scale(0.95);
+  }
+
+  .matrix-window {
+    background-color: var(--color-background-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-window);
+    box-shadow: var(--shadow-matrix);
+    backdrop-filter: blur(var(--blur-xs));
+  }
+
+  .text-glow {
+    color: var(--color-primary);
+    text-shadow: 0 0 10px rgb(0 255 136 / 0.5);
+  }
+
+  .text-glow-strong {
+    color: var(--color-primary);
+    text-shadow:
+      0 0 20px rgb(0 255 136 / 0.8),
+      0 0 30px rgb(0 255 136 / 0.4);
+  }
+
+  .matrix-bg {
+    background: linear-gradient(135deg, #0a0f0a 0%, #111a11 50%, #0f1a0f 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .matrix-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgb(0 255 136 / 0.15) 0%, transparent 70%);
+    opacity: 0.3;
+    animation: var(--animate-matrix-glow);
+  }
+
+  .glass-panel {
+    background-color: var(--color-glass);
+    backdrop-filter: blur(var(--blur-glass));
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-glass);
+    box-shadow: var(--shadow-glass);
+    transition: all 0.3s;
+    padding: 1.5rem;
+  }
+
+  .glass-panel:hover {
+    background-color: var(--color-glass-light);
+  }
+
+  .input-matrix {
+    background-color: var(--color-background-elevated);
+    border: 1px solid rgb(0 255 136 / 0.3);
+    border-radius: var(--radius-window);
+    padding: 0.75rem 1rem;
+    color: var(--color-text-base);
+    font-family: var(--font-mono);
+    transition: all 0.3s;
+  }
+
+  .input-matrix:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .input-matrix::placeholder {
+    color: var(--color-text-dim);
+  }
+
+  .divider-matrix {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgb(0 255 136 / 0.5), transparent);
+  }
+
+  .badge-matrix {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    background-color: rgb(0 255 136 / 0.1);
+    border: 1px solid rgb(0 255 136 / 0.3);
+    color: var(--color-primary);
+    font-size: 0.875rem;
+    font-family: var(--font-mono);
+  }
+
+  .card-glow {
+    background-color: var(--color-glass);
+    backdrop-filter: blur(var(--blur-glass));
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-glass);
+    box-shadow: var(--shadow-glass);
+    transition: all 0.3s;
+    padding: 1.5rem;
+  }
+
+  .card-glow:hover {
+    box-shadow: var(--shadow-glow-md);
+    border-color: rgb(0 255 136 / 0.5);
+  }
+
+  .hero-gradient {
+    background: linear-gradient(
+      135deg,
+      #050805 0%,
+      #0a0f0a 25%,
+      #111a11 50%,
+      #0a0f0a 75%,
+      #050805 100%
+    );
+    position: relative;
+  }
+
+  .hero-gradient::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgb(0 255 136 / 0.3) 0%, transparent 70%);
+    opacity: 0.2;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .backdrop-glass {
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+  }
+
+  .glow-sm {
+    box-shadow: var(--shadow-glow-sm);
+  }
+
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-lg {
+    box-shadow: var(--shadow-glow-lg);
+  }
+
+  .animate-matrix-pulse {
+    animation: var(--animate-matrix-glow);
+  }
+
+  .border-glow {
+    box-shadow:
+      inset 0 0 20px rgb(0 255 136 / 0.1),
+      0 0 20px rgb(0 255 136 / 0.1);
+  }
+
+  .bg-cyber-grid {
+    background-image:
+      linear-gradient(rgb(0 255 136 / 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(0 255 136 / 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+}
+
+@keyframes matrix-glow {
+  0%,
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.8;
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes matrix-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.95;
+  }
+  51% {
+    opacity: 1;
+  }
+  52% {
+    opacity: 0.97;
+  }
+}
+
+@keyframes glass-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-matrix-glow {
+  animation: var(--animate-matrix-glow);
+}
+
+.animate-matrix-flicker {
+  animation: var(--animate-matrix-flicker);
+}
+
+.animate-glass-shimmer {
+  animation: var(--animate-glass-shimmer);
+}
+
+.animate-float {
+  animation: var(--animate-float);
+}
+
+@layer base {
+  body {
+    background-color: #0a0f0a;
+    color: #e0e8e0;
+    font-family: Inter, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Smooth scrolling with Matrix feel */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar - Matrix style */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #050805;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 255, 136, 0.3);
+    border-radius: 0.25rem;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 255, 136, 0.5);
+  }
+
+  /* Selection color */
+  ::selection {
+    background-color: rgba(0, 255, 136, 0.3);
+    color: #00ff88;
+  }
+}
+
+@layer components {
+  /* Glass Card - Windows 11 inspired glassmorphism */
+  .glass-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: all 0.3s;
+  }
+
+  .glass-card:hover {
+    box-shadow: 0 8px 32px 0 rgba(0, 255, 136, 0.2);
+    border-color: rgba(0, 255, 136, 0.3);
+  }
+
+  /* Matrix Glow Button */
+  .btn-matrix {
+    background-color: rgba(0, 255, 136, 0.1);
+    color: #00ff88;
+    border: 1px solid rgba(0, 255, 136, 0.5);
+    border-radius: 12px;
+    padding: 0.75rem 1.5rem;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    font-weight: 500;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .btn-matrix:hover {
+    background-color: rgba(0, 255, 136, 0.2);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+    border-color: #00ff88;
+  }
+
+  .btn-matrix:active {
+    transform: scale(0.95);
+  }
+
+  /* Matrix Glow Button - Solid variant */
+  .btn-matrix-solid {
+    background-color: #00ff88;
+    color: #050805;
+    border: 1px solid #00ff88;
+    border-radius: 12px;
+    padding: 0.75rem 1.5rem;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    font-weight: 700;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .btn-matrix-solid:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+    filter: brightness(1.1);
+  }
+
+  .btn-matrix-solid:active {
+    transform: scale(0.95);
+  }
+
+  /* Secondary Windows-style button */
+  .btn-windows {
+    background-color: rgba(155, 169, 180, 0.1);
+    color: #9ba9b4;
+    border: 1px solid rgba(155, 169, 180, 0.5);
+    border-radius: 12px;
+    padding: 0.75rem 1.5rem;
+    font-family: Inter, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 500;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .btn-windows:hover {
+    background-color: rgba(155, 169, 180, 0.2);
+    border-color: #9ba9b4;
+  }
+
+  .btn-windows:active {
+    transform: scale(0.95);
+  }
+
+  /* Matrix Window/Panel */
+  .matrix-window {
+    background-color: #111a11;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 12px;
+    box-shadow:
+      0 0 20px rgba(0, 255, 136, 0.3),
+      0 0 40px rgba(0, 255, 136, 0.1);
+    backdrop-filter: blur(2px);
+  }
+
+  /* Glowing Text */
+  .text-glow {
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  }
+
+  .text-glow-strong {
+    color: #00ff88;
+    text-shadow:
+      0 0 20px rgba(0, 255, 136, 0.8),
+      0 0 30px rgba(0, 255, 136, 0.4);
+  }
+
+  /* Matrix Code Background Effect */
+  .matrix-bg {
+    background: linear-gradient(135deg, #0a0f0a 0%, #111a11 50%, #0f1a0f 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .matrix-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(0, 255, 136, 0.15) 0%, transparent 70%);
+    opacity: 0.3;
+    animation: matrix-glow 3s ease-in-out infinite;
+  }
+
+  /* Glass Panel with hover effect */
+  .glass-panel {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: all 0.3s;
+    padding: 1.5rem;
+  }
+
+  .glass-panel:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Input field - Matrix style */
+  .input-matrix {
+    background-color: #111a11;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    color: #e0e8e0;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    transition: all 0.3s;
+  }
+
+  .input-matrix:focus {
+    outline: none;
+    border-color: #00ff88;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+  }
+
+  .input-matrix::placeholder {
+    color: #4a5a4a;
+  }
+
+  /* Divider with glow */
+  .divider-matrix {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0, 255, 136, 0.5), transparent);
+  }
+
+  /* Badge/Tag - Matrix style */
+  .badge-matrix {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    background-color: rgba(0, 255, 136, 0.1);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    color: #00ff88;
+    font-size: 0.875rem;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  }
+
+  /* Card with glow on hover */
+  .card-glow {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: all 0.3s;
+    padding: 1.5rem;
+  }
+
+  .card-glow:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+    border-color: rgba(0, 255, 136, 0.5);
+  }
+
+  /* Hero section gradient background */
+  .hero-gradient {
+    background: linear-gradient(
+      135deg,
+      #050805 0%,
+      #0a0f0a 25%,
+      #111a11 50%,
+      #0a0f0a 75%,
+      #050805 100%
+    );
+    position: relative;
+  }
+
+  .hero-gradient::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0, 255, 136, 0.3) 0%, transparent 70%);
+    opacity: 0.2;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  /* Text utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Backdrop filters */
+  .backdrop-glass {
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+  }
+
+  /* Glow utilities */
+  .glow-sm {
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+  }
+
+  .glow {
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+  }
+
+  .glow-lg {
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
+  }
+
+  /* Matrix animations */
+  .animate-matrix-pulse {
+    animation: matrix-glow 2s ease-in-out infinite;
+  }
+
+  /* Border glow */
+  .border-glow {
+    box-shadow:
+      inset 0 0 20px rgba(0, 255, 136, 0.1),
+      0 0 20px rgba(0, 255, 136, 0.1);
+  }
+
+  /* Cyber grid background */
+  .bg-cyber-grid {
+    background-image:
+      linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+}
+
+@keyframes matrix-glow {
+  0%,
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.8;
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes matrix-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.95;
+  }
+  51% {
+    opacity: 1;
+  }
+  52% {
+    opacity: 0.97;
+  }
+}
+
+@keyframes glass-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-matrix-glow {
+  animation: matrix-glow 2s ease-in-out infinite;
+}
+
+.animate-matrix-flicker {
+  animation: matrix-flicker 3s ease-in-out infinite;
+}
+
+.animate-glass-shimmer {
+  animation: glass-shimmer 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }

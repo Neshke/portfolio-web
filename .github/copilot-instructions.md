@@ -16,7 +16,8 @@ This is a Vue 3 + TypeScript portfolio website built with Vite. The project foll
 
 ### Styling
 
-- **Tailwind CSS** (^4.1.17) - Utility-first CSS framework
+- **Tailwind CSS v4** (^4.1.17) - Utility-first CSS framework with CSS-based configuration
+- **@tailwindcss/cli** (^4.1.17) - Standalone CLI for Tailwind v4 (no Vite plugin needed)
 - **PostCSS** (^8.5.6) + **Autoprefixer** (^10.4.22)
 
 ### Utilities & Composition
@@ -42,7 +43,8 @@ src/
 ├── api/              # API client and endpoint definitions
 │   └── index.ts
 ├── assets/           # Static resources (CSS, images, fonts)
-│   └── main.css      # Tailwind CSS imports
+│   ├── main.css      # Tailwind v4 theme configuration (input)
+│   └── output.css    # Generated CSS from Tailwind CLI (output, gitignored)
 ├── components/       # Reusable Vue components
 ├── composables/      # Composition functions (Vue composables)
 │   └── useDateTime.ts
@@ -102,7 +104,19 @@ src/
 
 ### Styling
 
-1. **Use Tailwind CSS with `@apply` directive** inside `<style scoped>` blocks instead of utility classes directly in templates
+1. **Tailwind v4 uses CSS-based configuration with `@theme` directive** in `src/assets/main.css`
+
+   ```css
+   @import 'tailwindcss';
+
+   @theme {
+     --color-primary: #00ff88;
+     --font-display: Orbitron, sans-serif;
+     /* ... more theme variables */
+   }
+   ```
+
+2. **Use Tailwind CSS with `@apply` directive** inside `<style scoped>` blocks instead of utility classes directly in templates
 
    ```vue
    <template>
@@ -122,17 +136,24 @@ src/
    </style>
    ```
 
-2. **Benefits of this approach:**
+3. **Benefits of this approach:**
    - Cleaner templates with semantic class names
    - Better component encapsulation
    - Easier to maintain and understand component styles
    - Scoped styles prevent style leakage
-3. **Follow mobile-first responsive design** with Tailwind's responsive prefixes in `@apply`
+
+4. **Follow mobile-first responsive design** with Tailwind's responsive prefixes in `@apply`
    ```css
    .responsive-element {
      @apply text-sm md:text-base lg:text-lg;
    }
    ```
+
+5. **Tailwind v4 CLI Workflow:**
+   - **Development:** Run `npm run dev:css` in one terminal (Tailwind watcher) and `npm run dev` in another (Vite server)
+   - **Production:** `npm run build` automatically runs `build:css` before building
+   - **Input:** `src/assets/main.css` contains theme configuration
+   - **Output:** `src/assets/output.css` is generated and imported in `main.ts` (gitignored)
 
 ### State Management (Pinia)
 
@@ -218,9 +239,13 @@ src/
 ## Common Commands
 
 ```bash
-# Development
-npm run dev              # Start dev server (http://localhost:5173)
-npm run build            # Build for production
+# Development (requires 2 terminals)
+npm run dev:css          # Terminal 1: Tailwind CLI watcher
+npm run dev              # Terminal 2: Vite dev server (http://localhost:5173)
+
+# Production
+npm run build            # Build for production (runs build:css + vite build)
+npm run build:css        # Generate minified CSS with Tailwind CLI
 npm run preview          # Preview production build
 
 # Testing
