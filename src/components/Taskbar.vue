@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStartMenuStore } from '@/store/startMenu'
 import LanguageSwitcher from './LanguageSwitcher.vue'
+import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 
 const { t } = useI18n()
 const startMenuStore = useStartMenuStore()
@@ -164,12 +165,10 @@ const openContact = () => {
           <span class="taskbar-label">{{ t('taskbar.projects') }}</span>
         </button>
 
-        <button @click="openExperience" class="taskbar-item" :class="{ active: startMenuStore.activeApp === 'experience' }">
-          <svg class="taskbar-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
-          </svg>
+        <button @click="openExperience" class="taskbar-item"
+          :class="{ active: startMenuStore.activeApp === 'experience' }">
+          <DotLottieVue style="width: 24px; height: 24px" autoplay loop backgroundColor="white"
+            src="https://lottie.host/bdf6f19c-7c2e-4b33-ad43-866a1456da47/ui3DYKizpT.lottie" />
           <span class="taskbar-label">{{ t('taskbar.experience') }}</span>
         </button>
 

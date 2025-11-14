@@ -17,10 +17,13 @@
     "format:check": "prettier --check src/"
   },
   "dependencies": {
+    "@lottiefiles/dotlottie-vue": "^0.10.7",
+    "lottie-web": "^5.13.0",
     "pinia": "^3.0.4",
     "vue": "^3.5.22",
     "vue-i18n": "^9.14.5",
-    "vue-router": "^4.6.3"
+    "vue-router": "^4.6.3",
+    "vue3-lottie": "^3.3.1"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.17",

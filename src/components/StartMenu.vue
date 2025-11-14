@@ -152,6 +152,7 @@ onUnmounted(() => {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
   z-index: 15;
+  bottom: 80px;
 }
 
 /* Start Menu Container */
@@ -503,12 +504,23 @@ onUnmounted(() => {
 @media (max-width: 768px) {
   .start-menu-backdrop {
     bottom: 88px;
+    backdrop-filter: blur(8px);
+    z-index: 45;
   }
 
   .start-menu-container {
     bottom: 88px;
-    width: 95%;
-    max-height: 70vh;
+    left: 0;
+    right: 0;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 88px);
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    z-index: 49;
   }
 
   .start-menu-header {
@@ -533,8 +545,13 @@ onUnmounted(() => {
     font-size: 12px;
   }
 
+  .start-menu-content {
+    padding: 12px;
+  }
+
   .start-menu-footer {
     flex-wrap: wrap;
+    padding: 12px 16px;
   }
 
   .start-menu-footer-btn {
