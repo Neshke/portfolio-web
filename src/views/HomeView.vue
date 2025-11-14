@@ -20,6 +20,11 @@ const { t } = useI18n()
           {{ t('hero.title') }}
         </h1>
 
+        <!-- Profile Picture -->
+        <div class="hero-image-animated">
+          <img src="/src/assets/images/profile-picture.jpg" alt="Profile Picture" class="profile-picture" />
+        </div>
+
         <p class="hero-description-animated text-xl font-sans text-muted mb-8 max-w-2xl mx-auto">
           {{ t('hero.description') }}
         </p>
@@ -37,6 +42,8 @@ const { t } = useI18n()
 </template>
 
 <style scoped>
+@reference "tailwindcss";
+
 .home {
   min-height: 100vh;
 }
@@ -92,6 +99,33 @@ const { t } = useI18n()
 
 .hero-title-animated {
   animation: slideDownFade 0.8s ease-out 0.2s both;
+}
+
+.hero-image-animated {
+  animation: slideDownFade 0.8s ease-out 0.35s both;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-picture {
+  @apply m-10;
+  width: clamp(8rem, 15vw + 8rem, 20rem);
+  height: clamp(8rem, 15vw + 8rem, 20rem);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #00ff88;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.6),
+    0 0 60px rgba(0, 255, 136, 0.3),
+    inset 0 0 20px rgba(0, 255, 136, 0.1);
+  transition: all 0.3s ease;
+}
+
+.profile-picture:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(0, 255, 136, 0.8),
+    0 0 80px rgba(0, 255, 136, 0.4),
+    inset 0 0 30px rgba(0, 255, 136, 0.2);
 }
 
 .hero-description-animated {

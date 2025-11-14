@@ -16,44 +16,38 @@ const { currentLanguage, toggleLanguage } = useLanguage()
 </template>
 
 <style scoped>
+@reference "tailwindcss";
+
 .taskbar-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  color: #e0e8e0;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  @apply flex items-center gap-2 px-3 py-2;
+  @apply bg-transparent border border-transparent rounded-lg;
+  @apply cursor-pointer transition-all duration-200;
+  color: var(--color-text-base);
   font-family: var(--font-sans);
   font-size: 14px;
 }
 
 .taskbar-item:hover {
-  background: rgba(0, 255, 136, 0.1);
-  border-color: rgba(0, 255, 136, 0.3);
+  background-color: rgb(0 255 136 / 0.1);
+  border-color: rgb(0 255 136 / 0.3);
   box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
 }
 
 .taskbar-item:active {
-  transform: scale(0.95);
+  @apply scale-95;
 }
 
 .tray-item {
-  padding: 8px;
+  @apply p-2;
 }
 
 .taskbar-icon-sm {
-  width: 16px;
-  height: 16px;
-  color: #9ba9b4;
+  @apply w-4 h-4;
+  color: var(--color-secondary);
 }
 
 .taskbar-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: #00ff88;
+  @apply text-xs font-semibold;
+  color: var(--color-primary);
 }
 </style>

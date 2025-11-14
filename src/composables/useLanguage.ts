@@ -13,7 +13,7 @@ export function useLanguage() {
   })
 
   const languages = computed(() => {
-    return availableLocales.map((code) => ({
+    return availableLocales.map((code: string) => ({
       code,
       name: code === 'en' ? 'English' : 'Српски',
     }))

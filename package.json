@@ -8,9 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "dev:css": "tailwindcss -i ./src/assets/main.css -o ./src/assets/output.css --watch",
-    "build": "npm run build:css && vite build",
-    "build:css": "tailwindcss -i ./src/assets/main.css -o ./src/assets/output.css --minify",
+    "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
@@ -26,6 +24,7 @@
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.17",
+    "@tailwindcss/vite": "^4.1.17",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vitest/ui": "^4.0.8",
     "@vue/test-utils": "^2.4.6",

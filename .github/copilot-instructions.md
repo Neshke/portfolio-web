@@ -96,7 +96,26 @@ src/
    - Define emit types using `defineEmits<T>()`
    - Create interfaces/types in separate files when reused
 
-4. **Component Naming:**
+4. **Always use i18n for user-facing text:**
+
+   ```vue
+   <script setup lang="ts">
+   import { useI18n } from 'vue-i18n'
+
+   const { t } = useI18n()
+   </script>
+
+   <template>
+     <h1>{{ t('hero.title') }}</h1>
+     <button>{{ t('hero.buttons.getStarted') }}</button>
+   </template>
+   ```
+
+   - **NEVER hardcode text** directly in templates - always use translation keys
+   - Add new keys to **both** `src/i18n/locales/en.json` and `sr.json`
+   - Use dot notation for nested keys: `hero.buttons.getStarted`
+
+5. **Component Naming:**
    - PascalCase for component files (e.g., `UserProfile.vue`)
    - Multi-word component names (avoid single-word like `User.vue`)
 
@@ -210,28 +229,59 @@ src/
 3. **Return reactive values** and functions that operate on them
 4. **Leverage @vueuse/core** for common patterns before creating custom composables
 
-### Internationalization (i18n)
+### Internationalization (i18n) - CRITICAL
 
-1. **Use vue-i18n** for all user-facing text
-2. **Translation files** in `src/i18n/locales/` as JSON files
-3. **Supported languages:** English (en), Serbian (sr)
-4. **Usage in components:**
-   ```typescript
-   import { useI18n } from 'vue-i18n'
-   const { t } = useI18n()
-   ```
+**⚠️ NEVER HARDCODE USER-FACING TEXT - ALWAYS USE i18n TRANSLATION KEYS ⚠️**
+
+1. **Every component with user-facing text MUST import `useI18n`:**
+
    ```vue
+   <script setup lang="ts">
+   import { useI18n } from 'vue-i18n'
+
+   const { t } = useI18n()
+   </script>
+
    <template>
      <h1>{{ t('hero.title') }}</h1>
+     <p>{{ t('hero.description') }}</p>
+     <button>{{ t('hero.buttons.getStarted') }}</button>
    </template>
    ```
-5. **Translation key structure:** Use dot notation (e.g., `hero.buttons.getStarted`)
-6. **Language switching:** Use `useLanguage()` composable
-   - `currentLanguage` - get/set current locale
-   - `toggleLanguage()` - switch between languages
-   - `languages` - available languages list
-7. **Language persistence:** Saved in localStorage, auto-loaded on init
-8. **Never hardcode user-facing text** - always use translation keys
+
+2. **Translation files location:** `src/i18n/locales/`
+   - `en.json` - English translations
+   - `sr.json` - Serbian translations (Српски)
+   - **ALWAYS add keys to BOTH files when creating new text**
+
+3. **Translation key structure:** Use dot notation for organization
+   - `hero.title`, `hero.description`, `hero.buttons.getStarted`
+   - `taskbar.about`, `taskbar.projects`, `taskbar.experience`, `taskbar.contact`
+   - Group related keys under common parent (e.g., all hero section keys under `hero`)
+
+4. **Language switching:** Use `useLanguage()` composable
+
+   ```typescript
+   import { useLanguage } from '@/composables/useLanguage'
+
+   const { currentLanguage, toggleLanguage, languages } = useLanguage()
+   ```
+
+   - `currentLanguage` - computed ref for getting/setting locale
+   - `toggleLanguage()` - switches between 'en' and 'sr'
+   - `languages` - array of available languages with codes and names
+   - Language preference saved in localStorage
+
+5. **Supported languages:**
+   - English (en) - "English"
+   - Serbian (sr) - "Српски"
+
+6. **IMPORTANT RULES:**
+   - ❌ WRONG: `<h1>Welcome to my portfolio</h1>`
+   - ✅ CORRECT: `<h1>{{ t('hero.title') }}</h1>` + add to en.json and sr.json
+   - ❌ WRONG: `<button>Click here</button>`
+   - ✅ CORRECT: `<button>{{ t('buttons.click') }}</button>` + add to translation files
+   - Always think: "Is this text visible to users?" → If yes, use i18n
 
 ### API Layer
 
