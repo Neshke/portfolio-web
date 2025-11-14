@@ -1,26 +1,26 @@
 # Matrix-Windows Theme Guide
 
-## 🎨 Pregled
+## 🎨 Overview
 
-Ova tema kombinuje **Matrix cyberpunk** estetiku sa **Windows 11** minimalizmom, kreirajući futuristički ali profesionalan izgled idealan za portfolio website programera.
+This theme combines **Matrix cyberpunk** aesthetics with **Windows 11** minimalism, creating a futuristic yet professional look ideal for a developer portfolio website.
 
-**Tehnička osnova:** Tailwind CSS v4 sa CSS-based konfiguracijom putem `@theme` direktive
+**Technical foundation:** Tailwind CSS v4 with CSS-based configuration via `@theme` directive
 
-### 🆕 Tailwind v4 Prednosti
+### 🆕 Tailwind v4 Advantages
 
-- **CSS Variables** - Čitljivije i lakše za održavanje
-- **No JS Config** - Sve se definiše u CSS-u
-- **Faster Build** - Brži build proces
-- **Better DX** - Moderniji developer experience
+- **CSS Variables** - More readable and easier to maintain
+- **No JS Config** - Everything is defined in CSS
+- **Faster Build** - Faster build process
+- **Better DX** - Modern developer experience
 
 ---
 
 ## 🔧 CSS Variables (Tailwind v4)
 
-Tema koristi CSS varijable definisane u `@theme` bloku:
+The theme uses CSS variables defined in the `@theme` block:
 
 ```css
-/* Primer direktnog korišćenja CSS varijabli */
+/* Example of direct CSS variable usage */
 <style scoped>
 .custom-element {
   background-color: var(--color-background-elevated);
@@ -32,9 +32,9 @@ Tema koristi CSS varijable definisane u `@theme` bloku:
 </style>
 ```
 
-### Dostupne CSS Varijable
+### Available CSS Variables
 
-**Boje:**
+**Colors:**
 
 - `--color-background`, `--color-background-dark`, `--color-background-elevated`
 - `--color-primary`, `--color-primary-light`, `--color-primary-dark`
@@ -59,107 +59,107 @@ Tema koristi CSS varijable definisane u `@theme` bloku:
 
 ---
 
-## 🌈 Paleta Boja
+## 🌈 Color Palette
 
-### Pozadine
+### Backgrounds
 
 ```typescript
-bg - background // #0a0f0a - Glavna pozadina (Matrix terminal)
-bg - background - dark // #050805 - Tamnija varijanta
-bg - background - elevated // #111a11 - Za kartice/površine
+bg - background // #0a0f0a - Main background (Matrix terminal)
+bg - background - dark // #050805 - Darker variant
+bg - background - elevated // #111a11 - For cards/surfaces
 ```
 
-### Primarna Boja (Matrix Neon Green)
+### Primary Color (Matrix Neon Green)
 
 ```typescript
-bg - primary // #00ff88 - Matrix zelena
-bg - primary - light // #33ffaa - Svetlija (hover)
-bg - primary - dark // #00cc6a - Tamnija (active)
-text - primary // Zeleni tekst
-border - primary // Zelena ivica
+bg - primary // #00ff88 - Matrix green
+bg - primary - light // #33ffaa - Lighter (hover)
+bg - primary - dark // #00cc6a - Darker (active)
+text - primary // Green text
+border - primary // Green border
 ```
 
-### Sekundarna Boja (Windows Gray-Blue)
+### Secondary Color (Windows Gray-Blue)
 
 ```typescript
-bg - secondary // #9ba9b4 - Windows sivo-plava
-bg - secondary - light // #b8c5d0 - Svetlija
-bg - secondary - dark // #7a8894 - Tamnija
-text - secondary // Sekundarni tekst
+bg - secondary // #9ba9b4 - Windows gray-blue
+bg - secondary - light // #b8c5d0 - Lighter
+bg - secondary - dark // #7a8894 - Darker
+text - secondary // Secondary text
 ```
 
-### Glass Efekti (Glassmorphism)
+### Glass Effects (Glassmorphism)
 
 ```typescript
-bg - glass // rgba(255,255,255,0.1) - Osnovno staklo
-bg - glass - light // rgba(255,255,255,0.15) - Svetlije staklo
-bg - glass - dark // rgba(255,255,255,0.05) - Tamnije staklo
-border - glass - border // rgba(255,255,255,0.2) - Ivica stakla
+bg - glass // rgba(255,255,255,0.1) - Base glass
+bg - glass - light // rgba(255,255,255,0.15) - Lighter glass
+bg - glass - dark // rgba(255,255,255,0.05) - Darker glass
+border - glass - border // rgba(255,255,255,0.2) - Glass border
 ```
 
-### Boje Teksta
+### Text Colors
 
 ```typescript
-text - base // #e0e8e0 - Osnovni tekst
-text - muted // #7fa77f - Prigušeni tekst
-text - accent // #00ff88 - Akcent tekst
-text - secondary // #9ba9b4 - Sekundarni tekst
-text - dim // #4a5a4a - Veoma prigušen tekst
+text - base // #e0e8e0 - Base text
+text - muted // #7fa77f - Muted text
+text - accent // #00ff88 - Accent text
+text - secondary // #9ba9b4 - Secondary text
+text - dim // #4a5a4a - Very muted text
 ```
 
-### Status Boje
+### Status Colors
 
 ```typescript
-// Success (Matrix-kompatibilno)
+// Success (Matrix-compatible)
 text - success // #00ffaa
-bg - success // Success pozadina
+bg - success // Success background
 
 // Error
 text - error // #ff4c4c
-bg - error // Error pozadina
+bg - error // Error background
 
 // Warning
 text - warning // #ffaa00
-bg - warning // Warning pozadina
+bg - warning // Warning background
 
 // Info
 text - info // #00aaff
-bg - info // Info pozadina
+bg - info // Info background
 ```
 
 ---
 
-## 🎭 Komponente i Klase
+## 🎭 Components and Classes
 
-### Glass Card (Windows 11 Stil)
+### Glass Card (Windows 11 Style)
 
 ```vue
 <template>
   <div class="glass-card">
-    <!-- Sadržaj kartice -->
+    <!-- Card content -->
   </div>
 </template>
 
 <style scoped>
-/* Automatski uključuje: */
+/* Automatically includes: */
 /* - backdrop blur */
-/* - border sa glass efektom */
+/* - border with glass effect */
 /* - shadow */
-/* - hover efekte */
+/* - hover effects */
 </style>
 ```
 
-### Matrix Dugmad
+### Matrix Buttons
 
 ```vue
 <template>
-  <!-- Outline dugme sa Matrix glow efektom -->
+  <!-- Outline button with Matrix glow effect -->
   <button class="btn-matrix">Click Me</button>
 
-  <!-- Solid Matrix dugme -->
+  <!-- Solid Matrix button -->
   <button class="btn-matrix-solid">Action</button>
 
-  <!-- Windows stil dugme -->
+  <!-- Windows style button -->
   <button class="btn-windows">Secondary</button>
 </template>
 ```
@@ -175,7 +175,7 @@ bg - info // Info pozadina
 </template>
 ```
 
-### Input Polja
+### Input Fields
 
 ```vue
 <template>
@@ -183,7 +183,7 @@ bg - info // Info pozadina
 </template>
 ```
 
-### Glass Panel sa Hover Efektom
+### Glass Panel with Hover Effect
 
 ```vue
 <template>
@@ -205,25 +205,25 @@ bg - info // Info pozadina
 
 ---
 
-## ✨ Glow Efekti
+## ✨ Glow Effects
 
 ### Box Shadow Glow
 
 ```vue
 <template>
-  <!-- Mali glow -->
+  <!-- Small glow -->
   <div class="shadow-glow-sm">...</div>
 
-  <!-- Srednji glow (default) -->
+  <!-- Medium glow (default) -->
   <div class="shadow-glow">...</div>
 
-  <!-- Veliki glow -->
+  <!-- Large glow -->
   <div class="shadow-glow-lg">...</div>
 
-  <!-- Extra veliki glow -->
+  <!-- Extra large glow -->
   <div class="shadow-glow-xl">...</div>
 
-  <!-- Matrix signature glow (kombinovani) -->
+  <!-- Matrix signature glow (combined) -->
   <div class="shadow-matrix">...</div>
 </template>
 ```
@@ -232,10 +232,10 @@ bg - info // Info pozadina
 
 ```vue
 <template>
-  <!-- Blagi glow -->
+  <!-- Subtle glow -->
   <h1 class="text-glow">Neon Text</h1>
 
-  <!-- Jak glow -->
+  <!-- Strong glow -->
   <h1 class="text-glow-strong">Strong Neon</h1>
 </template>
 ```
@@ -250,41 +250,41 @@ bg - info // Info pozadina
 
 ---
 
-## 🌌 Background Gradienti
+## 🌌 Background Gradients
 
 ### Matrix Gradient Backgrounds
 
 ```vue
 <template>
-  <!-- Osnovni Matrix gradient -->
+  <!-- Basic Matrix gradient -->
   <div class="bg-matrix-gradient">...</div>
 
-  <!-- Radial gradient (za spotlight efekte) -->
+  <!-- Radial gradient (for spotlight effects) -->
   <div class="bg-matrix-radial">...</div>
 
-  <!-- Hero sekcija gradient -->
+  <!-- Hero section gradient -->
   <section class="bg-matrix-hero">...</section>
 
   <!-- Glass gradient -->
   <div class="bg-glass-gradient">...</div>
 
-  <!-- Glow gradient (za hover efekte) -->
+  <!-- Glow gradient (for hover effects) -->
   <div class="bg-glow-gradient">...</div>
 </template>
 ```
 
-### Matrix Background sa Animacijom
+### Matrix Background with Animation
 
 ```vue
 <template>
   <div class="matrix-bg min-h-screen">
-    <!-- Automatski uključuje pulsiranje/glow animaciju -->
+    <!-- Automatically includes pulsing/glow animation -->
     <div class="container mx-auto">Content</div>
   </div>
 </template>
 ```
 
-### Hero Gradient (Kombinovan Efekat)
+### Hero Gradient (Combined Effect)
 
 ```vue
 <template>
@@ -299,16 +299,16 @@ bg - info // Info pozadina
 ```vue
 <template>
   <div class="bg-cyber-grid bg-background p-8">
-    <!-- Daje Matrix "grid" efekat -->
+    <!-- Provides Matrix "grid" effect -->
   </div>
 </template>
 ```
 
 ---
 
-## 🎬 Animacije
+## 🎬 Animations
 
-### Matrix Glow (Pulsiranje)
+### Matrix Glow (Pulsing)
 
 ```vue
 <template>
@@ -316,7 +316,7 @@ bg - info // Info pozadina
 </template>
 ```
 
-### Matrix Flicker (Treptanje)
+### Matrix Flicker (Flickering)
 
 ```vue
 <template>
@@ -342,14 +342,14 @@ bg - info // Info pozadina
 
 ---
 
-## 🔤 Tipografija
+## 🔤 Typography
 
 ### Font Families
 
 ```typescript
-font - mono // JetBrains Mono - Za kod i Matrix osećaj
-font - sans // Inter - Za čisti UI tekst
-font - display // Orbitron - Za futurističke naslove
+font - mono // JetBrains Mono - For code and Matrix feel
+font - sans // Inter - For clean UI text
+font - display // Orbitron - For futuristic titles
 ```
 
 ### Custom Font Sizes
@@ -364,7 +364,7 @@ font - display // Orbitron - Za futurističke naslove
 </template>
 ```
 
-### Primer Kombinacije
+### Combination Example
 
 ```vue
 <template>
@@ -380,9 +380,9 @@ font - display // Orbitron - Za futurističke naslove
 
 ---
 
-## 🎯 Kompletni Primeri
+## 🎯 Complete Examples
 
-### Hero Sekcija
+### Hero Section
 
 ```vue
 <template>
@@ -463,37 +463,37 @@ font - display // Orbitron - Za futurističke naslove
 
 ---
 
-## 💡 Saveti za Upotrebu
+## 💡 Usage Tips
 
-### 1. Dark Mode je Default
+### 1. Dark Mode is Default
 
-Tema je dizajnirana da **uvek bude tamna** (Matrix terminal stil). Nema potrebe za dark mode toggle-om.
+The theme is designed to **always be dark** (Matrix terminal style). No need for a dark mode toggle.
 
-### 2. Balans Glow Efekata
+### 2. Balance Glow Effects
 
-Ne pretrpavaj stranicu sa previše glow efekata. Koristi:
+Don't overcrowd the page with too many glow effects. Use:
 
-- **Jak glow** za CTA dugmad i važne elemente
-- **Srednji glow** za hover efekte
-- **Blagi glow** za border i subtle efekte
+- **Strong glow** for CTA buttons and important elements
+- **Medium glow** for hover effects
+- **Subtle glow** for borders and subtle effects
 
-### 3. Glassmorphism sa Merom
+### 3. Glassmorphism with Moderation
 
-Windows glass efekti izgledaju najbolje kada:
+Windows glass effects look best when:
 
-- Imaju **backdrop-blur**
-- Postavljeni su preko gradient pozadine
-- Nisu previše gusto postavljeni
+- They have **backdrop-blur**
+- Placed over gradient backgrounds
+- Not too densely positioned
 
 ### 4. Font Pairing
 
-- **Orbitron** → Veliki naslovi, logo, hero sekcije
-- **Inter** → Body tekst, opisi, paragrafi
-- **JetBrains Mono** → Kod snippeti, tehnički tekst, badges
+- **Orbitron** → Large titles, logo, hero sections
+- **Inter** → Body text, descriptions, paragraphs
+- **JetBrains Mono** → Code snippets, technical text, badges
 
-### 5. Hover Interakcije
+### 5. Hover Interactions
 
-Uvek dodaj transition za smooth iskustvo:
+Always add transitions for smooth experience:
 
 ```vue
 <template>
@@ -505,7 +505,7 @@ Uvek dodaj transition za smooth iskustvo:
 
 ## 🚀 Quick Start
 
-### Osnovni Layout
+### Basic Layout
 
 ```vue
 <template>
@@ -527,10 +527,10 @@ Uvek dodaj transition za smooth iskustvo:
 
 ---
 
-## 📚 Dodatni Resursi
+## 📚 Additional Resources
 
-- **Tailwind Config**: `tailwind.config.ts` - Kompletna definicija teme
-- **CSS Utilities**: `src/assets/main.css` - Custom klase i komponente
+- **Tailwind Config**: `tailwind.config.ts` - Complete theme definition
+- **CSS Utilities**: `src/assets/main.css` - Custom classes and components
 - **Font CDN**: Google Fonts (Inter, JetBrains Mono, Orbitron)
 
 ---

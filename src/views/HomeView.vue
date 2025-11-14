@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import Taskbar from '@/components/Taskbar.vue'
+import TaskbarWrapper from '@/components/TaskbarWrapper.vue'
+import StartMenu from '@/components/StartMenu.vue'
 
 const { t } = useI18n()
 </script>
@@ -35,8 +36,11 @@ const { t } = useI18n()
         </div>
       </div>
 
-      <!-- Windows Taskbar -->
-      <Taskbar />
+      <!-- Responsive Taskbar -->
+      <TaskbarWrapper />
+
+      <!-- Start Menu -->
+      <StartMenu />
     </section>
   </div>
 </template>

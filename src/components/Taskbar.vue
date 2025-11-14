@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useStartMenuStore } from '@/store/startMenu'
 import LanguageSwitcher from './LanguageSwitcher.vue'
 
 const { t } = useI18n()
+const startMenuStore = useStartMenuStore()
 const dateNow = ref(new Date().toLocaleTimeString())
 let intervalId: number | null = null
 
@@ -18,6 +20,119 @@ onUnmounted(() => {
     clearInterval(intervalId)
   }
 })
+
+// Start Menu handlers
+const openAbout = () => {
+  startMenuStore.toggleMenu({
+    app: 'about',
+    title: t('taskbar.about'),
+    description: t('startMenu.aboutDescription'),
+    items: [
+      {
+        id: 'bio',
+        title: t('startMenu.bio'),
+        description: t('startMenu.bioDescription'),
+        type: 'section',
+      },
+      {
+        id: 'skills',
+        title: t('startMenu.skills'),
+        description: t('startMenu.skillsDescription'),
+        type: 'section',
+      },
+      {
+        id: 'resume',
+        title: t('startMenu.resume'),
+        description: t('startMenu.resumeDescription'),
+        type: 'action',
+      },
+    ],
+  })
+}
+
+const openProjects = () => {
+  startMenuStore.toggleMenu({
+    app: 'projects',
+    title: t('taskbar.projects'),
+    description: t('startMenu.projectsDescription'),
+    items: [
+      {
+        id: 'web',
+        title: t('startMenu.webProjects'),
+        description: t('startMenu.webProjectsDescription'),
+        type: 'section',
+      },
+      {
+        id: 'mobile',
+        title: t('startMenu.mobileProjects'),
+        description: t('startMenu.mobileProjectsDescription'),
+        type: 'section',
+      },
+      {
+        id: 'opensource',
+        title: t('startMenu.openSource'),
+        description: t('startMenu.openSourceDescription'),
+        type: 'section',
+      },
+    ],
+  })
+}
+
+const openExperience = () => {
+  startMenuStore.toggleMenu({
+    app: 'experience',
+    title: t('taskbar.experience'),
+    description: t('startMenu.experienceDescription'),
+    items: [
+      {
+        id: 'work',
+        title: t('startMenu.workHistory'),
+        description: t('startMenu.workHistoryDescription'),
+        type: 'section',
+      },
+      {
+        id: 'education',
+        title: t('startMenu.education'),
+        description: t('startMenu.educationDescription'),
+        type: 'section',
+      },
+      {
+        id: 'certifications',
+        title: t('startMenu.certifications'),
+        description: t('startMenu.certificationsDescription'),
+        type: 'section',
+      },
+    ],
+  })
+}
+
+const openContact = () => {
+  startMenuStore.toggleMenu({
+    app: 'contact',
+    title: t('taskbar.contact'),
+    description: t('startMenu.contactDescription'),
+    items: [
+      {
+        id: 'email',
+        title: t('startMenu.email'),
+        description: 'your.email@example.com',
+        type: 'action',
+      },
+      {
+        id: 'linkedin',
+        title: t('startMenu.linkedin'),
+        description: t('startMenu.linkedinDescription'),
+        type: 'action',
+      },
+      {
+        id: 'github',
+        title: t('startMenu.github'),
+        description: t('startMenu.githubDescription'),
+        type: 'action',
+      },
+    ],
+  })
+}
 </script>
 
 <template>
@@ -33,7 +148,7 @@ onUnmounted(() => {
 
       <!-- Taskbar Apps -->
       <div class="taskbar-apps">
-        <button class="taskbar-item">
+        <button @click="openAbout" class="taskbar-item" :class="{ active: startMenuStore.activeApp === 'about' }">
           <svg class="taskbar-icon" viewBox="0 0 24 24" fill="currentColor">
             <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12z" />
             <path d="M6 10h12v2H6zm0 4h8v2H6z" />
@@ -41,7 +156,7 @@ onUnmounted(() => {
           <span class="taskbar-label">{{ t('taskbar.about') }}</span>
         </button>
 
-        <button class="taskbar-item">
+        <button @click="openProjects" class="taskbar-item" :class="{ active: startMenuStore.activeApp === 'projects' }">
           <svg class="taskbar-icon" viewBox="0 0 24 24" fill="currentColor">
             <path
               d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4zm10 15H4V8h16v11z" />
@@ -49,7 +164,7 @@ onUnmounted(() => {
           <span class="taskbar-label">{{ t('taskbar.projects') }}</span>
         </button>
 
-        <button class="taskbar-item">
+        <button @click="openExperience" class="taskbar-item" :class="{ active: startMenuStore.activeApp === 'experience' }">
           <svg class="taskbar-icon" viewBox="0 0 24 24" fill="currentColor">
             <path
               d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
@@ -58,7 +173,7 @@ onUnmounted(() => {
           <span class="taskbar-label">{{ t('taskbar.experience') }}</span>
         </button>
 
-        <button class="taskbar-item">
+        <button @click="openContact" class="taskbar-item" :class="{ active: startMenuStore.activeApp === 'contact' }">
           <svg class="taskbar-icon" viewBox="0 0 24 24" fill="currentColor">
             <path
               d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
@@ -159,6 +274,12 @@ onUnmounted(() => {
 
 .taskbar-item:active {
   transform: scale(0.95);
+}
+
+.taskbar-item.active {
+  background: rgba(0, 255, 136, 0.2);
+  border-color: rgba(0, 255, 136, 0.4);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
 }
 
 .start-button {
