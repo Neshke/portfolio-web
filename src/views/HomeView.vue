@@ -29,11 +29,6 @@ const { t } = useI18n()
         <p class="hero-description-animated text-xl font-sans text-muted mb-8 max-w-2xl mx-auto">
           {{ t('hero.description') }}
         </p>
-
-        <div class="hero-buttons-animated flex gap-4 justify-center flex-wrap">
-          <button class="btn-matrix-solid">{{ t('hero.buttons.getStarted') }}</button>
-          <button class="btn-matrix">{{ t('hero.buttons.learnMore') }}</button>
-        </div>
       </div>
 
       <!-- Responsive Taskbar -->
@@ -49,13 +44,16 @@ const { t } = useI18n()
 @reference "tailwindcss";
 
 .home {
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh; /* Use dynamic viewport height for mobile browsers */
+  overflow: hidden;
 }
 
 /* Hero Section with Video Background */
 .hero-section {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh; /* Use dynamic viewport height for mobile browsers */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,15 +126,11 @@ const { t } = useI18n()
 .profile-picture:hover {
   transform: scale(1.05);
   box-shadow: 0 0 40px rgba(0, 255, 136, 0.8),
-    0 0 80px rgba(0, 255, 136, 0.4),
+    0 0 rgba(0, 255, 136, 0.4),
     inset 0 0 30px rgba(0, 255, 136, 0.2);
 }
 
 .hero-description-animated {
   animation: slideDownFade 0.8s ease-out 0.5s both;
-}
-
-.hero-buttons-animated {
-  animation: slideDownFade 0.8s ease-out 0.8s both;
 }
 </style>

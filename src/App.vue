@@ -8,7 +8,9 @@
 
 <style scoped>
 .app-root {
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
   background-color: #0a0f0a;
   color: #e0e8e0;
 }

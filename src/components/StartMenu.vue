@@ -152,7 +152,6 @@ onUnmounted(() => {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
   z-index: 15;
-  bottom: 80px;
 }
 
 /* Start Menu Container */

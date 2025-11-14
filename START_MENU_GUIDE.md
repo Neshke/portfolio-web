@@ -7,17 +7,21 @@ A fully functional Windows-style Start Menu system for your Matrix-themed portfo
 ## 📁 Files Created
 
 ### 1. **Store** (`src/store/startMenu.ts`)
+
 Pinia store managing Start Menu state and logic.
 
 ### 2. **Component** (`src/components/StartMenu.vue`)
+
 Main Start Menu component with animations and dynamic content.
 
 ### 3. **Updated Components**
+
 - `Taskbar.vue` - Desktop taskbar with Start Menu integration
 - `TaskbarMobile.vue` - Mobile taskbar with Start Menu integration
 - `HomeView.vue` - Added StartMenu component
 
 ### 4. **Translations**
+
 - `src/i18n/locales/en.json` - English translations
 - `src/i18n/locales/sr.json` - Serbian translations
 
@@ -26,6 +30,7 @@ Main Start Menu component with animations and dynamic content.
 ## 🎨 Features
 
 ### ✅ Core Functionality
+
 - **Single Instance**: Only one Start Menu can be open at a time
 - **Click Outside to Close**: Automatically closes when clicking outside
 - **ESC Key Support**: Press ESC to close the menu
@@ -34,6 +39,7 @@ Main Start Menu component with animations and dynamic content.
 - **Smooth Animations**: Slide-up and fade transitions
 
 ### 🎭 UI/UX Features
+
 - **Matrix Theme**: Dark background with neon green accents
 - **Glassmorphism**: Backdrop blur and transparency effects
 - **Dynamic Content**: Different content based on clicked taskbar item
@@ -97,10 +103,10 @@ startMenuStore.openMenu({
       type: 'section',
       action: () => {
         console.log('Web projects clicked')
-      }
+      },
     },
     // ... more items
-  ]
+  ],
 })
 
 // Toggle (opens if closed, closes if same app)
@@ -114,13 +120,13 @@ startMenuStore.closeMenu()
 
 ```typescript
 interface StartMenuItem {
-  id: string              // Unique identifier
-  title: string          // Display title
-  description?: string   // Optional subtitle
-  icon?: string         // Optional SVG icon as string
-  type: 'app' | 'section' | 'action'  // Item type
-  route?: string        // Optional Vue Router route
-  action?: () => void   // Optional click handler
+  id: string // Unique identifier
+  title: string // Display title
+  description?: string // Optional subtitle
+  icon?: string // Optional SVG icon as string
+  type: 'app' | 'section' | 'action' // Item type
+  route?: string // Optional Vue Router route
+  action?: () => void // Optional click handler
 }
 ```
 
@@ -145,16 +151,16 @@ const openCustomMenu = () => {
         title: 'Item 1',
         description: 'First item',
         type: 'section',
-        action: () => alert('Item 1 clicked!')
-      }
-    ]
+        action: () => alert('Item 1 clicked!'),
+      },
+    ],
   })
 }
 </script>
 
 <template>
-  <button 
-    @click="openCustomMenu" 
+  <button
+    @click="openCustomMenu"
     class="taskbar-item"
     :class="{ active: startMenuStore.activeApp === 'custom' }"
   >
@@ -171,60 +177,54 @@ const openCustomMenu = () => {
 
 ```css
 /* Colors */
---color-background-elevated: #111a11
---color-primary: #00ff88
---color-text-base: #e0e8e0
---color-text-muted: #7fa77f
-
-/* Fonts */
---font-display: Orbitron
---font-sans: Inter
---font-mono: JetBrains Mono
-
-/* Effects */
---shadow-glow-md: 0 0 20px rgba(0, 255, 136, 0.5)
+--color-background-elevated: #111a11 --color-primary: #00ff88 --color-text-base: #e0e8e0
+  --color-text-muted: #7fa77f /* Fonts */ --font-display: Orbitron --font-sans: Inter
+  --font-mono: JetBrains Mono /* Effects */ --shadow-glow-md: 0 0 20px rgba(0, 255, 136, 0.5);
 ```
 
 ### Customizing the Start Menu
 
 #### Change Menu Position
+
 Edit `StartMenu.vue`:
+
 ```css
 .start-menu-container {
-  bottom: 80px;        /* Distance from bottom */
-  left: 50%;          /* Center horizontally */
+  left: 50%; /* Center horizontally */
   transform: translateX(-50%);
 }
 
 /* For left-aligned menu */
 .start-menu-container {
-  left: 20px;         /* Distance from left */
-  transform: none;    /* Remove centering */
+  left: 20px; /* Distance from left */
+  transform: none; /* Remove centering */
 }
 ```
 
 #### Change Colors
+
 ```css
 .start-menu-container {
-  background: rgba(17, 26, 17, 0.98);  /* Dark green */
-  border: 1px solid rgba(0, 255, 136, 0.3);  /* Neon green border */
+  background: rgba(17, 26, 17, 0.98); /* Dark green */
+  border: 1px solid rgba(0, 255, 136, 0.3); /* Neon green border */
 }
 
 /* Change to blue theme */
 .start-menu-container {
-  background: rgba(17, 17, 26, 0.98);  /* Dark blue */
-  border: 1px solid rgba(0, 136, 255, 0.3);  /* Neon blue border */
+  background: rgba(17, 17, 26, 0.98); /* Dark blue */
+  border: 1px solid rgba(0, 136, 255, 0.3); /* Neon blue border */
 }
 ```
 
 #### Adjust Animation Speed
+
 ```css
 .slide-up-menu-enter-active {
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);  /* Faster */
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Faster */
 }
 
 .slide-up-menu-leave-active {
-  transition: all 0.25s ease-in;  /* Quick close */
+  transition: all 0.25s ease-in; /* Quick close */
 }
 ```
 
@@ -233,11 +233,13 @@ Edit `StartMenu.vue`:
 ## 📱 Responsive Behavior
 
 ### Desktop (≥768px)
+
 - Desktop taskbar with full labels
 - Centered Start Menu (640px max width)
 - Hover effects enabled
 
 ### Mobile (<768px)
+
 - Mobile bottom navigation
 - Full-width Start Menu (95% width)
 - Touch-optimized interactions
@@ -282,7 +284,7 @@ const openBlog = () => {
     description: 'Read my latest articles',
     items: [
       // Add your blog posts here
-    ]
+    ],
   })
 }
 </script>
@@ -309,8 +311,8 @@ const items = [
     action: () => {
       startMenuStore.closeMenu()
       router.push('/about')
-    }
-  }
+    },
+  },
 ]
 ```
 
@@ -327,7 +329,7 @@ if (startMenuStore.isOpen) {
 }
 
 // Get current app
-console.log(startMenuStore.activeApp)  // 'projects', 'about', etc.
+console.log(startMenuStore.activeApp) // 'projects', 'about', etc.
 
 // Check if specific app is active
 const isProjectsActive = startMenuStore.activeApp === 'projects'
@@ -351,11 +353,11 @@ const openProjects = () => {
   startMenuStore.openMenu({
     app: 'projects',
     title: 'Projects',
-    items: projects.value.map(project => ({
+    items: projects.value.map((project) => ({
       id: project.id,
       title: project.name,
-      type: 'section'
-    }))
+      type: 'section',
+    })),
   })
 }
 </script>
@@ -425,8 +427,8 @@ const searchQuery = ref('')
 
 const filteredItems = computed(() => {
   if (!searchQuery.value) return startMenuStore.menuItems
-  
-  return startMenuStore.menuItems.filter(item =>
+
+  return startMenuStore.menuItems.filter((item) =>
     item.title.toLowerCase().includes(searchQuery.value.toLowerCase())
   )
 })
@@ -438,21 +440,25 @@ const filteredItems = computed(() => {
 ## 🐛 Troubleshooting
 
 ### Menu Not Opening
+
 - Check if `useStartMenuStore()` is imported correctly
 - Verify click handlers are attached to buttons
 - Check browser console for errors
 
 ### Menu Not Closing
+
 - Ensure click outside handler is working
 - Check if backdrop is properly positioned
 - Verify z-index layers
 
 ### Animation Issues
+
 - Check if Tailwind transitions are enabled
 - Verify Vue transition names match CSS classes
 - Test with `animation: none` to isolate issue
 
 ### Mobile Issues
+
 - Check viewport meta tag in `index.html`
 - Verify media queries are applied
 - Test with Chrome DevTools mobile emulator
@@ -481,7 +487,7 @@ You now have a fully functional Windows-style Start Menu system that:
 ✅ Follows Matrix-Windows theme  
 ✅ Supports internationalization (i18n)  
 ✅ Built with TypeScript for type safety  
-✅ Uses Pinia for state management  
+✅ Uses Pinia for state management
 
 **Ready to extend with real content, routes, and custom functionality!**
 
@@ -490,6 +496,7 @@ You now have a fully functional Windows-style Start Menu system that:
 ## 📞 Support
 
 For questions or issues:
+
 - Check this documentation
 - Review component source code
 - Test in browser DevTools

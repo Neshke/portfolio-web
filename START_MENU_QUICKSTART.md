@@ -3,6 +3,7 @@
 ## 🚀 Quick Start
 
 ### Open Start Menu
+
 ```typescript
 import { useStartMenuStore } from '@/store/startMenu'
 
@@ -18,19 +19,21 @@ startMenuStore.openMenu({
       title: 'Item 1',
       description: 'Optional',
       type: 'section',
-      action: () => console.log('Clicked!')
-    }
-  ]
+      action: () => console.log('Clicked!'),
+    },
+  ],
 })
 ```
 
 ### Toggle Menu
+
 ```typescript
 // Opens if closed, closes if same app is open
 startMenuStore.toggleMenu(data)
 ```
 
 ### Close Menu
+
 ```typescript
 startMenuStore.closeMenu()
 ```
@@ -38,11 +41,11 @@ startMenuStore.closeMenu()
 ## 📊 Store State
 
 ```typescript
-startMenuStore.isOpen          // boolean
-startMenuStore.menuData        // StartMenuData | null
-startMenuStore.activeApp       // string | null
-startMenuStore.menuItems       // StartMenuItem[]
-startMenuStore.currentTitle    // string
+startMenuStore.isOpen // boolean
+startMenuStore.menuData // StartMenuData | null
+startMenuStore.activeApp // string | null
+startMenuStore.menuItems // StartMenuItem[]
+startMenuStore.currentTitle // string
 startMenuStore.currentDescription // string
 ```
 
@@ -63,10 +66,7 @@ interface StartMenuItem {
 ## 🎨 Taskbar Active State
 
 ```vue
-<button 
-  @click="openMenu"
-  :class="{ active: startMenuStore.activeApp === 'myApp' }"
->
+<button @click="openMenu" :class="{ active: startMenuStore.activeApp === 'myApp' }">
   Button
 </button>
 ```
@@ -86,22 +86,24 @@ All translation keys are prefixed with `startMenu.`:
 ## 🎭 Customization Points
 
 ### Change Position
+
 ```css
 /* StartMenu.vue */
 .start-menu-container {
-  bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
 }
 ```
 
 ### Change Colors
+
 ```css
 background: rgba(17, 26, 17, 0.98);
 border: 1px solid rgba(0, 255, 136, 0.3);
 ```
 
 ### Change Animation
+
 ```css
 .slide-up-menu-enter-active {
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -111,6 +113,7 @@ border: 1px solid rgba(0, 255, 136, 0.3);
 ## 🔧 Common Patterns
 
 ### With Router
+
 ```typescript
 {
   id: 'route-item',
@@ -124,17 +127,19 @@ border: 1px solid rgba(0, 255, 136, 0.3);
 ```
 
 ### Dynamic Items
+
 ```typescript
-const items = computed(() => 
-  myData.value.map(item => ({
+const items = computed(() =>
+  myData.value.map((item) => ({
     id: item.id,
     title: item.name,
-    type: 'section'
+    type: 'section',
   }))
 )
 ```
 
 ### Conditional Opening
+
 ```typescript
 if (!startMenuStore.isOpen) {
   startMenuStore.openMenu(data)

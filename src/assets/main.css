@@ -73,18 +73,20 @@
 }
 
 @layer base {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-text-base);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    margin: 0;
-    padding: 0;
-  }
-
-  html {
-    scroll-behavior: smooth;
   }
 
   ::-webkit-scrollbar {

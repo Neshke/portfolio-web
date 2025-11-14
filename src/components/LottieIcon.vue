@@ -46,7 +46,7 @@ const loadAnimation = async () => {
   }
 
   animation = lottie.loadAnimation(config)
-  
+
   if (props.speed !== 1) {
     animation.setSpeed(props.speed)
   }
@@ -69,11 +69,7 @@ defineExpose({
 </script>
 
 <template>
-  <div 
-    ref="containerRef" 
-    class="lottie-icon"
-    :style="{ width: width, height: height }"
-  />
+  <div ref="containerRef" class="lottie-icon" :style="{ width: width, height: height }" />
 </template>
 
 <style scoped>
