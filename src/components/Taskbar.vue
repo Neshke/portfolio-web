@@ -167,7 +167,7 @@ const openContact = () => {
 
         <button @click="openExperience" class="taskbar-item"
           :class="{ active: startMenuStore.activeApp === 'experience' }">
-          <DotLottieVue style="width: 24px; height: 24px" autoplay loop backgroundColor="white"
+          <DotLottieVue style="width: 24px; height: 24px" autoplay loop
             src="https://lottie.host/bdf6f19c-7c2e-4b33-ad43-866a1456da47/ui3DYKizpT.lottie" />
           <span class="taskbar-label">{{ t('taskbar.experience') }}</span>
         </button>
