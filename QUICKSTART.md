@@ -43,9 +43,7 @@ Server će biti dostupan na `http://localhost:5173`
 <template>
   <section class="hero-gradient min-h-screen flex items-center justify-center">
     <div class="text-center">
-      <h1 class="text-6xl font-display text-glow-strong mb-6 animate-matrix-glow">
-        Your Name
-      </h1>
+      <h1 class="text-6xl font-display text-glow-strong mb-6 animate-matrix-glow">Your Name</h1>
       <p class="text-xl text-muted mb-8">Your Title</p>
       <button class="btn-matrix-solid">View Work</button>
     </div>
@@ -60,12 +58,12 @@ Server će biti dostupan na `http://localhost:5173`
   <div class="card-glow">
     <h3 class="text-xl font-display text-primary mb-3">Project Name</h3>
     <p class="text-muted mb-4">Project description here...</p>
-    
+
     <div class="flex gap-2 mb-4">
       <span class="badge-matrix">Vue 3</span>
       <span class="badge-matrix">TypeScript</span>
     </div>
-    
+
     <button class="btn-matrix w-full">View Project</button>
   </div>
 </template>
@@ -107,7 +105,7 @@ Server će biti dostupan na `http://localhost:5173`
 <button class="btn-windows">Windows Style</button>
 
 <!-- Input -->
-<input type="text" class="input-matrix w-full" placeholder="Enter text...">
+<input type="text" class="input-matrix w-full" placeholder="Enter text..." />
 
 <!-- Badge -->
 <span class="badge-matrix">Tag</span>
@@ -186,11 +184,10 @@ Server će biti dostupan na `http://localhost:5173`
    - Kada nije previše gusto postavljen
 
 4. **Responsive dizajn:**
+
    ```html
    <div class="glass-card p-4 md:p-6 lg:p-8">
-     <h2 class="text-xl md:text-2xl lg:text-3xl font-display text-glow">
-       Responsive Heading
-     </h2>
+     <h2 class="text-xl md:text-2xl lg:text-3xl font-display text-glow">Responsive Heading</h2>
    </div>
    ```
 

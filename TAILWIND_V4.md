@@ -33,10 +33,10 @@ export default {
     extend: {
       colors: {
         primary: '#00ff88',
-        background: '#0a0f0a'
-      }
-    }
-  }
+        background: '#0a0f0a',
+      },
+    },
+  },
 }
 ```
 
@@ -57,9 +57,11 @@ export default {
 ## 🎨 Prednosti Tailwind v4
 
 ### 1. **Jednostavnija Konfiguracija**
+
 Sve je sada u jednom CSS fajlu - nema potrebe za prebacivanje između fajlova.
 
 ### 2. **CSS Varijable**
+
 Možeš direktno koristiti varijable u custom CSS-u:
 
 ```vue
@@ -72,12 +74,15 @@ Možeš direktno koristiti varijable u custom CSS-u:
 ```
 
 ### 3. **Brži Build**
+
 Tailwind v4 koristi novi engine koji je značajno brži od v3.
 
 ### 4. **Native CSS Syntax**
+
 Ne mora da se učи specijalna JS sintaksa - sve je standardni CSS.
 
 ### 5. **Better IntelliSense**
+
 CSS varijable imaju bolju podršku u editorima.
 
 ---
@@ -88,9 +93,7 @@ CSS varijable imaju bolju podršku u editorima.
 
 ```vue
 <template>
-  <div class="bg-primary text-white p-4 rounded-lg">
-    Sve Tailwind klase rade isto kao i pre!
-  </div>
+  <div class="bg-primary text-white p-4 rounded-lg">Sve Tailwind klase rade isto kao i pre!</div>
 </template>
 ```
 
@@ -133,7 +136,7 @@ CSS varijable imaju bolju podršku u editorima.
 ✅ Sve animacije (`.animate-matrix-glow`, etc.)  
 ✅ Svi utility classes  
 ✅ Vue komponente  
-✅ Struktura projekta  
+✅ Struktura projekta
 
 **Samo način konfiguracije je drugačiji - sve drugo radi identično!**
 
@@ -161,6 +164,7 @@ CSS varijable imaju bolju podršku u editorima.
 ```
 
 Onda koristi kao:
+
 ```html
 <div class="bg-custom text-custom-light">Content</div>
 ```
@@ -185,8 +189,7 @@ Onda koristi kao:
 
 ```typescript
 // Ako ikada treba
-const primaryColor = getComputedStyle(document.documentElement)
-  .getPropertyValue('--color-primary')
+const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--color-primary')
 ```
 
 ---
@@ -194,6 +197,7 @@ const primaryColor = getComputedStyle(document.documentElement)
 ## 🎯 Zaključak
 
 Tailwind v4 donosi:
+
 - 🟢 Moderniji pristup konfiguraciji
 - 🟢 Bolju performansu
 - 🟢 Čitljiviji kod

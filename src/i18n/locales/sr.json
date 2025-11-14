@@ -1,0 +1,16 @@
+{
+  "hero": {
+    "title": "Matrix-Windows Tema",
+    "description": "Futuristička portfolio tema koja kombinuje Matrix cyberpunk estetiku sa Windows 11 minimalizmom",
+    "buttons": {
+      "getStarted": "Počni",
+      "learnMore": "Saznaj Više"
+    }
+  },
+  "taskbar": {
+    "about": "O Meni",
+    "projects": "Projekti",
+    "experience": "Iskustvo",
+    "contact": "Kontakt"
+  }
+}

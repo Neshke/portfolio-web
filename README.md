@@ -163,9 +163,7 @@ The project supports different environment files:
   <p class="text-muted">Muted text</p>
 
   <!-- Glass Effects -->
-  <div class="bg-glass backdrop-blur-glass border border-glass-border">
-    Windows glassmorphism
-  </div>
+  <div class="bg-glass backdrop-blur-glass border border-glass-border">Windows glassmorphism</div>
 </template>
 ```
 

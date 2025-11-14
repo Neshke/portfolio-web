@@ -23,6 +23,7 @@ This is a Vue 3 + TypeScript portfolio website built with Vite. The project foll
 ### Utilities & Composition
 
 - **@vueuse/core** (^14.0.0) - Collection of essential Vue Composition Utilities
+- **vue-i18n** (^9.x) - Internationalization framework for multi-language support
 
 ### Testing
 
@@ -47,9 +48,15 @@ src/
 │   └── output.css    # Generated CSS from Tailwind CLI (output, gitignored)
 ├── components/       # Reusable Vue components
 ├── composables/      # Composition functions (Vue composables)
-│   └── useDateTime.ts
+│   ├── useDateTime.ts
+│   └── useLanguage.ts
 ├── constants/        # Application constants and enums
 │   └── constants.ts
+├── i18n/             # Internationalization (i18n) configuration
+│   ├── index.ts      # i18n setup and configuration
+│   └── locales/      # Translation files
+│       ├── en.json   # English translations
+│       └── sr.json   # Serbian translations
 ├── layouts/          # Layout components (e.g., DefaultLayout, AdminLayout)
 ├── router/           # Vue Router configuration
 │   └── index.ts      # Router setup with route definitions
@@ -143,6 +150,7 @@ src/
    - Scoped styles prevent style leakage
 
 4. **Follow mobile-first responsive design** with Tailwind's responsive prefixes in `@apply`
+
    ```css
    .responsive-element {
      @apply text-sm md:text-base lg:text-lg;
@@ -201,6 +209,29 @@ src/
 2. **Keep composables focused** - single responsibility
 3. **Return reactive values** and functions that operate on them
 4. **Leverage @vueuse/core** for common patterns before creating custom composables
+
+### Internationalization (i18n)
+
+1. **Use vue-i18n** for all user-facing text
+2. **Translation files** in `src/i18n/locales/` as JSON files
+3. **Supported languages:** English (en), Serbian (sr)
+4. **Usage in components:**
+   ```typescript
+   import { useI18n } from 'vue-i18n'
+   const { t } = useI18n()
+   ```
+   ```vue
+   <template>
+     <h1>{{ t('hero.title') }}</h1>
+   </template>
+   ```
+5. **Translation key structure:** Use dot notation (e.g., `hero.buttons.getStarted`)
+6. **Language switching:** Use `useLanguage()` composable
+   - `currentLanguage` - get/set current locale
+   - `toggleLanguage()` - switch between languages
+   - `languages` - available languages list
+7. **Language persistence:** Saved in localStorage, auto-loaded on init
+8. **Never hardcode user-facing text** - always use translation keys
 
 ### API Layer
 

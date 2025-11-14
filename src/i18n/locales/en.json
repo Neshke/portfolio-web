@@ -1,0 +1,16 @@
+{
+  "hero": {
+    "title": "Matrix-Windows Theme",
+    "description": "Futuristic portfolio theme combining Matrix cyberpunk aesthetics with Windows 11 minimalism",
+    "buttons": {
+      "getStarted": "Get Started",
+      "learnMore": "Learn More"
+    }
+  },
+  "taskbar": {
+    "about": "About",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact"
+  }
+}

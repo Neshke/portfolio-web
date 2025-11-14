@@ -35,6 +35,7 @@ Tema koristi CSS varijable definisane u `@theme` bloku:
 ### Dostupne CSS Varijable
 
 **Boje:**
+
 - `--color-background`, `--color-background-dark`, `--color-background-elevated`
 - `--color-primary`, `--color-primary-light`, `--color-primary-dark`
 - `--color-secondary`, `--color-secondary-light`, `--color-secondary-dark`
@@ -42,13 +43,16 @@ Tema koristi CSS varijable definisane u `@theme` bloku:
 - `--color-text-base`, `--color-text-muted`, `--color-text-accent`, etc.
 
 **Shadows:**
+
 - `--shadow-glow-sm`, `--shadow-glow`, `--shadow-glow-md`, `--shadow-glow-lg`, `--shadow-glow-xl`
 - `--shadow-glass`, `--shadow-glass-hover`, `--shadow-matrix`
 
 **Fonts:**
+
 - `--font-mono`, `--font-sans`, `--font-display`
 
 **Other:**
+
 - `--radius-glass`, `--radius-window`
 - `--blur-glass`, `--blur-xs`
 - `--animate-matrix-glow`, `--animate-matrix-flicker`, etc.
@@ -60,67 +64,67 @@ Tema koristi CSS varijable definisane u `@theme` bloku:
 ### Pozadine
 
 ```typescript
-bg-background         // #0a0f0a - Glavna pozadina (Matrix terminal)
-bg-background-dark    // #050805 - Tamnija varijanta
-bg-background-elevated // #111a11 - Za kartice/površine
+bg - background // #0a0f0a - Glavna pozadina (Matrix terminal)
+bg - background - dark // #050805 - Tamnija varijanta
+bg - background - elevated // #111a11 - Za kartice/površine
 ```
 
 ### Primarna Boja (Matrix Neon Green)
 
 ```typescript
-bg-primary            // #00ff88 - Matrix zelena
-bg-primary-light      // #33ffaa - Svetlija (hover)
-bg-primary-dark       // #00cc6a - Tamnija (active)
-text-primary          // Zeleni tekst
-border-primary        // Zelena ivica
+bg - primary // #00ff88 - Matrix zelena
+bg - primary - light // #33ffaa - Svetlija (hover)
+bg - primary - dark // #00cc6a - Tamnija (active)
+text - primary // Zeleni tekst
+border - primary // Zelena ivica
 ```
 
 ### Sekundarna Boja (Windows Gray-Blue)
 
 ```typescript
-bg-secondary          // #9ba9b4 - Windows sivo-plava
-bg-secondary-light    // #b8c5d0 - Svetlija
-bg-secondary-dark     // #7a8894 - Tamnija
-text-secondary        // Sekundarni tekst
+bg - secondary // #9ba9b4 - Windows sivo-plava
+bg - secondary - light // #b8c5d0 - Svetlija
+bg - secondary - dark // #7a8894 - Tamnija
+text - secondary // Sekundarni tekst
 ```
 
 ### Glass Efekti (Glassmorphism)
 
 ```typescript
-bg-glass              // rgba(255,255,255,0.1) - Osnovno staklo
-bg-glass-light        // rgba(255,255,255,0.15) - Svetlije staklo
-bg-glass-dark         // rgba(255,255,255,0.05) - Tamnije staklo
-border-glass-border   // rgba(255,255,255,0.2) - Ivica stakla
+bg - glass // rgba(255,255,255,0.1) - Osnovno staklo
+bg - glass - light // rgba(255,255,255,0.15) - Svetlije staklo
+bg - glass - dark // rgba(255,255,255,0.05) - Tamnije staklo
+border - glass - border // rgba(255,255,255,0.2) - Ivica stakla
 ```
 
 ### Boje Teksta
 
 ```typescript
-text-base             // #e0e8e0 - Osnovni tekst
-text-muted            // #7fa77f - Prigušeni tekst
-text-accent           // #00ff88 - Akcent tekst
-text-secondary        // #9ba9b4 - Sekundarni tekst
-text-dim              // #4a5a4a - Veoma prigušen tekst
+text - base // #e0e8e0 - Osnovni tekst
+text - muted // #7fa77f - Prigušeni tekst
+text - accent // #00ff88 - Akcent tekst
+text - secondary // #9ba9b4 - Sekundarni tekst
+text - dim // #4a5a4a - Veoma prigušen tekst
 ```
 
 ### Status Boje
 
 ```typescript
 // Success (Matrix-kompatibilno)
-text-success          // #00ffaa
-bg-success            // Success pozadina
+text - success // #00ffaa
+bg - success // Success pozadina
 
 // Error
-text-error            // #ff4c4c
-bg-error              // Error pozadina
+text - error // #ff4c4c
+bg - error // Error pozadina
 
 // Warning
-text-warning          // #ffaa00
-bg-warning            // Warning pozadina
+text - warning // #ffaa00
+bg - warning // Warning pozadina
 
 // Info
-text-info             // #00aaff
-bg-info               // Info pozadina
+text - info // #00aaff
+bg - info // Info pozadina
 ```
 
 ---
@@ -343,9 +347,9 @@ bg-info               // Info pozadina
 ### Font Families
 
 ```typescript
-font-mono      // JetBrains Mono - Za kod i Matrix osećaj
-font-sans      // Inter - Za čisti UI tekst
-font-display   // Orbitron - Za futurističke naslove
+font - mono // JetBrains Mono - Za kod i Matrix osećaj
+font - sans // Inter - Za čisti UI tekst
+font - display // Orbitron - Za futurističke naslove
 ```
 
 ### Custom Font Sizes
@@ -367,9 +371,7 @@ font-display   // Orbitron - Za futurističke naslove
   <div class="glass-card p-8">
     <h1 class="text-matrix-xl font-display text-glow mb-4">Portfolio</h1>
 
-    <p class="font-sans text-base text-muted mb-6">
-      Welcome to my digital workspace
-    </p>
+    <p class="font-sans text-base text-muted mb-6">Welcome to my digital workspace</p>
 
     <code class="font-mono text-primary">const code = "Matrix";</code>
   </div>
@@ -428,9 +430,7 @@ font-display   // Orbitron - Za futurističke naslove
 ```vue
 <template>
   <nav class="glass-card px-6 py-4 flex items-center justify-between">
-    <div class="font-display text-primary text-xl animate-matrix-pulse">
-      &lt;Dev/&gt;
-    </div>
+    <div class="font-display text-primary text-xl animate-matrix-pulse">&lt;Dev/&gt;</div>
 
     <div class="flex gap-6 font-mono text-sm">
       <a href="#" class="text-muted hover:text-primary transition-colors">Home</a>
@@ -453,8 +453,7 @@ font-display   // Orbitron - Za futurističke naslove
 
       <input type="email" placeholder="Email" class="input-matrix w-full" />
 
-      <textarea placeholder="Message" rows="4" class="input-matrix w-full resize-none">
-      </textarea>
+      <textarea placeholder="Message" rows="4" class="input-matrix w-full resize-none"> </textarea>
 
       <button type="submit" class="btn-matrix-solid w-full">Send Message</button>
     </form>
