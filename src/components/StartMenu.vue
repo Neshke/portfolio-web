@@ -71,7 +71,8 @@ onUnmounted(() => {
         </div>
         <button @click="startMenuStore.closeMenu" class="start-menu-close">
           <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
           </svg>
         </button>
       </div>
@@ -83,12 +84,8 @@ onUnmounted(() => {
       <div class="start-menu-content">
         <!-- Dynamic Menu Items -->
         <div v-if="startMenuStore.menuItems.length > 0" class="start-menu-items">
-          <button
-            v-for="item in startMenuStore.menuItems"
-            :key="item.id"
-            @click="item.action ? item.action() : null"
-            class="start-menu-item"
-          >
+          <button v-for="item in startMenuStore.menuItems" :key="item.id" @click="item.action ? item.action() : null"
+            class="start-menu-item">
             <div v-if="item.icon" class="start-menu-item-icon" v-html="item.icon"></div>
             <div v-else class="start-menu-item-icon-placeholder">
               <svg viewBox="0 0 24 24" fill="currentColor">
@@ -135,7 +132,8 @@ onUnmounted(() => {
         </button>
         <button @click="startMenuStore.closeMenu" class="start-menu-footer-btn">
           <svg class="start-menu-footer-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z" />
+            <path
+              d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z" />
           </svg>
           <span>{{ t('startMenu.close') }}</span>
         </button>
@@ -153,7 +151,7 @@ onUnmounted(() => {
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
-  z-index: 40;
+  z-index: 15;
 }
 
 /* Start Menu Container */
@@ -173,7 +171,7 @@ onUnmounted(() => {
     0 8px 32px rgba(0, 0, 0, 0.6),
     0 0 40px rgba(0, 255, 136, 0.2),
     inset 0 0 60px rgba(0, 255, 136, 0.05);
-  z-index: 45;
+  z-index: 19;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -419,10 +417,12 @@ onUnmounted(() => {
 }
 
 @keyframes pulse-glow {
+
   0%,
   100% {
     box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
   }
+
   50% {
     box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
   }
@@ -501,6 +501,10 @@ onUnmounted(() => {
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  .start-menu-backdrop {
+    bottom: 88px;
+  }
+
   .start-menu-container {
     bottom: 88px;
     width: 95%;
