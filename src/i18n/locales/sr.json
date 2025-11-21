@@ -1,7 +1,7 @@
 {
   "hero": {
-    "title": "Matrix-Windows Tema",
-    "description": "Futuristička portfolio tema koja kombinuje Matrix cyberpunk estetiku sa Windows 11 minimalizmom",
+    "title": "Dobrodošli u moj portfolio",
+    "description": "Moderna portfolio tema koja kombinuje profesionalnu estetiku sa Windows 11 minimalizmom",
     "buttons": {
       "getStarted": "Počni",
       "learnMore": "Saznaj Više"
@@ -116,7 +116,7 @@
       },
       "item4": {
         "title": "Portfolio Websajt",
-        "description": "Lični portfolio websajt sa Matrix-Windows temom."
+        "description": "Lični portfolio websajt sa Windows desktop interfejsom."
       }
     }
   }

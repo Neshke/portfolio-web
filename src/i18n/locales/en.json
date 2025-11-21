@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Welcome to my portfolio",
-    "description": "Futuristic portfolio theme combining Matrix cyberpunk aesthetics with Windows 11 minimalism",
+    "description": "Modern portfolio theme combining professional aesthetics with Windows 11 minimalism",
     "buttons": {
       "getStarted": "Get Started",
       "learnMore": "Learn More"
@@ -116,7 +116,7 @@
       },
       "item4": {
         "title": "Portfolio Website",
-        "description": "Personal portfolio website with Matrix-Windows theme."
+        "description": "Personal portfolio website with Windows-style desktop interface."
       }
     }
   }

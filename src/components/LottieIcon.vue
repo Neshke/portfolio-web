@@ -69,19 +69,6 @@ defineExpose({
 </script>
 
 <template>
-  <div ref="containerRef" class="lottie-icon" :style="{ width: width, height: height }" />
+  <div ref="containerRef" class="inline-block overflow-hidden [&>svg]:w-full [&>svg]:h-full"
+    :style="{ width: width, height: height }" />
 </template>
-
-<style scoped>
-@reference "../assets/main.css";
-
-.lottie-icon {
-  display: inline-block;
-  overflow: hidden;
-}
-
-.lottie-icon :deep(svg) {
-  width: 100%;
-  height: 100%;
-}
-</style>

@@ -92,293 +92,64 @@ const handleTaskbarClick = (win: WindowItem) => {
 
 <template>
   <!-- Windows Taskbar -->
-  <nav class="taskbar taskbar-animated">
-    <div class="taskbar-container">
+  <nav
+    class="absolute bottom-0 left-0 right-0 mx-auto z-20 w-full max-w-7xl flex justify-center animate-[slideUpFade_0.8s_ease-out_1.2s_both] p-0 sm:p-2">
+    <div
+      class="flex items-center gap-1 h-14 bg-background-elevated/85 backdrop-blur-xl border border-primary/20 px-3 shadow-[0_8px_32px_rgba(0,0,0,0.4)] shadow-primary/10 w-full rounded-none border-x-0 border-b-0 sm:rounded-xl sm:border sm:w-auto">
       <!-- Start Button -->
-      <button class="taskbar-item start-button" @click="toggleStartMenu" :class="{ active: startMenuStore.isOpen }">
-        <svg class="taskbar-icon" viewBox="0 0 24 24" fill="currentColor">
+      <button
+        class="flex items-center justify-center p-2.5 bg-transparent border border-transparent rounded-lg text-text-base cursor-pointer transition-all duration-200 hover:bg-primary/25 hover:shadow-[0_0_15px_rgba(16,185,129,0.4)] active:scale-95"
+        @click="toggleStartMenu" :class="{ 'bg-primary/20 border-primary/40 shadow-glow': startMenuStore.isOpen }">
+        <svg class="w-5 h-5 text-primary shrink-0" viewBox="0 0 24 24" fill="currentColor">
           <path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z" />
         </svg>
       </button>
 
       <!-- Taskbar Apps -->
-      <div class="taskbar-apps">
-        <TransitionGroup name="taskbar-item">
+      <div class="flex items-center gap-1 flex-1 ml-2 overflow-x-auto scrollbar-none">
+        <TransitionGroup enter-active-class="transition-all duration-300 ease-out"
+          leave-active-class="transition-all duration-300 ease-in"
+          enter-from-class="opacity-0 translate-y-5 scale-75 w-0 p-0 m-0"
+          leave-to-class="opacity-0 translate-y-5 scale-75 w-0 p-0 m-0">
           <button v-for="win in windowsStore.openWindows" :key="win.id" @click="handleTaskbarClick(win)"
-            class="taskbar-item"
-            :class="{ active: windowsStore.activeWindowId === win.id && !win.isMinimized, minimized: win.isMinimized }">
-            <div v-if="win.icon" class="taskbar-icon" v-html="win.icon"></div>
-            <div v-else class="taskbar-icon-placeholder">
+            class="flex items-center gap-2 bg-transparent border border-transparent rounded-lg text-text-base cursor-pointer transition-all duration-200 font-sans text-sm relative hover:bg-primary/10 hover:border-primary/30 hover:shadow-glow-sm active:scale-95 p-2 md:px-4"
+            :class="{
+              'bg-primary/20 border-primary/40 shadow-glow after:content-[\'\'] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-5 after:h-[3px] after:bg-primary after:rounded-full after:shadow-[0_0_8px_rgba(16,185,129,1)]': windowsStore.activeWindowId === win.id && !win.isMinimized,
+              'opacity-70': win.isMinimized
+            }">
+            <div v-if="win.icon" class="w-5 h-5 text-primary shrink-0" v-html="win.icon"></div>
+            <div v-else class="w-5 h-5 text-primary shrink-0">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
               </svg>
             </div>
-            <span class="taskbar-label">{{ win.title }}</span>
+            <span class="text-[13px] font-medium text-text-base whitespace-nowrap hidden md:block">{{ win.title
+            }}</span>
           </button>
         </TransitionGroup>
       </div>
 
       <!-- System Tray -->
-      <div class="taskbar-tray">
+      <div class="flex items-center ml-auto border-l border-primary/20 shrink-0 gap-1 pl-2 md:gap-2 md:pl-3">
         <LanguageSwitcher />
-        <button class="taskbar-item tray-item">
-          <svg class="taskbar-icon-sm" viewBox="0 0 24 24" fill="currentColor">
+        <button
+          class="p-2 items-center justify-center bg-transparent border border-transparent rounded-lg text-text-base cursor-pointer transition-all duration-200 hover:bg-primary/10 hover:border-primary/30 hover:shadow-glow-sm active:scale-95 hidden md:flex">
+          <svg class="w-4 h-4 text-text-secondary shrink-0" viewBox="0 0 24 24" fill="currentColor">
             <path
               d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
           </svg>
         </button>
-        <button class="taskbar-item tray-item">
-          <svg class="taskbar-icon-sm" viewBox="0 0 24 24" fill="currentColor">
+        <button
+          class="p-2 items-center justify-center bg-transparent border border-transparent rounded-lg text-text-base cursor-pointer transition-all duration-200 hover:bg-primary/10 hover:border-primary/30 hover:shadow-glow-sm active:scale-95 hidden md:flex">
+          <svg class="w-4 h-4 text-text-secondary shrink-0" viewBox="0 0 24 24" fill="currentColor">
             <path
               d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
           </svg>
         </button>
-        <div class="taskbar-clock">
-          <span class="clock-time">{{ dateNow }}</span>
+        <div class="flex flex-col items-center px-3 font-mono text-primary whitespace-nowrap">
+          <span class="text-[13px] font-semibold">{{ dateNow }}</span>
         </div>
       </div>
     </div>
   </nav>
 </template>
-
-<style scoped>
-/* Taskbar Slide Up Animation */
-@keyframes slideUpFade {
-  0% {
-    opacity: 0;
-    transform: translateY(100px) translateX(-50%);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0) translateX(-50%);
-  }
-}
-
-.taskbar-animated {
-  animation: slideUpFade 0.8s ease-out 1.2s both;
-}
-
-/* Windows Taskbar */
-.taskbar {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 20;
-  padding: 0 8px 8px 8px;
-  max-width: 80rem;
-  width: 100%;
-}
-
-.taskbar-container {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  height: 56px;
-  background: rgba(17, 26, 17, 0.85);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 255, 136, 0.2);
-  border-radius: 12px;
-  padding: 4px 12px;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    0 0 20px rgba(0, 255, 136, 0.1);
-}
-
-.taskbar-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  color: #e0e8e0;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  position: relative;
-}
-
-.taskbar-item:hover {
-  background: rgba(0, 255, 136, 0.1);
-  border-color: rgba(0, 255, 136, 0.3);
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
-}
-
-.taskbar-item:active {
-  transform: scale(0.95);
-}
-
-.taskbar-item.active {
-  background: rgba(0, 255, 136, 0.2);
-  border-color: rgba(0, 255, 136, 0.4);
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
-}
-
-.taskbar-item.active::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 3px;
-  background: #00ff88;
-  border-radius: 2px;
-  box-shadow: 0 0 8px #00ff88;
-}
-
-.taskbar-item.minimized {
-  opacity: 0.7;
-}
-
-.start-button {
-  padding: 10px 14px;
-}
-
-.start-button:hover {
-  background: rgba(0, 255, 136, 0.25);
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
-}
-
-.taskbar-apps {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  flex: 1;
-  margin-left: 8px;
-  overflow-x: auto;
-  /* Allow scrolling on small screens */
-  scrollbar-width: none;
-  /* Firefox */
-}
-
-.taskbar-apps::-webkit-scrollbar {
-  display: none;
-  /* Chrome/Safari */
-}
-
-.taskbar-icon {
-  width: 20px;
-  height: 20px;
-  color: #00ff88;
-  flex-shrink: 0;
-}
-
-.taskbar-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.taskbar-icon-placeholder {
-  width: 20px;
-  height: 20px;
-  color: #00ff88;
-  flex-shrink: 0;
-}
-
-.taskbar-icon-placeholder svg {
-  width: 100%;
-  height: 100%;
-}
-
-.taskbar-icon-sm {
-  width: 16px;
-  height: 16px;
-  color: #9ba9b4;
-  flex-shrink: 0;
-}
-
-.taskbar-label {
-  font-size: 13px;
-  font-weight: 500;
-  color: #e0e8e0;
-  white-space: nowrap;
-}
-
-.taskbar-tray {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-left: auto;
-  padding-left: 12px;
-  border-left: 1px solid rgba(0, 255, 136, 0.2);
-  flex-shrink: 0;
-}
-
-.tray-item {
-  padding: 8px;
-}
-
-.taskbar-clock {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 4px 12px;
-  font-family: var(--font-mono);
-  color: #00ff88;
-  white-space: nowrap;
-}
-
-.clock-time {
-  font-size: 13px;
-  font-weight: 600;
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-  .taskbar {
-    padding: 0;
-    bottom: 0;
-  }
-
-  .taskbar-container {
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
-    width: 100%;
-    padding: 4px 8px;
-  }
-
-  .taskbar-label {
-    display: none;
-    /* Hide labels on mobile to save space */
-  }
-
-  .taskbar-item {
-    padding: 8px;
-  }
-
-  .taskbar-tray {
-    gap: 4px;
-    padding-left: 8px;
-  }
-
-  .tray-item {
-    display: none;
-    /* Hide extra tray items on mobile */
-  }
-}
-
-
-/* Transitions */
-.taskbar-item-enter-active,
-.taskbar-item-leave-active {
-  transition: all 0.3s ease;
-}
-
-.taskbar-item-enter-from,
-.taskbar-item-leave-to {
-  opacity: 0;
-  transform: translateY(20px) scale(0.8);
-  width: 0;
-  padding: 0;
-  margin: 0;
-}
-</style>

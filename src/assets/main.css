@@ -5,71 +5,71 @@
 
 /* Tailwind v4 Theme Configuration */
 @theme {
-  /* Matrix-inspired Colors */
-  --color-background: #0a0f0a;
-  --color-background-dark: #050805;
-  --color-background-elevated: #111a11;
+  /* Professional Dark Theme (Blue/Slate) */
+  --color-background: #0f172a; /* Slate 950 */
+  --color-background-dark: #020617; /* Slate 950 darker */
+  --color-background-elevated: #1e293b; /* Slate 800 */
 
-  --color-primary: #00ff88;
-  --color-primary-light: #33ffaa;
-  --color-primary-dark: #00cc6a;
+  --color-primary: #3b82f6; /* Blue 500 */
+  --color-primary-light: #60a5fa; /* Blue 400 */
+  --color-primary-dark: #2563eb; /* Blue 600 */
 
-  --color-secondary: #9ba9b4;
-  --color-secondary-light: #b8c5d0;
-  --color-secondary-dark: #7a8894;
+  --color-secondary: #94a3b8; /* Slate 400 */
+  --color-secondary-light: #cbd5e1; /* Slate 300 */
+  --color-secondary-dark: #64748b; /* Slate 500 */
 
-  --color-glass: rgb(255 255 255 / 0.1);
-  --color-glass-light: rgb(255 255 255 / 0.15);
-  --color-glass-dark: rgb(255 255 255 / 0.05);
-  --color-glass-border: rgb(255 255 255 / 0.2);
+  --color-glass: rgba(30, 41, 59, 0.7); /* Slate 800 with opacity */
+  --color-glass-light: rgba(51, 65, 85, 0.7); /* Slate 700 with opacity */
+  --color-glass-dark: rgba(15, 23, 42, 0.8); /* Slate 900 with opacity */
+  --color-glass-border: rgba(255, 255, 255, 0.1);
 
-  --color-text-base: #e0e8e0;
-  --color-text-muted: #7fa77f;
-  --color-text-accent: #00ff88;
-  --color-text-secondary: #9ba9b4;
-  --color-text-dim: #4a5a4a;
+  --color-text-base: #f8fafc; /* Slate 50 */
+  --color-text-muted: #94a3b8; /* Slate 400 */
+  --color-text-accent: #3b82f6; /* Blue 500 */
+  --color-text-secondary: #64748b; /* Slate 500 */
+  --color-text-dim: #475569; /* Slate 600 */
 
-  --color-success: #00ffaa;
-  --color-success-dark: #00cc88;
-  --color-error: #ff4c4c;
-  --color-error-dark: #cc3333;
-  --color-warning: #ffaa00;
-  --color-warning-dark: #cc8800;
-  --color-info: #00aaff;
-  --color-info-dark: #0088cc;
+  --color-success: #10b981;
+  --color-success-dark: #059669;
+  --color-error: #ef4444;
+  --color-error-dark: #b91c1c;
+  --color-warning: #f59e0b;
+  --color-warning-dark: #b45309;
+  --color-info: #3b82f6;
+  --color-info-dark: #1d4ed8;
 
-  --color-border: rgb(0 255 136 / 0.2);
-  --color-border-light: rgb(0 255 136 / 0.3);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-light: rgba(255, 255, 255, 0.15);
 
   /* Font Families */
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
   --font-sans: Inter, 'Segoe UI', Roboto, sans-serif;
   --font-display: Orbitron, sans-serif;
 
-  /* Shadows - Glow Effects */
-  --shadow-glow-sm: 0 0 10px rgb(0 255 136 / 0.3);
-  --shadow-glow: 0 0 15px rgb(0 255 136 / 0.4);
-  --shadow-glow-md: 0 0 20px rgb(0 255 136 / 0.5);
-  --shadow-glow-lg: 0 0 30px rgb(0 255 136 / 0.6);
-  --shadow-glow-xl: 0 0 40px rgb(0 255 136 / 0.7);
-  --shadow-glass: 0 8px 32px 0 rgb(0 0 0 / 0.37);
-  --shadow-glass-hover: 0 8px 32px 0 rgb(0 255 136 / 0.2);
-  --shadow-matrix: 0 0 20px rgb(0 255 136 / 0.3), 0 0 40px rgb(0 255 136 / 0.1);
-  --shadow-inner-glow: inset 0 0 20px rgb(0 255 136 / 0.2);
+  /* Shadows - Refined Glow Effects */
+  --shadow-glow-sm: 0 0 10px rgba(59, 130, 246, 0.2);
+  --shadow-glow: 0 0 15px rgba(59, 130, 246, 0.3);
+  --shadow-glow-md: 0 0 20px rgba(59, 130, 246, 0.4);
+  --shadow-glow-lg: 0 0 30px rgba(59, 130, 246, 0.5);
+  --shadow-glow-xl: 0 0 40px rgba(59, 130, 246, 0.6);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  --shadow-glass-hover: 0 8px 32px 0 rgba(59, 130, 246, 0.15);
+  --shadow-matrix: 0 0 20px rgba(59, 130, 246, 0.2), 0 0 40px rgba(59, 130, 246, 0.1);
+  --shadow-inner-glow: inset 0 0 20px rgba(59, 130, 246, 0.1);
 
   /* Border Radius */
-  --radius-glass: 16px;
-  --radius-window: 12px;
+  --radius-glass: 12px;
+  --radius-window: 8px;
 
   /* Backdrop Blur */
-  --blur-glass: 12px;
-  --blur-xs: 2px;
+  --blur-glass: 16px;
+  --blur-xs: 4px;
 
   /* Animations */
-  --animate-matrix-glow: matrix-glow 2s ease-in-out infinite;
-  --animate-matrix-flicker: matrix-flicker 3s ease-in-out infinite;
-  --animate-glass-shimmer: glass-shimmer 3s ease-in-out infinite;
-  --animate-float: float 3s ease-in-out infinite;
+  --animate-matrix-glow: matrix-glow 3s ease-in-out infinite;
+  --animate-matrix-flicker: matrix-flicker 4s ease-in-out infinite;
+  --animate-glass-shimmer: glass-shimmer 4s ease-in-out infinite;
+  --animate-float: float 4s ease-in-out infinite;
 }
 
 @layer base {
@@ -99,18 +99,18 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: rgb(0 255 136 / 0.3);
+    background-color: rgb(59 130 246 / 0.3);
     border-radius: 0.25rem;
     border: 2px solid transparent;
     background-clip: padding-box;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: rgb(0 255 136 / 0.5);
+    background-color: rgb(59 130 246 / 0.5);
   }
 
   ::selection {
-    background-color: rgb(0 255 136 / 0.3);
+    background-color: rgb(59 130 246 / 0.3);
     color: var(--color-primary);
   }
 }
@@ -127,13 +127,13 @@
 
   .glass-card:hover {
     box-shadow: var(--shadow-glass-hover);
-    border-color: rgb(0 255 136 / 0.3);
+    border-color: rgb(59 130 246 / 0.3);
   }
 
   .btn-matrix {
-    background-color: rgb(0 255 136 / 0.1);
+    background-color: rgb(59 130 246 / 0.1);
     color: var(--color-primary);
-    border: 1px solid rgb(0 255 136 / 0.5);
+    border: 1px solid rgb(59 130 246 / 0.5);
     border-radius: var(--radius-window);
     padding: 0.75rem 1.5rem;
     font-family: var(--font-mono);
@@ -143,7 +143,7 @@
   }
 
   .btn-matrix:hover {
-    background-color: rgb(0 255 136 / 0.2);
+    background-color: rgb(59 130 246 / 0.2);
     box-shadow: var(--shadow-glow);
     border-color: var(--color-primary);
   }
@@ -204,18 +204,18 @@
 
   .text-glow {
     color: var(--color-primary);
-    text-shadow: 0 0 10px rgb(0 255 136 / 0.5);
+    text-shadow: 0 0 10px rgb(59 130 246 / 0.5);
   }
 
   .text-glow-strong {
     color: var(--color-primary);
     text-shadow:
-      0 0 20px rgb(0 255 136 / 0.8),
-      0 0 30px rgb(0 255 136 / 0.4);
+      0 0 20px rgb(59 130 246 / 0.8),
+      0 0 30px rgb(59 130 246 / 0.4);
   }
 
   .matrix-bg {
-    background: linear-gradient(135deg, #0a0f0a 0%, #111a11 50%, #0f1a0f 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
     position: relative;
     overflow: hidden;
   }
@@ -224,7 +224,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at center, rgb(0 255 136 / 0.15) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgb(59 130 246 / 0.15) 0%, transparent 70%);
     opacity: 0.3;
     animation: var(--animate-matrix-glow);
   }
@@ -245,7 +245,7 @@
 
   .input-matrix {
     background-color: var(--color-background-elevated);
-    border: 1px solid rgb(0 255 136 / 0.3);
+    border: 1px solid rgb(59 130 246 / 0.3);
     border-radius: var(--radius-window);
     padding: 0.75rem 1rem;
     color: var(--color-text-base);
@@ -265,7 +265,7 @@
 
   .divider-matrix {
     height: 1px;
-    background: linear-gradient(to right, transparent, rgb(0 255 136 / 0.5), transparent);
+    background: linear-gradient(to right, transparent, rgb(59 130 246 / 0.5), transparent);
   }
 
   .badge-matrix {
@@ -273,8 +273,8 @@
     align-items: center;
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
-    background-color: rgb(0 255 136 / 0.1);
-    border: 1px solid rgb(0 255 136 / 0.3);
+    background-color: rgb(59 130 246 / 0.1);
+    border: 1px solid rgb(59 130 246 / 0.3);
     color: var(--color-primary);
     font-size: 0.875rem;
     font-family: var(--font-mono);
@@ -292,17 +292,17 @@
 
   .card-glow:hover {
     box-shadow: var(--shadow-glow-md);
-    border-color: rgb(0 255 136 / 0.5);
+    border-color: rgb(59 130 246 / 0.5);
   }
 
   .hero-gradient {
     background: linear-gradient(
       135deg,
-      #050805 0%,
-      #0a0f0a 25%,
-      #111a11 50%,
-      #0a0f0a 75%,
-      #050805 100%
+      #020617 0%,
+      #0f172a 25%,
+      #1e293b 50%,
+      #0f172a 75%,
+      #020617 100%
     );
     position: relative;
   }
@@ -311,7 +311,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgb(0 255 136 / 0.3) 0%, transparent 70%);
+    background: radial-gradient(circle at center, rgb(59 130 246 / 0.3) 0%, transparent 70%);
     opacity: 0.2;
     pointer-events: none;
   }
@@ -345,14 +345,14 @@
 
   .border-glow {
     box-shadow:
-      inset 0 0 20px rgb(0 255 136 / 0.1),
-      0 0 20px rgb(0 255 136 / 0.1);
+      inset 0 0 20px rgb(59 130 246 / 0.1),
+      0 0 20px rgb(59 130 246 / 0.1);
   }
 
   .bg-cyber-grid {
     background-image:
-      linear-gradient(rgb(0 255 136 / 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(0 255 136 / 0.1) 1px, transparent 1px);
+      linear-gradient(rgb(59 130 246 / 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(59 130 246 / 0.1) 1px, transparent 1px);
     background-size: 50px 50px;
   }
 }
@@ -402,6 +402,62 @@
   50% {
     transform: translateY(-10px);
   }
+}
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUpFadeMobile {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Window Minimize/Restore Animation */
+.window-minimize-enter-active,
+.window-minimize-leave-active {
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.window-minimize-enter-from,
+.window-minimize-leave-to {
+  opacity: 0;
+  transform: translateY(100px) scale(0.8);
+  transform-origin: bottom center;
 }
 
 .animate-matrix-glow {
@@ -418,374 +474,4 @@
 
 .animate-float {
   animation: var(--animate-float);
-}
-
-@layer base {
-  body {
-    background-color: #0a0f0a;
-    color: #e0e8e0;
-    font-family: Inter, 'Segoe UI', Roboto, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    margin: 0;
-    padding: 0;
-  }
-
-  /* Smooth scrolling with Matrix feel */
-  html {
-    scroll-behavior: smooth;
-  }
-
-  /* Custom scrollbar - Matrix style */
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background-color: #050805;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 255, 136, 0.3);
-    border-radius: 0.25rem;
-    border: 2px solid transparent;
-    background-clip: padding-box;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(0, 255, 136, 0.5);
-  }
-
-  /* Selection color */
-  ::selection {
-    background-color: rgba(0, 255, 136, 0.3);
-    color: #00ff88;
-  }
-}
-
-@layer components {
-  /* Glass Card - Windows 11 inspired glassmorphism */
-  .glass-card {
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    transition: all 0.3s;
-  }
-
-  .glass-card:hover {
-    box-shadow: 0 8px 32px 0 rgba(0, 255, 136, 0.2);
-    border-color: rgba(0, 255, 136, 0.3);
-  }
-
-  /* Matrix Glow Button */
-  .btn-matrix {
-    background-color: rgba(0, 255, 136, 0.1);
-    color: #00ff88;
-    border: 1px solid rgba(0, 255, 136, 0.5);
-    border-radius: 12px;
-    padding: 0.75rem 1.5rem;
-    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-    font-weight: 500;
-    transition: all 0.3s;
-    cursor: pointer;
-  }
-
-  .btn-matrix:hover {
-    background-color: rgba(0, 255, 136, 0.2);
-    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
-    border-color: #00ff88;
-  }
-
-  .btn-matrix:active {
-    transform: scale(0.95);
-  }
-
-  /* Matrix Glow Button - Solid variant */
-  .btn-matrix-solid {
-    background-color: #00ff88;
-    color: #050805;
-    border: 1px solid #00ff88;
-    border-radius: 12px;
-    padding: 0.75rem 1.5rem;
-    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-    font-weight: 700;
-    transition: all 0.3s;
-    cursor: pointer;
-  }
-
-  .btn-matrix-solid:hover {
-    box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
-    filter: brightness(1.1);
-  }
-
-  .btn-matrix-solid:active {
-    transform: scale(0.95);
-  }
-
-  /* Secondary Windows-style button */
-  .btn-windows {
-    background-color: rgba(155, 169, 180, 0.1);
-    color: #9ba9b4;
-    border: 1px solid rgba(155, 169, 180, 0.5);
-    border-radius: 12px;
-    padding: 0.75rem 1.5rem;
-    font-family: Inter, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 500;
-    transition: all 0.3s;
-    cursor: pointer;
-  }
-
-  .btn-windows:hover {
-    background-color: rgba(155, 169, 180, 0.2);
-    border-color: #9ba9b4;
-  }
-
-  .btn-windows:active {
-    transform: scale(0.95);
-  }
-
-  /* Matrix Window/Panel */
-  .matrix-window {
-    background-color: #111a11;
-    border: 1px solid rgba(0, 255, 136, 0.2);
-    border-radius: 12px;
-    box-shadow:
-      0 0 20px rgba(0, 255, 136, 0.3),
-      0 0 40px rgba(0, 255, 136, 0.1);
-    backdrop-filter: blur(2px);
-  }
-
-  /* Glowing Text */
-  .text-glow {
-    color: #00ff88;
-    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-  }
-
-  .text-glow-strong {
-    color: #00ff88;
-    text-shadow:
-      0 0 20px rgba(0, 255, 136, 0.8),
-      0 0 30px rgba(0, 255, 136, 0.4);
-  }
-
-  /* Matrix Code Background Effect */
-  .matrix-bg {
-    background: linear-gradient(135deg, #0a0f0a 0%, #111a11 50%, #0f1a0f 100%);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .matrix-bg::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at center, rgba(0, 255, 136, 0.15) 0%, transparent 70%);
-    opacity: 0.3;
-    animation: matrix-glow 3s ease-in-out infinite;
-  }
-
-  /* Glass Panel with hover effect */
-  .glass-panel {
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    transition: all 0.3s;
-    padding: 1.5rem;
-  }
-
-  .glass-panel:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-  }
-
-  /* Input field - Matrix style */
-  .input-matrix {
-    background-color: #111a11;
-    border: 1px solid rgba(0, 255, 136, 0.3);
-    border-radius: 12px;
-    padding: 0.75rem 1rem;
-    color: #e0e8e0;
-    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-    transition: all 0.3s;
-  }
-
-  .input-matrix:focus {
-    outline: none;
-    border-color: #00ff88;
-    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
-  }
-
-  .input-matrix::placeholder {
-    color: #4a5a4a;
-  }
-
-  /* Divider with glow */
-  .divider-matrix {
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(0, 255, 136, 0.5), transparent);
-  }
-
-  /* Badge/Tag - Matrix style */
-  .badge-matrix {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    background-color: rgba(0, 255, 136, 0.1);
-    border: 1px solid rgba(0, 255, 136, 0.3);
-    color: #00ff88;
-    font-size: 0.875rem;
-    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-  }
-
-  /* Card with glow on hover */
-  .card-glow {
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    transition: all 0.3s;
-    padding: 1.5rem;
-  }
-
-  .card-glow:hover {
-    box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
-    border-color: rgba(0, 255, 136, 0.5);
-  }
-
-  /* Hero section gradient background */
-  .hero-gradient {
-    background: linear-gradient(
-      135deg,
-      #050805 0%,
-      #0a0f0a 25%,
-      #111a11 50%,
-      #0a0f0a 75%,
-      #050805 100%
-    );
-    position: relative;
-  }
-
-  .hero-gradient::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(0, 255, 136, 0.3) 0%, transparent 70%);
-    opacity: 0.2;
-    pointer-events: none;
-  }
-}
-
-@layer utilities {
-  /* Text utilities */
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  /* Backdrop filters */
-  .backdrop-glass {
-    backdrop-filter: blur(12px) saturate(180%);
-    -webkit-backdrop-filter: blur(12px) saturate(180%);
-  }
-
-  /* Glow utilities */
-  .glow-sm {
-    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
-  }
-
-  .glow {
-    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
-  }
-
-  .glow-lg {
-    box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
-  }
-
-  /* Matrix animations */
-  .animate-matrix-pulse {
-    animation: matrix-glow 2s ease-in-out infinite;
-  }
-
-  /* Border glow */
-  .border-glow {
-    box-shadow:
-      inset 0 0 20px rgba(0, 255, 136, 0.1),
-      0 0 20px rgba(0, 255, 136, 0.1);
-  }
-
-  /* Cyber grid background */
-  .bg-cyber-grid {
-    background-image:
-      linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
-  }
-}
-
-@keyframes matrix-glow {
-  0%,
-  100% {
-    opacity: 1;
-    filter: brightness(1);
-  }
-  50% {
-    opacity: 0.8;
-    filter: brightness(1.2);
-  }
-}
-
-@keyframes matrix-flicker {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.95;
-  }
-  51% {
-    opacity: 1;
-  }
-  52% {
-    opacity: 0.97;
-  }
-}
-
-@keyframes glass-shimmer {
-  0% {
-    background-position: -200% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-.animate-matrix-glow {
-  animation: matrix-glow 2s ease-in-out infinite;
-}
-
-.animate-matrix-flicker {
-  animation: matrix-flicker 3s ease-in-out infinite;
-}
-
-.animate-glass-shimmer {
-  animation: glass-shimmer 3s ease-in-out infinite;
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
 }

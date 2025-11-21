@@ -41,25 +41,31 @@ const projects = computed(() => [
 </script>
 
 <template>
-  <div class="app-container">
-    <div class="header">
-      <h1 class="page-title">{{ t('startMenu.projects') }}</h1>
-      <p class="page-subtitle">{{ t('projects.subtitle') }}</p>
+  <div class="p-6 text-text-base h-full overflow-y-auto">
+    <div class="mb-8 border-b border-primary/20 pb-4">
+      <h1 class="font-display text-2xl text-primary m-0 mb-2">{{ t('startMenu.projects') }}</h1>
+      <p class="text-sm text-text-secondary m-0">{{ t('projects.subtitle') }}</p>
     </div>
 
-    <div class="projects-grid">
-      <div v-for="project in projects" :key="project.id" class="project-card">
-        <div class="card-image-container">
-          <img :src="project.image" :alt="project.title" class="card-image" />
-          <div class="card-overlay">
-            <a :href="project.link" class="view-btn">{{ t('projects.viewProject') }}</a>
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
+      <div v-for="project in projects" :key="project.id"
+        class="bg-background-dark/60 border border-primary/20 rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_8px_24px_rgba(0,255,136,0.15)] hover:shadow-primary/15 group">
+        <div class="relative h-40 overflow-hidden">
+          <img :src="project.image" :alt="project.title"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div
+            class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <a :href="project.link"
+              class="px-4 py-2 bg-primary text-background-dark no-underline font-semibold rounded text-sm translate-y-2.5 transition-transform duration-300 group-hover:translate-y-0">{{
+                t('projects.viewProject') }}</a>
           </div>
         </div>
-        <div class="card-content">
-          <h3 class="card-title">{{ project.title }}</h3>
-          <p class="card-description">{{ project.description }}</p>
-          <div class="card-tags">
-            <span v-for="tech in project.tech" :key="tech" class="tech-tag">
+        <div class="p-4">
+          <h3 class="font-display text-base text-text-base m-0 mb-2">{{ project.title }}</h3>
+          <p class="text-[13px] text-text-muted m-0 mb-4 leading-relaxed">{{ project.description }}</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span v-for="tech in project.tech" :key="tech"
+              class="text-[11px] px-2 py-0.5 bg-primary/5 border border-primary/20 rounded-full text-primary">
               {{ tech }}
             </span>
           </div>
@@ -68,134 +74,3 @@ const projects = computed(() => [
     </div>
   </div>
 </template>
-
-<style scoped>
-@reference "../../assets/main.css";
-
-.app-container {
-  padding: 24px;
-  color: #e0e8e0;
-  height: 100%;
-  overflow-y: auto;
-}
-
-.header {
-  margin-bottom: 32px;
-  border-bottom: 1px solid rgba(0, 255, 136, 0.2);
-  padding-bottom: 16px;
-}
-
-.page-title {
-  font-family: var(--font-display);
-  font-size: 24px;
-  color: #00ff88;
-  margin: 0 0 8px 0;
-}
-
-.page-subtitle {
-  font-size: 14px;
-  color: #7fa77f;
-  margin: 0;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
-}
-
-.project-card {
-  background: rgba(0, 20, 10, 0.6);
-  border: 1px solid rgba(0, 255, 136, 0.2);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0, 255, 136, 0.5);
-  box-shadow: 0 8px 24px rgba(0, 255, 136, 0.15);
-}
-
-.card-image-container {
-  position: relative;
-  height: 160px;
-  overflow: hidden;
-}
-
-.card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.project-card:hover .card-image {
-  transform: scale(1.05);
-}
-
-.card-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.project-card:hover .card-overlay {
-  opacity: 1;
-}
-
-.view-btn {
-  padding: 8px 16px;
-  background: #00ff88;
-  color: #0a0f0a;
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: 4px;
-  font-size: 14px;
-  transform: translateY(10px);
-  transition: transform 0.3s ease;
-}
-
-.project-card:hover .view-btn {
-  transform: translateY(0);
-}
-
-.card-content {
-  padding: 16px;
-}
-
-.card-title {
-  font-family: var(--font-display);
-  font-size: 16px;
-  color: #e0e8e0;
-  margin: 0 0 8px 0;
-}
-
-.card-description {
-  font-size: 13px;
-  color: #a0b0a0;
-  margin: 0 0 16px 0;
-  line-height: 1.5;
-}
-
-.card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.tech-tag {
-  font-size: 11px;
-  padding: 2px 8px;
-  background: rgba(0, 255, 136, 0.05);
-  border: 1px solid rgba(0, 255, 136, 0.2);
-  border-radius: 12px;
-  color: #00ff88;
-}
-</style>

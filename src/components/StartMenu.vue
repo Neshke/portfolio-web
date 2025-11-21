@@ -48,417 +48,83 @@ onUnmounted(() => {
 
 <template>
   <!-- Backdrop -->
-  <transition name="fade">
-    <div v-if="startMenuStore.isOpen" class="start-menu-backdrop" @click="startMenuStore.closeMenu"></div>
+  <transition enter-active-class="transition-opacity duration-300 ease-out"
+    leave-active-class="transition-opacity duration-300 ease-in" enter-from-class="opacity-0"
+    leave-to-class="opacity-0">
+    <div v-if="startMenuStore.isOpen" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 bottom-14 md:bottom-0"
+      @click="startMenuStore.closeMenu"></div>
   </transition>
 
   <!-- Start Menu -->
-  <transition name="slide-up-menu">
-    <div v-if="startMenuStore.isOpen" class="start-menu-container">
+  <transition enter-active-class="transition-all duration-300 cubic-bezier(0.34, 1.56, 0.64, 1)"
+    leave-active-class="transition-all duration-250 ease-in" enter-from-class="opacity-0 -translate-x-1/2 translate-y-8"
+    leave-to-class="opacity-0 -translate-x-1/2 translate-y-5">
+    <div v-if="startMenuStore.isOpen"
+      class="fixed bottom-14 left-0 right-0 w-full max-w-full max-h-[calc(100vh-56px)] bg-background-elevated/98 backdrop-blur-2xl border border-primary/30 rounded-none border-x-0 border-b-0 shadow-[0_8px_32px_rgba(0,0,0,0.6)] shadow-primary/20 z-50 overflow-hidden flex flex-col md:bottom-20 md:left-1/2 md:-translate-x-1/2 md:w-[90%] md:max-w-2xl md:max-h-[600px] md:rounded-2xl md:border">
       <!-- Menu Header -->
-      <div class="start-menu-header">
-        <div class="start-menu-header-content">
-          <div class="start-menu-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor">
+      <div class="flex items-center justify-between bg-primary/5 border-b border-primary/20 px-5 py-4 md:px-6 md:py-5">
+        <div class="flex items-center gap-4 flex-1">
+          <div
+            class="flex items-center justify-center bg-primary/15 border border-primary/30 rounded-xl text-primary shrink-0 w-10 h-10 md:w-12 md:h-12">
+            <svg class="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="currentColor">
               <path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z" />
             </svg>
           </div>
-          <div class="start-menu-header-text">
-            <h2 class="start-menu-title">{{ startMenuStore.currentTitle }}</h2>
-            <p v-if="startMenuStore.currentDescription" class="start-menu-description">
+          <div class="flex-1">
+            <h2 class="font-bold text-primary font-display m-0 shadow-glow text-lg md:text-xl">{{
+              startMenuStore.currentTitle }}</h2>
+            <p v-if="startMenuStore.currentDescription"
+              class="text-text-secondary font-sans mt-1 text-xs md:text-[13px]">
               {{ startMenuStore.currentDescription }}
             </p>
           </div>
         </div>
-        <div class="start-menu-language-switcher">
+        <div class="shrink-0 flex md:hidden">
           <LanguageSwitcher direction="down" />
         </div>
       </div>
 
       <!-- Divider -->
-      <div class="start-menu-divider"></div>
+      <div class="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
 
       <!-- Menu Content -->
-      <div class="start-menu-content">
+      <div
+        class="flex-1 overflow-y-auto min-h-[200px] scrollbar-thin scrollbar-track-primary/5 scrollbar-thumb-primary/30 hover:scrollbar-thumb-primary/50 p-3 md:p-4">
         <!-- Dynamic Menu Items -->
-        <div v-if="startMenuStore.menuItems.length > 0" class="start-menu-items">
+        <div v-if="startMenuStore.menuItems.length > 0" class="flex flex-col gap-2">
           <button v-for="item in startMenuStore.menuItems" :key="item.id" @click="item.action ? item.action() : null"
-            class="start-menu-item">
-            <div v-if="item.icon" class="start-menu-item-icon" v-html="item.icon"></div>
-            <div v-else class="start-menu-item-icon-placeholder">
-              <svg viewBox="0 0 24 24" fill="currentColor">
+            class="flex items-center gap-4 px-5 py-4 bg-primary/5 border border-primary/20 rounded-xl text-text-base cursor-pointer transition-all duration-200 hover:bg-primary/15 hover:border-primary/40 hover:shadow-glow hover:translate-x-1 active:scale-[0.98]">
+            <div v-if="item.icon"
+              class="flex items-center justify-center w-10 h-10 bg-primary/10 border border-primary/30 rounded-lg text-primary shrink-0"
+              v-html="item.icon"></div>
+            <div v-else
+              class="flex items-center justify-center w-10 h-10 bg-primary/10 border border-primary/30 rounded-lg text-primary shrink-0">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
               </svg>
             </div>
-            <div class="start-menu-item-content">
-              <span class="start-menu-item-title">{{ item.title }}</span>
-              <span v-if="item.description" class="start-menu-item-description">{{ item.description }}</span>
+            <div class="flex flex-col gap-1 flex-1 text-left">
+              <span class="text-[15px] font-semibold text-text-base font-sans">{{ item.title }}</span>
+              <span v-if="item.description" class="text-xs text-text-secondary font-sans">{{ item.description }}</span>
             </div>
-            <svg class="start-menu-item-arrow" viewBox="0 0 24 24" fill="currentColor">
+            <svg class="w-5 h-5 text-primary/60 shrink-0" viewBox="0 0 24 24" fill="currentColor">
               <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
             </svg>
           </button>
         </div>
 
         <!-- Placeholder Content -->
-        <div v-else class="start-menu-placeholder">
-          <div class="start-menu-placeholder-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor">
+        <div v-else class="flex flex-col items-center justify-center py-16 px-10 text-center">
+          <div
+            class="w-20 h-20 bg-primary/10 border-2 border-primary/30 rounded-2xl flex items-center justify-center mb-6 text-primary animate-[pulse-glow_2s_ease-in-out_infinite]">
+            <svg class="w-10 h-10" viewBox="0 0 24 24" fill="currentColor">
               <path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z" />
             </svg>
           </div>
-          <p class="start-menu-placeholder-text">{{ t('startMenu.comingSoon') }}</p>
-          <p class="start-menu-placeholder-subtext">{{ t('startMenu.contentWillAppear') }}</p>
+          <p class="text-lg font-bold text-primary font-display mb-2">{{ t('startMenu.comingSoon') }}</p>
+          <p class="text-sm text-text-secondary font-sans">{{ t('startMenu.contentWillAppear') }}</p>
         </div>
       </div>
     </div>
   </transition>
 </template>
-
-<style scoped>
-@reference "../assets/main.css";
-
-/* Backdrop */
-.start-menu-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-  z-index: 9998;
-}
-
-/* Start Menu Container */
-.start-menu-container {
-  position: fixed;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 640px;
-  max-height: 600px;
-  background: rgba(17, 26, 17, 0.98);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(0, 255, 136, 0.3);
-  border-radius: 16px;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.6),
-    0 0 40px rgba(0, 255, 136, 0.2),
-    inset 0 0 60px rgba(0, 255, 136, 0.05);
-  z-index: 9999;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Header */
-.start-menu-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
-  background: rgba(0, 255, 136, 0.05);
-  border-bottom: 1px solid rgba(0, 255, 136, 0.2);
-}
-
-.start-menu-header-content {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex: 1;
-}
-
-.start-menu-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: rgba(0, 255, 136, 0.15);
-  border: 1px solid rgba(0, 255, 136, 0.3);
-  border-radius: 12px;
-  color: #00ff88;
-  flex-shrink: 0;
-}
-
-.start-menu-icon svg {
-  width: 28px;
-  height: 28px;
-}
-
-.start-menu-header-text {
-  flex: 1;
-}
-
-.start-menu-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #00ff88;
-  font-family: var(--font-display);
-  margin: 0;
-  text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
-}
-
-.start-menu-description {
-  font-size: 13px;
-  color: #7fa77f;
-  font-family: var(--font-sans);
-  margin: 4px 0 0 0;
-}
-
-.start-menu-language-switcher {
-  display: none;
-  flex-shrink: 0;
-}
-
-/* Divider */
-.start-menu-divider {
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(0, 255, 136, 0.3), transparent);
-}
-
-/* Content Area */
-.start-menu-content {
-  flex: 1;
-  overflow-y: auto;
-  padding: 16px;
-  min-height: 200px;
-}
-
-/* Scrollbar Styling */
-.start-menu-content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.start-menu-content::-webkit-scrollbar-track {
-  background: rgba(0, 255, 136, 0.05);
-  border-radius: 4px;
-}
-
-.start-menu-content::-webkit-scrollbar-thumb {
-  background: rgba(0, 255, 136, 0.3);
-  border-radius: 4px;
-}
-
-.start-menu-content::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 255, 136, 0.5);
-}
-
-/* Menu Items */
-.start-menu-items {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.start-menu-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 20px;
-  background: rgba(0, 255, 136, 0.05);
-  border: 1px solid rgba(0, 255, 136, 0.2);
-  border-radius: 12px;
-  color: #e0e8e0;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.start-menu-item:hover {
-  background: rgba(0, 255, 136, 0.15);
-  border-color: rgba(0, 255, 136, 0.4);
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
-  transform: translateX(4px);
-}
-
-.start-menu-item:active {
-  transform: translateX(4px) scale(0.98);
-}
-
-.start-menu-item-icon,
-.start-menu-item-icon-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: rgba(0, 255, 136, 0.1);
-  border: 1px solid rgba(0, 255, 136, 0.3);
-  border-radius: 10px;
-  color: #00ff88;
-  flex-shrink: 0;
-}
-
-.start-menu-item-icon svg,
-.start-menu-item-icon-placeholder svg {
-  width: 24px;
-  height: 24px;
-}
-
-.start-menu-item-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  flex: 1;
-}
-
-.start-menu-item-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: #e0e8e0;
-  font-family: var(--font-sans);
-}
-
-.start-menu-item-description {
-  font-size: 12px;
-  color: #7fa77f;
-  font-family: var(--font-sans);
-}
-
-.start-menu-item-arrow {
-  width: 20px;
-  height: 20px;
-  color: #00ff88;
-  opacity: 0.6;
-  flex-shrink: 0;
-}
-
-/* Placeholder */
-.start-menu-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 40px;
-  text-align: center;
-}
-
-.start-menu-placeholder-icon {
-  width: 80px;
-  height: 80px;
-  background: rgba(0, 255, 136, 0.1);
-  border: 2px solid rgba(0, 255, 136, 0.3);
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 24px;
-  color: #00ff88;
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-.start-menu-placeholder-icon svg {
-  width: 40px;
-  height: 40px;
-}
-
-.start-menu-placeholder-text {
-  font-size: 18px;
-  font-weight: 700;
-  color: #00ff88;
-  font-family: var(--font-display);
-  margin-bottom: 8px;
-}
-
-.start-menu-placeholder-subtext {
-  font-size: 14px;
-  color: #7fa77f;
-  font-family: var(--font-sans);
-}
-
-@keyframes pulse-glow {
-
-  0%,
-  100% {
-    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
-  }
-
-  50% {
-    box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
-  }
-}
-
-/* Transitions */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.slide-up-menu-enter-active {
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.slide-up-menu-leave-active {
-  transition: all 0.25s ease-in;
-}
-
-.slide-up-menu-enter-from {
-  opacity: 0;
-  transform: translateX(-50%) translateY(30px);
-}
-
-.slide-up-menu-leave-to {
-  opacity: 0;
-  transform: translateX(-50%) translateY(20px);
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .start-menu-backdrop {
-    bottom: 56px;
-    /* Match taskbar height */
-    backdrop-filter: blur(8px);
-    z-index: 9998;
-  }
-
-  .start-menu-container {
-    bottom: 56px;
-    /* Match taskbar height */
-    left: 0;
-    right: 0;
-    transform: none;
-    width: 100%;
-    max-width: 100%;
-    max-height: calc(100vh - 56px);
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
-    z-index: 9999;
-  }
-
-  .start-menu-header {
-    padding: 16px 20px;
-  }
-
-  .start-menu-icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .start-menu-icon svg {
-    width: 24px;
-    height: 24px;
-  }
-
-  .start-menu-title {
-    font-size: 18px;
-  }
-
-  .start-menu-description {
-    font-size: 12px;
-  }
-
-  .start-menu-content {
-    padding: 12px;
-  }
-
-  .start-menu-language-switcher {
-    display: flex;
-  }
-}
-</style>
