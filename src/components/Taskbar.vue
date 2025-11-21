@@ -98,7 +98,7 @@ const handleTaskbarClick = (win: WindowItem) => {
       class="flex items-center gap-1 h-14 bg-background-elevated/85 backdrop-blur-xl border border-primary/20 px-3 shadow-[0_8px_32px_rgba(0,0,0,0.4)] shadow-primary/10 w-full rounded-none border-x-0 border-b-0 sm:rounded-xl sm:border sm:w-auto">
       <!-- Start Button -->
       <button
-        class="flex items-center justify-center p-2.5 bg-transparent border border-transparent rounded-lg text-text-base cursor-pointer transition-all duration-200 hover:bg-primary/25 hover:shadow-[0_0_15px_rgba(16,185,129,0.4)] active:scale-95"
+        class="flex items-center justify-center p-2.5 bg-transparent border border-transparent rounded-lg text-text-base cursor-pointer transition-all duration-200 hover:bg-primary/25 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] active:scale-95"
         @click="toggleStartMenu" :class="{ 'bg-primary/20 border-primary/40 shadow-glow': startMenuStore.isOpen }">
         <svg class="w-5 h-5 text-primary shrink-0" viewBox="0 0 24 24" fill="currentColor">
           <path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z" />
@@ -114,7 +114,7 @@ const handleTaskbarClick = (win: WindowItem) => {
           <button v-for="win in windowsStore.openWindows" :key="win.id" @click="handleTaskbarClick(win)"
             class="flex items-center gap-2 bg-transparent border border-transparent rounded-lg text-text-base cursor-pointer transition-all duration-200 font-sans text-sm relative hover:bg-primary/10 hover:border-primary/30 hover:shadow-glow-sm active:scale-95 p-2 md:px-4"
             :class="{
-              'bg-primary/20 border-primary/40 shadow-glow after:content-[\'\'] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-5 after:h-[3px] after:bg-primary after:rounded-full after:shadow-[0_0_8px_rgba(16,185,129,1)]': windowsStore.activeWindowId === win.id && !win.isMinimized,
+              'bg-primary/20 border-primary/40 shadow-glow after:content-[\'\'] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-5 after:h-[3px] after:bg-primary after:rounded-full after:shadow-[0_0_8px_rgba(59,130,246,0.8)]': windowsStore.activeWindowId === win.id && !win.isMinimized,
               'opacity-70': win.isMinimized
             }">
             <div v-if="win.icon" class="w-5 h-5 text-primary shrink-0" v-html="win.icon"></div>

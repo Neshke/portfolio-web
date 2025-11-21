@@ -5,29 +5,29 @@
 
 /* Tailwind v4 Theme Configuration */
 @theme {
-  /* Professional Dark Theme (Blue/Slate) */
-  --color-background: #0f172a; /* Slate 950 */
-  --color-background-dark: #020617; /* Slate 950 darker */
-  --color-background-elevated: #1e293b; /* Slate 800 */
+  /* Professional Dark Theme (Blue/Slate) - Polished */
+  --color-background: #020617; /* Slate 950 */
+  --color-background-dark: #000000; /* Pure Black */
+  --color-background-elevated: #0f172a; /* Slate 900 */
 
-  --color-primary: #3b82f6; /* Blue 500 */
-  --color-primary-light: #60a5fa; /* Blue 400 */
-  --color-primary-dark: #2563eb; /* Blue 600 */
+  --color-primary: #60a5fa; /* Blue 400 - Lighter for better contrast on dark */
+  --color-primary-light: #93c5fd; /* Blue 300 */
+  --color-primary-dark: #3b82f6; /* Blue 500 */
 
   --color-secondary: #94a3b8; /* Slate 400 */
   --color-secondary-light: #cbd5e1; /* Slate 300 */
   --color-secondary-dark: #64748b; /* Slate 500 */
 
-  --color-glass: rgba(30, 41, 59, 0.7); /* Slate 800 with opacity */
-  --color-glass-light: rgba(51, 65, 85, 0.7); /* Slate 700 with opacity */
-  --color-glass-dark: rgba(15, 23, 42, 0.8); /* Slate 900 with opacity */
-  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --color-glass: rgba(15, 23, 42, 0.75); /* Slate 900 with opacity */
+  --color-glass-light: rgba(30, 41, 59, 0.75); /* Slate 800 with opacity */
+  --color-glass-dark: rgba(2, 6, 23, 0.85); /* Slate 950 with opacity */
+  --color-glass-border: rgba(255, 255, 255, 0.08);
 
-  --color-text-base: #f8fafc; /* Slate 50 */
+  --color-text-base: #f1f5f9; /* Slate 100 */
   --color-text-muted: #94a3b8; /* Slate 400 */
-  --color-text-accent: #3b82f6; /* Blue 500 */
-  --color-text-secondary: #64748b; /* Slate 500 */
-  --color-text-dim: #475569; /* Slate 600 */
+  --color-text-accent: #60a5fa; /* Blue 400 */
+  --color-text-secondary: #cbd5e1; /* Slate 300 */
+  --color-text-dim: #64748b; /* Slate 500 */
 
   --color-success: #10b981;
   --color-success-dark: #059669;

@@ -62,110 +62,110 @@ const getComponent = (name: string) => {
       class="flex flex-col flex-wrap content-start gap-4 p-6 h-[calc(100%-60px)] w-full max-w-[400px] max-md:flex-row max-md:content-start max-md:max-w-full max-md:p-4">
       <!-- My Computer (About) -->
       <button
-        class="flex flex-col items-center gap-1 w-[84px] p-2 rounded bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20"
+        class="flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group"
         @click="openAbout">
         <div
-          class="relative w-12 h-12 flex items-center justify-center text-primary drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)]">
-          <svg class="w-full h-full stroke-[1.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          class="relative w-14 h-14 flex items-center justify-center text-primary drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_12px_24px_rgba(59,130,246,0.3)]">
+          <svg class="w-full h-full stroke-[1.2]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="1.5">
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" class="fill-background-elevated/50"></rect>
             <line x1="8" y1="21" x2="16" y2="21"></line>
             <line x1="12" y1="17" x2="12" y2="21"></line>
           </svg>
         </div>
         <span
-          class="font-sans text-xs text-text-base text-center shadow-[0_1px_2px_rgba(0,0,0,0.8)] leading-tight max-w-full overflow-hidden text-ellipsis line-clamp-2">{{
+          class="font-sans text-[13px] font-medium text-text-base text-center shadow-black drop-shadow-md leading-tight max-w-full overflow-hidden text-ellipsis line-clamp-2 group-hover:text-primary-light transition-colors">{{
             t('taskbar.about') }}</span>
       </button>
 
       <!-- Projects Folder -->
       <button
-        class="flex flex-col items-center gap-1 w-[84px] p-2 rounded bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20"
+        class="flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group"
         @click="openProjects">
         <div
-          class="relative w-12 h-12 flex items-center justify-center text-primary drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)]">
-          <svg class="w-full h-full stroke-[1.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          class="relative w-14 h-14 flex items-center justify-center text-primary drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_12px_24px_rgba(59,130,246,0.3)]">
+          <svg class="w-full h-full stroke-[1.2]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="1.5">
-            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" class="fill-background-elevated/50"></path>
           </svg>
         </div>
         <span
-          class="font-sans text-xs text-text-base text-center shadow-[0_1px_2px_rgba(0,0,0,0.8)] leading-tight max-w-full overflow-hidden text-ellipsis line-clamp-2">{{
+          class="font-sans text-[13px] font-medium text-text-base text-center shadow-black drop-shadow-md leading-tight max-w-full overflow-hidden text-ellipsis line-clamp-2 group-hover:text-primary-light transition-colors">{{
             t('taskbar.projects') }}</span>
       </button>
 
       <!-- Experience -->
       <button
-        class="flex flex-col items-center gap-1 w-[84px] p-2 rounded bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20"
+        class="flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group"
         @click="openExperience">
         <div
-          class="relative w-12 h-12 flex items-center justify-center text-primary drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)]">
-          <svg class="w-full h-full stroke-[1.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          class="relative w-14 h-14 flex items-center justify-center text-primary drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_12px_24px_rgba(59,130,246,0.3)]">
+          <svg class="w-full h-full stroke-[1.2]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="1.5">
-            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" class="fill-background-elevated/50"></rect>
             <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
           </svg>
         </div>
         <span
-          class="font-sans text-xs text-text-base text-center shadow-[0_1px_2px_rgba(0,0,0,0.8)] leading-tight max-w-full overflow-hidden text-ellipsis line-clamp-2">{{
+          class="font-sans text-[13px] font-medium text-text-base text-center shadow-black drop-shadow-md leading-tight max-w-full overflow-hidden text-ellipsis line-clamp-2 group-hover:text-primary-light transition-colors">{{
             t('taskbar.experience') }}</span>
       </button>
 
       <!-- Contact -->
       <button
-        class="flex flex-col items-center gap-1 w-[84px] p-2 rounded bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20"
+        class="flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group"
         @click="openContact">
         <div
-          class="relative w-12 h-12 flex items-center justify-center text-primary drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)]">
-          <svg class="w-full h-full stroke-[1.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          class="relative w-14 h-14 flex items-center justify-center text-primary drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_12px_24px_rgba(59,130,246,0.3)]">
+          <svg class="w-full h-full stroke-[1.2]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="1.5">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" class="fill-background-elevated/50"></path>
             <polyline points="22,6 12,13 2,6"></polyline>
           </svg>
         </div>
         <span
-          class="font-sans text-xs text-text-base text-center shadow-[0_1px_2px_rgba(0,0,0,0.8)] leading-tight max-w-full overflow-hidden text-ellipsis line-clamp-2">{{
+          class="font-sans text-[13px] font-medium text-text-base text-center shadow-black drop-shadow-md leading-tight max-w-full overflow-hidden text-ellipsis line-clamp-2 group-hover:text-primary-light transition-colors">{{
             t('taskbar.contact') }}</span>
       </button>
 
       <!-- GitHub Shortcut -->
       <button
-        class="flex flex-col items-center gap-1 w-[84px] p-2 rounded bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20"
+        class="flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group"
         @click="openGithub">
         <div
-          class="relative w-12 h-12 flex items-center justify-center text-primary drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)]">
-          <svg class="w-full h-full stroke-[1.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          class="relative w-14 h-14 flex items-center justify-center text-primary drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_12px_24px_rgba(59,130,246,0.3)]">
+          <svg class="w-full h-full stroke-[1.2]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="1.5">
             <path
-              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" class="fill-background-elevated/50">
             </path>
           </svg>
           <div
-            class="absolute bottom-0 left-0 w-4 h-4 bg-background-dark text-text-base border border-text-secondary rounded flex items-center justify-center">
-            <svg viewBox="0 0 24 24" fill="currentColor">
+            class="absolute bottom-0 left-0 w-5 h-5 bg-background-dark text-text-base border border-text-secondary rounded-md flex items-center justify-center shadow-sm">
+            <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
               <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
             </svg>
           </div>
         </div>
         <span
-          class="font-sans text-xs text-text-base text-center shadow-[0_1px_2px_rgba(0,0,0,0.8)] leading-tight max-w-full overflow-hidden text-ellipsis line-clamp-2">GitHub</span>
+          class="font-sans text-[13px] font-medium text-text-base text-center shadow-black drop-shadow-md leading-tight max-w-full overflow-hidden text-ellipsis line-clamp-2 group-hover:text-primary-light transition-colors">GitHub</span>
       </button>
 
       <!-- Recycle Bin -->
       <button
-        class="flex flex-col items-center gap-1 w-[84px] p-2 rounded bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20">
+        class="flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group">
         <div
-          class="relative w-12 h-12 flex items-center justify-center text-primary drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)]">
-          <svg class="w-full h-full stroke-[1.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          class="relative w-14 h-14 flex items-center justify-center text-primary drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_12px_24px_rgba(59,130,246,0.3)]">
+          <svg class="w-full h-full stroke-[1.2]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="1.5">
             <polyline points="3 6 5 6 21 6"></polyline>
-            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" class="fill-background-elevated/50"></path>
             <line x1="10" y1="11" x2="10" y2="17"></line>
             <line x1="14" y1="11" x2="14" y2="17"></line>
           </svg>
         </div>
         <span
-          class="font-sans text-xs text-text-base text-center shadow-[0_1px_2px_rgba(0,0,0,0.8)] leading-tight max-w-full overflow-hidden text-ellipsis line-clamp-2">{{
+          class="font-sans text-[13px] font-medium text-text-base text-center shadow-black drop-shadow-md leading-tight max-w-full overflow-hidden text-ellipsis line-clamp-2 group-hover:text-primary-light transition-colors">{{
             t('startMenu.recycleBin') }}</span>
       </button>
     </div>
