@@ -93,7 +93,7 @@ const handleTaskbarClick = (win: WindowItem) => {
 <template>
   <!-- Windows Taskbar -->
   <nav
-    class="absolute bottom-0 left-0 right-0 mx-auto z-[9000] w-full max-w-7xl flex justify-center animate-[slideUpFade_0.8s_ease-out_1.2s_both] p-0 sm:p-2">
+    class="absolute bottom-0 left-0 right-0 mx-auto z-[9002] w-full max-w-7xl flex justify-center animate-[slideUpFade_0.8s_ease-out_1.2s_both] p-0 sm:p-2">
     <div
       class="flex items-center gap-1 h-16 bg-background-elevated/85 backdrop-blur-xl border border-primary/20 px-3 shadow-[0_8px_32px_rgba(0,0,0,0.4)] shadow-primary/10 w-full rounded-none border-x-0 border-b-0 sm:rounded-xl sm:border sm:w-auto">
       <!-- Start Button -->
