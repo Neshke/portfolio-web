@@ -2,6 +2,7 @@
 import { onMounted, onUnmounted } from 'vue'
 import { useStartMenuStore } from '@/store/startMenu'
 import { useI18n } from 'vue-i18n'
+import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
 
 const startMenuStore = useStartMenuStore()
 const { t } = useI18n()
@@ -69,12 +70,9 @@ onUnmounted(() => {
             </p>
           </div>
         </div>
-        <button @click="startMenuStore.closeMenu" class="start-menu-close">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-          </svg>
-        </button>
+        <div class="start-menu-language-switcher">
+          <LanguageSwitcher direction="down" />
+        </div>
       </div>
 
       <!-- Divider -->
@@ -113,31 +111,6 @@ onUnmounted(() => {
           <p class="start-menu-placeholder-subtext">{{ t('startMenu.contentWillAppear') }}</p>
         </div>
       </div>
-
-      <!-- Menu Footer -->
-      <div class="start-menu-footer">
-        <button class="start-menu-footer-btn">
-          <svg class="start-menu-footer-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
-          </svg>
-          <span>{{ t('startMenu.profile') }}</span>
-        </button>
-        <button class="start-menu-footer-btn">
-          <svg class="start-menu-footer-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94L14.4 2.81c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" />
-          </svg>
-          <span>{{ t('startMenu.settings') }}</span>
-        </button>
-        <button @click="startMenuStore.closeMenu" class="start-menu-footer-btn">
-          <svg class="start-menu-footer-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z" />
-          </svg>
-          <span>{{ t('startMenu.close') }}</span>
-        </button>
-      </div>
     </div>
   </transition>
 </template>
@@ -151,7 +124,7 @@ onUnmounted(() => {
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
-  z-index: 15;
+  z-index: 9998;
 }
 
 /* Start Menu Container */
@@ -171,7 +144,7 @@ onUnmounted(() => {
     0 8px 32px rgba(0, 0, 0, 0.6),
     0 0 40px rgba(0, 255, 136, 0.2),
     inset 0 0 60px rgba(0, 255, 136, 0.05);
-  z-index: 19;
+  z-index: 9999;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -232,33 +205,9 @@ onUnmounted(() => {
   margin: 4px 0 0 0;
 }
 
-.start-menu-close {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: transparent;
-  border: 1px solid rgba(0, 255, 136, 0.3);
-  border-radius: 8px;
-  color: #00ff88;
-  cursor: pointer;
-  transition: all 0.2s ease;
+.start-menu-language-switcher {
+  display: none;
   flex-shrink: 0;
-}
-
-.start-menu-close:hover {
-  background: rgba(0, 255, 136, 0.1);
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
-}
-
-.start-menu-close:active {
-  transform: scale(0.95);
-}
-
-.start-menu-close svg {
-  width: 20px;
-  height: 20px;
 }
 
 /* Divider */
@@ -428,48 +377,6 @@ onUnmounted(() => {
   }
 }
 
-/* Footer */
-.start-menu-footer {
-  display: flex;
-  gap: 8px;
-  padding: 16px 20px;
-  background: rgba(0, 255, 136, 0.05);
-  border-top: 1px solid rgba(0, 255, 136, 0.2);
-}
-
-.start-menu-footer-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  background: transparent;
-  border: 1px solid rgba(0, 255, 136, 0.2);
-  border-radius: 10px;
-  color: #e0e8e0;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 500;
-  flex: 1;
-}
-
-.start-menu-footer-btn:hover {
-  background: rgba(0, 255, 136, 0.1);
-  border-color: rgba(0, 255, 136, 0.4);
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
-}
-
-.start-menu-footer-btn:active {
-  transform: scale(0.98);
-}
-
-.start-menu-footer-icon {
-  width: 18px;
-  height: 18px;
-  color: #00ff88;
-}
-
 /* Transitions */
 .fade-enter-active,
 .fade-leave-active {
@@ -502,24 +409,24 @@ onUnmounted(() => {
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .start-menu-backdrop {
-    bottom: 88px;
+    bottom: 56px; /* Match taskbar height */
     backdrop-filter: blur(8px);
-    z-index: 45;
+    z-index: 9998;
   }
 
   .start-menu-container {
-    bottom: 88px;
+    bottom: 56px; /* Match taskbar height */
     left: 0;
     right: 0;
     transform: none;
     width: 100%;
     max-width: 100%;
-    max-height: calc(100vh - 88px);
+    max-height: calc(100vh - 56px);
     border-radius: 0;
     border-left: none;
     border-right: none;
     border-bottom: none;
-    z-index: 49;
+    z-index: 9999;
   }
 
   .start-menu-header {
@@ -548,13 +455,8 @@ onUnmounted(() => {
     padding: 12px;
   }
 
-  .start-menu-footer {
-    flex-wrap: wrap;
-    padding: 12px 16px;
-  }
-
-  .start-menu-footer-btn {
-    flex: 0 0 calc(50% - 4px);
+  .start-menu-language-switcher {
+    display: flex;
   }
 }
 </style>

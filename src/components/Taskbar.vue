@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import { useI18n } from 'vue-i18n'
 import { useStartMenuStore } from '@/store/startMenu'
+import { useWindowsStore, type WindowItem } from '@/store/windows'
+import { useI18n } from 'vue-i18n'
 import LanguageSwitcher from './LanguageSwitcher.vue'
-import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 
-const { t } = useI18n()
 const startMenuStore = useStartMenuStore()
+const windowsStore = useWindowsStore()
+const { t } = useI18n()
 const dateNow = ref(new Date().toLocaleTimeString())
 let intervalId: number | null = null
 
@@ -22,117 +23,70 @@ onUnmounted(() => {
   }
 })
 
-// Start Menu handlers
-const openAbout = () => {
+const toggleStartMenu = () => {
   startMenuStore.toggleMenu({
-    app: 'about',
-    title: t('taskbar.about'),
-    description: t('startMenu.aboutDescription'),
+    app: 'start',
+    title: t('startMenu.title'),
     items: [
       {
-        id: 'bio',
-        title: t('startMenu.bio'),
-        description: t('startMenu.bioDescription'),
-        type: 'section',
+        id: 'about',
+        title: t('taskbar.about'),
+        description: t('startMenu.aboutDescription'),
+        type: 'app',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>',
+        action: () => {
+          windowsStore.openWindow('about', t('taskbar.about'), 'AboutApp', {}, '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>')
+          startMenuStore.closeMenu()
+        }
       },
       {
-        id: 'skills',
-        title: t('startMenu.skills'),
-        description: t('startMenu.skillsDescription'),
-        type: 'section',
+        id: 'projects',
+        title: t('taskbar.projects'),
+        description: t('startMenu.projectsDescription'),
+        type: 'app',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>',
+        action: () => {
+          windowsStore.openWindow('projects', t('taskbar.projects'), 'ProjectsApp', {}, '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>')
+          startMenuStore.closeMenu()
+        }
       },
       {
-        id: 'resume',
-        title: t('startMenu.resume'),
-        description: t('startMenu.resumeDescription'),
-        type: 'action',
+        id: 'experience',
+        title: t('taskbar.experience'),
+        description: t('startMenu.experienceDescription'),
+        type: 'app',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>',
+        action: () => {
+          windowsStore.openWindow('experience', t('taskbar.experience'), 'ExperienceApp', {}, '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>')
+          startMenuStore.closeMenu()
+        }
       },
-    ],
+      {
+        id: 'contact',
+        title: t('taskbar.contact'),
+        description: t('startMenu.contactDescription'),
+        type: 'app',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>',
+        action: () => {
+          windowsStore.openWindow('contact', t('taskbar.contact'), 'ContactApp', {}, '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>')
+          startMenuStore.closeMenu()
+        }
+      }
+    ]
   })
 }
 
-const openProjects = () => {
-  startMenuStore.toggleMenu({
-    app: 'projects',
-    title: t('taskbar.projects'),
-    description: t('startMenu.projectsDescription'),
-    items: [
-      {
-        id: 'web',
-        title: t('startMenu.webProjects'),
-        description: t('startMenu.webProjectsDescription'),
-        type: 'section',
-      },
-      {
-        id: 'mobile',
-        title: t('startMenu.mobileProjects'),
-        description: t('startMenu.mobileProjectsDescription'),
-        type: 'section',
-      },
-      {
-        id: 'opensource',
-        title: t('startMenu.openSource'),
-        description: t('startMenu.openSourceDescription'),
-        type: 'section',
-      },
-    ],
-  })
-}
-
-const openExperience = () => {
-  startMenuStore.toggleMenu({
-    app: 'experience',
-    title: t('taskbar.experience'),
-    description: t('startMenu.experienceDescription'),
-    items: [
-      {
-        id: 'work',
-        title: t('startMenu.workHistory'),
-        description: t('startMenu.workHistoryDescription'),
-        type: 'section',
-      },
-      {
-        id: 'education',
-        title: t('startMenu.education'),
-        description: t('startMenu.educationDescription'),
-        type: 'section',
-      },
-      {
-        id: 'certifications',
-        title: t('startMenu.certifications'),
-        description: t('startMenu.certificationsDescription'),
-        type: 'section',
-      },
-    ],
-  })
-}
-
-const openContact = () => {
-  startMenuStore.toggleMenu({
-    app: 'contact',
-    title: t('taskbar.contact'),
-    description: t('startMenu.contactDescription'),
-    items: [
-      {
-        id: 'email',
-        title: t('startMenu.email'),
-        description: 'your.email@example.com',
-        type: 'action',
-      },
-      {
-        id: 'linkedin',
-        title: t('startMenu.linkedin'),
-        description: t('startMenu.linkedinDescription'),
-        type: 'action',
-      },
-      {
-        id: 'github',
-        title: t('startMenu.github'),
-        description: t('startMenu.githubDescription'),
-        type: 'action',
-      },
-    ],
-  })
+const handleTaskbarClick = (win: WindowItem) => {
+  if (windowsStore.activeWindowId === win.id && !win.isMinimized) {
+    windowsStore.minimizeWindow(win.id)
+  } else {
+    // Restore if minimized or just focus
+    if (win.isMinimized) {
+       windowsStore.openWindow(win.id, win.title, win.component, win.props, win.icon)
+    } else {
+       windowsStore.focusWindow(win.id)
+    }
+  }
 }
 </script>
 
@@ -141,7 +95,7 @@ const openContact = () => {
   <nav class="taskbar taskbar-animated">
     <div class="taskbar-container">
       <!-- Start Button -->
-      <button class="taskbar-item start-button">
+      <button class="taskbar-item start-button" @click="toggleStartMenu" :class="{ active: startMenuStore.isOpen }">
         <svg class="taskbar-icon" viewBox="0 0 24 24" fill="currentColor">
           <path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z" />
         </svg>
@@ -149,36 +103,23 @@ const openContact = () => {
 
       <!-- Taskbar Apps -->
       <div class="taskbar-apps">
-        <button @click="openAbout" class="taskbar-item" :class="{ active: startMenuStore.activeApp === 'about' }">
-          <svg class="taskbar-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12z" />
-            <path d="M6 10h12v2H6zm0 4h8v2H6z" />
-          </svg>
-          <span class="taskbar-label">{{ t('taskbar.about') }}</span>
-        </button>
-
-        <button @click="openProjects" class="taskbar-item" :class="{ active: startMenuStore.activeApp === 'projects' }">
-          <svg class="taskbar-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4zm10 15H4V8h16v11z" />
-          </svg>
-          <span class="taskbar-label">{{ t('taskbar.projects') }}</span>
-        </button>
-
-        <button @click="openExperience" class="taskbar-item"
-          :class="{ active: startMenuStore.activeApp === 'experience' }">
-          <DotLottieVue style="width: 24px; height: 24px" autoplay loop
-            src="https://lottie.host/bdf6f19c-7c2e-4b33-ad43-866a1456da47/ui3DYKizpT.lottie" />
-          <span class="taskbar-label">{{ t('taskbar.experience') }}</span>
-        </button>
-
-        <button @click="openContact" class="taskbar-item" :class="{ active: startMenuStore.activeApp === 'contact' }">
-          <svg class="taskbar-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-          </svg>
-          <span class="taskbar-label">{{ t('taskbar.contact') }}</span>
-        </button>
+        <TransitionGroup name="taskbar-item">
+          <button 
+            v-for="win in windowsStore.openWindows" 
+            :key="win.id"
+            @click="handleTaskbarClick(win)" 
+            class="taskbar-item" 
+            :class="{ active: windowsStore.activeWindowId === win.id && !win.isMinimized, minimized: win.isMinimized }"
+          >
+            <div v-if="win.icon" class="taskbar-icon" v-html="win.icon"></div>
+            <div v-else class="taskbar-icon-placeholder">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              </svg>
+            </div>
+            <span class="taskbar-label">{{ win.title }}</span>
+          </button>
+        </TransitionGroup>
       </div>
 
       <!-- System Tray -->
@@ -209,12 +150,12 @@ const openContact = () => {
 @keyframes slideUpFade {
   0% {
     opacity: 0;
-    transform: translateY(100px);
+    transform: translateY(100px) translateX(-50%);
   }
 
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) translateX(-50%);
   }
 }
 
@@ -228,6 +169,7 @@ const openContact = () => {
   display: flex;
   justify-content: center;
   bottom: 0;
+  left: 50%;
   transform: translateX(-50%);
   z-index: 20;
   padding: 0 8px 8px 8px;
@@ -263,6 +205,7 @@ const openContact = () => {
   transition: all 0.2s ease;
   font-family: var(--font-sans);
   font-size: 14px;
+  position: relative;
 }
 
 .taskbar-item:hover {
@@ -281,6 +224,23 @@ const openContact = () => {
   box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
 }
 
+.taskbar-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 3px;
+  background: #00ff88;
+  border-radius: 2px;
+  box-shadow: 0 0 8px #00ff88;
+}
+
+.taskbar-item.minimized {
+  opacity: 0.7;
+}
+
 .start-button {
   padding: 10px 14px;
 }
@@ -296,24 +256,50 @@ const openContact = () => {
   gap: 4px;
   flex: 1;
   margin-left: 8px;
+  overflow-x: auto; /* Allow scrolling on small screens */
+  scrollbar-width: none; /* Firefox */
+}
+
+.taskbar-apps::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 
 .taskbar-icon {
   width: 20px;
   height: 20px;
   color: #00ff88;
+  flex-shrink: 0;
+}
+
+.taskbar-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.taskbar-icon-placeholder {
+  width: 20px;
+  height: 20px;
+  color: #00ff88;
+  flex-shrink: 0;
+}
+
+.taskbar-icon-placeholder svg {
+  width: 100%;
+  height: 100%;
 }
 
 .taskbar-icon-sm {
   width: 16px;
   height: 16px;
   color: #9ba9b4;
+  flex-shrink: 0;
 }
 
 .taskbar-label {
   font-size: 13px;
   font-weight: 500;
   color: #e0e8e0;
+  white-space: nowrap;
 }
 
 .taskbar-tray {
@@ -323,6 +309,7 @@ const openContact = () => {
   margin-left: auto;
   padding-left: 12px;
   border-left: 1px solid rgba(0, 255, 136, 0.2);
+  flex-shrink: 0;
 }
 
 .tray-item {
@@ -336,10 +323,61 @@ const openContact = () => {
   padding: 4px 12px;
   font-family: var(--font-mono);
   color: #00ff88;
+  white-space: nowrap;
 }
 
 .clock-time {
   font-size: 13px;
   font-weight: 600;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .taskbar {
+    padding: 0;
+    bottom: 0;
+  }
+
+  .taskbar-container {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    width: 100%;
+    padding: 4px 8px;
+  }
+
+  .taskbar-label {
+    display: none; /* Hide labels on mobile to save space */
+  }
+
+  .taskbar-item {
+    padding: 8px;
+  }
+  
+  .taskbar-tray {
+    gap: 4px;
+    padding-left: 8px;
+  }
+  
+  .tray-item {
+    display: none; /* Hide extra tray items on mobile */
+  }
+}
+
+
+/* Transitions */
+.taskbar-item-enter-active,
+.taskbar-item-leave-active {
+  transition: all 0.3s ease;
+}
+
+.taskbar-item-enter-from,
+.taskbar-item-leave-to {
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  width: 0;
+  padding: 0;
+  margin: 0;
 }
 </style>

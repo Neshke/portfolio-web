@@ -16,6 +16,7 @@
     "contact": "Contact"
   },
   "startMenu": {
+    "title": "Start",
     "comingSoon": "Coming Soon",
     "contentWillAppear": "Content will appear here when you interact with items",
     "profile": "Profile",
@@ -47,6 +48,76 @@
     "linkedin": "LinkedIn",
     "linkedinDescription": "Connect on LinkedIn",
     "github": "GitHub",
-    "githubDescription": "View my code and projects"
+    "githubDescription": "View my code and projects",
+    "recycleBin": "Recycle Bin"
+  },
+  "about": {
+    "role": "Full Stack Developer",
+    "bioText": "I am a passionate developer with a focus on building modern, responsive, and user-friendly web applications. With a strong background in both frontend and backend technologies, I enjoy solving complex problems and creating efficient solutions."
+  },
+  "contact": {
+    "subtitle": "Get in touch for collaborations or just to say hi.",
+    "labels": {
+      "email": "Email",
+      "social": "Social",
+      "location": "Location",
+      "name": "Name",
+      "message": "Message"
+    },
+    "placeholders": {
+      "name": "Your Name",
+      "email": "your@email.com",
+      "message": "How can I help you?"
+    },
+    "buttons": {
+      "send": "Send Message",
+      "sending": "Sending..."
+    },
+    "success": "Message sent successfully!"
+  },
+  "experience": {
+    "subtitle": "My professional journey and career milestones.",
+    "items": {
+      "item1": {
+        "role": "Senior Frontend Developer",
+        "company": "Tech Solutions Inc.",
+        "period": "2021 - Present",
+        "description": "Leading the frontend team in building scalable web applications using Vue 3 and TypeScript. Implemented CI/CD pipelines and improved site performance by 40%."
+      },
+      "item2": {
+        "role": "Full Stack Developer",
+        "company": "Digital Innovations",
+        "period": "2019 - 2021",
+        "description": "Developed and maintained multiple client projects. Worked with React, Node.js, and AWS. Collaborated with designers to implement pixel-perfect UIs."
+      },
+      "item3": {
+        "role": "Junior Web Developer",
+        "company": "Creative Agency",
+        "period": "2018 - 2019",
+        "description": "Assisted in the development of marketing websites and landing pages. Gained experience in HTML, CSS, JavaScript, and PHP."
+      }
+    }
+  },
+  "projects": {
+    "subtitle": "A collection of my recent work and experiments.",
+    "viewProject": "View Project",
+    "items": {
+      "item1": {
+        "title": "E-Commerce Platform",
+        "description": "A full-featured online store with cart, checkout, and admin dashboard."
+      },
+      "item2": {
+        "title": "Task Management App",
+        "description": "Collaborative task manager with real-time updates and team features."
+      },
+      "item3": {
+        "title": "Weather Dashboard",
+        "description": "Real-time weather tracking application with interactive maps."
+      },
+      "item4": {
+        "title": "Portfolio Website",
+        "description": "Personal portfolio website with Matrix-Windows theme."
+      }
+    }
   }
 }

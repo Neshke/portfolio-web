@@ -16,6 +16,7 @@
     "contact": "Kontakt"
   },
   "startMenu": {
+    "title": "Start",
     "comingSoon": "Uskoro",
     "contentWillAppear": "Sadržaj će se pojaviti ovde kada interagujete sa stavkama",
     "profile": "Profil",
@@ -47,6 +48,76 @@
     "linkedin": "LinkedIn",
     "linkedinDescription": "Povežite se na LinkedIn-u",
     "github": "GitHub",
-    "githubDescription": "Pogledajte moj kod i projekte"
+    "githubDescription": "Pogledajte moj kod i projekte",
+    "recycleBin": "Kanta za otpatke"
+  },
+  "about": {
+    "role": "Full Stack Programer",
+    "bioText": "Ja sam strastveni programer sa fokusom na izgradnju modernih, responzivnih i korisnički orijentisanih web aplikacija. Sa jakim iskustvom u frontend i backend tehnologijama, uživam u rešavanju kompleksnih problema i kreiranju efikasnih rešenja."
+  },
+  "contact": {
+    "subtitle": "Javite se za saradnju ili samo da kažete zdravo.",
+    "labels": {
+      "email": "Email",
+      "social": "Društvene mreže",
+      "location": "Lokacija",
+      "name": "Ime",
+      "message": "Poruka"
+    },
+    "placeholders": {
+      "name": "Vaše Ime",
+      "email": "vas@email.com",
+      "message": "Kako mogu da vam pomognem?"
+    },
+    "buttons": {
+      "send": "Pošalji Poruku",
+      "sending": "Slanje..."
+    },
+    "success": "Poruka uspešno poslata!"
+  },
+  "experience": {
+    "subtitle": "Moje profesionalno putovanje i karijerni uspesi.",
+    "items": {
+      "item1": {
+        "role": "Senior Frontend Programer",
+        "company": "Tech Solutions Inc.",
+        "period": "2021 - Danas",
+        "description": "Vođenje frontend tima u izgradnji skalabilnih web aplikacija koristeći Vue 3 i TypeScript. Implementacija CI/CD pajplajna i poboljšanje performansi sajta za 40%."
+      },
+      "item2": {
+        "role": "Full Stack Programer",
+        "company": "Digital Innovations",
+        "period": "2019 - 2021",
+        "description": "Razvoj i održavanje više klijentskih projekata. Rad sa React, Node.js i AWS. Saradnja sa dizajnerima na implementaciji pixel-perfect UI-a."
+      },
+      "item3": {
+        "role": "Junior Web Programer",
+        "company": "Creative Agency",
+        "period": "2018 - 2019",
+        "description": "Pomoć u razvoju marketinških sajtova i landing stranica. Sticanje iskustva u HTML, CSS, JavaScript i PHP."
+      }
+    }
+  },
+  "projects": {
+    "subtitle": "Kolekcija mojih nedavnih radova i eksperimenata.",
+    "viewProject": "Pogledaj Projekat",
+    "items": {
+      "item1": {
+        "title": "E-Commerce Platforma",
+        "description": "Potpuno funkcionalna online prodavnica sa korpom, naplatom i admin panelom."
+      },
+      "item2": {
+        "title": "Aplikacija za Upravljanje Zadacima",
+        "description": "Kolaborativni menadžer zadataka sa ažuriranjima u realnom vremenu i timskim funkcijama."
+      },
+      "item3": {
+        "title": "Vremenska Prognoza",
+        "description": "Aplikacija za praćenje vremena u realnom vremenu sa interaktivnim mapama."
+      },
+      "item4": {
+        "title": "Portfolio Websajt",
+        "description": "Lični portfolio websajt sa Matrix-Windows temom."
+      }
+    }
   }
 }

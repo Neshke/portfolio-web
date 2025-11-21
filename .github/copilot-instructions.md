@@ -4,6 +4,8 @@
 
 This is a Vue 3 + TypeScript portfolio website built with Vite. The project follows a clean architecture pattern with a focus on maintainability and scalability.
 
+**Theme Concept:** "Matrix-Windows" - A professional desktop environment simulation combining Windows 11 UX patterns with Matrix cyberpunk aesthetics.
+
 ## Tech Stack
 
 ### Core
@@ -181,6 +183,14 @@ src/
    - **Production:** `npm run build` automatically runs `build:css` before building
    - **Input:** `src/assets/main.css` contains theme configuration
    - **Output:** `src/assets/output.css` is generated and imported in `main.ts` (gitignored)
+
+### Desktop Environment Metaphor
+
+1. **Desktop First:** The `HomeView` acts as a desktop environment, not a traditional scrolling web page.
+2. **Window Management:** Content should open in "windows" or overlays (managed by `StartMenu` store currently) rather than navigating to new routes where possible.
+3. **Icons:** Use SVG icons for desktop shortcuts to maintain crispness and the Windows aesthetic.
+4. **Widgets:** Use glassmorphism panels for desktop widgets (e.g., Profile summary).
+5. **No Video Backgrounds:** Use professional, subtle gradients or CSS patterns to maintain performance and readability.
 
 ### State Management (Pinia)
 
