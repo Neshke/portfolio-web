@@ -112,9 +112,9 @@ const handleTaskbarClick = (win: WindowItem) => {
           enter-from-class="opacity-0 translate-y-5 scale-75 w-0 p-0 m-0"
           leave-to-class="opacity-0 translate-y-5 scale-75 w-0 p-0 m-0">
           <button v-for="win in windowsStore.openWindows" :key="win.id" @click="handleTaskbarClick(win)"
-            class="flex items-center gap-2 bg-transparent border border-transparent rounded-lg text-text-base cursor-pointer transition-all duration-200 font-sans text-sm relative hover:bg-primary/10 hover:border-primary/30 hover:shadow-glow-sm active:scale-95 p-2 md:px-4"
+            class="flex items-center gap-2 bg-transparent border border-transparent rounded-lg text-text-base cursor-pointer transition-all duration-200 font-sans text-sm relative hover:bg-white/5 hover:border-white/10 active:scale-95 p-2 md:px-4"
             :class="{
-              'bg-primary/20 border-primary/40 shadow-glow after:content-[\'\'] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-5 after:h-[3px] after:bg-primary after:rounded-full after:shadow-[0_0_8px_rgba(59,130,246,0.8)]': windowsStore.activeWindowId === win.id && !win.isMinimized,
+              'bg-white/5 border-white/10 after:content-[\'\'] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-5 after:h-[3px] after:bg-primary after:rounded-full after:shadow-[0_0_8px_rgba(59,130,246,0.8)]': windowsStore.activeWindowId === win.id && !win.isMinimized,
               'opacity-70': win.isMinimized
             }">
             <div v-if="win.icon" class="w-5 h-5 text-primary shrink-0" v-html="win.icon"></div>
