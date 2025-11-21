@@ -9,7 +9,7 @@ const skills = [
 </script>
 
 <template>
-  <div class="p-6 text-text-base h-full overflow-y-auto">
+  <div class="p-6 text-text-base">
     <div
       class="flex items-center gap-6 mb-8 pb-6 border-b border-primary/20 flex-col text-center sm:flex-row sm:text-left">
       <img src="/src/assets/images/profile-picture.jpg" alt="Profile"

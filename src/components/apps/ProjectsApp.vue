@@ -41,9 +41,9 @@ const projects = computed(() => [
 </script>
 
 <template>
-  <div class="p-6 text-text-base h-full overflow-y-auto">
+  <div class="p-6 text-text-base">
     <div class="mb-8 border-b border-primary/20 pb-4">
-      <h1 class="font-display text-2xl text-primary m-0 mb-2">{{ t('startMenu.projects') }}</h1>
+      <h1 class="font-display text-2xl text-primary m-0 mb-2">{{ t('taskbar.projects') }}</h1>
       <p class="text-sm text-text-secondary m-0">{{ t('projects.subtitle') }}</p>
     </div>
 
