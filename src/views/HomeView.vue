@@ -191,6 +191,9 @@ const getComponent = (name: string) => {
           :initial-x="win.position.x" :initial-y="win.position.y" :initial-width="win.size.width"
           :initial-height="win.size.height" :z-index="win.zIndex" :is-active="windowsStore.activeWindowId === win.id"
           :is-maximized="win.isMaximized" v-show="!win.isMinimized">
+          <template #icon v-if="win.icon">
+            <div v-html="win.icon" class="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full"></div>
+          </template>
           <component :is="getComponent(win.component)" v-bind="win.props" />
         </DesktopWindow>
       </TransitionGroup>
