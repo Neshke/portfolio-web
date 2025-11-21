@@ -51,7 +51,7 @@ onUnmounted(() => {
   <transition enter-active-class="transition-opacity duration-300 ease-out"
     leave-active-class="transition-opacity duration-300 ease-in" enter-from-class="opacity-0"
     leave-to-class="opacity-0">
-    <div v-if="startMenuStore.isOpen" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 bottom-14 md:bottom-0"
+    <div v-if="startMenuStore.isOpen" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 bottom-16 md:bottom-0"
       @click="startMenuStore.closeMenu"></div>
   </transition>
 
@@ -60,7 +60,7 @@ onUnmounted(() => {
     leave-active-class="transition-all duration-250 ease-in" enter-from-class="opacity-0 -translate-x-1/2 translate-y-8"
     leave-to-class="opacity-0 -translate-x-1/2 translate-y-5">
     <div v-if="startMenuStore.isOpen"
-      class="fixed bottom-14 left-0 right-0 w-full max-w-full max-h-[calc(100vh-56px)] bg-background-elevated/98 backdrop-blur-2xl border border-primary/30 rounded-none border-x-0 border-b-0 shadow-[0_8px_32px_rgba(0,0,0,0.6)] shadow-primary/20 z-50 overflow-hidden flex flex-col md:bottom-20 md:left-1/2 md:-translate-x-1/2 md:w-[90%] md:max-w-2xl md:max-h-[600px] md:rounded-2xl md:border">
+      class="fixed bottom-16 left-0 right-0 w-full max-w-full max-h-[calc(100vh-64px)] bg-background-elevated/98 backdrop-blur-2xl border border-primary/30 rounded-none border-x-0 border-b-0 shadow-[0_8px_32px_rgba(0,0,0,0.6)] shadow-primary/20 z-50 overflow-hidden flex flex-col md:bottom-20 md:left-1/2 md:-translate-x-1/2 md:w-[90%] md:max-w-2xl md:max-h-[600px] md:rounded-2xl md:border">
       <!-- Menu Header -->
       <div class="flex items-center justify-between bg-primary/5 border-b border-primary/20 px-5 py-4 md:px-6 md:py-5">
         <div class="flex items-center gap-4 flex-1">
@@ -85,7 +85,7 @@ onUnmounted(() => {
       </div>
 
       <!-- Divider -->
-      <div class="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+      <div class="h-px bg-linear-to-r from-transparent via-primary/30 to-transparent"></div>
 
       <!-- Menu Content -->
       <div

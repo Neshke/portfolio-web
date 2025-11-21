@@ -95,7 +95,7 @@ const handleTaskbarClick = (win: WindowItem) => {
   <nav
     class="absolute bottom-0 left-0 right-0 mx-auto z-20 w-full max-w-7xl flex justify-center animate-[slideUpFade_0.8s_ease-out_1.2s_both] p-0 sm:p-2">
     <div
-      class="flex items-center gap-1 h-14 bg-background-elevated/85 backdrop-blur-xl border border-primary/20 px-3 shadow-[0_8px_32px_rgba(0,0,0,0.4)] shadow-primary/10 w-full rounded-none border-x-0 border-b-0 sm:rounded-xl sm:border sm:w-auto">
+      class="flex items-center gap-1 h-16 bg-background-elevated/85 backdrop-blur-xl border border-primary/20 px-3 shadow-[0_8px_32px_rgba(0,0,0,0.4)] shadow-primary/10 w-full rounded-none border-x-0 border-b-0 sm:rounded-xl sm:border sm:w-auto">
       <!-- Start Button -->
       <button
         class="flex items-center justify-center p-2.5 bg-transparent border border-transparent rounded-lg text-text-base cursor-pointer transition-all duration-200 hover:bg-primary/25 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] active:scale-95"
