@@ -25,9 +25,12 @@ export const useWindowsStore = defineStore('windows', () => {
 
   // Actions
   function openWindow(id: string, title: string, component: string = 'default', props: Record<string, any> = {}, icon?: string) {
-    // Minimize all other windows to ensure single window mode ONLY on mobile (small screens)
-    // Using 640px (Tailwind sm) as the breakpoint for mobile behavior
-    if (window.innerWidth < 640) {
+    // Minimize all other windows to ensure single window mode ONLY on mobile devices
+    // Using 768px (tablet/md) as the breakpoint to match the DesktopWindow component's mobile logic
+    // We use matchMedia for more accurate media query matching
+    const isMobile = window.matchMedia('(max-width: 767px)').matches
+
+    if (isMobile) {
       windows.value.forEach((w) => {
         if (w.id !== id) {
           w.isMinimized = true
