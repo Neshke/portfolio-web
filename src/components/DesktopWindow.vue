@@ -79,7 +79,7 @@ const windowStyle = computed((): CSSProperties => {
       position: 'fixed'
     }
   }
-  
+
   return {
     top: `${y.value}px`,
     left: `${x.value}px`,
@@ -96,23 +96,23 @@ const handleMouseDown = () => {
 
 const startResize = (direction: string, event: MouseEvent) => {
   if (props.isMaximized || isMobile.value) return
-  
+
   event.preventDefault()
   event.stopPropagation()
   isResizing.value = true
   windowsStore.focusWindow(props.id)
-  
+
   const startX = event.clientX
   const startY = event.clientY
   const startWidth = width.value
   const startHeight = height.value
   const startLeft = x.value
   const startTop = y.value
-  
+
   const onMouseMove = (e: MouseEvent) => {
     const deltaX = e.clientX - startX
     const deltaY = e.clientY - startY
-    
+
     if (direction.includes('e')) {
       width.value = Math.max(300, startWidth + deltaX)
     }
@@ -134,7 +134,7 @@ const startResize = (direction: string, event: MouseEvent) => {
       }
     }
   }
-  
+
   const onMouseUp = () => {
     isResizing.value = false
     window.removeEventListener('mousemove', onMouseMove)
@@ -142,20 +142,15 @@ const startResize = (direction: string, event: MouseEvent) => {
     windowsStore.updateWindowSize(props.id, width.value, height.value)
     windowsStore.updateWindowPosition(props.id, x.value, y.value)
   }
-  
+
   window.addEventListener('mousemove', onMouseMove)
   window.addEventListener('mouseup', onMouseUp)
 }
 </script>
 
 <template>
-  <div 
-    ref="windowRef"
-    class="desktop-window"
-    :class="{ 'is-active': isActive, 'is-maximized': isMaximized }"
-    :style="windowStyle"
-    @mousedown="handleMouseDown"
-  >
+  <div ref="windowRef" class="desktop-window" :class="{ 'is-active': isActive, 'is-maximized': isMaximized }"
+    :style="windowStyle" @mousedown="handleMouseDown">
     <!-- Resize Handles -->
     <template v-if="!isMaximized && !isMobile">
       <div class="resize-handle n" @mousedown="startResize('n', $event)"></div>
@@ -180,7 +175,7 @@ const startResize = (direction: string, event: MouseEvent) => {
         </div>
         <span>{{ title }}</span>
       </div>
-      
+
       <div class="window-controls">
         <button class="control-btn minimize" @click.stop="windowsStore.minimizeWindow(props.id)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -221,7 +216,7 @@ const startResize = (direction: string, event: MouseEvent) => {
   backdrop-filter: blur(12px);
   border: 1px solid rgba(0, 255, 136, 0.3);
   border-radius: 8px;
-  box-shadow: 
+  box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(0, 255, 136, 0.1);
   display: flex;
@@ -234,7 +229,7 @@ const startResize = (direction: string, event: MouseEvent) => {
 
 .desktop-window.is-active {
   border-color: rgba(0, 255, 136, 0.6);
-  box-shadow: 
+  box-shadow:
     0 15px 40px rgba(0, 0, 0, 0.6),
     0 0 0 1px rgba(0, 255, 136, 0.3);
 }
@@ -351,13 +346,71 @@ const startResize = (direction: string, event: MouseEvent) => {
   z-index: 10;
 }
 
-.resize-handle.n { top: -4px; left: 0; right: 0; height: 8px; cursor: ns-resize; }
-.resize-handle.s { bottom: -4px; left: 0; right: 0; height: 8px; cursor: ns-resize; }
-.resize-handle.e { top: 0; bottom: 0; right: -4px; width: 8px; cursor: ew-resize; }
-.resize-handle.w { top: 0; bottom: 0; left: -4px; width: 8px; cursor: ew-resize; }
+.resize-handle.n {
+  top: -4px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  cursor: ns-resize;
+}
 
-.resize-handle.ne { top: -4px; right: -4px; width: 12px; height: 12px; cursor: nesw-resize; z-index: 11; }
-.resize-handle.nw { top: -4px; left: -4px; width: 12px; height: 12px; cursor: nwse-resize; z-index: 11; }
-.resize-handle.se { bottom: -4px; right: -4px; width: 12px; height: 12px; cursor: nwse-resize; z-index: 11; }
-.resize-handle.sw { bottom: -4px; left: -4px; width: 12px; height: 12px; cursor: nesw-resize; z-index: 11; }
+.resize-handle.s {
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  cursor: ns-resize;
+}
+
+.resize-handle.e {
+  top: 0;
+  bottom: 0;
+  right: -4px;
+  width: 8px;
+  cursor: ew-resize;
+}
+
+.resize-handle.w {
+  top: 0;
+  bottom: 0;
+  left: -4px;
+  width: 8px;
+  cursor: ew-resize;
+}
+
+.resize-handle.ne {
+  top: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
+  cursor: nesw-resize;
+  z-index: 11;
+}
+
+.resize-handle.nw {
+  top: -4px;
+  left: -4px;
+  width: 12px;
+  height: 12px;
+  cursor: nwse-resize;
+  z-index: 11;
+}
+
+.resize-handle.se {
+  bottom: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
+  cursor: nwse-resize;
+  z-index: 11;
+}
+
+.resize-handle.sw {
+  bottom: -4px;
+  left: -4px;
+  width: 12px;
+  height: 12px;
+  cursor: nesw-resize;
+  z-index: 11;
+}
 </style>

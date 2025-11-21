@@ -180,11 +180,11 @@ const skills = [
     flex-direction: column;
     text-align: center;
   }
-  
+
   .section-title {
     justify-content: center;
   }
-  
+
   .section-title::before {
     display: none;
   }

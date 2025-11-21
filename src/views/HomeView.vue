@@ -56,7 +56,7 @@ const getComponent = (name: string) => {
   <div class="desktop-environment">
     <!-- Desktop Background -->
     <div class="desktop-wallpaper"></div>
-    
+
     <!-- Desktop Icons Grid -->
     <div class="desktop-grid">
       <!-- My Computer (About) -->
@@ -107,10 +107,14 @@ const getComponent = (name: string) => {
       <button class="desktop-icon" @click="openGithub">
         <div class="icon-wrapper">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+            </path>
           </svg>
           <div class="shortcut-arrow">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+            </svg>
           </div>
         </div>
         <span class="icon-label">GitHub</span>
@@ -144,20 +148,10 @@ const getComponent = (name: string) => {
     <!-- Windows Layer -->
     <div class="windows-layer">
       <TransitionGroup name="window-minimize">
-        <DesktopWindow
-          v-for="win in windowsStore.openWindows"
-          :key="win.id"
-          :id="win.id"
-          :title="win.title"
-          :initial-x="win.position.x"
-          :initial-y="win.position.y"
-          :initial-width="win.size.width"
-          :initial-height="win.size.height"
-          :z-index="win.zIndex"
-          :is-active="windowsStore.activeWindowId === win.id"
-          :is-maximized="win.isMaximized"
-          v-show="!win.isMinimized"
-        >
+        <DesktopWindow v-for="win in windowsStore.openWindows" :key="win.id" :id="win.id" :title="win.title"
+          :initial-x="win.position.x" :initial-y="win.position.y" :initial-width="win.size.width"
+          :initial-height="win.size.height" :z-index="win.zIndex" :is-active="windowsStore.activeWindowId === win.id"
+          :is-maximized="win.isMaximized" v-show="!win.isMinimized">
           <component :is="getComponent(win.component)" v-bind="win.props" />
         </DesktopWindow>
       </TransitionGroup>
@@ -196,9 +190,11 @@ const getComponent = (name: string) => {
   align-content: flex-start;
   gap: 16px;
   padding: 24px;
-  height: calc(100% - 60px); /* Minus taskbar */
+  height: calc(100% - 60px);
+  /* Minus taskbar */
   width: 100%;
-  max-width: 400px; /* Limit width for column wrapping */
+  max-width: 400px;
+  /* Limit width for column wrapping */
 }
 
 .desktop-icon {
@@ -220,7 +216,8 @@ const getComponent = (name: string) => {
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-.desktop-icon:active, .desktop-icon:focus {
+.desktop-icon:active,
+.desktop-icon:focus {
   background: rgba(0, 255, 136, 0.1);
   border-color: rgba(0, 255, 136, 0.2);
 }
@@ -233,7 +230,7 @@ const getComponent = (name: string) => {
   align-items: center;
   justify-content: center;
   color: #00ff88;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
 }
 
 .icon-wrapper svg {
@@ -262,7 +259,7 @@ const getComponent = (name: string) => {
   font-size: 12px;
   color: #e0e8e0;
   text-align: center;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
   line-height: 1.2;
   max-width: 100%;
   overflow: hidden;
@@ -319,8 +316,15 @@ const getComponent = (name: string) => {
 }
 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateX(20px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Mobile Adjustments */
@@ -331,7 +335,7 @@ const getComponent = (name: string) => {
     max-width: 100%;
     padding: 16px;
   }
-  
+
   .desktop-widget-container {
     top: auto;
     bottom: 100px;

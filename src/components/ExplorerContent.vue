@@ -19,14 +19,9 @@ defineProps<{
 <template>
   <div class="explorer-content">
     <p v-if="description" class="explorer-description">{{ description }}</p>
-    
+
     <div class="explorer-items">
-      <button 
-        v-for="item in items" 
-        :key="item.id" 
-        class="explorer-item"
-        @click="item.action ? item.action() : null"
-      >
+      <button v-for="item in items" :key="item.id" class="explorer-item" @click="item.action ? item.action() : null">
         <div v-if="item.icon" class="explorer-item-icon" v-html="item.icon"></div>
         <div v-else class="explorer-item-icon-placeholder">
           <svg viewBox="0 0 24 24" fill="currentColor">

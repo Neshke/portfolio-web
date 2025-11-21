@@ -33,7 +33,7 @@ export const useWindowsStore = defineStore('windows', () => {
     })
 
     const existingWindow = getWindowById(id)
-    
+
     if (existingWindow) {
       if (existingWindow.isMinimized) {
         existingWindow.isMinimized = false
@@ -73,7 +73,7 @@ export const useWindowsStore = defineStore('windows', () => {
         activeWindowId.value = null
         // Focus the next top-most window
         if (windows.value.length > 0) {
-          const topWindow = windows.value.reduce((prev, current) => 
+          const topWindow = windows.value.reduce((prev, current) =>
             (prev.zIndex > current.zIndex) ? prev : current
           )
           activeWindowId.value = topWindow.id

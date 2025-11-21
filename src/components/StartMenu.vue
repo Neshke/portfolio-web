@@ -409,13 +409,15 @@ onUnmounted(() => {
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .start-menu-backdrop {
-    bottom: 56px; /* Match taskbar height */
+    bottom: 56px;
+    /* Match taskbar height */
     backdrop-filter: blur(8px);
     z-index: 9998;
   }
 
   .start-menu-container {
-    bottom: 56px; /* Match taskbar height */
+    bottom: 56px;
+    /* Match taskbar height */
     left: 0;
     right: 0;
     transform: none;

@@ -82,9 +82,9 @@ const handleTaskbarClick = (win: WindowItem) => {
   } else {
     // Restore if minimized or just focus
     if (win.isMinimized) {
-       windowsStore.openWindow(win.id, win.title, win.component, win.props, win.icon)
+      windowsStore.openWindow(win.id, win.title, win.component, win.props, win.icon)
     } else {
-       windowsStore.focusWindow(win.id)
+      windowsStore.focusWindow(win.id)
     }
   }
 }
@@ -104,13 +104,9 @@ const handleTaskbarClick = (win: WindowItem) => {
       <!-- Taskbar Apps -->
       <div class="taskbar-apps">
         <TransitionGroup name="taskbar-item">
-          <button 
-            v-for="win in windowsStore.openWindows" 
-            :key="win.id"
-            @click="handleTaskbarClick(win)" 
-            class="taskbar-item" 
-            :class="{ active: windowsStore.activeWindowId === win.id && !win.isMinimized, minimized: win.isMinimized }"
-          >
+          <button v-for="win in windowsStore.openWindows" :key="win.id" @click="handleTaskbarClick(win)"
+            class="taskbar-item"
+            :class="{ active: windowsStore.activeWindowId === win.id && !win.isMinimized, minimized: win.isMinimized }">
             <div v-if="win.icon" class="taskbar-icon" v-html="win.icon"></div>
             <div v-else class="taskbar-icon-placeholder">
               <svg viewBox="0 0 24 24" fill="currentColor">
@@ -256,12 +252,15 @@ const handleTaskbarClick = (win: WindowItem) => {
   gap: 4px;
   flex: 1;
   margin-left: 8px;
-  overflow-x: auto; /* Allow scrolling on small screens */
-  scrollbar-width: none; /* Firefox */
+  overflow-x: auto;
+  /* Allow scrolling on small screens */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .taskbar-apps::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  display: none;
+  /* Chrome/Safari */
 }
 
 .taskbar-icon {
@@ -348,20 +347,22 @@ const handleTaskbarClick = (win: WindowItem) => {
   }
 
   .taskbar-label {
-    display: none; /* Hide labels on mobile to save space */
+    display: none;
+    /* Hide labels on mobile to save space */
   }
 
   .taskbar-item {
     padding: 8px;
   }
-  
+
   .taskbar-tray {
     gap: 4px;
     padding-left: 8px;
   }
-  
+
   .tray-item {
-    display: none; /* Hide extra tray items on mobile */
+    display: none;
+    /* Hide extra tray items on mobile */
   }
 }
 

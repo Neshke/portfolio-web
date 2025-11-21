@@ -15,13 +15,13 @@ const isSent = ref(false)
 
 const submitForm = async () => {
   isSubmitting.value = true
-  
+
   // Simulate API call
   await new Promise(resolve => setTimeout(resolve, 1500))
-  
+
   isSubmitting.value = false
   isSent.value = true
-  
+
   // Reset form after delay
   setTimeout(() => {
     isSent.value = false
@@ -51,11 +51,13 @@ const submitForm = async () => {
             <p>contact@example.com</p>
           </div>
         </div>
-        
+
         <div class="info-item">
           <div class="icon-box">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+              <path
+                d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+              </path>
             </svg>
           </div>
           <div>
@@ -90,35 +92,19 @@ const submitForm = async () => {
         <template v-else>
           <div class="form-group">
             <label for="name">{{ t('contact.labels.name') }}</label>
-            <input 
-              type="text" 
-              id="name" 
-              v-model="form.name" 
-              required 
-              :placeholder="t('contact.placeholders.name')"
-            />
+            <input type="text" id="name" v-model="form.name" required :placeholder="t('contact.placeholders.name')" />
           </div>
 
           <div class="form-group">
             <label for="email">{{ t('contact.labels.email') }}</label>
-            <input 
-              type="email" 
-              id="email" 
-              v-model="form.email" 
-              required 
-              :placeholder="t('contact.placeholders.email')"
-            />
+            <input type="email" id="email" v-model="form.email" required
+              :placeholder="t('contact.placeholders.email')" />
           </div>
 
           <div class="form-group">
             <label for="message">{{ t('contact.labels.message') }}</label>
-            <textarea 
-              id="message" 
-              v-model="form.message" 
-              required 
-              :placeholder="t('contact.placeholders.message')"
-              rows="4"
-            ></textarea>
+            <textarea id="message" v-model="form.message" required :placeholder="t('contact.placeholders.message')"
+              rows="4"></textarea>
           </div>
 
           <button type="submit" class="submit-btn" :disabled="isSubmitting">
