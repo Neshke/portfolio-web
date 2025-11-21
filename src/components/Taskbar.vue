@@ -93,7 +93,7 @@ const handleTaskbarClick = (win: WindowItem) => {
 <template>
   <!-- Windows Taskbar -->
   <nav
-    class="absolute bottom-0 left-0 right-0 mx-auto z-20 w-full max-w-7xl flex justify-center animate-[slideUpFade_0.8s_ease-out_1.2s_both] p-0 sm:p-2">
+    class="absolute bottom-0 left-0 right-0 mx-auto z-[9000] w-full max-w-7xl flex justify-center animate-[slideUpFade_0.8s_ease-out_1.2s_both] p-0 sm:p-2">
     <div
       class="flex items-center gap-1 h-16 bg-background-elevated/85 backdrop-blur-xl border border-primary/20 px-3 shadow-[0_8px_32px_rgba(0,0,0,0.4)] shadow-primary/10 w-full rounded-none border-x-0 border-b-0 sm:rounded-xl sm:border sm:w-auto">
       <!-- Start Button -->
@@ -114,7 +114,7 @@ const handleTaskbarClick = (win: WindowItem) => {
           <button v-for="win in windowsStore.openWindows" :key="win.id" @click="handleTaskbarClick(win)"
             class="flex items-center gap-2 bg-transparent border border-transparent rounded-lg text-text-base cursor-pointer transition-all duration-200 font-sans text-sm relative hover:bg-white/5 hover:border-white/10 active:scale-95 p-2 md:px-4"
             :class="{
-              'bg-white/5 border-white/10 after:content-[\'\'] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-5 after:h-[3px] after:bg-primary after:rounded-full after:shadow-[0_0_8px_rgba(59,130,246,0.8)]': windowsStore.activeWindowId === win.id && !win.isMinimized,
+              'bg-white/5 border-white/10 after:content-[\'\'] after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-5 after:h-[3px] after:bg-primary after:rounded-full after:shadow-[0_0_8px_rgba(59,130,246,0.8)]': windowsStore.activeWindowId === win.id && !win.isMinimized,
               'opacity-70': win.isMinimized
             }">
             <div v-if="win.icon" class="w-5 h-5 text-primary shrink-0" v-html="win.icon"></div>
