@@ -59,7 +59,7 @@ onUnmounted(() => {
       :enter-from-class="props.direction === 'up' ? 'opacity-0 translate-y-2.5' : 'opacity-0 -translate-y-2.5'"
       :leave-to-class="props.direction === 'up' ? 'opacity-0 translate-y-1' : 'opacity-0 -translate-y-1'">
       <div v-if="isDropdownOpen"
-        class="absolute right-0 min-w-40 bg-background-elevated/98 backdrop-blur-2xl border border-primary/30 rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.6)] shadow-primary/20 overflow-hidden z-100"
+        class="absolute right-0 min-w-40 bg-background-elevated/98 backdrop-blur-2xl border border-primary/30 rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.6)] shadow-primary/20 overflow-hidden z-[9999]"
         :class="props.direction === 'up' ? 'bottom-[calc(100%+12px)]' : 'top-[calc(100%+12px)]'">
         <button v-for="lang in languages" :key="lang.code" @click="selectLanguage(lang.code)"
           class="flex items-center gap-3 w-full px-4 py-3 bg-transparent border-none text-text-base cursor-pointer transition-all duration-200 font-sans text-left hover:bg-primary/10 border-b border-primary/10 last:border-b-0"

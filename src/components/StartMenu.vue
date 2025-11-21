@@ -2,7 +2,6 @@
 import { onMounted, onUnmounted } from 'vue'
 import { useStartMenuStore } from '@/store/startMenu'
 import { useI18n } from 'vue-i18n'
-import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
 
 const startMenuStore = useStartMenuStore()
 const { t } = useI18n()
@@ -78,9 +77,6 @@ onUnmounted(() => {
               {{ startMenuStore.currentDescription }}
             </p>
           </div>
-        </div>
-        <div class="shrink-0 flex md:hidden">
-          <LanguageSwitcher direction="down" />
         </div>
       </div>
 
