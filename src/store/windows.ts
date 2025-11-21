@@ -25,12 +25,14 @@ export const useWindowsStore = defineStore('windows', () => {
 
   // Actions
   function openWindow(id: string, title: string, component: string = 'default', props: Record<string, any> = {}, icon?: string) {
-    // Minimize all other windows to ensure single window mode
-    windows.value.forEach((w) => {
-      if (w.id !== id) {
-        w.isMinimized = true
-      }
-    })
+    // Minimize all other windows to ensure single window mode ONLY on mobile
+    if (window.innerWidth < 768) {
+      windows.value.forEach((w) => {
+        if (w.id !== id) {
+          w.isMinimized = true
+        }
+      })
+    }
 
     const existingWindow = getWindowById(id)
 
