@@ -394,7 +394,7 @@ font - display // Orbitron - For futuristic titles
         John Doe
       </h1>
 
-      <p class="text-xl font-sans text-muted mb-8">Full Stack Developer</p>
+      <p class="text-xl font-sans text-muted mb-8">Software engineer</p>
 
       <button class="btn-matrix-solid">View Projects</button>
     </div>

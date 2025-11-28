@@ -9,6 +9,7 @@ import AboutApp from '@/components/apps/AboutApp.vue'
 import ProjectsApp from '@/components/apps/ProjectsApp.vue'
 import ExperienceApp from '@/components/apps/ExperienceApp.vue'
 import ContactApp from '@/components/apps/ContactApp.vue'
+import MatrixBackground from '@/components/MatrixBackground.vue'
 
 const { t } = useI18n()
 const windowsStore = useWindowsStore()
@@ -55,14 +56,14 @@ const getComponent = (name: string) => {
 <template>
   <div class="h-full w-full overflow-hidden relative select-none">
     <!-- Desktop Background -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#1a2c24_0%,#0a0f0a_100%)] -z-10"></div>
+    <MatrixBackground />
 
     <!-- Desktop Icons Grid -->
     <div
       class="flex flex-col flex-wrap content-start gap-4 p-6 h-[calc(100%-60px)] w-full max-w-[400px] max-md:flex-row max-md:content-start max-md:max-w-full max-md:p-4">
       <!-- My Computer (About) -->
       <button
-        class="flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group"
+        class="desktop-icon flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group"
         @click="openAbout">
         <div
           class="relative w-14 h-14 flex items-center justify-center text-primary drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_12px_24px_rgba(59,130,246,0.3)]">
@@ -80,13 +81,14 @@ const getComponent = (name: string) => {
 
       <!-- Projects Folder -->
       <button
-        class="flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group"
+        class="desktop-icon flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group"
         @click="openProjects">
         <div
           class="relative w-14 h-14 flex items-center justify-center text-primary drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_12px_24px_rgba(59,130,246,0.3)]">
           <svg class="w-full h-full stroke-[1.2]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="1.5">
-            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" class="fill-background-elevated/50"></path>
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+              class="fill-background-elevated/50"></path>
           </svg>
         </div>
         <span
@@ -96,7 +98,7 @@ const getComponent = (name: string) => {
 
       <!-- Experience -->
       <button
-        class="flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group"
+        class="desktop-icon flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group"
         @click="openExperience">
         <div
           class="relative w-14 h-14 flex items-center justify-center text-primary drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_12px_24px_rgba(59,130,246,0.3)]">
@@ -113,13 +115,14 @@ const getComponent = (name: string) => {
 
       <!-- Contact -->
       <button
-        class="flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group"
+        class="desktop-icon flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group"
         @click="openContact">
         <div
           class="relative w-14 h-14 flex items-center justify-center text-primary drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_12px_24px_rgba(59,130,246,0.3)]">
           <svg class="w-full h-full stroke-[1.2]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="1.5">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" class="fill-background-elevated/50"></path>
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              class="fill-background-elevated/50"></path>
             <polyline points="22,6 12,13 2,6"></polyline>
           </svg>
         </div>
@@ -130,14 +133,15 @@ const getComponent = (name: string) => {
 
       <!-- GitHub Shortcut -->
       <button
-        class="flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group"
+        class="desktop-icon flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group"
         @click="openGithub">
         <div
           class="relative w-14 h-14 flex items-center justify-center text-primary drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_12px_24px_rgba(59,130,246,0.3)]">
           <svg class="w-full h-full stroke-[1.2]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="1.5">
             <path
-              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" class="fill-background-elevated/50">
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+              class="fill-background-elevated/50">
             </path>
           </svg>
           <div
@@ -153,13 +157,14 @@ const getComponent = (name: string) => {
 
       <!-- Recycle Bin -->
       <button
-        class="flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group">
+        class="desktop-icon flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group">
         <div
           class="relative w-14 h-14 flex items-center justify-center text-primary drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_12px_24px_rgba(59,130,246,0.3)]">
           <svg class="w-full h-full stroke-[1.2]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="1.5">
             <polyline points="3 6 5 6 21 6"></polyline>
-            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" class="fill-background-elevated/50"></path>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+              class="fill-background-elevated/50"></path>
             <line x1="10" y1="11" x2="10" y2="17"></line>
             <line x1="14" y1="11" x2="14" y2="17"></line>
           </svg>
@@ -192,7 +197,8 @@ const getComponent = (name: string) => {
           :initial-height="win.size.height" :z-index="win.zIndex" :is-active="windowsStore.activeWindowId === win.id"
           :is-maximized="win.isMaximized" v-show="!win.isMinimized">
           <template #icon v-if="win.icon">
-            <div v-html="win.icon" class="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full"></div>
+            <div v-html="win.icon" class="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full">
+            </div>
           </template>
           <component :is="getComponent(win.component)" v-bind="win.props" />
         </DesktopWindow>
@@ -204,3 +210,28 @@ const getComponent = (name: string) => {
     <StartMenu />
   </div>
 </template>
+
+<style scoped>
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.desktop-icon {
+  animation: slideInLeft 0.5s ease-out backwards;
+}
+
+.desktop-icon:nth-child(1) { animation-delay: 0.1s; }
+.desktop-icon:nth-child(2) { animation-delay: 0.2s; }
+.desktop-icon:nth-child(3) { animation-delay: 0.3s; }
+.desktop-icon:nth-child(4) { animation-delay: 0.4s; }
+.desktop-icon:nth-child(5) { animation-delay: 0.5s; }
+.desktop-icon:nth-child(6) { animation-delay: 0.6s; }
+</style>

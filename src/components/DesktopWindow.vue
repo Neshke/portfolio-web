@@ -62,7 +62,7 @@ const windowStyle = computed((): CSSProperties => {
       top: '0px',
       left: '0px',
       width: '100%',
-      height: 'calc(100% - 56px)', // Leave space for taskbar (56px)
+      height: 'calc(100% - 64px)', // Leave space for taskbar (64px)
       zIndex: props.zIndex,
       position: 'fixed',
       borderRadius: '0'
@@ -74,7 +74,7 @@ const windowStyle = computed((): CSSProperties => {
       top: '0px',
       left: '0px',
       width: '100%',
-      height: 'calc(100% - 48px)', // Subtract taskbar height
+      height: 'calc(100% - 64px)', // Subtract taskbar height
       zIndex: props.zIndex,
       position: 'fixed'
     }

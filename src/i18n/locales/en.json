@@ -52,7 +52,7 @@
     "recycleBin": "Recycle Bin"
   },
   "about": {
-    "role": "Full Stack Developer",
+    "role": "Software engineer",
     "bioText": "I am a passionate developer with a focus on building modern, responsive, and user-friendly web applications. With a strong background in both frontend and backend technologies, I enjoy solving complex problems and creating efficient solutions."
   },
   "contact": {
@@ -85,7 +85,7 @@
         "description": "Leading the frontend team in building scalable web applications using Vue 3 and TypeScript. Implemented CI/CD pipelines and improved site performance by 40%."
       },
       "item2": {
-        "role": "Full Stack Developer",
+        "role": "Software engineer",
         "company": "Digital Innovations",
         "period": "2019 - 2021",
         "description": "Developed and maintained multiple client projects. Worked with React, Node.js, and AWS. Collaborated with designers to implement pixel-perfect UIs."

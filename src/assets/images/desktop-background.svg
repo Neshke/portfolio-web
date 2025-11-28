@@ -1,0 +1,57 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Deep dark background gradient -->
+    <radialGradient id="bg-gradient" cx="50%" cy="50%" r="80%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </radialGradient>
+    
+    <!-- Grid Pattern -->
+    <pattern id="small-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#60a5fa" stroke-width="0.5" stroke-opacity="0.03"/>
+    </pattern>
+    
+    <!-- Matrix/Tech Glow -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Base Background -->
+  <rect width="100%" height="100%" fill="url(#bg-gradient)" />
+  <rect width="100%" height="100%" fill="url(#small-grid)" />
+
+  <!-- Abstract Circuit Lines -->
+  <g stroke="#60a5fa" stroke-width="1.5" stroke-opacity="0.1" fill="none">
+    <path d="M0 200 H200 L250 250 H500" />
+    <path d="M1920 880 H1720 L1670 830 H1420" />
+    <path d="M100 1080 V880 L150 830 V600" />
+    <path d="M1820 0 V200 L1770 250 V480" />
+  </g>
+
+  <!-- Decorative Circles/Nodes -->
+  <g fill="#60a5fa" fill-opacity="0.1">
+    <circle cx="200" cy="200" r="4" />
+    <circle cx="500" cy="250" r="4" />
+    <circle cx="1720" cy="880" r="4" />
+    <circle cx="1420" cy="830" r="4" />
+  </g>
+
+  <!-- Central Tech Ring -->
+  <g transform="translate(960, 540)" opacity="0.1">
+    <circle r="300" stroke="#60a5fa" stroke-width="1" fill="none" stroke-dasharray="20 10" />
+    <circle r="280" stroke="#60a5fa" stroke-width="2" fill="none" stroke-dasharray="4 4" opacity="0.5" />
+    <circle r="150" stroke="#60a5fa" stroke-width="40" fill="none" opacity="0.05" />
+  </g>
+  
+  <!-- "Matrix" Vertical Rain Hints (Static) -->
+  <g stroke="#60a5fa" stroke-width="2" stroke-opacity="0.05" stroke-linecap="round">
+    <line x1="400" y1="100" x2="400" y2="300" />
+    <line x1="420" y1="150" x2="420" y2="250" />
+    <line x1="1500" y1="700" x2="1500" y2="900" />
+    <line x1="1520" y1="750" x2="1520" y2="850" />
+    <line x1="960" y1="0" x2="960" y2="100" opacity="0.1" />
+    <line x1="960" y1="980" x2="960" y2="1080" opacity="0.1" />
+  </g>
+</svg>
