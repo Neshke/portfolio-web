@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
+import IconGithub from '@/components/icons/IconGithub.vue'
 
 const { t } = useI18n()
 
@@ -11,7 +12,8 @@ const projects = computed(() => [
     description: t('projects.items.item1.description'),
     tech: ['Vue 3', 'Node.js', 'MongoDB'],
     image: 'https://placehold.co/600x400/002010/00ff88?text=E-Commerce',
-    link: '#'
+    link: '#',
+    repo: '#'
   },
   {
     id: 2,
@@ -19,7 +21,8 @@ const projects = computed(() => [
     description: t('projects.items.item2.description'),
     tech: ['React', 'Firebase', 'Tailwind'],
     image: 'https://placehold.co/600x400/002010/00ff88?text=Task+App',
-    link: '#'
+    link: '#',
+    repo: '#'
   },
   {
     id: 3,
@@ -27,7 +30,8 @@ const projects = computed(() => [
     description: t('projects.items.item3.description'),
     tech: ['TypeScript', 'OpenWeather API', 'Chart.js'],
     image: 'https://placehold.co/600x400/002010/00ff88?text=Weather',
-    link: '#'
+    link: '#',
+    repo: '#'
   },
   {
     id: 4,
@@ -35,7 +39,17 @@ const projects = computed(() => [
     description: t('projects.items.item4.description'),
     tech: ['Vue 3', 'TypeScript', 'Tailwind v4'],
     image: 'https://placehold.co/600x400/002010/00ff88?text=Portfolio',
-    link: '#'
+    link: '#',
+    repo: '#'
+  },
+  {
+    id: 5,
+    title: t('projects.items.item5.title'),
+    description: t('projects.items.item5.description'),
+    tech: ['Vue.js', 'PHP'],
+    image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Fdeltagraf.rs?w=600&h=400',
+    link: 'https://deltagraf.rs',
+    repo: 'https://github.com/Neshke/deltagraf'
   }
 ])
 </script>
@@ -55,19 +69,27 @@ const projects = computed(() => [
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
           <div
             class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            <a :href="project.link"
+            <a :href="project.link" target="_blank" rel="noopener noreferrer"
               class="px-4 py-2 bg-primary text-background-dark no-underline font-semibold rounded text-sm translate-y-2.5 transition-transform duration-300 group-hover:translate-y-0">{{
                 t('projects.viewProject') }}</a>
           </div>
         </div>
-        <div class="p-4">
+        <div class="p-4 flex flex-col h-[calc(100%-160px)]">
           <h3 class="font-display text-base text-text-base m-0 mb-2">{{ project.title }}</h3>
-          <p class="text-[13px] text-text-muted m-0 mb-4 leading-relaxed">{{ project.description }}</p>
-          <div class="flex flex-wrap gap-1.5">
+          <p class="text-[13px] text-text-muted m-0 mb-4 leading-relaxed grow">{{ project.description }}</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
             <span v-for="tech in project.tech" :key="tech"
               class="text-[11px] px-2 py-0.5 bg-primary/5 border border-primary/20 rounded-full text-primary">
               {{ tech }}
             </span>
+          </div>
+
+          <div v-if="project.repo && project.repo !== '#'" class="mt-auto pt-3 border-t border-primary/10">
+            <a :href="project.repo" target="_blank" rel="noopener noreferrer"
+              class="flex items-center gap-2 text-xs text-primary hover:text-primary-light transition-colors no-underline w-fit">
+              <IconGithub class="w-4 h-4" />
+              {{ t('projects.viewCode') }}
+            </a>
           </div>
         </div>
       </div>

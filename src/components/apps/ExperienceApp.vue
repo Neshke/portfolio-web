@@ -4,27 +4,87 @@ import { computed } from 'vue'
 
 const { t } = useI18n()
 
-const experiences = computed(() => [
+interface Project {
+  name: string
+  url: string
+  image: string
+  description?: string
+  achievements?: string[]
+  tech?: string[]
+}
+
+interface Experience {
+  id: number
+  role: string
+  company: string
+  period: string
+  description: string
+  projects?: Project[]
+}
+
+const experiences = computed<Experience[]>(() => [
   {
     id: 1,
     role: t('experience.items.item1.role'),
     company: t('experience.items.item1.company'),
     period: t('experience.items.item1.period'),
-    description: t('experience.items.item1.description')
+    description: t('experience.items.item1.description'),
+    projects: [
+      {
+        name: 'XE.com',
+        url: 'https://www.xe.com/',
+        image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.xe.com%2F?w=600&h=400',
+        description: t('experience.items.item1.projects.xe.description'),
+        tech: ['Vue 3', 'TypeScript', 'Pinia', 'Tailwind', 'Vitest', 'Cypress', 'Axios', 'i18n'],
+        achievements: [
+          t('experience.items.item1.projects.xe.achievements[0]'),
+          t('experience.items.item1.projects.xe.achievements[1]'),
+          t('experience.items.item1.projects.xe.achievements[2]'),
+          t('experience.items.item1.projects.xe.achievements[3]'),
+          t('experience.items.item1.projects.xe.achievements[4]'),
+          t('experience.items.item1.projects.xe.achievements[5]'),
+          t('experience.items.item1.projects.xe.achievements[6]'),
+          t('experience.items.item1.projects.xe.achievements[7]'),
+          t('experience.items.item1.projects.xe.achievements[8]'),
+          t('experience.items.item1.projects.xe.achievements[9]')
+        ]
+      },
+      {
+        name: 'Ria Money Transfer',
+        url: 'https://www.riamoneytransfer.com/en-us/',
+        image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.riamoneytransfer.com%2Fen-us%2F?w=600&h=400',
+        description: t('experience.items.item1.projects.ria.description'),
+        tech: ['Vue 2', 'Vuex', 'Composition API', 'SCSS', 'Tailwind'],
+        achievements: [
+          t('experience.items.item1.projects.ria.achievements[0]'),
+          t('experience.items.item1.projects.ria.achievements[1]'),
+          t('experience.items.item1.projects.ria.achievements[2]'),
+          t('experience.items.item1.projects.ria.achievements[3]'),
+          t('experience.items.item1.projects.ria.achievements[4]'),
+          t('experience.items.item1.projects.ria.achievements[5]'),
+          t('experience.items.item1.projects.ria.achievements[6]')
+        ]
+      }
+    ]
   },
   {
     id: 2,
     role: t('experience.items.item2.role'),
     company: t('experience.items.item2.company'),
     period: t('experience.items.item2.period'),
-    description: t('experience.items.item2.description')
-  },
-  {
-    id: 3,
-    role: t('experience.items.item3.role'),
-    company: t('experience.items.item3.company'),
-    period: t('experience.items.item3.period'),
-    description: t('experience.items.item3.description')
+    description: t('experience.items.item2.description'),
+    projects: [
+      {
+        name: 'Delta Graf',
+        url: 'https://deltagraf.rs/',
+        image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Fdeltagraf.rs?w=600&h=400'
+      },
+      {
+        name: 'Voka Kop',
+        url: 'https://vokakop.com/',
+        image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Fvokakop.com?w=600&h=400'
+      }
+    ]
   }
 ])
 </script>
@@ -51,6 +111,51 @@ const experiences = computed(() => [
           </div>
           <h4 class="text-sm text-text-secondary m-0 mb-3 font-medium">{{ exp.company }}</h4>
           <p class="text-sm leading-relaxed text-text-muted m-0">{{ exp.description }}</p>
+
+          <div v-if="exp.projects" class="mt-6 grid grid-cols-1 gap-6">
+            <div v-for="project in exp.projects" :key="project.name"
+              class="bg-background-dark/40 border border-primary/10 rounded-lg overflow-hidden hover:border-primary/40 transition-all group/project">
+              <a :href="project.url" target="_blank" rel="noopener noreferrer"
+                class="block h-48 overflow-hidden relative border-b border-primary/5 no-underline">
+                <img :src="project.image" :alt="project.name"
+                  class="w-full h-full object-cover opacity-80 group-hover/project:opacity-100 group-hover/project:scale-105 transition-all duration-500">
+                <div
+                  class="absolute inset-0 bg-black/20 group-hover/project:bg-transparent transition-colors flex items-center justify-center">
+                  <div
+                    class="bg-black/60 backdrop-blur-sm px-4 py-2 rounded-full border border-primary/30 text-primary text-sm font-medium opacity-0 translate-y-2 group-hover/project:opacity-100 group-hover/project:translate-y-0 transition-all duration-300 flex items-center gap-2">
+                    {{ t('projects.viewProject') }}
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </div>
+                </div>
+              </a>
+              <div class="p-5 bg-primary/5">
+                <div class="flex items-center justify-between mb-3">
+                  <h5 class="text-base font-display text-text-base m-0">{{ project.name }}</h5>
+                </div>
+
+                <p v-if="project.description" class="text-sm text-text-muted mb-4 leading-relaxed">{{
+                  project.description }}</p>
+
+                <ul v-if="project.achievements" class="m-0 pl-4 list-disc space-y-1.5 mb-4">
+                  <li v-for="(achievement, index) in project.achievements" :key="index"
+                    class="text-xs text-text-secondary leading-relaxed pl-1 marker:text-primary/70">
+                    {{ achievement }}
+                  </li>
+                </ul>
+
+                <div v-if="project.tech" class="flex flex-wrap gap-1.5 pt-2 border-t border-primary/10">
+                  <span v-for="tech in project.tech" :key="tech"
+                    class="text-[10px] px-2 py-0.5 bg-primary/5 border border-primary/20 rounded-full text-primary/80">
+                    {{ tech }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

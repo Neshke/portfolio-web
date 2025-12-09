@@ -18,7 +18,7 @@ onMounted(() => {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
   }
-  
+
   let colorPrimary = ''
   let colorPrimaryLight = ''
   let colorBackground = ''
@@ -27,7 +27,7 @@ onMounted(() => {
     const styles = getComputedStyle(document.documentElement)
     colorPrimary = styles.getPropertyValue('--color-primary').trim()
     colorPrimaryLight = styles.getPropertyValue('--color-primary-light').trim()
-    
+
     const bgHex = styles.getPropertyValue('--color-background').trim()
     if (bgHex) {
       const r = parseInt(bgHex.slice(1, 3), 16)
@@ -67,7 +67,7 @@ onMounted(() => {
 
     for (let i = 0; i < drops.length; i++) {
       const text = chars.charAt(Math.floor(Math.random() * chars.length))
-      
+
       if (Math.random() > 0.98) {
         ctx.fillStyle = '#FFF'
       } else if (Math.random() > 0.9) {
@@ -92,17 +92,14 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  window.removeEventListener('resize', () => {})
+  window.removeEventListener('resize', () => { })
   cancelAnimationFrame(animationFrameId)
 })
 </script>
 
 <template>
   <div class="absolute inset-0 pointer-events-none overflow-hidden">
-    <canvas 
-      ref="canvasRef" 
-      class="absolute inset-0 w-full h-full opacity-40 blur-[2px]"
-    ></canvas>
+    <canvas ref="canvasRef" class="absolute inset-0 w-full h-full opacity-40 blur-[2px]"></canvas>
   </div>
 </template>
 

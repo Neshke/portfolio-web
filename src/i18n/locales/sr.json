@@ -60,6 +60,7 @@
     "labels": {
       "email": "Email",
       "social": "Društvene mreže",
+      "linkedin": "LinkedIn",
       "location": "Lokacija",
       "name": "Ime",
       "message": "Poruka"
@@ -73,34 +74,59 @@
       "send": "Pošalji Poruku",
       "sending": "Slanje..."
     },
-    "success": "Poruka uspešno poslata!"
+    "success": "Poruka uspešno poslata!",
+    "locationValue": "Evropa"
   },
   "experience": {
     "subtitle": "Moje profesionalno putovanje i karijerni uspesi.",
     "items": {
       "item1": {
-        "role": "Senior Frontend Programer",
-        "company": "Tech Solutions Inc.",
-        "period": "2021 - Danas",
-        "description": "Vođenje frontend tima u izgradnji skalabilnih web aplikacija koristeći Vue 3 i TypeScript. Implementacija CI/CD pajplajna i poboljšanje performansi sajta za 40%."
+        "role": "Softverski Inženjer",
+        "company": "Euronet Worldwide",
+        "period": "Jan 2021 - Danas",
+        "description": "Ključni saradnik u razvoju skalabilnih fintech platformi za glavne podružnice kao što su epay i XE. Specijalizovan za izgradnju sigurnih web aplikacija visokih performansi koristeći Vue.js ekosistem. Vodio veliku tehničku migraciju sa Vue 2/Vuex na Vue 3/Pinia i JavaScript na TypeScript. Duboko uključen u kompletan SDLC u Agile okruženju, koristeći Jira, CI/CD pajplajne (GitHub Actions) i alate za analitiku (Segment, LogRocket) kako bi se osigurao kvalitet koda i zadovoljstvo korisnika.",
+        "projects": {
+          "xe": {
+            "description": "Izgrađen od nule u timu visoko obrazovanih kolega.",
+            "achievements": [
+              "Naučen kompletan ciklus razvoja softvera",
+              "Savladan Git i GitHub Actions za CI/CD",
+              "Izgradnja sigurnog, čistog koda sa fokusom na integritet finansijskih podataka",
+              "Razvoj u Agile okruženju koristeći Scrum metodologiju",
+              "Implementacija alata za analitiku (Segment, LogRocket)",
+              "Potpuna migracija sa Vue 2 na Vue 3 i JS na TS",
+              "Implementacija sveobuhvatnog testiranja sa Vitest i Cypress",
+              "Optimizacija performansi kroz lazy loading i code splitting",
+              "Upravljanje globalnom lokalizacijom koristeći vue-i18n i Lokalise",
+              "Doprinos re-arhitekturi projekta i dizajn paternima komponenti"
+            ]
+          },
+          "ria": {
+            "description": "Kreiranje skalabilne moderne finansijske platforme za slanje novca.",
+            "achievements": [
+              "Razvoj koristeći Vue.js ekosistem sa Composition API",
+              "Implementacija strogih mera bezbednosti",
+              "Upravljanje kompleksnim stanjem pomoću Vuex-a",
+              "Osiguranje visokih performansi i skalabilnosti",
+              "Tranzicija stilizovanja sa SCSS na Tailwind CSS",
+              "Održavanje kvaliteta koda uz ESLint i Prettier",
+              "Sprovođenje rigoroznih pregleda koda sa fokusom na bezbednost i logiku"
+            ]
+          }
+        }
       },
       "item2": {
-        "role": "Full Stack Programer",
-        "company": "Digital Innovations",
-        "period": "2019 - 2021",
-        "description": "Razvoj i održavanje više klijentskih projekata. Rad sa React, Node.js i AWS. Saradnja sa dizajnerima na implementaciji pixel-perfect UI-a."
-      },
-      "item3": {
-        "role": "Junior Web Programer",
-        "company": "Creative Agency",
-        "period": "2018 - 2019",
-        "description": "Pomoć u razvoju marketinških sajtova i landing stranica. Sticanje iskustva u HTML, CSS, JavaScript i PHP."
+        "role": "Freelance Web Programer",
+        "company": "Samostalno",
+        "period": "Tokom Studija",
+        "description": "Saradnja sa različitim klijentima na dizajnu i razvoju modernih, responzivnih prezentacionih sajtova koristeći Vue.js. Upravljanje celokupnim ciklusom razvoja, od prikupljanja zahteva do inkrementalnih ažuriranja i finalnog postavljanja, uz osiguranje visokog zadovoljstva klijenata i vizuelnog kvaliteta."
       }
     }
   },
   "projects": {
     "subtitle": "Kolekcija mojih nedavnih radova i eksperimenata.",
     "viewProject": "Pogledaj Projekat",
+    "viewCode": "Pogledaj Kod",
     "items": {
       "item1": {
         "title": "E-Commerce Platforma",
@@ -117,6 +143,10 @@
       "item4": {
         "title": "Portfolio Websajt",
         "description": "Lični portfolio websajt sa Windows desktop interfejsom."
+      },
+      "item5": {
+        "title": "Deltagraf",
+        "description": "Korporativni sajt za štampariju sa katalogom proizvoda i uslugama."
       }
     }
   }

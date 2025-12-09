@@ -212,12 +212,12 @@ const getComponent = (name: string) => {
 </template>
 
 <style scoped>
-
 @keyframes slideInLeft {
   from {
     opacity: 0;
     transform: translateX(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -228,10 +228,27 @@ const getComponent = (name: string) => {
   animation: slideInLeft 0.5s ease-out backwards;
 }
 
-.desktop-icon:nth-child(1) { animation-delay: 0.1s; }
-.desktop-icon:nth-child(2) { animation-delay: 0.2s; }
-.desktop-icon:nth-child(3) { animation-delay: 0.3s; }
-.desktop-icon:nth-child(4) { animation-delay: 0.4s; }
-.desktop-icon:nth-child(5) { animation-delay: 0.5s; }
-.desktop-icon:nth-child(6) { animation-delay: 0.6s; }
+.desktop-icon:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.desktop-icon:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.desktop-icon:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.desktop-icon:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.desktop-icon:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.desktop-icon:nth-child(6) {
+  animation-delay: 0.6s;
+}
 </style>

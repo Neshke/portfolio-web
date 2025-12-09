@@ -60,6 +60,7 @@
     "labels": {
       "email": "Email",
       "social": "Social",
+      "linkedin": "LinkedIn",
       "location": "Location",
       "name": "Name",
       "message": "Message"
@@ -73,34 +74,59 @@
       "send": "Send Message",
       "sending": "Sending..."
     },
-    "success": "Message sent successfully!"
+    "success": "Message sent successfully!",
+    "locationValue": "Europe"
   },
   "experience": {
     "subtitle": "My professional journey and career milestones.",
     "items": {
       "item1": {
-        "role": "Senior Frontend Developer",
-        "company": "Tech Solutions Inc.",
-        "period": "2021 - Present",
-        "description": "Leading the frontend team in building scalable web applications using Vue 3 and TypeScript. Implemented CI/CD pipelines and improved site performance by 40%."
+        "role": "Software Engineer",
+        "company": "Euronet Worldwide",
+        "period": "Jan 2021 - Present",
+        "description": "Key contributor in developing scalable fintech platforms for major subsidiaries like epay and XE. Specialized in building secure, high-performance web applications using Vue.js ecosystem. Led a major technical migration from Vue 2/Vuex to Vue 3/Pinia and JavaScript to TypeScript. Deeply involved in the full SDLC within an Agile environment, utilizing Jira, CI/CD pipelines (GitHub Actions), and analytics tools (Segment, LogRocket) to ensure code quality and user satisfaction.",
+        "projects": {
+          "xe": {
+            "description": "Built from ground up in a team of highly educated colleagues.",
+            "achievements": [
+              "Learned complete software development lifecycle",
+              "Mastered Git versioning and GitHub Actions for CI/CD",
+              "Built secure, clean code focusing on financial data integrity",
+              "Developed in Agile environment using Scrum methodology",
+              "Implemented analytics tools (Segment, LogRocket)",
+              "Full migration from Vue 2 to Vue 3 and JS to TS",
+              "Implemented comprehensive testing with Vitest and Cypress",
+              "Optimized performance via lazy loading and code splitting",
+              "Managed global localization using vue-i18n and Lokalise",
+              "Contributed to project re-architecture and component design patterns"
+            ]
+          },
+          "ria": {
+            "description": "Creating scalable modern financial platform for sending money.",
+            "achievements": [
+              "Developed using Vue.js ecosystem with Composition API",
+              "Implemented strict security measures",
+              "Managed complex state with Vuex",
+              "Ensured high performance and scalability",
+              "Transitioned styling from SCSS to Tailwind CSS",
+              "Enforced code quality with ESLint and Prettier",
+              "Conducted rigorous code reviews focusing on security and logic"
+            ]
+          }
+        }
       },
       "item2": {
-        "role": "Software engineer",
-        "company": "Digital Innovations",
-        "period": "2019 - 2021",
-        "description": "Developed and maintained multiple client projects. Worked with React, Node.js, and AWS. Collaborated with designers to implement pixel-perfect UIs."
-      },
-      "item3": {
-        "role": "Junior Web Developer",
-        "company": "Creative Agency",
-        "period": "2018 - 2019",
-        "description": "Assisted in the development of marketing websites and landing pages. Gained experience in HTML, CSS, JavaScript, and PHP."
+        "role": "Freelance Web Developer",
+        "company": "Self-Employed",
+        "period": "During Studies",
+        "description": "Collaborated with various clients to design and develop modern, responsive presentational websites using Vue.js. Managed the entire development lifecycle, from requirement gathering to incremental updates and final deployment, ensuring high client satisfaction and visual appeal."
       }
     }
   },
   "projects": {
     "subtitle": "A collection of my recent work and experiments.",
     "viewProject": "View Project",
+    "viewCode": "View Code",
     "items": {
       "item1": {
         "title": "E-Commerce Platform",
@@ -117,6 +143,10 @@
       "item4": {
         "title": "Portfolio Website",
         "description": "Personal portfolio website with Windows-style desktop interface."
+      },
+      "item5": {
+        "title": "Deltagraf",
+        "description": "Corporate website for a printing company featuring product catalog and services."
       }
     }
   }

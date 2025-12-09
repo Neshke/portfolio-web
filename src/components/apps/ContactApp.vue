@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { ref } from 'vue'
+import IconEmail from '@/components/icons/IconEmail.vue'
+import IconLinkedIn from '@/components/icons/IconLinkedIn.vue'
+import IconLocation from '@/components/icons/IconLocation.vue'
+import IconCheck from '@/components/icons/IconCheck.vue'
 
 const { t } = useI18n()
 
@@ -13,13 +17,12 @@ const form = ref({
 const isSubmitting = ref(false)
 const isSent = ref(false)
 
-const submitForm = async () => {
-  isSubmitting.value = true
+const submitForm = () => {
+  const subject = `Portfolio Contact: ${form.value.name}`
+  const body = `Name: ${form.value.name}\nEmail: ${form.value.email}\n\nMessage:\n${form.value.message}`
 
-  // Simulate API call
-  await new Promise(resolve => setTimeout(resolve, 1500))
+  window.location.href = `mailto:anesic9@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 
-  isSubmitting.value = false
   isSent.value = true
 
   // Reset form after delay
@@ -39,43 +42,35 @@ const submitForm = async () => {
 
     <div class="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-6 md:gap-10">
       <div class="flex flex-col gap-6">
-        <div class="flex items-center gap-4 p-4 bg-primary/5 border border-primary/10 rounded-lg">
+        <a href="mailto:anesic9@gmail.com"
+          class="flex items-center gap-4 p-4 bg-primary/5 border border-primary/10 rounded-lg no-underline hover:bg-primary/10 transition-colors duration-200 cursor-pointer">
           <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
+            <IconEmail class="w-5 h-5" />
           </div>
           <div>
             <h3 class="text-sm text-text-secondary m-0 mb-1">{{ t('contact.labels.email') }}</h3>
-            <p class="text-[15px] text-text-base m-0">contact@example.com</p>
+            <p class="text-[15px] text-text-base m-0">anesic9@gmail.com</p>
           </div>
-        </div>
+        </a>
 
-        <div class="flex items-center gap-4 p-4 bg-primary/5 border border-primary/10 rounded-lg">
+        <a href="https://www.linkedin.com/in/aleksanesicsd/" target="_blank" rel="noopener noreferrer"
+          class="flex items-center gap-4 p-4 bg-primary/5 border border-primary/10 rounded-lg no-underline hover:bg-primary/10 transition-colors duration-200 cursor-pointer">
           <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path
-                d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
-              </path>
-            </svg>
+            <IconLinkedIn class="w-5 h-5" />
           </div>
           <div>
-            <h3 class="text-sm text-text-secondary m-0 mb-1">{{ t('contact.labels.social') }}</h3>
-            <p class="text-[15px] text-text-base m-0">@username</p>
+            <h3 class="text-sm text-text-secondary m-0 mb-1">{{ t('contact.labels.linkedin') }}</h3>
+            <p class="text-[15px] text-text-base m-0">Aleksa Nesic</p>
           </div>
-        </div>
+        </a>
 
         <div class="flex items-center gap-4 p-4 bg-primary/5 border border-primary/10 rounded-lg">
           <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
+            <IconLocation class="w-5 h-5" />
           </div>
           <div>
             <h3 class="text-sm text-text-secondary m-0 mb-1">{{ t('contact.labels.location') }}</h3>
-            <p class="text-[15px] text-text-base m-0">Belgrade, Serbia</p>
+            <p class="text-[15px] text-text-base m-0">{{ t('contact.locationValue') }}</p>
           </div>
         </div>
       </div>
@@ -83,10 +78,7 @@ const submitForm = async () => {
       <form @submit.prevent="submitForm" class="bg-background-dark/40 p-6 rounded-lg border border-primary/10">
         <div v-if="isSent"
           class="flex flex-col items-center justify-center gap-4 h-[300px] text-primary text-lg font-medium">
-          <svg class="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-          </svg>
+          <IconCheck class="w-12 h-12" />
           {{ t('contact.success') }}
         </div>
 
