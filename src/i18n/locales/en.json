@@ -67,7 +67,7 @@
     },
     "placeholders": {
       "name": "Your Name",
-      "email": "your@email.com",
+      "email": "your{'@'}email.com",
       "message": "How can I help you?"
     },
     "buttons": {

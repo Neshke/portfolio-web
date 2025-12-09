@@ -67,7 +67,7 @@
     },
     "placeholders": {
       "name": "Vaše Ime",
-      "email": "vas@email.com",
+      "email": "vas{'@'}email.com",
       "message": "Kako mogu da vam pomognem?"
     },
     "buttons": {
