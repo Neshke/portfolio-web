@@ -9,6 +9,7 @@ import AboutApp from '@/components/apps/AboutApp.vue'
 import ProjectsApp from '@/components/apps/ProjectsApp.vue'
 import ExperienceApp from '@/components/apps/ExperienceApp.vue'
 import ContactApp from '@/components/apps/ContactApp.vue'
+import EducationApp from '@/components/apps/EducationApp.vue'
 import MatrixBackground from '@/components/MatrixBackground.vue'
 
 const { t } = useI18n()
@@ -31,8 +32,8 @@ const openContact = () => {
   windowsStore.openWindow('contact', t('taskbar.contact'), 'ContactApp', {}, '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>')
 }
 
-const openGithub = () => {
-  window.open('https://github.com', '_blank')
+const openEducation = () => {
+  windowsStore.openWindow('education', t('startMenu.education'), 'EducationApp', {}, '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 0 6-1 6-1v-7"></path></svg>')
 }
 
 const getComponent = (name: string) => {
@@ -47,6 +48,8 @@ const getComponent = (name: string) => {
       return ExperienceApp
     case 'ContactApp':
       return ContactApp
+    case 'EducationApp':
+      return EducationApp
     default:
       return 'div'
   }
@@ -131,28 +134,21 @@ const getComponent = (name: string) => {
             t('taskbar.contact') }}</span>
       </button>
 
-      <!-- GitHub Shortcut -->
+      <!-- Education Shortcut -->
       <button
         class="desktop-icon flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group"
-        @click="openGithub">
+        @click="openEducation">
         <div
           class="relative w-14 h-14 flex items-center justify-center text-primary drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_12px_24px_rgba(59,130,246,0.3)]">
           <svg class="w-full h-full stroke-[1.2]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="1.5">
-            <path
-              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-              class="fill-background-elevated/50">
-            </path>
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z" class="fill-background-elevated/50"></path>
+            <path d="M6 12v5c3 0 6-1 6-1v-7"></path>
           </svg>
-          <div
-            class="absolute bottom-0 left-0 w-5 h-5 bg-background-dark text-text-base border border-text-secondary rounded-md flex items-center justify-center shadow-sm">
-            <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-            </svg>
-          </div>
         </div>
         <span
-          class="font-sans text-[13px] font-medium text-text-base text-center shadow-black drop-shadow-md leading-tight max-w-full overflow-hidden text-ellipsis line-clamp-2 group-hover:text-primary-light transition-colors">GitHub</span>
+          class="font-sans text-[13px] font-medium text-text-base text-center shadow-black drop-shadow-md leading-tight max-w-full overflow-hidden text-ellipsis line-clamp-2 group-hover:text-primary-light transition-colors">{{
+            t('startMenu.education') }}</span>
       </button>
 
       <!-- Recycle Bin -->

@@ -52,8 +52,47 @@
     "recycleBin": "Kanta za otpatke"
   },
   "about": {
-    "role": "Full Stack Programer",
-    "bioText": "Ja sam strastveni programer sa fokusom na izgradnju modernih, responzivnih i korisnički orijentisanih web aplikacija. Sa jakim iskustvom u frontend i backend tehnologijama, uživam u rešavanju kompleksnih problema i kreiranju efikasnih rešenja."
+    "role": "Softverski Inženjer",
+    "bioText": "Ja sam posvećen softverski inženjer sa diplomom i snažnom pozadinom u izgradnji skalabilnih fintech platformi. Moja osnovna filozofija se vrti oko pisanja čistog, održivog i optimizovanog koda. Verujem da svaka linija koda treba da služi jasnoj svrsi i da bude lako razumljiva, osiguravajući da je razvoj održiv i kolaborativan. Sa velikim iskustvom u Vue.js ekosistemu, TypeScript-u i Agile metodologijama, fokusiram se na isporuku rešenja visokih performansi koja izdržavaju test vremena."
+  },
+  "education": {
+    "degree": "Diploma Osnovnih Studija",
+    "field": "Računarske Nauke / Softversko Inženjerstvo",
+    "institution": "Fakultet tehničkih nauka u Čačku, Univerzitet u Kragujevcu",
+    "status": "Završeno",
+    "description": "Stečene čvrste inženjerske osnove kroz rigorozan rad na OOP (C, C++, Java), ASP.NET i Agile metodologijama. Stečeno praktično iskustvo u umrežavanju, timskom razvoju projekata pod kratkim rokovima i kompletnim ciklusima razvoja softvera.",
+    "courseworkTitle": "Ključni Predmeti",
+    "skillsTitle": "Tehničke Kompetencije",
+    "coursework": {
+      "dsa": "Strukture Podataka i Algoritmi",
+      "oop": "Objektno-Orijentisano Programiranje",
+      "db": "Baze Podataka (SQL, Dizajn)",
+      "web": "Web Tehnologije (HTML, CSS, JS)",
+      "os": "Operativni Sistemi i Mreže",
+      "se": "Softversko Inženjerstvo (Agile, Paterni)",
+      "git": "Kontrola Verzija (Git)",
+      "uiux": "UI/UX i Interakcija Čovek-Računar"
+    },
+    "skills": {
+      "algo": "Algoritamsko Razmišljanje i Optimizacija",
+      "system": "Osnove Dizajna Sistema",
+      "db": "Modeliranje Baza Podataka",
+      "http": "HTTP, REST, Životni Ciklus Zahteva",
+      "security": "Bezbednost Aplikacija (OWASP)",
+      "testing": "Testiranje i Čist Kod",
+      "team": "Timska Saradnja i Upravljanje Projektima"
+    },
+    "musicSchool": {
+      "title": "Osnovna Muzička Škola (Gitara)",
+      "institution": "Kosta Manojlović",
+      "duration": "Završeno",
+      "description": "Učenje teorije muzike i sviranja gitare, što doprinosi kreativnosti i pažnji prema detaljima u UI/UX dizajnu.",
+      "note": "Sviram gitaru skoro 20 godina, što odražava dugoročnu disciplinu i posvećenost."
+    },
+    "drivingLicense": {
+      "title": "Vozačka Dozvola",
+      "category": "Kategorija B"
+    }
   },
   "contact": {
     "subtitle": "Javite se za saradnju ili samo da kažete zdravo.",
@@ -127,26 +166,28 @@
     "subtitle": "Kolekcija mojih nedavnih radova i eksperimenata.",
     "viewProject": "Pogledaj Projekat",
     "viewCode": "Pogledaj Kod",
+    "viewFe": "Frontend",
+    "viewBe": "Backend",
     "items": {
       "item1": {
-        "title": "E-Commerce Platforma",
-        "description": "Potpuno funkcionalna online prodavnica sa korpom, naplatom i admin panelom."
+        "title": "Nexton E-Commerce",
+        "description": "Full-stack e-commerce platforma sa odvojenim frontend-om i backend-om. Funkcionalnosti upravljanja proizvodima, korpe i autentifikacije korisnika."
       },
       "item2": {
-        "title": "Aplikacija za Upravljanje Zadacima",
-        "description": "Kolaborativni menadžer zadataka sa ažuriranjima u realnom vremenu i timskim funkcijama."
+        "title": "Vremenska Prognoza",
+        "description": "Čista i jednostavna aplikacija za vremensku prognozu koja pruža podatke u realnom vremenu."
       },
       "item3": {
-        "title": "Vremenska Prognoza",
-        "description": "Aplikacija za praćenje vremena u realnom vremenu sa interaktivnim mapama."
+        "title": "Voka Kop",
+        "description": "Korporativni sajt za građevinsku firmu, prikazuje usluge i projekte."
       },
       "item4": {
-        "title": "Portfolio Websajt",
-        "description": "Lični portfolio websajt sa Windows desktop interfejsom."
+        "title": "Delta Graf",
+        "description": "Korporativni sajt za štampariju sa katalogom proizvoda i uslugama."
       },
       "item5": {
-        "title": "Deltagraf",
-        "description": "Korporativni sajt za štampariju sa katalogom proizvoda i uslugama."
+        "title": "Mini Health App",
+        "description": "Android aplikacija razvijena u Kotlin-u za praćenje dnevnih koraka i fizičke aktivnosti."
       }
     }
   }

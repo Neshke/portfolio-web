@@ -52,8 +52,47 @@
     "recycleBin": "Recycle Bin"
   },
   "about": {
-    "role": "Software engineer",
-    "bioText": "I am a passionate developer with a focus on building modern, responsive, and user-friendly web applications. With a strong background in both frontend and backend technologies, I enjoy solving complex problems and creating efficient solutions."
+    "role": "Software Engineer",
+    "bioText": "I am a dedicated Software Engineer with a Bachelor's degree and a strong background in building scalable fintech platforms. My core philosophy revolves around writing clean, maintainable, and optimized code. I believe that every line of code should serve a clear purpose and be easily understandable, ensuring that development is sustainable and collaborative. With extensive experience in the Vue.js ecosystem, TypeScript, and Agile methodologies, I focus on delivering high-performance solutions that stand the test of time."
+  },
+  "education": {
+    "degree": "Bachelor's Degree",
+    "field": "Computer Science / Software Engineering",
+    "institution": "Faculty of Technical Sciences in Čačak, University of Kragujevac",
+    "status": "Completed",
+    "description": "Acquired strong engineering foundations through rigorous coursework in OOP (C, C++, Java), ASP.NET, and Agile methodologies. Gained practical experience in networking, team-based project development under tight deadlines, and full software development lifecycles.",
+    "courseworkTitle": "Core Coursework",
+    "skillsTitle": "Technical Competencies",
+    "coursework": {
+      "dsa": "Data Structures & Algorithms (Sorting, Trees, Graphs)",
+      "oop": "Object-Oriented Programming (Java/C++ Design Principles)",
+      "db": "Databases (SQL, Relational Design, Normalization)",
+      "web": "Web Technologies (HTML, CSS, JS Fundamentals)",
+      "os": "Operating Systems & Networking Fundamentals",
+      "se": "Software Engineering Methodologies (Agile, Patterns)",
+      "git": "Version Control (Git)",
+      "uiux": "UI/UX Basics & HCI"
+    },
+    "skills": {
+      "algo": "Algorithmic Thinking & Optimization",
+      "system": "System Design Fundamentals",
+      "db": "Database Schema Modeling",
+      "http": "HTTP, REST, Request/Response Lifecycle",
+      "security": "Application Security Basics (OWASP)",
+      "testing": "Testing Fundamentals & Clean Code",
+      "team": "Team Collaboration & Project Management"
+    },
+    "musicSchool": {
+      "title": "Elementary Music School (Guitar)",
+      "institution": "Kosta Manojlovic",
+      "duration": "Completed",
+      "description": "Studied music theory and guitar performance, contributing to creativity and attention to detail in UI/UX design.",
+      "note": "I have been playing guitar for almost 20 years, which reflects long-term discipline and dedication."
+    },
+    "drivingLicense": {
+      "title": "Driving License",
+      "category": "Category B"
+    }
   },
   "contact": {
     "subtitle": "Get in touch for collaborations or just to say hi.",
@@ -127,26 +166,28 @@
     "subtitle": "A collection of my recent work and experiments.",
     "viewProject": "View Project",
     "viewCode": "View Code",
+    "viewFe": "Frontend",
+    "viewBe": "Backend",
     "items": {
       "item1": {
-        "title": "E-Commerce Platform",
-        "description": "A full-featured online store with cart, checkout, and admin dashboard."
+        "title": "Nexton E-Commerce",
+        "description": "Full-stack e-commerce platform with separate frontend and backend. Features product management, cart functionality, and user authentication."
       },
       "item2": {
-        "title": "Task Management App",
-        "description": "Collaborative task manager with real-time updates and team features."
+        "title": "Weather App",
+        "description": "A clean and simple weather application providing real-time forecasts and weather conditions."
       },
       "item3": {
-        "title": "Weather Dashboard",
-        "description": "Real-time weather tracking application with interactive maps."
+        "title": "Voka Kop",
+        "description": "Corporate website for a construction company, showcasing services and projects."
       },
       "item4": {
-        "title": "Portfolio Website",
-        "description": "Personal portfolio website with Windows-style desktop interface."
+        "title": "Delta Graf",
+        "description": "Corporate website for a printing company featuring product catalog and services."
       },
       "item5": {
-        "title": "Deltagraf",
-        "description": "Corporate website for a printing company featuring product catalog and services."
+        "title": "Mini Health App",
+        "description": "Android application developed in Kotlin for tracking daily steps and physical activity."
       }
     }
   }

@@ -4,7 +4,9 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 const skills = [
-  'Vue.js', 'TypeScript', 'Node.js', 'Tailwind CSS', 'Vite', 'Pinia', 'Git', 'Docker'
+  'Vue.js', 'TypeScript', 'JavaScript', 'Pinia', 'Vuex', 'Tailwind CSS', 'Vuetify', 'SCSS', 
+  'Node.js', 'Git', 'GitHub Actions', 'CI/CD', 'Vitest', 'Cypress', 'Jira', 
+  'Agile/Scrum', 'Clean Code', 'Optimization'
 ]
 </script>
 
