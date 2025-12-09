@@ -150,25 +150,6 @@ const getComponent = (name: string) => {
           class="font-sans text-[13px] font-medium text-text-base text-center shadow-black drop-shadow-md leading-tight max-w-full overflow-hidden text-ellipsis line-clamp-2 group-hover:text-primary-light transition-colors">{{
             t('startMenu.education') }}</span>
       </button>
-
-      <!-- Recycle Bin -->
-      <button
-        class="desktop-icon flex flex-col items-center gap-2 w-[96px] p-3 rounded-xl bg-transparent border border-transparent cursor-pointer transition-all duration-200 hover:bg-white/5 hover:border-white/10 hover:backdrop-blur-sm active:bg-primary/10 active:border-primary/20 focus:bg-primary/10 focus:border-primary/20 group">
-        <div
-          class="relative w-14 h-14 flex items-center justify-center text-primary drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_12px_24px_rgba(59,130,246,0.3)]">
-          <svg class="w-full h-full stroke-[1.2]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="1.5">
-            <polyline points="3 6 5 6 21 6"></polyline>
-            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
-              class="fill-background-elevated/50"></path>
-            <line x1="10" y1="11" x2="10" y2="17"></line>
-            <line x1="14" y1="11" x2="14" y2="17"></line>
-          </svg>
-        </div>
-        <span
-          class="font-sans text-[13px] font-medium text-text-base text-center shadow-black drop-shadow-md leading-tight max-w-full overflow-hidden text-ellipsis line-clamp-2 group-hover:text-primary-light transition-colors">{{
-            t('startMenu.recycleBin') }}</span>
-      </button>
     </div>
 
     <!-- Desktop Widget (Profile) -->

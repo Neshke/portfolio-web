@@ -4,6 +4,7 @@ import { useStartMenuStore } from '@/store/startMenu'
 import { useWindowsStore, type WindowItem } from '@/store/windows'
 import { useI18n } from 'vue-i18n'
 import LanguageSwitcher from './LanguageSwitcher.vue'
+import { startMenuItemsConfig } from '@/data/startMenu'
 
 const startMenuStore = useStartMenuStore()
 const windowsStore = useWindowsStore()
@@ -26,63 +27,17 @@ onUnmounted(() => {
 const getStartMenuData = () => ({
   app: 'start',
   title: t('startMenu.title'),
-  items: [
-    {
-      id: 'about',
-      title: t('taskbar.about'),
-      description: t('startMenu.aboutDescription'),
-      type: 'app' as const,
-      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>',
-      action: () => {
-        windowsStore.openWindow('about', t('taskbar.about'), 'AboutApp', {}, '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>')
-        startMenuStore.closeMenu()
-      }
-    },
-    {
-      id: 'projects',
-      title: t('taskbar.projects'),
-      description: t('startMenu.projectsDescription'),
-      type: 'app' as const,
-      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>',
-      action: () => {
-        windowsStore.openWindow('projects', t('taskbar.projects'), 'ProjectsApp', {}, '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>')
-        startMenuStore.closeMenu()
-      }
-    },
-    {
-      id: 'experience',
-      title: t('taskbar.experience'),
-      description: t('startMenu.experienceDescription'),
-      type: 'app' as const,
-      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>',
-      action: () => {
-        windowsStore.openWindow('experience', t('taskbar.experience'), 'ExperienceApp', {}, '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>')
-        startMenuStore.closeMenu()
-      }
-    },
-    {
-      id: 'education',
-      title: t('startMenu.education'),
-      description: t('startMenu.educationDescription'),
-      type: 'app' as const,
-      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 0 6-1 6-1v-7"></path></svg>',
-      action: () => {
-        windowsStore.openWindow('education', t('startMenu.education'), 'EducationApp', {}, '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 0 6-1 6-1v-7"></path></svg>')
-        startMenuStore.closeMenu()
-      }
-    },
-    {
-      id: 'contact',
-      title: t('taskbar.contact'),
-      description: t('startMenu.contactDescription'),
-      type: 'app' as const,
-      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>',
-      action: () => {
-        windowsStore.openWindow('contact', t('taskbar.contact'), 'ContactApp', {}, '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>')
-        startMenuStore.closeMenu()
-      }
+  items: startMenuItemsConfig.map(item => ({
+    id: item.id,
+    title: t(item.titleKey),
+    description: t(item.descriptionKey),
+    type: 'app' as const,
+    icon: item.icon,
+    action: () => {
+      windowsStore.openWindow(item.id, t(item.titleKey), item.componentName, {}, item.icon)
+      startMenuStore.closeMenu()
     }
-  ]
+  }))
 })
 
 const toggleStartMenu = () => {
@@ -113,7 +68,7 @@ const handleTaskbarClick = (win: WindowItem) => {
 <template>
   <!-- Windows Taskbar -->
   <nav
-    class="absolute bottom-0 left-0 right-0 mx-auto z-[9002] w-full max-w-7xl flex justify-center animate-[slideUpFade_0.8s_ease-out_1.2s_both] p-0 sm:p-2">
+    class="absolute bottom-0 left-0 right-0 mx-auto z-9002 w-full max-w-7xl flex justify-center animate-[slideUpFade_0.8s_ease-out_1.2s_both] p-0 sm:p-2">
     <div
       class="flex items-center gap-1 h-16 bg-background-elevated/85 backdrop-blur-xl border border-primary/20 px-3 shadow-[0_8px_32px_rgba(0,0,0,0.4)] shadow-primary/10 w-full rounded-none border-x-0 border-b-0 sm:rounded-xl sm:border sm:w-auto">
       <!-- Start Button -->

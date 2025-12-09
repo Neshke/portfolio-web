@@ -56,7 +56,7 @@
     "bioText": "Ja sam posvećen softverski inženjer sa diplomom i snažnom pozadinom u izgradnji skalabilnih fintech platformi. Moja osnovna filozofija se vrti oko pisanja čistog, održivog i optimizovanog koda. Verujem da svaka linija koda treba da služi jasnoj svrsi i da bude lako razumljiva, osiguravajući da je razvoj održiv i kolaborativan. Sa velikim iskustvom u Vue.js ekosistemu, TypeScript-u i Agile metodologijama, fokusiram se na isporuku rešenja visokih performansi koja izdržavaju test vremena."
   },
   "education": {
-    "degree": "Diploma Osnovnih Studija",
+    "degree": "Diploma Osnovnih Akademskih Studija",
     "field": "Računarske Nauke / Softversko Inženjerstvo",
     "institution": "Fakultet tehničkih nauka u Čačku, Univerzitet u Kragujevcu",
     "status": "Završeno",
@@ -81,6 +81,13 @@
       "security": "Bezbednost Aplikacija (OWASP)",
       "testing": "Testiranje i Čist Kod",
       "team": "Timska Saradnja i Upravljanje Projektima"
+    },
+    "highSchool": {
+      "title": "Srednja Škola",
+      "institution": "Tehnička Škola Smederevo",
+      "course": "Mašinski tehničar za kompjutersko konstruisanje",
+      "duration": "Završeno",
+      "description": "Tehničko obrazovanje sa fokusom na kompjutersko projektovanje, inženjerske principe i tehničko crtanje."
     },
     "musicSchool": {
       "title": "Osnovna Muzička Škola (Gitara)",
@@ -159,6 +166,12 @@
         "company": "Samostalno",
         "period": "Tokom Studija",
         "description": "Saradnja sa različitim klijentima na dizajnu i razvoju modernih, responzivnih prezentacionih sajtova koristeći Vue.js. Upravljanje celokupnim ciklusom razvoja, od prikupljanja zahteva do inkrementalnih ažuriranja i finalnog postavljanja, uz osiguranje visokog zadovoljstva klijenata i vizuelnog kvaliteta."
+      },
+      "item3": {
+        "role": "Softverski Inženjer",
+        "company": "Tehnokan",
+        "period": "2024 - Danas",
+        "description": "Razvoj i održavanje korporativnog sajta za Tehnokan, kompaniju za trgovinu i marketing. Implementacija modernog UI/UX dizajna i osiguranje responzivnih performansi na svim uređajima."
       }
     }
   },
@@ -169,6 +182,10 @@
     "viewFe": "Frontend",
     "viewBe": "Backend",
     "items": {
+      "item7": {
+        "title": "Tehnokan",
+        "description": "Korporativni sajt za kompaniju za trgovinu i marketing, sa pregledom usluga i kontakt informacijama."
+      },
       "item1": {
         "title": "Nexton E-Commerce",
         "description": "Full-stack e-commerce platforma sa odvojenim frontend-om i backend-om. Funkcionalnosti upravljanja proizvodima, korpe i autentifikacije korisnika."
@@ -188,7 +205,15 @@
       "item5": {
         "title": "Mini Health App",
         "description": "Android aplikacija razvijena u Kotlin-u za praćenje dnevnih koraka i fizičke aktivnosti."
+      },
+      "item6": {
+        "title": "Mikro-Cloud Sistem za Skladištenje Podataka",
+        "description": "Patentirani sistem koji koristi male računare poput Raspberry Pi u klaster konfiguraciji, koji funkcioniše kao server za obradu korisničkih zahteva za manipulaciju podacima skladištenim preko interneta."
       }
-    }
+    },
+    "patent": "Patent",
+    "viewGazette": "Glasnik IS",
+    "searchRegistry": "Pretraži Registar",
+    "downloadPatent": "Preuzmi PDF"
   }
 }

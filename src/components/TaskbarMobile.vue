@@ -3,6 +3,8 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStartMenuStore } from '@/store/startMenu'
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
+import { mobileMenuData } from '@/data/mobileMenu'
+import type { StartMenuDataConfig } from '@/models/StartMenu/interfaces'
 
 const { t } = useI18n()
 const startMenuStore = useStartMenuStore()
@@ -26,78 +28,24 @@ const toggleMenu = () => {
   openAbout()
 }
 
+const openMenuFromConfig = (config: StartMenuDataConfig) => {
+  startMenuStore.toggleMenu({
+    app: config.app,
+    title: t(config.titleKey),
+    description: t(config.descriptionKey),
+    items: config.items.map(item => ({
+      id: item.id,
+      title: t(item.titleKey),
+      description: t(item.descriptionKey),
+      type: item.type || 'section'
+    }))
+  })
+}
+
 // Start Menu handlers
-const openAbout = () => {
-  startMenuStore.toggleMenu({
-    app: 'about',
-    title: t('taskbar.about'),
-    description: t('startMenu.aboutDescription'),
-    items: [
-      {
-        id: 'bio',
-        title: t('startMenu.bio'),
-        description: t('startMenu.bioDescription'),
-        type: 'section',
-      },
-      {
-        id: 'skills',
-        title: t('startMenu.skills'),
-        description: t('startMenu.skillsDescription'),
-        type: 'section',
-      },
-      {
-        id: 'resume',
-        title: t('startMenu.resume'),
-        description: t('startMenu.resumeDescription'),
-        type: 'action',
-      },
-    ],
-  })
-}
-
-const openProjects = () => {
-  startMenuStore.toggleMenu({
-    app: 'projects',
-    title: t('taskbar.projects'),
-    description: t('startMenu.projectsDescription'),
-    items: [
-      {
-        id: 'web',
-        title: t('startMenu.webProjects'),
-        description: t('startMenu.webProjectsDescription'),
-        type: 'section',
-      },
-      {
-        id: 'mobile',
-        title: t('startMenu.mobileProjects'),
-        description: t('startMenu.mobileProjectsDescription'),
-        type: 'section',
-      },
-      {
-        id: 'opensource',
-        title: t('startMenu.openSource'),
-        description: t('startMenu.openSourceDescription'),
-        type: 'section',
-      },
-    ],
-  })
-}
-
-const openExperience = () => {
-  startMenuStore.toggleMenu({
-    app: 'experience',
-    title: t('taskbar.experience'),
-    description: t('startMenu.experienceDescription'),
-    items: [
-      {
-        id: 'work',
-        title: t('startMenu.workHistory'),
-        description: t('startMenu.workHistoryDescription'),
-        type: 'section',
-      },
-      {
-        id: 'education',
-        title: t('startMenu.education'),
+const openAbout = () => openMenuFromConfig(mobileMenuData.about)
+const openProjects = () => openMenuFromConfig(mobileMenuData.projects)
+const openExperience = () => openMenuFromConfig(mobileMenuData.experience)
         description: t('startMenu.educationDescription'),
         type: 'section',
       },
@@ -145,7 +93,7 @@ const openContact = () => {
   <nav class="fixed bottom-0 left-0 right-0 z-50 p-2 animate-[slideUpFadeMobile_0.6s_ease-out_1s_both]">
     <!-- Bottom Navigation Bar -->
     <div
-      class="flex items-center justify-around gap-2 h-16 bg-background-elevated/90 backdrop-blur-2xl border border-primary/20 rounded-[24px] px-4 py-2 shadow-[0_-4px_24px_rgba(0,0,0,0.5)] shadow-primary/10 mx-2 mb-2">
+      class="flex items-center justify-around gap-2 h-16 bg-background-elevated/90 backdrop-blur-2xl border border-primary/20 rounded-3xl px-4 py-2 shadow-[0_-4px_24px_rgba(0,0,0,0.5)] shadow-primary/10">
       <!-- About Button -->
       <button @click="toggleMenu"
         class="flex flex-col items-center justify-center gap-1.5 px-2 py-2 bg-transparent border border-transparent rounded-2xl text-text-base cursor-pointer transition-all duration-300 flex-1 min-w-0 active:scale-95 group"

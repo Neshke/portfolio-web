@@ -1,28 +1,8 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { coursework, skills } from '@/data/education'
 
 const { t } = useI18n()
-
-const coursework = [
-  'education.coursework.dsa',
-  'education.coursework.oop',
-  'education.coursework.db',
-  'education.coursework.web',
-  'education.coursework.os',
-  'education.coursework.se',
-  'education.coursework.git',
-  'education.coursework.uiux'
-]
-
-const skills = [
-  'education.skills.algo',
-  'education.skills.system',
-  'education.skills.db',
-  'education.skills.http',
-  'education.skills.security',
-  'education.skills.testing',
-  'education.skills.team'
-]
 </script>
 
 <template>
@@ -68,7 +48,22 @@ const skills = [
       </div>
     </div>
 
-    <!-- Additional Education -->
+    <!-- High School -->
+    <div class="bg-background-dark/50 border border-primary/15 rounded-lg p-5 mb-4">
+      <div class="flex justify-between items-start mb-2">
+        <div>
+          <h3 class="font-display text-base text-text-base m-0">{{ t('education.highSchool.title') }}</h3>
+          <p class="text-primary text-sm font-medium mt-1">{{ t('education.highSchool.course') }}</p>
+          <p class="text-text-muted text-xs mt-1 italic">{{ t('education.highSchool.institution') }}</p>
+        </div>
+        <span class="text-[10px] text-text-dim bg-white/5 px-2 py-0.5 rounded border border-white/5">{{ t('education.highSchool.duration') }}</span>
+      </div>
+      <p class="text-xs text-text-dim leading-relaxed mt-3">
+        {{ t('education.highSchool.description') }}
+      </p>
+    </div>
+
+    <!-- Music School -->
     <div class="bg-background-dark/40 border border-primary/10 rounded-lg p-5">
       <div class="flex justify-between items-start mb-2">
         <div>

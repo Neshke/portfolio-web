@@ -5,10 +5,12 @@ import IconEmail from '@/components/icons/IconEmail.vue'
 import IconLinkedIn from '@/components/icons/IconLinkedIn.vue'
 import IconLocation from '@/components/icons/IconLocation.vue'
 import IconCheck from '@/components/icons/IconCheck.vue'
+import { contactInfo } from '@/data/contact'
+import type { ContactForm } from '@/models/ContactApp/interfaces'
 
 const { t } = useI18n()
 
-const form = ref({
+const form = ref<ContactForm>({
   name: '',
   email: '',
   message: ''
@@ -21,7 +23,7 @@ const submitForm = () => {
   const subject = `Portfolio Contact: ${form.value.name}`
   const body = `Name: ${form.value.name}\nEmail: ${form.value.email}\n\nMessage:\n${form.value.message}`
 
-  window.location.href = `mailto:anesic9@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+  window.location.href = `mailto:${contactInfo.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 
   isSent.value = true
 
@@ -42,25 +44,25 @@ const submitForm = () => {
 
     <div class="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-6 md:gap-10">
       <div class="flex flex-col gap-6">
-        <a href="mailto:anesic9@gmail.com"
+        <a :href="`mailto:${contactInfo.email}`"
           class="flex items-center gap-4 p-4 bg-primary/5 border border-primary/10 rounded-lg no-underline hover:bg-primary/10 transition-colors duration-200 cursor-pointer">
           <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary">
             <IconEmail class="w-5 h-5" />
           </div>
           <div>
             <h3 class="text-sm text-text-secondary m-0 mb-1">{{ t('contact.labels.email') }}</h3>
-            <p class="text-[15px] text-text-base m-0">anesic9@gmail.com</p>
+            <p class="text-[15px] text-text-base m-0">{{ contactInfo.email }}</p>
           </div>
         </a>
 
-        <a href="https://www.linkedin.com/in/aleksanesicsd/" target="_blank" rel="noopener noreferrer"
+        <a :href="contactInfo.linkedinUrl" target="_blank" rel="noopener noreferrer"
           class="flex items-center gap-4 p-4 bg-primary/5 border border-primary/10 rounded-lg no-underline hover:bg-primary/10 transition-colors duration-200 cursor-pointer">
           <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary">
             <IconLinkedIn class="w-5 h-5" />
           </div>
           <div>
             <h3 class="text-sm text-text-secondary m-0 mb-1">{{ t('contact.labels.linkedin') }}</h3>
-            <p class="text-[15px] text-text-base m-0">Aleksa Nesic</p>
+            <p class="text-[15px] text-text-base m-0">{{ contactInfo.linkedinName }}</p>
           </div>
         </a>
 

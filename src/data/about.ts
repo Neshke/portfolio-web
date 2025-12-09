@@ -1,0 +1,20 @@
+export const skills = [
+  'Vue.js',
+  'TypeScript',
+  'JavaScript',
+  'Pinia',
+  'Vuex',
+  'Tailwind CSS',
+  'Vuetify',
+  'SCSS',
+  'Node.js',
+  'Git',
+  'GitHub Actions',
+  'CI/CD',
+  'Vitest',
+  'Cypress',
+  'Jira',
+  'Agile/Scrum',
+  'Clean Code',
+  'Optimization'
+]

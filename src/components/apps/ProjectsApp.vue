@@ -2,49 +2,18 @@
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
 import IconGithub from '@/components/icons/IconGithub.vue'
+import { projectsData } from '@/data/projects'
+import type { Project } from '@/models/ProjectsApp/interfaces'
 
 const { t } = useI18n()
 
-const projects = computed(() => [
-  {
-    id: 1,
-    title: t('projects.items.item1.title'),
-    description: t('projects.items.item1.description'),
-    tech: ['Vue 3', 'PHP', 'MySQL', 'Apache'],
-    repoFe: 'https://github.com/Neshke/nexton-ecommerce',
-    repoBe: 'https://github.com/Neshke/nexton-shop'
-  },
-  {
-    id: 2,
-    title: t('projects.items.item2.title'),
-    description: t('projects.items.item2.description'),
-    tech: ['JavaScript', 'OpenWeather API', 'Vuetify'],
-    repo: 'https://github.com/Neshke/small-weather-app'
-  },
-  {
-    id: 3,
-    title: t('projects.items.item3.title'),
-    description: t('projects.items.item3.description'),
-    tech: ['Vue.js', 'Tailwind CSS'],
-    repo: 'https://github.com/Neshke/Voka-Kop',
-    link: 'https://vokakop.com'
-  },
-  {
-    id: 4,
-    title: t('projects.items.item4.title'),
-    description: t('projects.items.item4.description'),
-    tech: ['Vue.js', 'PHP', 'MySQL'],
-    repo: 'https://github.com/Neshke/deltagraf',
-    link: 'https://deltagraf.rs'
-  },
-  {
-    id: 5,
-    title: t('projects.items.item5.title'),
-    description: t('projects.items.item5.description'),
-    tech: ['Kotlin', 'Android SDK', 'Firebase'],
-    repo: 'https://gitlab.com/Neshke/mini-health-app'
-  }
-])
+const projects = computed<Project[]>(() => {
+  return projectsData.map(project => ({
+    ...project,
+    title: t(project.title),
+    description: t(project.description)
+  }))
+})
 </script>
 
 <template>
@@ -98,6 +67,30 @@ const projects = computed(() => [
             <IconGithub class="w-4 h-4 text-primary" />
             {{ t('projects.viewCode') }}
           </a>
+
+          <!-- Patent Badge and Links -->
+          <template v-else-if="project.isPatent">
+            <span
+              class="flex items-center gap-2 text-xs px-3 py-2 bg-amber-500/10 border border-amber-500/30 rounded text-amber-400 font-semibold">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
+              {{ t('projects.patent') }}: {{ project.patentNumber }}
+            </span>
+            <a v-if="project.patentPdf" :href="project.patentPdf" target="_blank" rel="noopener noreferrer"
+              class="flex items-center gap-2 text-xs px-3 py-2 bg-background-dark border border-primary/30 rounded hover:bg-primary/10 hover:border-primary transition-all text-text-base no-underline">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              {{ t('projects.viewGazette') }}
+            </a>
+            <a v-if="project.patentRegistry" :href="project.patentRegistry" target="_blank" rel="noopener noreferrer"
+              class="flex items-center gap-2 text-xs px-3 py-2 bg-background-dark border border-primary/30 rounded hover:bg-primary/10 hover:border-primary transition-all text-text-base no-underline">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              {{ t('projects.searchRegistry') }}
+            </a>
+            <a v-if="project.patentDocument" :href="project.patentDocument" download
+              class="flex items-center gap-2 text-xs px-3 py-2 bg-background-dark border border-primary/30 rounded hover:bg-primary/10 hover:border-primary transition-all text-text-base no-underline">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              {{ t('projects.downloadPatent') }}
+            </a>
+          </template>
         </div>
       </div>
     </div>

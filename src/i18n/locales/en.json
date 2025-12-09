@@ -56,7 +56,7 @@
     "bioText": "I am a dedicated Software Engineer with a Bachelor's degree and a strong background in building scalable fintech platforms. My core philosophy revolves around writing clean, maintainable, and optimized code. I believe that every line of code should serve a clear purpose and be easily understandable, ensuring that development is sustainable and collaborative. With extensive experience in the Vue.js ecosystem, TypeScript, and Agile methodologies, I focus on delivering high-performance solutions that stand the test of time."
   },
   "education": {
-    "degree": "Bachelor's Degree",
+    "degree": "Bachelor's of Science",
     "field": "Computer Science / Software Engineering",
     "institution": "Faculty of Technical Sciences in Čačak, University of Kragujevac",
     "status": "Completed",
@@ -81,6 +81,13 @@
       "security": "Application Security Basics (OWASP)",
       "testing": "Testing Fundamentals & Clean Code",
       "team": "Team Collaboration & Project Management"
+    },
+    "highSchool": {
+      "title": "High School Diploma",
+      "institution": "Technical School Smederevo",
+      "course": "Computer-Aided Design Engineer",
+      "duration": "Completed",
+      "description": "Technical education with focus on computer-aided design, engineering principles, and technical drawing."
     },
     "musicSchool": {
       "title": "Elementary Music School (Guitar)",
@@ -159,6 +166,12 @@
         "company": "Self-Employed",
         "period": "During Studies",
         "description": "Collaborated with various clients to design and develop modern, responsive presentational websites using Vue.js. Managed the entire development lifecycle, from requirement gathering to incremental updates and final deployment, ensuring high client satisfaction and visual appeal."
+      },
+      "item3": {
+        "role": "Software Engineer",
+        "company": "Tehnokan",
+        "period": "2024 - Present",
+        "description": "Developed and maintained the corporate website for Tehnokan, a trading and marketing company. Implemented modern UI/UX designs and ensured responsive performance across devices."
       }
     }
   },
@@ -169,6 +182,10 @@
     "viewFe": "Frontend",
     "viewBe": "Backend",
     "items": {
+      "item7": {
+        "title": "Tehnokan",
+        "description": "Corporate website for a trading and marketing company, featuring services overview and contact information."
+      },
       "item1": {
         "title": "Nexton E-Commerce",
         "description": "Full-stack e-commerce platform with separate frontend and backend. Features product management, cart functionality, and user authentication."
@@ -188,7 +205,15 @@
       "item5": {
         "title": "Mini Health App",
         "description": "Android application developed in Kotlin for tracking daily steps and physical activity."
+      },
+      "item6": {
+        "title": "Micro-Cloud Data Storage System",
+        "description": "Patented system using small computers like Raspberry Pi in a cluster configuration, acting as a server that handles user requests for manipulating stored data through the internet."
       }
-    }
+    },
+    "patent": "Patent",
+    "viewGazette": "IP Gazette",
+    "searchRegistry": "Search Registry",
+    "downloadPatent": "Download PDF"
   }
 }

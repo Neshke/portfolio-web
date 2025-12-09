@@ -1,92 +1,40 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
+import { experiencesData } from '@/data/experience'
+import type { Experience, Project } from '@/models/ExperienceApp/interfaces'
 
 const { t } = useI18n()
 
-interface Project {
-  name: string
-  url: string
-  image: string
-  description?: string
-  achievements?: string[]
-  tech?: string[]
-}
-
-interface Experience {
-  id: number
-  role: string
-  company: string
-  period: string
-  description: string
-  projects?: Project[]
-}
-
-const experiences = computed<Experience[]>(() => [
-  {
-    id: 1,
-    role: t('experience.items.item1.role'),
-    company: t('experience.items.item1.company'),
-    period: t('experience.items.item1.period'),
-    description: t('experience.items.item1.description'),
-    projects: [
-      {
-        name: 'XE.com',
-        url: 'https://www.xe.com/',
-        image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.xe.com%2F?w=600&h=400',
-        description: t('experience.items.item1.projects.xe.description'),
-        tech: ['Vue 3', 'TypeScript', 'Pinia', 'Tailwind', 'Vitest', 'Cypress', 'Axios', 'i18n'],
-        achievements: [
-          t('experience.items.item1.projects.xe.achievements[0]'),
-          t('experience.items.item1.projects.xe.achievements[1]'),
-          t('experience.items.item1.projects.xe.achievements[2]'),
-          t('experience.items.item1.projects.xe.achievements[3]'),
-          t('experience.items.item1.projects.xe.achievements[4]'),
-          t('experience.items.item1.projects.xe.achievements[5]'),
-          t('experience.items.item1.projects.xe.achievements[6]'),
-          t('experience.items.item1.projects.xe.achievements[7]'),
-          t('experience.items.item1.projects.xe.achievements[8]'),
-          t('experience.items.item1.projects.xe.achievements[9]')
-        ]
-      },
-      {
-        name: 'Ria Money Transfer',
-        url: 'https://www.riamoneytransfer.com/en-us/',
-        image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.riamoneytransfer.com%2Fen-us%2F?w=600&h=400',
-        description: t('experience.items.item1.projects.ria.description'),
-        tech: ['Vue 2', 'Vuex', 'Composition API', 'SCSS', 'Tailwind'],
-        achievements: [
-          t('experience.items.item1.projects.ria.achievements[0]'),
-          t('experience.items.item1.projects.ria.achievements[1]'),
-          t('experience.items.item1.projects.ria.achievements[2]'),
-          t('experience.items.item1.projects.ria.achievements[3]'),
-          t('experience.items.item1.projects.ria.achievements[4]'),
-          t('experience.items.item1.projects.ria.achievements[5]'),
-          t('experience.items.item1.projects.ria.achievements[6]')
-        ]
+const experiences = computed<Experience[]>(() => {
+  return experiencesData.map(exp => ({
+    id: exp.id,
+    role: t(exp.roleKey),
+    company: t(exp.companyKey),
+    period: t(exp.periodKey),
+    description: t(exp.descriptionKey),
+    projects: exp.projects?.map(proj => {
+      const project: Project = {
+        name: proj.name,
+        url: proj.url,
+        image: proj.image,
+        tech: 'tech' in proj ? proj.tech : undefined
       }
-    ]
-  },
-  {
-    id: 2,
-    role: t('experience.items.item2.role'),
-    company: t('experience.items.item2.company'),
-    period: t('experience.items.item2.period'),
-    description: t('experience.items.item2.description'),
-    projects: [
-      {
-        name: 'Delta Graf',
-        url: 'https://deltagraf.rs/',
-        image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Fdeltagraf.rs?w=600&h=400'
-      },
-      {
-        name: 'Voka Kop',
-        url: 'https://vokakop.com/',
-        image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Fvokakop.com?w=600&h=400'
+
+      if ('descriptionKey' in proj && proj.descriptionKey) {
+        project.description = t(proj.descriptionKey)
       }
-    ]
-  }
-])
+
+      if ('achievementsBaseKey' in proj && 'achievementsCount' in proj && proj.achievementsBaseKey && proj.achievementsCount) {
+        project.achievements = Array.from({ length: proj.achievementsCount }, (_, i) => 
+          t(`${proj.achievementsBaseKey}[${i}]`)
+        )
+      }
+
+      return project
+    })
+  }))
+})
 </script>
 
 <template>
