@@ -166,12 +166,6 @@
         "company": "Self-Employed",
         "period": "During Studies",
         "description": "Collaborated with various clients to design and develop modern, responsive presentational websites using Vue.js. Managed the entire development lifecycle, from requirement gathering to incremental updates and final deployment, ensuring high client satisfaction and visual appeal."
-      },
-      "item3": {
-        "role": "Software Engineer",
-        "company": "Tehnokan",
-        "period": "2024 - Present",
-        "description": "Developed and maintained the corporate website for Tehnokan, a trading and marketing company. Implemented modern UI/UX designs and ensured responsive performance across devices."
       }
     }
   },

@@ -1,19 +1,5 @@
 export const experiencesData = [
   {
-    id: 3,
-    roleKey: 'experience.items.item3.role',
-    companyKey: 'experience.items.item3.company',
-    periodKey: 'experience.items.item3.period',
-    descriptionKey: 'experience.items.item3.description',
-    projects: [
-      {
-        name: 'Tehnokan Website',
-        url: 'https://tehnokan.com/',
-        image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Ftehnokan.com%2F?w=600&h=400'
-      }
-    ]
-  },
-  {
     id: 1,
     roleKey: 'experience.items.item1.role',
     companyKey: 'experience.items.item1.company',
@@ -47,6 +33,11 @@ export const experiencesData = [
     periodKey: 'experience.items.item2.period',
     descriptionKey: 'experience.items.item2.description',
     projects: [
+      {
+        name: 'Tehnokan',
+        url: 'https://tehnokan.com/',
+        image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Ftehnokan.com%2F?w=600&h=400'
+      },
       {
         name: 'Delta Graf',
         url: 'https://deltagraf.rs/',

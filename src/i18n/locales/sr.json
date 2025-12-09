@@ -166,12 +166,6 @@
         "company": "Samostalno",
         "period": "Tokom Studija",
         "description": "Saradnja sa različitim klijentima na dizajnu i razvoju modernih, responzivnih prezentacionih sajtova koristeći Vue.js. Upravljanje celokupnim ciklusom razvoja, od prikupljanja zahteva do inkrementalnih ažuriranja i finalnog postavljanja, uz osiguranje visokog zadovoljstva klijenata i vizuelnog kvaliteta."
-      },
-      "item3": {
-        "role": "Softverski Inženjer",
-        "company": "Tehnokan",
-        "period": "2024 - Danas",
-        "description": "Razvoj i održavanje korporativnog sajta za Tehnokan, kompaniju za trgovinu i marketing. Implementacija modernog UI/UX dizajna i osiguranje responzivnih performansi na svim uređajima."
       }
     }
   },
