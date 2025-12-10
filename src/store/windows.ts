@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
+import type { AppIconName } from '@/data/apps'
 
 export interface WindowItem {
   id: string
   title: string
   component: string // Name of the component to render content, or 'default'
-  icon?: string
+  icon?: AppIconName
   props?: Record<string, any>
   position: { x: number; y: number }
   size: { width: number; height: number }
@@ -24,7 +25,7 @@ export const useWindowsStore = defineStore('windows', () => {
   const getWindowById = (id: string) => windows.value.find((w) => w.id === id)
 
   // Actions
-  function openWindow(id: string, title: string, component: string = 'default', props: Record<string, any> = {}, icon?: string) {
+  function openWindow(id: string, title: string, component: string = 'default', props: Record<string, any> = {}, icon?: AppIconName) {
     const isMobile = window.matchMedia('(max-width: 767px)').matches
 
     if (isMobile) {

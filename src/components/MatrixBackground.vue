@@ -98,13 +98,20 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="absolute inset-0 pointer-events-none overflow-hidden">
-    <canvas ref="canvasRef" class="absolute inset-0 w-full h-full opacity-40 blur-[2px]"></canvas>
+  <div class="matrix-wrapper">
+    <canvas ref="canvasRef" class="matrix-canvas"></canvas>
   </div>
 </template>
 
 <style scoped>
-canvas {
+@reference "@/assets/main.css";
+
+.matrix-wrapper {
+  @apply absolute inset-0 pointer-events-none overflow-hidden;
+}
+
+.matrix-canvas {
+  @apply absolute inset-0 w-full h-full opacity-40;
   filter: contrast(1.2) brightness(1.1) blur(1px);
 }
 </style>

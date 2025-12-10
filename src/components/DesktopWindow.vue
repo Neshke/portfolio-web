@@ -149,38 +149,27 @@ const startResize = (direction: string, event: MouseEvent) => {
 </script>
 
 <template>
-  <div ref="windowRef"
-    class="fixed flex flex-col min-w-[300px] min-h-[200px] transition-[width,height,opacity,transform] duration-200 bg-background-elevated/95 backdrop-blur-xl border border-border rounded-lg shadow-2xl"
-    :class="{
-      'border-primary/60 shadow-[0_15px_40px_rgba(0,0,0,0.6)] ring-1 ring-primary/30': isActive,
-      'rounded-none border-none': isMaximized
-    }" :style="windowStyle" @mousedown="handleMouseDown">
+  <div ref="windowRef" class="desktop-window" :class="{
+    'window-active': isActive,
+    'window-maximized': isMaximized
+  }" :style="windowStyle" @mousedown="handleMouseDown">
     <!-- Resize Handles -->
     <template v-if="!isMaximized && !isMobile">
-      <div class="absolute top-[-4px] left-0 right-0 h-2 cursor-ns-resize z-10" @mousedown="startResize('n', $event)">
-      </div>
-      <div class="absolute bottom-[-4px] left-0 right-0 h-2 cursor-ns-resize z-10"
-        @mousedown="startResize('s', $event)"></div>
-      <div class="absolute top-0 bottom-0 right-[-4px] w-2 cursor-ew-resize z-10" @mousedown="startResize('e', $event)">
-      </div>
-      <div class="absolute top-0 bottom-0 left-[-4px] w-2 cursor-ew-resize z-10" @mousedown="startResize('w', $event)">
-      </div>
-      <div class="absolute top-[-4px] right-[-4px] w-3 h-3 cursor-nesw-resize z-11"
-        @mousedown="startResize('ne', $event)"></div>
-      <div class="absolute top-[-4px] left-[-4px] w-3 h-3 cursor-nwse-resize z-11"
-        @mousedown="startResize('nw', $event)"></div>
-      <div class="absolute bottom-[-4px] right-[-4px] w-3 h-3 cursor-nwse-resize z-11"
-        @mousedown="startResize('se', $event)"></div>
-      <div class="absolute bottom-[-4px] left-[-4px] w-3 h-3 cursor-nesw-resize z-11"
-        @mousedown="startResize('sw', $event)"></div>
+      <div class="resize-handle resize-n" @mousedown="startResize('n', $event)"></div>
+      <div class="resize-handle resize-s" @mousedown="startResize('s', $event)"></div>
+      <div class="resize-handle resize-e" @mousedown="startResize('e', $event)"></div>
+      <div class="resize-handle resize-w" @mousedown="startResize('w', $event)"></div>
+      <div class="resize-handle resize-ne" @mousedown="startResize('ne', $event)"></div>
+      <div class="resize-handle resize-nw" @mousedown="startResize('nw', $event)"></div>
+      <div class="resize-handle resize-se" @mousedown="startResize('se', $event)"></div>
+      <div class="resize-handle resize-sw" @mousedown="startResize('sw', $event)"></div>
     </template>
 
     <!-- Title Bar -->
-    <div ref="titleBarRef"
-      class="h-9 bg-primary/10 border-b border-primary/20 flex items-center justify-between px-2 select-none cursor-default rounded-t-lg"
-      :class="{ 'rounded-none': isMaximized }" @dblclick="!isMobile && windowsStore.maximizeWindow(props.id)">
-      <div class="flex items-center gap-2 font-sans text-[13px] font-medium text-text-base">
-        <div class="w-4 h-4 text-primary">
+    <div ref="titleBarRef" class="title-bar" :class="{ 'title-bar-maximized': isMaximized }"
+      @dblclick="!isMobile && windowsStore.maximizeWindow(props.id)">
+      <div class="title-content">
+        <div class="title-icon">
           <slot name="icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -190,30 +179,24 @@ const startResize = (direction: string, event: MouseEvent) => {
         <span>{{ title }}</span>
       </div>
 
-      <div class="flex items-center gap-1">
-        <button
-          class="w-7 h-6 flex items-center justify-center border-none bg-transparent text-text-secondary rounded hover:bg-white/10 hover:text-text-base transition-colors"
-          @click.stop="windowsStore.minimizeWindow(props.id)">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <div class="window-controls">
+        <button class="control-button" @click.stop="windowsStore.minimizeWindow(props.id)">
+          <svg class="control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="5" y1="12" x2="19" y2="12"></line>
           </svg>
         </button>
-        <button v-if="!isMobile"
-          class="w-7 h-6 flex items-center justify-center border-none bg-transparent text-text-secondary rounded hover:bg-white/10 hover:text-text-base transition-colors"
-          @click.stop="windowsStore.maximizeWindow(props.id)">
-          <svg v-if="isMaximized" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        <button v-if="!isMobile" class="control-button" @click.stop="windowsStore.maximizeWindow(props.id)">
+          <svg v-if="isMaximized" class="control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="2">
             <rect x="6" y="6" width="12" height="12" rx="1"></rect>
             <path d="M8 6V4h12v12h-2"></path>
           </svg>
-          <svg v-else class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg v-else class="control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="4" y="4" width="16" height="16" rx="2"></rect>
           </svg>
         </button>
-        <button
-          class="w-7 h-6 flex items-center justify-center border-none bg-transparent text-text-secondary rounded hover:bg-red-500 hover:text-white transition-colors"
-          @click.stop="windowsStore.closeWindow(props.id)">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <button class="control-button control-close" @click.stop="windowsStore.closeWindow(props.id)">
+          <svg class="control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -222,10 +205,114 @@ const startResize = (direction: string, event: MouseEvent) => {
     </div>
 
     <!-- Window Content -->
-    <div
-      class="flex-1 overflow-auto relative bg-black/20 rounded-b-lg scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary/20 hover:scrollbar-thumb-primary/40"
-      :class="{ 'rounded-none': isMaximized }">
+    <div class="window-content" :class="{ 'content-maximized': isMaximized }">
       <slot></slot>
     </div>
   </div>
 </template>
+
+<style scoped>
+@reference "@/assets/main.css";
+
+.desktop-window {
+  @apply fixed flex flex-col min-w-[300px] min-h-[200px];
+  @apply bg-background-elevated/95 backdrop-blur-xl;
+  @apply border border-border rounded-lg shadow-2xl;
+  transition: width 200ms, height 200ms, opacity 200ms, transform 200ms;
+}
+
+.window-active {
+  @apply border-primary/60 ring-1 ring-primary/30;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.window-maximized {
+  @apply rounded-none border-none;
+}
+
+/* Resize Handles */
+.resize-handle {
+  @apply absolute z-10;
+}
+
+.resize-n {
+  @apply -top-1 left-0 right-0 h-2 cursor-ns-resize;
+}
+
+.resize-s {
+  @apply -bottom-1 left-0 right-0 h-2 cursor-ns-resize;
+}
+
+.resize-e {
+  @apply top-0 bottom-0 -right-1 w-2 cursor-ew-resize;
+}
+
+.resize-w {
+  @apply top-0 bottom-0 -left-1 w-2 cursor-ew-resize;
+}
+
+.resize-ne {
+  @apply -top-1 -right-1 w-3 h-3 cursor-nesw-resize z-11;
+}
+
+.resize-nw {
+  @apply -top-1 -left-1 w-3 h-3 cursor-nwse-resize z-11;
+}
+
+.resize-se {
+  @apply -bottom-1 -right-1 w-3 h-3 cursor-nwse-resize z-11;
+}
+
+.resize-sw {
+  @apply -bottom-1 -left-1 w-3 h-3 cursor-nesw-resize z-11;
+}
+
+/* Title Bar */
+.title-bar {
+  @apply h-9 bg-primary/10 border-b border-primary/20;
+  @apply flex items-center justify-between px-2;
+  @apply select-none cursor-default rounded-t-lg;
+}
+
+.title-bar-maximized {
+  @apply rounded-none;
+}
+
+.title-content {
+  @apply flex items-center gap-2;
+  @apply font-sans text-[13px] font-medium text-text-base;
+}
+
+.title-icon {
+  @apply w-4 h-4 text-primary;
+}
+
+/* Window Controls */
+.window-controls {
+  @apply flex items-center gap-1;
+}
+
+.control-button {
+  @apply w-7 h-6 flex items-center justify-center;
+  @apply border-none bg-transparent text-text-secondary rounded;
+  @apply hover:bg-white/10 hover:text-text-base transition-colors;
+}
+
+.control-close:hover {
+  @apply bg-red-500 text-white;
+}
+
+.control-icon {
+  @apply w-3.5 h-3.5;
+}
+
+/* Window Content */
+.window-content {
+  @apply flex-1 overflow-auto relative bg-black/20 rounded-b-lg;
+  @apply scrollbar-thin;
+}
+
+.content-maximized {
+  @apply rounded-none;
+}
+</style>

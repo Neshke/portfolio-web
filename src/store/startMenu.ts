@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import type { StartMenuData, StartMenuItem } from '@/models/StartMenu/interfaces'
+import type { StartMenuData } from '@/models/StartMenu/interfaces'
 
 export const useStartMenuStore = defineStore('startMenu', () => {
   // State

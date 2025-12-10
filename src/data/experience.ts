@@ -1,4 +1,6 @@
-export const experiencesData = [
+import type { ExperienceData } from '@/models/ExperienceApp/interfaces'
+
+export const experiencesData: ExperienceData[] = [
   {
     id: 1,
     roleKey: 'experience.items.item1.role',
@@ -12,8 +14,18 @@ export const experiencesData = [
         image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.xe.com%2F?w=600&h=400',
         descriptionKey: 'experience.items.item1.projects.xe.description',
         tech: ['Vue 3', 'TypeScript', 'Pinia', 'Tailwind', 'Vitest', 'Cypress', 'Axios', 'i18n'],
-        achievementsCount: 10,
-        achievementsBaseKey: 'experience.items.item1.projects.xe.achievements'
+        achievementKeys: [
+          'experience.items.item1.projects.xe.achievements[0]',
+          'experience.items.item1.projects.xe.achievements[1]',
+          'experience.items.item1.projects.xe.achievements[2]',
+          'experience.items.item1.projects.xe.achievements[3]',
+          'experience.items.item1.projects.xe.achievements[4]',
+          'experience.items.item1.projects.xe.achievements[5]',
+          'experience.items.item1.projects.xe.achievements[6]',
+          'experience.items.item1.projects.xe.achievements[7]',
+          'experience.items.item1.projects.xe.achievements[8]',
+          'experience.items.item1.projects.xe.achievements[9]'
+        ]
       },
       {
         name: 'Ria Money Transfer',
@@ -21,8 +33,15 @@ export const experiencesData = [
         image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.riamoneytransfer.com%2Fen-us%2F?w=600&h=400',
         descriptionKey: 'experience.items.item1.projects.ria.description',
         tech: ['Vue 2', 'Vuex', 'Composition API', 'SCSS', 'Tailwind'],
-        achievementsCount: 7,
-        achievementsBaseKey: 'experience.items.item1.projects.ria.achievements'
+        achievementKeys: [
+          'experience.items.item1.projects.ria.achievements[0]',
+          'experience.items.item1.projects.ria.achievements[1]',
+          'experience.items.item1.projects.ria.achievements[2]',
+          'experience.items.item1.projects.ria.achievements[3]',
+          'experience.items.item1.projects.ria.achievements[4]',
+          'experience.items.item1.projects.ria.achievements[5]',
+          'experience.items.item1.projects.ria.achievements[6]'
+        ]
       }
     ]
   },

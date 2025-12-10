@@ -475,3 +475,20 @@
 .animate-float {
   animation: var(--animate-float);
 }
+
+/* Custom Scrollbar Utilities */
+@utility scrollbar-thin {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  scrollbar-width: thin;
+}
+
+@utility scrollbar-none {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -69,6 +69,17 @@ defineExpose({
 </script>
 
 <template>
-  <div ref="containerRef" class="inline-block overflow-hidden [&>svg]:w-full [&>svg]:h-full"
-    :style="{ width: width, height: height }" />
+  <div ref="containerRef" class="lottie-container" :style="{ width: width, height: height }" />
 </template>
+
+<style scoped>
+@reference "@/assets/main.css";
+
+.lottie-container {
+  @apply inline-block overflow-hidden;
+}
+
+.lottie-container :deep(svg) {
+  @apply w-full h-full;
+}
+</style>

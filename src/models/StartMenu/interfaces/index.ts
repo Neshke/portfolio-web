@@ -1,8 +1,10 @@
+import type { AppIconName } from '@/data/apps'
+
 export interface StartMenuItem {
   id: string
   title: string
   description?: string
-  icon?: string
+  icon?: AppIconName
   type: 'app' | 'section' | 'action'
   route?: string
   action?: () => void
@@ -19,7 +21,7 @@ export interface StartMenuItemConfig {
   id: string
   titleKey: string
   descriptionKey: string
-  icon?: string
+  icon?: AppIconName
   componentName?: string
   type?: 'app' | 'section' | 'action'
 }

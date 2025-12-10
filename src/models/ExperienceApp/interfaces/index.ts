@@ -1,3 +1,4 @@
+// Display interfaces (translated values)
 export interface Project {
   name: string
   url: string
@@ -14,4 +15,23 @@ export interface Experience {
   period: string
   description: string
   projects?: Project[]
+}
+
+// Data interfaces (i18n keys)
+export interface ProjectData {
+  name: string
+  url: string
+  image: string
+  descriptionKey?: string
+  achievementKeys?: string[]
+  tech?: string[]
+}
+
+export interface ExperienceData {
+  id: number
+  roleKey: string
+  companyKey: string
+  periodKey: string
+  descriptionKey: string
+  projects?: ProjectData[]
 }
