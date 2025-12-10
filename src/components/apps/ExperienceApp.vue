@@ -26,7 +26,7 @@ const experiences = computed<Experience[]>(() => {
       }
 
       if ('achievementsBaseKey' in proj && 'achievementsCount' in proj && proj.achievementsBaseKey && proj.achievementsCount) {
-        project.achievements = Array.from({ length: proj.achievementsCount }, (_, i) => 
+        project.achievements = Array.from({ length: proj.achievementsCount }, (_, i) =>
           t(`${proj.achievementsBaseKey}[${i}]`)
         )
       }

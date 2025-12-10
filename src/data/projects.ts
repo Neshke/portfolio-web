@@ -2,6 +2,13 @@ import type { Project } from '@/models/ProjectsApp/interfaces'
 
 export const projectsData: Project[] = [
   {
+    id: 8,
+    title: 'projects.items.item8.title',
+    description: 'projects.items.item8.description',
+    tech: ['Vue 3', 'TypeScript', 'Tailwind CSS', 'Pinia', 'Vue Router'],
+    repo: 'https://github.com/Neshke/portfolio-web'
+  },
+  {
     id: 6,
     title: 'projects.items.item6.title',
     description: 'projects.items.item6.description',

@@ -46,13 +46,13 @@ const openMenuFromConfig = (config: StartMenuDataConfig) => {
 const openAbout = () => openMenuFromConfig(mobileMenuData.about)
 const openProjects = () => openMenuFromConfig(mobileMenuData.projects)
 const openExperience = () => openMenuFromConfig(mobileMenuData.experience)
-        description: t('startMenu.educationDescription'),
-        type: 'section',
+description: t('startMenu.educationDescription'),
+  type: 'section',
       },
-      {
-        id: 'certifications',
-        title: t('startMenu.certifications'),
-        description: t('startMenu.certificationsDescription'),
+{
+  id: 'certifications',
+    title: t('startMenu.certifications'),
+      description: t('startMenu.certificationsDescription'),
         type: 'section',
       },
     ],

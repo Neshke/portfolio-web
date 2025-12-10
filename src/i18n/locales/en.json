@@ -203,6 +203,10 @@
       "item6": {
         "title": "Micro-Cloud Data Storage System",
         "description": "Patented system using small computers like Raspberry Pi in a cluster configuration, acting as a server that handles user requests for manipulating stored data through the internet."
+      },
+      "item8": {
+        "title": "Portfolio Website",
+        "description": "Modern portfolio website built with Vue 3 and TypeScript, featuring a Windows 11-inspired desktop environment with Matrix cyberpunk aesthetics."
       }
     },
     "patent": "Patent",

@@ -203,6 +203,10 @@
       "item6": {
         "title": "Mikro-Cloud Sistem za Skladištenje Podataka",
         "description": "Patentirani sistem koji koristi male računare poput Raspberry Pi u klaster konfiguraciji, koji funkcioniše kao server za obradu korisničkih zahteva za manipulaciju podacima skladištenim preko interneta."
+      },
+      "item8": {
+        "title": "Portfolio Sajt",
+        "description": "Moderan portfolio sajt izgrađen sa Vue 3 i TypeScript-om, sa desktop okruženjem inspirisanim Windows 11 i Matrix cyberpunk estetikom."
       }
     },
     "patent": "Patent",
