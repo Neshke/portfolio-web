@@ -14,9 +14,14 @@ onMounted(() => {
   const ctx = canvas.getContext('2d')
   if (!ctx) return
 
+  const dpr = window.devicePixelRatio || 1
+
   const resizeCanvas = () => {
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+    canvas.width = window.innerWidth * dpr
+    canvas.height = window.innerHeight * dpr
+    canvas.style.width = `${window.innerWidth}px`
+    canvas.style.height = `${window.innerHeight}px`
+    ctx.scale(dpr, dpr)
   }
 
   let colorPrimary = ''
@@ -39,13 +44,15 @@ onMounted(() => {
 
   updateThemeColors()
   window.addEventListener('resize', () => {
+    ctx.setTransform(1, 0, 0, 1, 0, 0) // Reset transform before resize
     resizeCanvas()
     updateThemeColors()
   })
   resizeCanvas()
 
-  const fontSize = 14
-  const columns = Math.floor(canvas.width / fontSize)
+  const isMobile = window.innerWidth < 768
+  const fontSize = isMobile ? 10 : 14
+  const columns = Math.floor(window.innerWidth / fontSize)
   const drops: number[] = []
 
   for (let i = 0; i < columns; i++) {
@@ -60,7 +67,7 @@ onMounted(() => {
     lastTime = timeStamp
 
     ctx.fillStyle = colorBackground
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    ctx.fillRect(0, 0, window.innerWidth, window.innerHeight)
 
     ctx.fillStyle = colorPrimary
     ctx.font = `${fontSize}px monospace`
@@ -78,7 +85,7 @@ onMounted(() => {
 
       ctx.fillText(text, i * fontSize, drops[i] * fontSize)
 
-      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      if (drops[i] * fontSize > window.innerHeight && Math.random() > 0.975) {
         drops[i] = 0
       }
 
@@ -112,6 +119,6 @@ onUnmounted(() => {
 
 .matrix-canvas {
   @apply absolute inset-0 w-full h-full opacity-40;
-  filter: contrast(1.2) brightness(1.1) blur(1px);
+  filter: contrast(1.2) brightness(1.1);
 }
 </style>
