@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { ref } from 'vue'
-import IconEmail from '@/components/icons/IconEmail.vue'
-import IconLinkedIn from '@/components/icons/IconLinkedIn.vue'
-import IconLocation from '@/components/icons/IconLocation.vue'
-import IconCheck from '@/components/icons/IconCheck.vue'
+import IconEmail from '@/assets/icons/IconEmail.vue'
+import IconLinkedIn from '@/assets/icons/IconLinkedIn.vue'
+import IconLocation from '@/assets/icons/IconLocation.vue'
+import IconCheck from '@/assets/icons/IconCheck.vue'
 import { contactInfo } from '@/data/contact'
 import type { ContactForm } from '@/models/ContactApp/interfaces'
 

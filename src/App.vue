@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MatrixBackground from './components/MatrixBackground.vue'
+import MatrixBackground from '@/components/desktop/MatrixBackground.vue'
 </script>
 
 <template>

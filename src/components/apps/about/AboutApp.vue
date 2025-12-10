@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { skills } from '@/data/about'
-import IconDownload from '@/components/icons/IconDownload.vue'
+import IconDownload from '@/assets/icons/IconDownload.vue'
 
 const { t } = useI18n()
 </script>

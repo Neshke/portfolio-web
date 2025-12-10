@@ -1,9 +1,9 @@
 import { markRaw, type Component } from 'vue'
-import IconComputer from '@/components/icons/IconComputer.vue'
-import IconFolder from '@/components/icons/IconFolder.vue'
-import IconBriefcase from '@/components/icons/IconBriefcase.vue'
-import IconMail from '@/components/icons/IconMail.vue'
-import IconGraduation from '@/components/icons/IconGraduation.vue'
+import IconComputer from '@/assets/icons/IconComputer.vue'
+import IconFolder from '@/assets/icons/IconFolder.vue'
+import IconBriefcase from '@/assets/icons/IconBriefcase.vue'
+import IconMail from '@/assets/icons/IconMail.vue'
+import IconGraduation from '@/assets/icons/IconGraduation.vue'
 import { appsConfig, type AppIconName, type AppConfig } from '@/data/apps'
 
 // Icon components mapping

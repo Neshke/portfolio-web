@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
-import ProjectCard from '@/components/apps/ProjectCard.vue'
+import ProjectCard from './ProjectCard.vue'
 import { projectsData } from '@/data/projects'
 import type { Project } from '@/models/ProjectsApp/interfaces'
 

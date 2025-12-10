@@ -2,7 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
 import { experiencesData } from '@/data/experience'
-import IconExternalLink from '@/components/icons/IconExternalLink.vue'
+import IconExternalLink from '@/assets/icons/IconExternalLink.vue'
 import type { Experience } from '@/models/ExperienceApp/interfaces'
 
 const { t } = useI18n()

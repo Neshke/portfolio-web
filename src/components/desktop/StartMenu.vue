@@ -3,11 +3,11 @@ import { onMounted, onUnmounted } from 'vue'
 import { useStartMenuStore } from '@/store/startMenu'
 import { useI18n } from 'vue-i18n'
 import type { AppIconName } from '@/data/apps'
-import IconComputer from '@/components/icons/IconComputer.vue'
-import IconFolder from '@/components/icons/IconFolder.vue'
-import IconBriefcase from '@/components/icons/IconBriefcase.vue'
-import IconMail from '@/components/icons/IconMail.vue'
-import IconGraduation from '@/components/icons/IconGraduation.vue'
+import IconComputer from '@/assets/icons/IconComputer.vue'
+import IconFolder from '@/assets/icons/IconFolder.vue'
+import IconBriefcase from '@/assets/icons/IconBriefcase.vue'
+import IconMail from '@/assets/icons/IconMail.vue'
+import IconGraduation from '@/assets/icons/IconGraduation.vue'
 
 // Icon components mapping for start menu
 const menuIcons: Record<AppIconName, typeof IconComputer> = {
