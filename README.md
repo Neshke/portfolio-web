@@ -1,30 +1,55 @@
 # Portfolio Web
 
-Vue 3 + TypeScript portfolio website with **Matrix-Windows Theme** - a unique blend of Matrix cyberpunk aesthetics and Windows 11 minimalism.
+A Vue 3 + TypeScript portfolio website designed as a **Desktop Environment Simulation** - combining a Windows 11-inspired interface with a professional dark blue theme.
 
-## 🎨 Theme Overview
+## 🖥️ Overview
 
-This project features a custom **Matrix-Windows** design system that combines:
+This portfolio presents itself as an interactive desktop operating system where visitors can:
 
-- 🟢 **Matrix Cyberpunk** - Neon green accents, terminal-inspired dark backgrounds, and code aesthetics
-- 🪟 **Windows Minimalism** - Clean glassmorphism effects, modern UI patterns, and professional design
-- ✨ **Glow Effects** - Smooth animations and neon glow effects for interactive elements
-- 🎭 **Glassmorphism** - Windows 11-inspired glass panels with backdrop blur
+- Click on **desktop icons** to open application windows
+- **Drag, resize, minimize, and maximize** windows just like a real OS
+- Use the **taskbar** to switch between open applications
+- Access the **Start Menu** for navigation
+- View a **profile widget** with quick information
 
-👉 **[View Theme Documentation →](./THEME.md)** for complete color palette, components, and usage examples.
+## ✨ Features
+
+### Desktop Environment
+- **Window Management** - Draggable, resizable windows with minimize/maximize
+- **Taskbar** - Shows open windows, system tray with clock and language switcher
+- **Start Menu** - Application launcher with navigation options
+- **Desktop Icons** - Quick access to portfolio sections
+- **Profile Widget** - Glassmorphism card with profile info
+
+### Applications
+- 📁 **About** - Personal introduction and skills
+- 💼 **Projects** - Portfolio of work and projects
+- 🎓 **Education** - Academic background
+- 💼 **Experience** - Professional experience
+- ✉️ **Contact** - Contact information and form
+
+### UI/UX
+- **Dark Professional Theme** - Blue/slate color palette
+- **Glassmorphism** - Modern glass effects with backdrop blur
+- **Responsive Design** - Desktop and mobile taskbar variants
+- **Internationalization** - English and Serbian language support
+- **Smooth Animations** - Transitions for windows and interactions
 
 ---
 
-## 🚀 Technologies
+## 🚀 Tech Stack
 
-- **Vue 3** - Composition API with `<script setup>`
-- **TypeScript** - Type-safe development
-- **Pinia** - State management
-- **Vue Router** - Client-side routing
-- **Tailwind CSS** - Custom Matrix-Windows theme configuration
-- **@vueuse/core** - Collection of Vue Composition Utilities
-- **Vitest** - Unit testing framework
-- **Prettier** - Code formatter
+| Category | Technologies |
+|----------|-------------|
+| **Framework** | Vue 3 (Composition API with `<script setup>`) |
+| **Language** | TypeScript (strict mode) |
+| **Styling** | Tailwind CSS v4 (CSS-based config) |
+| **State** | Pinia |
+| **Routing** | Vue Router |
+| **i18n** | vue-i18n (EN/SR) |
+| **Utilities** | @vueuse/core |
+| **Build** | Vite |
+| **Testing** | Vitest |
 
 ---
 
@@ -32,49 +57,61 @@ This project features a custom **Matrix-Windows** design system that combines:
 
 ```
 src/
-├── api/              # API client and endpoint definitions
-├── assets/           # Static resources (CSS with Matrix-Windows theme)
-│   └── main.css      # Custom Tailwind components and utilities
-├── components/       # Reusable Vue components
-├── composables/      # Composition functions
-├── constants/        # Application constants
-├── layouts/          # Layout components
-├── router/           # Vue Router configuration
-├── services/         # Business logic services
-├── store/            # Pinia store definitions
-├── views/            # View components (route components)
-│   └── HomeView.vue  # Theme showcase and demo
-├── App.vue           # Root component
-├── main.ts           # Entry point
-└── env.d.ts          # TypeScript declarations for env variables
+├── assets/
+│   ├── main.css          # Tailwind v4 theme configuration
+│   └── images/           # Static images
+├── components/
+│   ├── apps/             # Application content components
+│   │   ├── AboutApp.vue
+│   │   ├── ContactApp.vue
+│   │   ├── EducationApp.vue
+│   │   ├── ExperienceApp.vue
+│   │   └── ProjectsApp.vue
+│   ├── icons/            # SVG icon components
+│   ├── DesktopWindow.vue # Draggable/resizable window
+│   ├── StartMenu.vue     # Start menu overlay
+│   ├── Taskbar.vue       # Desktop taskbar
+│   ├── TaskbarMobile.vue # Mobile bottom navigation
+│   └── TaskbarWrapper.vue# Responsive taskbar switcher
+├── composables/          # Vue composables
+│   ├── useDateTime.ts    # Date/time formatting
+│   └── useLanguage.ts    # Language switching
+├── data/
+│   └── apps.ts           # Application configuration
+├── i18n/
+│   └── locales/          # Translation files (en.json, sr.json)
+├── store/
+│   ├── windows.ts        # Window management state
+│   └── startMenu.ts      # Start menu state
+├── views/
+│   └── HomeView.vue      # Desktop environment view
+└── main.ts               # App entry point
 ```
 
 ---
 
-## 🛠️ Setup & Development
+## 🛠️ Development
+
+### Prerequisites
+- Node.js ^20.19.0 or >=22.12.0
 
 ### Install Dependencies
-
 ```bash
 npm install
 ```
 
 ### Start Development Server
-
 ```bash
 npm run dev
 ```
-
-Server will start at `http://localhost:5173` (or next available port)
+Server runs at `http://localhost:5173`
 
 ### Build for Production
-
 ```bash
 npm run build
 ```
 
 ### Preview Production Build
-
 ```bash
 npm run preview
 ```
@@ -84,14 +121,9 @@ npm run preview
 ## 🧪 Testing
 
 ```bash
-# Run tests in watch mode
-npm run test
-
-# Run tests with UI
-npm run test:ui
-
-# Run tests once
-npm run test:run
+npm run test        # Watch mode
+npm run test:ui     # With UI
+npm run test:run    # Single run
 ```
 
 ---
@@ -99,168 +131,45 @@ npm run test:run
 ## 💅 Code Formatting
 
 ```bash
-# Format all files
-npm run format
-
-# Check if code is formatted
-npm run format:check
+npm run format        # Format all files
+npm run format:check  # Check formatting
 ```
 
-**Prettier configuration:**
-
-- No semicolons
-- Single quotes
-- 100 character print width
-- 2 space indentation
+**Prettier config:** No semicolons, single quotes, 100 char width, 2 space indent
 
 ---
 
-## 🌍 Environment Variables
+## 🎨 Theme
 
-The project supports different environment files:
+The project uses a **Professional Dark Theme** with:
 
-- `.env.local` - Local development (gitignored)
-- `.env.staging` - Staging environment
-- `.env.production` - Production environment
+- **Background:** Slate 950 (`#020617`)
+- **Primary:** Blue 400 (`#60a5fa`)
+- **Glass Effects:** Semi-transparent panels with backdrop blur
+- **Fonts:** 
+  - Orbitron (display/headings)
+  - Inter (body text)
+  - JetBrains Mono (code)
 
-**Note:** All client-side env variables must be prefixed with `VITE_`
-
----
-
-## 🎨 Theme Usage
-
-### Quick Start with Matrix-Windows Components
-
-```vue
-<template>
-  <!-- Glass Card with hover glow -->
-  <div class="glass-card p-6">
-    <h2 class="text-glow font-display">Matrix Style Heading</h2>
-    <p class="text-muted">Clean Windows-inspired content</p>
-  </div>
-
-  <!-- Matrix Buttons -->
-  <button class="btn-matrix-solid">Primary Action</button>
-  <button class="btn-matrix">Secondary Action</button>
-
-  <!-- Badge/Tags -->
-  <span class="badge-matrix">Vue 3</span>
-  <span class="badge-matrix">TypeScript</span>
-</template>
-```
-
-### Color Palette Examples
-
-```vue
-<template>
-  <!-- Backgrounds -->
-  <div class="bg-background">Dark Matrix terminal background</div>
-  <div class="bg-background-elevated">Elevated surface</div>
-
-  <!-- Text Colors -->
-  <p class="text-primary">Matrix neon green</p>
-  <p class="text-secondary">Windows gray-blue</p>
-  <p class="text-muted">Muted text</p>
-
-  <!-- Glass Effects -->
-  <div class="bg-glass backdrop-blur-glass border border-glass-border">Windows glassmorphism</div>
-</template>
-```
-
-### Glow Effects
-
-```vue
-<template>
-  <!-- Text Glow -->
-  <h1 class="text-glow">Subtle neon glow</h1>
-  <h1 class="text-glow-strong">Strong Matrix glow</h1>
-
-  <!-- Box Shadow Glow -->
-  <div class="shadow-glow">Glowing container</div>
-  <div class="shadow-glow-lg hover:shadow-glow-xl">Hover for more glow</div>
-</template>
-```
-
-**📖 For complete documentation, see [THEME.md](./THEME.md)**
+Theme is configured via CSS in `src/assets/main.css` using Tailwind v4's `@theme` directive.
 
 ---
 
-## 🎯 Theme Features
+## 🌍 Internationalization
 
-- ✅ **Rich Color Palette** - Matrix greens + Windows grays
-- ✅ **Glassmorphism Components** - Glass cards, panels, and windows
-- ✅ **Glow Effects** - Multiple intensity levels for hover and active states
-- ✅ **Custom Animations** - Pulse, flicker, float, and shimmer effects
-- ✅ **Typography** - Orbitron (display), Inter (UI), JetBrains Mono (code)
-- ✅ **Background Gradients** - Matrix-inspired hero and terminal backgrounds
-- ✅ **Utility Classes** - Pre-built components for rapid development
+Supported languages:
+- 🇺🇸 English (en)
+- 🇷🇸 Serbian (sr)
 
----
-
-## 📚 Key Files
-
-### Theme Configuration
-
-- **`src/assets/main.css`** - Tailwind v4 CSS-based theme with `@theme` directive, custom components, and animations
-- **No JS/TS config needed** - Tailwind v4 uses pure CSS configuration
-
-### Font Setup
-
-Theme uses Google Fonts CDN (imported in `main.css`):
-
-- **Orbitron** - Futuristic display font for headings
-- **Inter** - Clean sans-serif for body text
-- **JetBrains Mono** - Monospace font for code snippets
+Language can be toggled via the taskbar. Preference is saved in localStorage.
 
 ---
 
 ## 🖥️ Recommended IDE Setup
 
-- **[VS Code](https://code.visualstudio.com/)**
-- **[Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar)** extension
-- **[Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)** extension
-
----
-
-## 📝 Development Guidelines
-
-### Component Structure
-
-```vue
-<script setup lang="ts">
-// Imports and logic
-</script>
-
-<template>
-  <!-- Template with Tailwind classes -->
-</template>
-
-<style scoped>
-/* Scoped styles using @apply */
-.custom-class {
-  @apply bg-glass backdrop-blur-glass;
-}
-</style>
-```
-
-### Styling Best Practices
-
-1. **Use Tailwind utilities** inside `@apply` in `<style scoped>` blocks
-2. **Semantic class names** for component-specific styles
-3. **Leverage theme colors** from `tailwind.config.ts`
-4. **Apply glow effects sparingly** - balance visual impact with usability
-
-### TypeScript
-
-- ✅ Strict mode enabled
-- ✅ Use `defineProps<T>()` and `defineEmits<T>()`
-- ✅ Path alias `@/` for imports from `src/`
-
----
-
-## 🤝 Contributing
-
-This is a personal portfolio project, but suggestions and improvements are welcome!
+- [VS Code](https://code.visualstudio.com/)
+- [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) extension
+- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) extension
 
 ---
 
@@ -270,4 +179,4 @@ Private project - All rights reserved.
 
 ---
 
-**Built with 🟢 Matrix code and ✨ Windows polish**
+**Built with Vue 3 + TypeScript + Tailwind CSS**
