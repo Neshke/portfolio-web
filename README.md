@@ -57,35 +57,57 @@ This portfolio presents itself as an interactive desktop operating system where 
 
 ```
 src/
+├── api/                  # API client and endpoints
 ├── assets/
 │   ├── main.css          # Tailwind v4 theme configuration
 │   └── images/           # Static images
 ├── components/
-│   ├── apps/             # Application content components
+│   ├── apps/             # Application window content
 │   │   ├── AboutApp.vue
 │   │   ├── ContactApp.vue
 │   │   ├── EducationApp.vue
 │   │   ├── ExperienceApp.vue
 │   │   └── ProjectsApp.vue
-│   ├── icons/            # SVG icon components
+│   ├── icons/            # SVG icon components (15 icons)
 │   ├── DesktopWindow.vue # Draggable/resizable window
-│   ├── StartMenu.vue     # Start menu overlay
-│   ├── Taskbar.vue       # Desktop taskbar
-│   ├── TaskbarMobile.vue # Mobile bottom navigation
-│   └── TaskbarWrapper.vue# Responsive taskbar switcher
-├── composables/          # Vue composables
+│   ├── ExplorerContent.vue
+│   ├── LanguageSwitcher.vue
+│   ├── MatrixBackground.vue
+│   ├── StartMenu.vue
+│   ├── Taskbar.vue
+│   ├── TaskbarMobile.vue
+│   └── TaskbarWrapper.vue
+├── composables/
+│   ├── useAppIcons.ts    # Icon component registry
 │   ├── useDateTime.ts    # Date/time formatting
 │   └── useLanguage.ts    # Language switching
-├── data/
-│   └── apps.ts           # Application configuration
+├── constants/
+│   └── constants.ts      # App constants
+├── data/                 # Static data configurations
+│   ├── about.ts
+│   ├── apps.ts           # Desktop apps config
+│   ├── contact.ts
+│   ├── education.ts
+│   ├── experience.ts
+│   ├── mobileMenu.ts
+│   ├── projects.ts
+│   └── startMenu.ts
 ├── i18n/
-│   └── locales/          # Translation files (en.json, sr.json)
+│   ├── index.ts          # i18n setup
+│   └── locales/          # en.json, sr.json
+├── models/               # TypeScript interfaces
+├── router/
+│   └── index.ts
+├── services/             # Business logic
 ├── store/
-│   ├── windows.ts        # Window management state
-│   └── startMenu.ts      # Start menu state
+│   ├── index.ts
+│   ├── startMenu.ts
+│   └── windows.ts        # Window management
 ├── views/
-│   └── HomeView.vue      # Desktop environment view
-└── main.ts               # App entry point
+│   └── HomeView.vue      # Desktop environment
+├── App.vue
+├── env.d.ts
+└── main.ts
 ```
 
 ---
