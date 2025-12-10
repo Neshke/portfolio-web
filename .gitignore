@@ -38,6 +38,3 @@ coverage
 
 # Vitest
 __screenshots__/
-
-# Tailwind CSS
-src/assets/output.css

@@ -46,8 +46,7 @@ src/
 ├── api/              # API client and endpoint definitions
 │   └── index.ts
 ├── assets/           # Static resources (CSS, images, fonts)
-│   ├── main.css      # Tailwind v4 theme configuration (input)
-│   └── output.css    # Generated CSS from Tailwind CLI (output, gitignored)
+│   └── main.css      # Tailwind v4 theme configuration
 ├── components/       # Reusable Vue components
 ├── composables/      # Composition functions (Vue composables)
 │   ├── useDateTime.ts
@@ -178,11 +177,10 @@ src/
    }
    ```
 
-5. **Tailwind v4 CLI Workflow:**
-   - **Development:** Run `npm run dev:css` in one terminal (Tailwind watcher) and `npm run dev` in another (Vite server)
-   - **Production:** `npm run build` automatically runs `build:css` before building
-   - **Input:** `src/assets/main.css` contains theme configuration
-   - **Output:** `src/assets/output.css` is generated and imported in `main.ts` (gitignored)
+5. **Tailwind v4 Vite Plugin:**
+   - Tailwind CSS is integrated via `@tailwindcss/vite` plugin in `vite.config.ts`
+   - Just run `npm run dev` - no separate CSS build step needed
+   - Theme configuration is in `src/assets/main.css`
 
 ### Desktop Environment Metaphor
 
@@ -330,13 +328,11 @@ src/
 ## Common Commands
 
 ```bash
-# Development (requires 2 terminals)
-npm run dev:css          # Terminal 1: Tailwind CLI watcher
-npm run dev              # Terminal 2: Vite dev server (http://localhost:5173)
+# Development
+npm run dev              # Vite dev server with Tailwind (http://localhost:5173)
 
 # Production
-npm run build            # Build for production (runs build:css + vite build)
-npm run build:css        # Generate minified CSS with Tailwind CLI
+npm run build            # Build for production
 npm run preview          # Preview production build
 
 # Testing
