@@ -13,7 +13,6 @@ const { t } = useI18n()
       <div class="profile-info">
         <h1 class="profile-name">{{ t('hero.title') }}</h1>
         <p class="profile-role">{{ t('about.role') }}</p>
-        <p class="profile-description">{{ t('hero.description') }}</p>
       </div>
     </div>
 
@@ -57,7 +56,7 @@ const { t } = useI18n()
 }
 
 .profile-image {
-  @apply w-[100px] h-[100px] rounded-full border-[3px] border-primary object-cover;
+  @apply w-auto h-[150px] rounded-full border-[3px] border-primary;
   @apply shadow-primary/30;
   box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
 }
@@ -67,11 +66,11 @@ const { t } = useI18n()
 }
 
 .profile-name {
-  @apply font-display text-2xl text-primary m-0 mb-1;
+  @apply font-display text-2xl text-primary m-0 mb-2;
 }
 
 .profile-role {
-  @apply text-base text-text-secondary m-0 mb-3;
+  @apply text-base text-text-secondary m-0;
 }
 
 .profile-description {

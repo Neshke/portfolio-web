@@ -34,10 +34,14 @@ onMounted(() => {
     colorPrimaryLight = styles.getPropertyValue('--color-primary-light').trim()
 
     const bgHex = styles.getPropertyValue('--color-background').trim()
+    console.log('Background Hex:', bgHex)
     if (bgHex) {
       const r = parseInt(bgHex.slice(1, 3), 16)
+      console.log('R:', r)
       const g = parseInt(bgHex.slice(3, 5), 16)
+      console.log('G:', g)
       const b = parseInt(bgHex.slice(5, 7), 16)
+      console.log('B:', b)
       colorBackground = `rgba(${r}, ${g}, ${b}, 0.05)`
     }
   }

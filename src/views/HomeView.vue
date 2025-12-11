@@ -178,7 +178,7 @@ const desktopIcons = {
 
 /* Profile Widget */
 .profile-widget-wrapper {
-  @apply absolute top-10 right-10 w-[300px];
+  @apply absolute top-10 right-10 w-[400px];
   @apply max-md:top-auto max-md:bottom-[100px] max-md:right-1/2;
   @apply max-md:translate-x-1/2 max-md:w-[90%];
 }
@@ -191,7 +191,7 @@ const desktopIcons = {
 }
 
 .profile-image {
-  @apply w-[60px] h-[60px] rounded-full border-2 border-primary object-cover;
+  @apply w-auto h-[150px] rounded-full border-2 border-primary;
 }
 
 .profile-info {
