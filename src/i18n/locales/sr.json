@@ -129,7 +129,7 @@
       "item1": {
         "role": "Softverski Inženjer",
         "company": "Euronet Worldwide",
-        "period": "Jan 2021 - Danas",
+        "period": "Jan 2022 - Danas",
         "description": "Ključni saradnik u razvoju skalabilnih fintech platformi za glavne podružnice kao što su epay i XE. Specijalizovan za izgradnju sigurnih web aplikacija visokih performansi koristeći Vue.js ekosistem. Vodio veliku tehničku migraciju sa Vue 2/Vuex na Vue 3/Pinia i JavaScript na TypeScript. Duboko uključen u kompletan SDLC u Agile okruženju, koristeći Jira, CI/CD pajplajne (GitHub Actions) i alate za analitiku (Segment, LogRocket) kako bi se osigurao kvalitet koda i zadovoljstvo korisnika.",
         "projects": {
           "xe": {

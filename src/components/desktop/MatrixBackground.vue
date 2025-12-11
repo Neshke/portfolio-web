@@ -1,11 +1,83 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
+import { useDebounceFn } from '@vueuse/core'
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 let animationFrameId: number
 let lastTime = 0
+let cleanup: (() => void) | null = null
 
-const chars = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const CHARS =
+  'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+function getThemeColors() {
+  const styles = getComputedStyle(document.documentElement)
+  const primary = styles.getPropertyValue('--color-primary').trim()
+  const primaryLight = styles.getPropertyValue('--color-primary-light').trim()
+  const bgHex = styles.getPropertyValue('--color-background').trim()
+
+  let background = 'rgba(0, 0, 0, 0.05)'
+  if (bgHex) {
+    const r = parseInt(bgHex.slice(1, 3), 16)
+    const g = parseInt(bgHex.slice(3, 5), 16)
+    const b = parseInt(bgHex.slice(5, 7), 16)
+    background = `rgba(${r}, ${g}, ${b}, 0.05)`
+  }
+
+  return { primary, primaryLight, background }
+}
+
+function initMatrix(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
+  const dpr = window.devicePixelRatio || 1
+  const width = window.innerWidth
+  const height = window.innerHeight
+  const fontSize = width < 768 ? 10 : 14
+  const columns = Math.floor(width / fontSize)
+  const colors = getThemeColors()
+
+  // Setup canvas
+  canvas.width = width * dpr
+  canvas.height = height * dpr
+  canvas.style.width = `${width}px`
+  canvas.style.height = `${height}px`
+  ctx.setTransform(1, 0, 0, 1, 0, 0)
+  ctx.scale(dpr, dpr)
+
+  // Initialize drops
+  const drops: number[] = []
+  for (let i = 0; i < columns; i++) {
+    drops[i] = Math.random() * -100
+  }
+
+  function draw(timeStamp: number) {
+    if (timeStamp - lastTime < 33) {
+      animationFrameId = requestAnimationFrame(draw)
+      return
+    }
+    lastTime = timeStamp
+
+    ctx.fillStyle = colors.background
+    ctx.fillRect(0, 0, width, height)
+    ctx.font = `${fontSize}px monospace`
+
+    for (let i = 0; i < drops.length; i++) {
+      const char = CHARS.charAt(Math.floor(Math.random() * CHARS.length))
+      const rand = Math.random()
+
+      ctx.fillStyle = rand > 0.98 ? '#FFF' : rand > 0.9 ? colors.primaryLight : colors.primary
+      ctx.fillText(char, i * fontSize, drops[i] * fontSize)
+
+      if (drops[i] * fontSize > height && Math.random() > 0.975) {
+        drops[i] = 0
+      }
+      drops[i]++
+    }
+
+    animationFrameId = requestAnimationFrame(draw)
+  }
+
+  animationFrameId = requestAnimationFrame(draw)
+}
 
 onMounted(() => {
   const canvas = canvasRef.value
@@ -14,97 +86,24 @@ onMounted(() => {
   const ctx = canvas.getContext('2d')
   if (!ctx) return
 
-  const dpr = window.devicePixelRatio || 1
-
-  const resizeCanvas = () => {
-    canvas.width = window.innerWidth * dpr
-    canvas.height = window.innerHeight * dpr
-    canvas.style.width = `${window.innerWidth}px`
-    canvas.style.height = `${window.innerHeight}px`
-    ctx.scale(dpr, dpr)
+  const reinit = () => {
+    cancelAnimationFrame(animationFrameId)
+    initMatrix(canvas, ctx)
   }
 
-  let colorPrimary = ''
-  let colorPrimaryLight = ''
-  let colorBackground = ''
+  const debouncedReinit = useDebounceFn(reinit, 150)
 
-  const updateThemeColors = () => {
-    const styles = getComputedStyle(document.documentElement)
-    colorPrimary = styles.getPropertyValue('--color-primary').trim()
-    colorPrimaryLight = styles.getPropertyValue('--color-primary-light').trim()
+  initMatrix(canvas, ctx)
+  window.addEventListener('resize', debouncedReinit)
 
-    const bgHex = styles.getPropertyValue('--color-background').trim()
-    console.log('Background Hex:', bgHex)
-    if (bgHex) {
-      const r = parseInt(bgHex.slice(1, 3), 16)
-      console.log('R:', r)
-      const g = parseInt(bgHex.slice(3, 5), 16)
-      console.log('G:', g)
-      const b = parseInt(bgHex.slice(5, 7), 16)
-      console.log('B:', b)
-      colorBackground = `rgba(${r}, ${g}, ${b}, 0.05)`
-    }
+  cleanup = () => {
+    window.removeEventListener('resize', debouncedReinit)
+    cancelAnimationFrame(animationFrameId)
   }
-
-  updateThemeColors()
-  window.addEventListener('resize', () => {
-    ctx.setTransform(1, 0, 0, 1, 0, 0) // Reset transform before resize
-    resizeCanvas()
-    updateThemeColors()
-  })
-  resizeCanvas()
-
-  const isMobile = window.innerWidth < 768
-  const fontSize = isMobile ? 10 : 14
-  const columns = Math.floor(window.innerWidth / fontSize)
-  const drops: number[] = []
-
-  for (let i = 0; i < columns; i++) {
-    drops[i] = Math.random() * -100
-  }
-
-  const draw = (timeStamp: number) => {
-    if (timeStamp - lastTime < 33) {
-      animationFrameId = requestAnimationFrame(draw)
-      return
-    }
-    lastTime = timeStamp
-
-    ctx.fillStyle = colorBackground
-    ctx.fillRect(0, 0, window.innerWidth, window.innerHeight)
-
-    ctx.fillStyle = colorPrimary
-    ctx.font = `${fontSize}px monospace`
-
-    for (let i = 0; i < drops.length; i++) {
-      const text = chars.charAt(Math.floor(Math.random() * chars.length))
-
-      if (Math.random() > 0.98) {
-        ctx.fillStyle = '#FFF'
-      } else if (Math.random() > 0.9) {
-        ctx.fillStyle = colorPrimaryLight
-      } else {
-        ctx.fillStyle = colorPrimary
-      }
-
-      ctx.fillText(text, i * fontSize, drops[i] * fontSize)
-
-      if (drops[i] * fontSize > window.innerHeight && Math.random() > 0.975) {
-        drops[i] = 0
-      }
-
-      drops[i]++
-    }
-
-    animationFrameId = requestAnimationFrame(draw)
-  }
-
-  requestAnimationFrame(draw)
 })
 
 onUnmounted(() => {
-  window.removeEventListener('resize', () => { })
-  cancelAnimationFrame(animationFrameId)
+  cleanup?.()
 })
 </script>
 

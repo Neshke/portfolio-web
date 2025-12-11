@@ -129,7 +129,7 @@
       "item1": {
         "role": "Software Engineer",
         "company": "Euronet Worldwide",
-        "period": "Jan 2021 - Present",
+        "period": "Jan 2022 - Present",
         "description": "Key contributor in developing scalable fintech platforms for major subsidiaries like epay and XE. Specialized in building secure, high-performance web applications using Vue.js ecosystem. Led a major technical migration from Vue 2/Vuex to Vue 3/Pinia and JavaScript to TypeScript. Deeply involved in the full SDLC within an Agile environment, utilizing Jira, CI/CD pipelines (GitHub Actions), and analytics tools (Segment, LogRocket) to ensure code quality and user satisfaction.",
         "projects": {
           "xe": {
