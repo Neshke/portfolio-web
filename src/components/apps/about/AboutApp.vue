@@ -35,10 +35,10 @@ const { t } = useI18n()
     </section>
 
     <section class="about-section">
-      <button class="resume-button">
+      <a href="/documents/Aleksa Nesic - CV.pdf" download class="resume-button">
         <IconDownload class="button-icon" />
         {{ t('startMenu.resume') }}
-      </button>
+      </a>
     </section>
   </div>
 </template>
