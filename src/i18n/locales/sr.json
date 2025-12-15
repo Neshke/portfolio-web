@@ -118,10 +118,22 @@
     },
     "buttons": {
       "send": "Pošalji Poruku",
-      "sending": "Slanje..."
+      "sending": "Slanje...",
+      "retry": "Pokušaj Ponovo"
     },
     "success": "Poruka uspešno poslata!",
-    "locationValue": "Evropa"
+    "error": "Slanje poruke nije uspelo. Pokušajte ponovo.",
+    "locationValue": "Evropa",
+    "validation": {
+      "nameRequired": "Ime je obavezno",
+      "nameMinLength": "Ime mora imati najmanje 2 karaktera",
+      "nameMaxLength": "Ime mora imati manje od 50 karaktera",
+      "emailRequired": "Email je obavezan",
+      "emailInvalid": "Unesite validnu email adresu",
+      "messageRequired": "Poruka je obavezna",
+      "messageMinLength": "Poruka mora imati najmanje 10 karaktera",
+      "messageMaxLength": "Poruka mora imati manje od 1000 karaktera"
+    }
   },
   "experience": {
     "subtitle": "Moje profesionalno putovanje i karijerni uspesi.",

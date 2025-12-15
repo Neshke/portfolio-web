@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { ref } from 'vue'
+import { reactive, computed, ref } from 'vue'
+import { useVuelidate } from '@vuelidate/core'
+import { required, email, minLength, maxLength } from '@vuelidate/validators'
+import emailjs from '@emailjs/browser'
 import IconEmail from '@/assets/icons/IconEmail.vue'
 import IconLinkedIn from '@/assets/icons/IconLinkedIn.vue'
 import IconLocation from '@/assets/icons/IconLocation.vue'
@@ -10,28 +13,75 @@ import type { ContactForm } from '@/models/ContactApp/interfaces'
 
 const { t } = useI18n()
 
-const form = ref<ContactForm>({
+const form = reactive<ContactForm>({
   name: '',
   email: '',
   message: ''
 })
 
+const rules = computed(() => ({
+  name: {
+    required,
+    minLength: minLength(2),
+    maxLength: maxLength(50)
+  },
+  email: {
+    required,
+    email
+  },
+  message: {
+    required,
+    minLength: minLength(10),
+    maxLength: maxLength(1000)
+  }
+}))
+
+const v$ = useVuelidate(rules, form)
+
 const isSubmitting = ref(false)
 const isSent = ref(false)
+const errorMessage = ref('')
 
-const submitForm = () => {
-  const subject = `Portfolio Contact: ${form.value.name}`
-  const body = `Name: ${form.value.name}\nEmail: ${form.value.email}\n\nMessage:\n${form.value.message}`
+const resetForm = () => {
+  form.name = ''
+  form.email = ''
+  form.message = ''
+  v$.value.$reset()
+}
 
-  window.location.href = `mailto:${contactInfo.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+const submitForm = async () => {
+  const isFormValid = await v$.value.$validate()
+  if (!isFormValid) return
 
-  isSent.value = true
+  isSubmitting.value = true
+  errorMessage.value = ''
 
-  // Reset form after delay
-  setTimeout(() => {
-    isSent.value = false
-    form.value = { name: '', email: '', message: '' }
-  }, 3000)
+  try {
+    await emailjs.send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      {
+        from_name: form.name,
+        from_email: form.email,
+        message: form.message,
+        to_name: 'Nenad'
+      },
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    )
+
+    isSent.value = true
+    resetForm()
+
+    // Reset success state after delay
+    setTimeout(() => {
+      isSent.value = false
+    }, 3000)
+  } catch (error) {
+    console.error('EmailJS error:', error)
+    errorMessage.value = t('contact.error')
+  } finally {
+    isSubmitting.value = false
+  }
 }
 </script>
 
@@ -83,26 +133,47 @@ const submitForm = () => {
           {{ t('contact.success') }}
         </div>
 
+        <div v-else-if="errorMessage" class="error-message">
+          {{ errorMessage }}
+          <button type="button" class="retry-button" @click="errorMessage = ''">{{ t('contact.buttons.retry')
+            }}</button>
+        </div>
+
         <template v-else>
           <div class="form-group">
             <label for="name" class="form-label">{{ t('contact.labels.name') }}</label>
-            <input type="text" id="name" v-model="form.name" required :placeholder="t('contact.placeholders.name')"
-              class="form-input" />
+            <input type="text" id="name" v-model="form.name" :placeholder="t('contact.placeholders.name')"
+              class="form-input" :class="{ 'form-input--error': v$.name.$error }" @blur="v$.name.$touch()" />
+            <div v-if="v$.name.$error" class="form-error">
+              <span v-if="v$.name.required.$invalid">{{ t('contact.validation.nameRequired') }}</span>
+              <span v-else-if="v$.name.minLength.$invalid">{{ t('contact.validation.nameMinLength') }}</span>
+              <span v-else-if="v$.name.maxLength.$invalid">{{ t('contact.validation.nameMaxLength') }}</span>
+            </div>
           </div>
 
           <div class="form-group">
             <label for="email" class="form-label">{{ t('contact.labels.email') }}</label>
-            <input type="email" id="email" v-model="form.email" required :placeholder="t('contact.placeholders.email')"
-              class="form-input" />
+            <input type="email" id="email" v-model="form.email" :placeholder="t('contact.placeholders.email')"
+              class="form-input" :class="{ 'form-input--error': v$.email.$error }" @blur="v$.email.$touch()" />
+            <div v-if="v$.email.$error" class="form-error">
+              <span v-if="v$.email.required.$invalid">{{ t('contact.validation.emailRequired') }}</span>
+              <span v-else-if="v$.email.email.$invalid">{{ t('contact.validation.emailInvalid') }}</span>
+            </div>
           </div>
 
           <div class="form-group">
             <label for="message" class="form-label">{{ t('contact.labels.message') }}</label>
-            <textarea id="message" v-model="form.message" required :placeholder="t('contact.placeholders.message')"
-              rows="4" class="form-input form-textarea"></textarea>
+            <textarea id="message" v-model="form.message" :placeholder="t('contact.placeholders.message')" rows="4"
+              class="form-input form-textarea" :class="{ 'form-input--error': v$.message.$error }"
+              @blur="v$.message.$touch()"></textarea>
+            <div v-if="v$.message.$error" class="form-error">
+              <span v-if="v$.message.required.$invalid">{{ t('contact.validation.messageRequired') }}</span>
+              <span v-else-if="v$.message.minLength.$invalid">{{ t('contact.validation.messageMinLength') }}</span>
+              <span v-else-if="v$.message.maxLength.$invalid">{{ t('contact.validation.messageMaxLength') }}</span>
+            </div>
           </div>
 
-          <button type="submit" class="submit-button" :disabled="isSubmitting">
+          <button type="submit" class="submit-button" :disabled="isSubmitting || v$.$invalid">
             <span v-if="isSubmitting">{{ t('contact.buttons.sending') }}</span>
             <span v-else>{{ t('contact.buttons.send') }}</span>
           </button>
@@ -176,6 +247,15 @@ const submitForm = () => {
   @apply w-12 h-12;
 }
 
+.error-message {
+  @apply flex flex-col items-center justify-center gap-4 h-[300px] text-red-500 text-lg font-medium text-center;
+}
+
+.retry-button {
+  @apply px-4 py-2 bg-primary/20 text-primary border border-primary/30 rounded cursor-pointer;
+  @apply hover:bg-primary/30 transition-colors duration-200;
+}
+
 .form-group {
   @apply mb-5;
 }
@@ -192,6 +272,14 @@ const submitForm = () => {
 
 .form-textarea {
   @apply resize-none;
+}
+
+.form-input--error {
+  @apply border-red-500 focus:border-red-500 focus:shadow-none;
+}
+
+.form-error {
+  @apply text-red-500 text-xs mt-1;
 }
 
 .submit-button {

@@ -118,10 +118,22 @@
     },
     "buttons": {
       "send": "Send Message",
-      "sending": "Sending..."
+      "sending": "Sending...",
+      "retry": "Try Again"
     },
     "success": "Message sent successfully!",
-    "locationValue": "Europe"
+    "error": "Failed to send message. Please try again.",
+    "locationValue": "Europe",
+    "validation": {
+      "nameRequired": "Name is required",
+      "nameMinLength": "Name must be at least 2 characters",
+      "nameMaxLength": "Name must be less than 50 characters",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email address",
+      "messageRequired": "Message is required",
+      "messageMinLength": "Message must be at least 10 characters",
+      "messageMaxLength": "Message must be less than 1000 characters"
+    }
   },
   "experience": {
     "subtitle": "My professional journey and career milestones.",
