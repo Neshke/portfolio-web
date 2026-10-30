@@ -1,229 +1,230 @@
 {
-  "hero": {
-    "title": "Welcome to my portfolio",
-    "description": "Modern portfolio theme combining professional aesthetics with Windows 11 minimalism",
-    "buttons": {
-      "getStarted": "Get Started",
-      "learnMore": "Learn More"
-    }
+  "meta": {
+    "title": "Aleksa Nesic, frontend engineer (Vue.js, Nuxt, TypeScript)"
   },
-  "taskbar": {
-    "menu": "Menu",
-    "home": "Home",
+  "profile": {
+    "name": "Aleksa Nesic",
+    "photoAlt": "Aleksa Nesic",
+    "role": "Frontend engineer (Vue.js, Nuxt, TypeScript)",
+    "available": "Open to senior frontend and full-stack roles",
+    "location": "Belgrade, Serbia",
+    "workMode": "Remote, or hybrid in Belgrade",
+    "intro": "I build web apps in Vue.js and TypeScript. From 2022 to 2026 I worked at Euronet Worldwide on the XE and Ria money transfer apps.",
+    "now": "Since 2026 I've been the technical lead and co-founder of Fair Assistant, a business card scanner for trade show exhibitors. It's live on Google Play."
+  },
+  "actions": {
+    "downloadCv": "Download CV",
+    "cvHint": "PDF, in English",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "seeProject": "See the project",
+    "fullCv": "Full CV (PDF)"
+  },
+  "apps": {
     "about": "About",
     "projects": "Projects",
     "experience": "Experience",
+    "education": "Education",
     "contact": "Contact"
+  },
+  "desktop": {
+    "label": "Desktop",
+    "cvFile": "CV.pdf"
   },
   "startMenu": {
     "title": "Start",
-    "comingSoon": "Coming Soon",
-    "contentWillAppear": "Content will appear here when you interact with items",
-    "profile": "Profile",
-    "settings": "Settings",
-    "close": "Close",
-    "aboutDescription": "Learn more about me and my background",
-    "bio": "Biography",
-    "bioDescription": "My story and journey",
-    "skills": "Skills & Technologies",
-    "skillsDescription": "Technical expertise and tools I use",
-    "resume": "Download Resume",
-    "resumeDescription": "View or download my CV",
-    "projectsDescription": "Explore my portfolio and work",
-    "webProjects": "Web Applications",
-    "webProjectsDescription": "Full-stack web development projects",
-    "mobileProjects": "Mobile Apps",
-    "mobileProjectsDescription": "iOS and Android applications",
-    "openSource": "Open Source",
-    "openSourceDescription": "Contributions to open source projects",
-    "experienceDescription": "My professional journey and education",
-    "workHistory": "Work Experience",
-    "workHistoryDescription": "Professional employment history",
-    "education": "Education",
-    "educationDescription": "Academic background and degrees",
-    "certifications": "Certifications",
-    "certificationsDescription": "Professional certifications and achievements",
-    "contactDescription": "Get in touch with me",
-    "email": "Email",
-    "linkedin": "LinkedIn",
-    "linkedinDescription": "Connect on LinkedIn",
-    "github": "GitHub",
-    "githubDescription": "View my code and projects",
-    "recycleBin": "Recycle Bin"
+    "label": "Start menu",
+    "descriptions": {
+      "about": "Who I am and what I work with",
+      "projects": "Fair Assistant and earlier work",
+      "experience": "Fair Assistant, Euronet",
+      "education": "University and schools",
+      "contact": "Email, LinkedIn or a message",
+      "cv": "PDF, in English"
+    }
+  },
+  "taskbar": {
+    "label": "Taskbar",
+    "start": "Open the Start menu",
+    "apps": "Apps",
+    "language": "Language",
+    "github": "GitHub profile (opens in a new tab)",
+    "linkedin": "LinkedIn profile (opens in a new tab)"
+  },
+  "window": {
+    "minimize": "Minimize",
+    "maximize": "Maximize",
+    "restore": "Restore",
+    "close": "Close"
   },
   "about": {
-    "role": "Software Engineer",
-    "bioText": "I am a dedicated Software Engineer with a Bachelor's degree and a strong background in building scalable fintech platforms. My core philosophy revolves around writing clean, maintainable, and optimized code. I believe that every line of code should serve a clear purpose and be easily understandable, ensuring that development is sustainable and collaborative. With years of experience in the Vue.js ecosystem, TypeScript, and Agile methodologies, I focus on delivering high-performance solutions that stand the test of time."
-  },
-  "education": {
-    "degree": "Bachelor's of Science",
-    "field": "Computer Science / Software Engineering",
-    "institution": "Faculty of Technical Sciences in Čačak, University of Kragujevac",
-    "status": "Completed",
-    "description": "Acquired strong engineering foundations through rigorous coursework in OOP (C, C++, Java), ASP.NET, and Agile methodologies. Gained practical experience in networking, team-based project development under tight deadlines, and full software development lifecycles.",
-    "courseworkTitle": "Core Coursework",
-    "skillsTitle": "Technical Competencies",
-    "coursework": {
-      "dsa": "Data Structures & Algorithms (Sorting, Trees, Graphs)",
-      "oop": "Object-Oriented Programming (Java/C++ Design Principles)",
-      "db": "Databases (SQL, Relational Design, Normalization)",
-      "web": "Web Technologies (HTML, CSS, JS Fundamentals)",
-      "os": "Operating Systems & Networking Fundamentals",
-      "se": "Software Engineering Methodologies (Agile, Patterns)",
-      "git": "Version Control (Git)",
-      "uiux": "UI/UX Basics & HCI"
+    "bio": {
+      "p1": "Since 2022 I've built web apps in Vue.js and TypeScript professionally, first at Euronet Worldwide on the XE and Ria money transfer apps. On XE I was one of the main developers on the migration from Vue 2 and Vuex to Vue 3, Pinia and TypeScript, in a team of 10.",
+      "p2": "In 2026 I co-founded Fair Assistant and built it with AI coding agents: an Android app on Google Play (about three months from first commit to public release), a Nuxt team dashboard, a Nuxt website in 22 languages and a Node.js and PostgreSQL API.",
+      "p3": "I'm looking for a senior frontend or full-stack role, remote from Belgrade (employment, EOR or B2B contract) or hybrid in Belgrade."
     },
-    "skills": {
-      "algo": "Algorithmic Thinking & Optimization",
-      "system": "System Design Fundamentals",
-      "db": "Database Schema Modeling",
-      "http": "HTTP, REST, Request/Response Lifecycle",
-      "security": "Application Security Basics (OWASP)",
-      "testing": "Testing Fundamentals & Clean Code",
-      "team": "Team Collaboration & Project Management"
+    "skillsTitle": "What I work with",
+    "skillGroups": {
+      "frontend": "Frontend",
+      "testing": "Testing",
+      "other": "Backend and mobile"
     },
-    "highSchool": {
-      "title": "High School Diploma",
-      "institution": "Technical School Smederevo",
-      "course": "Computer-Aided Design Engineer",
-      "duration": "Completed",
-      "description": "Technical education with focus on computer-aided design, engineering principles, and technical drawing."
-    },
-    "musicSchool": {
-      "title": "Elementary Music School (Guitar)",
-      "institution": "Kosta Manojlovic",
-      "duration": "Completed",
-      "description": "Studied music theory and guitar performance, contributing to creativity and attention to detail in UI/UX design.",
-      "note": "I have been playing guitar for almost 20 years, which reflects long-term discipline and dedication."
-    },
-    "drivingLicense": {
-      "title": "Driving License",
-      "category": "Category B"
-    }
-  },
-  "contact": {
-    "subtitle": "Get in touch for collaborations or just to say hi.",
-    "labels": {
-      "email": "Email",
-      "social": "Social",
-      "linkedin": "LinkedIn",
-      "location": "Location",
-      "name": "Name",
-      "message": "Message"
-    },
-    "placeholders": {
-      "name": "Your Name",
-      "email": "your{'@'}email.com",
-      "message": "How can I help you?"
-    },
-    "buttons": {
-      "send": "Send Message",
-      "sending": "Sending...",
-      "retry": "Try Again"
-    },
-    "success": "Message sent successfully!",
-    "error": "Failed to send message. Please try again.",
-    "locationValue": "Europe",
-    "validation": {
-      "nameRequired": "Name is required",
-      "nameMinLength": "Name must be at least 2 characters",
-      "nameMaxLength": "Name must be less than 50 characters",
-      "emailRequired": "Email is required",
-      "emailInvalid": "Please enter a valid email address",
-      "messageRequired": "Message is required",
-      "messageMinLength": "Message must be at least 10 characters",
-      "messageMaxLength": "Message must be less than 1000 characters"
-    }
+    "languagesTitle": "Languages",
+    "languages": "Serbian (native), English (fluent, C2)"
   },
   "experience": {
-    "subtitle": "My professional journey and career milestones.",
-    "items": {
-      "item1": {
-        "role": "Software Engineer",
-        "company": "Euronet Worldwide",
-        "period": "Jan 2022 - Present",
-        "description": "Key contributor in developing scalable fintech platforms for major subsidiaries like epay and XE. Specialized in building secure, high-performance web applications using Vue.js ecosystem. Led a major technical migration from Vue 2/Vuex to Vue 3/Pinia and JavaScript to TypeScript. Deeply involved in the full SDLC within an Agile environment, utilizing Jira, CI/CD pipelines (GitHub Actions), and analytics tools (Segment, LogRocket) to ensure code quality and user satisfaction.",
-        "projects": {
-          "xe": {
-            "description": "Built from ground up in a team of highly educated colleagues.",
-            "achievements": [
-              "Learned complete software development lifecycle",
-              "Mastered Git versioning and GitHub Actions for CI/CD",
-              "Built secure, clean code focusing on financial data integrity",
-              "Developed in Agile environment using Scrum methodology",
-              "Implemented analytics tools (Segment, LogRocket)",
-              "Full migration from Vue 2 to Vue 3 and JS to TS",
-              "Implemented comprehensive testing with Vitest and Cypress",
-              "Optimized performance via lazy loading and code splitting",
-              "Managed global localization using vue-i18n and Lokalise",
-              "Contributed to project re-architecture and component design patterns"
-            ]
-          },
-          "ria": {
-            "description": "Creating scalable modern financial platform for sending money.",
-            "achievements": [
-              "Developed using Vue.js ecosystem with Composition API",
-              "Implemented strict security measures",
-              "Managed complex state with Vuex",
-              "Ensured high performance and scalability",
-              "Transitioned styling from SCSS to Tailwind CSS",
-              "Enforced code quality with ESLint and Prettier",
-              "Conducted rigorous code reviews focusing on security and logic"
-            ]
-          }
+    "title": "Experience",
+    "stack": "Stack",
+    "roles": {
+      "fa": {
+        "title": "Technical Lead and Co-founder",
+        "period": "2026 – present",
+        "intro": "Business card scanner for trade show exhibitors, live on Google Play with in-app purchases.",
+        "bullets": {
+          "lead": "First commit to public Google Play release took about three months. I set the product and architecture direction and ran the work through parallel Claude Code agents. Specs and API contracts came first, and nothing was merged without code review and passing tests.",
+          "android": "Shipped the Android app in Kotlin and Jetpack Compose (Room, CameraX, on-device ML Kit text recognition, Google Play Billing), with over 2,000 unit tests.",
+          "web": "Designed the 10 screens of the team dashboard (app.fairassistant.com) and built it as a Nuxt 4 single-page app in TypeScript, with Playwright end-to-end tests against a mock API. I also redesigned fairassistant.com in Nuxt with server-side rendering: 22 languages, a trade fair directory and live Google Play prices for 174 regions.",
+          "api": "Built the licensing and payments API in TypeScript (Node.js, Fastify, PostgreSQL) from an OpenAPI 3.1 contract. It verifies Google Play purchases, signs license tokens and has nearly 1,000 Vitest tests. In production since September 2026."
+        },
+        "details": {
+          "summary": "Encryption and AI card reading, in more detail",
+          "sync": "Contact sync is end-to-end encrypted. Contacts are encrypted with AES-256-GCM on the phone, the key stays in the user's Google Drive app data, and team keys travel only inside a QR invite. The server stores only ciphertext and metadata.",
+          "teamKey": "The phone passes the team key to the dashboard through a QR code and an ECDH P-256 key exchange. The dashboard decrypts contacts in a Web Worker and never stores them unencrypted.",
+          "ai": "AI card reading runs on Gemini vision models with structured JSON output. Answers were coming back with 3 of 12 fields. I traced it to the alphabetical field order of the response schema and fixed it with an explicit property order. Answers now return 11 or 12 of the 12 fields, in 1.4 to 2.7 seconds."
         }
       },
-      "item2": {
-        "role": "Freelance Web Developer",
-        "company": "Self-Employed",
-        "period": "During Studies",
-        "description": "Collaborated with various clients to design and develop modern, responsive presentational websites using Vue.js. Managed the entire development lifecycle, from requirement gathering to incremental updates and final deployment, ensuring high client satisfaction and visual appeal."
+      "euronet": {
+        "title": "Software Engineer",
+        "period": "2022 – 2026",
+        "intro": "Frontend for the money transfer web platforms of XE and Ria Money Transfer, plus work for epay. Scrum teams with Jira and GitHub Actions.",
+        "xe": {
+          "build": "Built XE's web platform from the ground up as part of a Scrum team, with a focus on the integrity of financial data.",
+          "migration": "One of the main developers on the migration from Vue 2 and Vuex to Vue 3 and Pinia, and from JavaScript to TypeScript, in a team of 10.",
+          "tests": "Wrote unit and end-to-end tests with Vitest and Cypress and ran CI/CD on GitHub Actions.",
+          "perf": "Improved load performance with lazy loading and code splitting.",
+          "i18n": "Handled localization for a global product with vue-i18n and Lokalise.",
+          "analytics": "Integrated Segment and LogRocket for product analytics and session replay.",
+          "arch": "Worked on the app's re-architecture and its component design patterns."
+        },
+        "ria": {
+          "features": "Built features for Ria's money transfer platform and managed complex application state in Vuex.",
+          "tailwind": "Moved styling from SCSS to Tailwind CSS and enforced code style with ESLint and Prettier.",
+          "review": "Reviewed code with a focus on security and business logic."
+        }
       }
     }
   },
   "projects": {
-    "subtitle": "A collection of my recent work and experiments.",
-    "viewProject": "View Project",
-    "viewCode": "View Code",
-    "viewFe": "Frontend",
-    "viewBe": "Backend",
-    "items": {
-      "item7": {
-        "title": "Tehnokan",
-        "description": "Corporate website for a trading and marketing company, featuring services overview and contact information."
-      },
-      "item1": {
-        "title": "Nexton E-Commerce",
-        "description": "Full-stack e-commerce platform with separate frontend and backend. Features product management, cart functionality, and user authentication."
-      },
-      "item2": {
-        "title": "Weather App",
-        "description": "A clean and simple weather application providing real-time forecasts and weather conditions."
-      },
-      "item3": {
-        "title": "Voka Kop",
-        "description": "Corporate website for a construction company, showcasing services and projects."
-      },
-      "item4": {
-        "title": "Delta Graf",
-        "description": "Corporate website for a printing company featuring product catalog and services."
-      },
-      "item5": {
-        "title": "Mini Health App",
-        "description": "Android application developed in Kotlin for tracking daily steps and physical activity."
-      },
-      "item6": {
-        "title": "Micro-Cloud Data Storage System",
-        "description": "Patented system using small computers like Raspberry Pi in a cluster configuration, acting as a server that handles user requests for manipulating stored data through the internet."
-      },
-      "item8": {
-        "title": "Portfolio Website",
-        "description": "Modern portfolio website built with Vue 3 and TypeScript, featuring a Windows 11-inspired desktop environment with Matrix cyberpunk aesthetics."
-      }
+    "title": "Projects",
+    "lede": "What I'm building now, then older sites and side projects.",
+    "techLabel": "Built with",
+    "screenshotAlt": "Home page of {site}",
+    "links": {
+      "website": "Website",
+      "play": "Google Play",
+      "dashboard": "Team dashboard",
+      "code": "Code",
+      "codeFe": "Frontend code",
+      "codeBe": "Backend code",
+      "gazette": "IP Gazette, April 2022",
+      "registry": "Patent registry",
+      "pdf": "Patent (PDF)"
     },
-    "patent": "Patent",
-    "viewGazette": "IP Gazette",
-    "searchRegistry": "Search Registry",
-    "downloadPatent": "Download PDF"
+    "patentLabel": "Patent {number}",
+    "patentApplication": "Application {number}",
+    "items": {
+      "fairAssistant": {
+        "title": "Fair Assistant",
+        "period": "2026 – present",
+        "description": "A business card scanner for trade show exhibitors. I co-founded it and lead the technical side. The Android app is on Google Play with in-app purchases, and contacts sync with end-to-end encryption to a web dashboard for teams. The website is in 22 languages."
+      },
+      "microcloud": {
+        "title": "Microcloud system for data storage over the internet",
+        "description": "A cluster of Raspberry Pi computers that stores data and serves users' requests over the internet. Serbian petty patent, published in April 2022. I'm one of the inventors, listed first. The patent holder is the Faculty of Technical Sciences Čačak."
+      },
+      "nexton": {
+        "title": "Nexton e-commerce",
+        "description": "An online shop with a separate frontend and backend. It has product management, a cart and user login."
+      },
+      "deltagraf": {
+        "title": "Delta Graf",
+        "description": "Website for a printing house, with a product catalog in PHP and MySQL."
+      },
+      "vokakop": {
+        "title": "Voka Kop",
+        "description": "Website for a construction company, with its services and projects."
+      },
+      "tehnokan": {
+        "title": "Tehnokan",
+        "description": "Website of my company, Tehnokan d.o.o., which makes Fair Assistant."
+      },
+      "miniHealth": {
+        "title": "Mini Health App",
+        "description": "An Android app in Kotlin that tracks daily steps and physical activity."
+      },
+      "weather": {
+        "title": "Weather app",
+        "description": "A small weather app that shows current conditions and the forecast from the OpenWeather API."
+      },
+      "portfolio": {
+        "title": "This portfolio",
+        "description": "The site you're on: a small desktop in the browser, with windows you can move around."
+      }
+    }
+  },
+  "education": {
+    "title": "Education",
+    "degree": {
+      "title": "BSc in Computer Science and Software Engineering",
+      "place": "Faculty of Technical Sciences Čačak, University of Kragujevac",
+      "period": "2017 – 2021",
+      "description": "Programming in C, C++ and Java, including object-oriented design, ASP.NET, networking and Agile methods, with team projects on tight deadlines."
+    },
+    "highSchool": {
+      "title": "Mechanical technician for computer-aided design",
+      "place": "Technical School Smederevo",
+      "description": "Technical drawing and computer-aided design."
+    },
+    "musicSchool": {
+      "title": "Elementary music school, guitar",
+      "place": "Kosta Manojlović music school",
+      "note": "I've played guitar for almost 20 years."
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "lede": "Email is the quickest way to reach me. LinkedIn works too, or you can send a message from here.",
+    "formTitle": "Send a message",
+    "labels": {
+      "email": "Email",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "location": "Location",
+      "name": "Name",
+      "message": "Message"
+    },
+    "locationValue": "Belgrade, Serbia",
+    "placeholders": {
+      "name": "Your name",
+      "email": "you{'@'}company.com",
+      "message": "A few words about the role or project"
+    },
+    "buttons": {
+      "send": "Send message",
+      "sending": "Sending...",
+      "retry": "Try again"
+    },
+    "success": "Thanks, your message was sent.",
+    "error": "The message didn't go through. Try again, or email me directly.",
+    "validation": {
+      "nameRequired": "Enter your name",
+      "nameMinLength": "The name needs at least 2 characters",
+      "nameMaxLength": "The name can have at most 50 characters",
+      "emailRequired": "Enter your email",
+      "emailInvalid": "That email address doesn't look right",
+      "messageRequired": "Write a message",
+      "messageMinLength": "The message needs at least 10 characters",
+      "messageMaxLength": "The message can have at most 1000 characters"
+    }
   }
 }

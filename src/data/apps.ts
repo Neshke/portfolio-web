@@ -3,39 +3,46 @@ export type AppIconName = 'computer' | 'folder' | 'briefcase' | 'mail' | 'gradua
 export interface AppConfig {
   id: string
   titleKey: string
+  descriptionKey: string
   componentName: string
   icon: AppIconName
 }
 
+// Order matches how a recruiter reads: who, what, where, schooling, how to reach.
 export const appsConfig: AppConfig[] = [
   {
     id: 'about',
-    titleKey: 'taskbar.about',
+    titleKey: 'apps.about',
+    descriptionKey: 'startMenu.descriptions.about',
     componentName: 'AboutApp',
-    icon: 'computer'
+    icon: 'computer',
   },
   {
     id: 'projects',
-    titleKey: 'taskbar.projects',
+    titleKey: 'apps.projects',
+    descriptionKey: 'startMenu.descriptions.projects',
     componentName: 'ProjectsApp',
-    icon: 'folder'
+    icon: 'folder',
   },
   {
     id: 'experience',
-    titleKey: 'taskbar.experience',
+    titleKey: 'apps.experience',
+    descriptionKey: 'startMenu.descriptions.experience',
     componentName: 'ExperienceApp',
-    icon: 'briefcase'
-  },
-  {
-    id: 'contact',
-    titleKey: 'taskbar.contact',
-    componentName: 'ContactApp',
-    icon: 'mail'
+    icon: 'briefcase',
   },
   {
     id: 'education',
-    titleKey: 'startMenu.education',
+    titleKey: 'apps.education',
+    descriptionKey: 'startMenu.descriptions.education',
     componentName: 'EducationApp',
-    icon: 'graduation'
-  }
+    icon: 'graduation',
+  },
+  {
+    id: 'contact',
+    titleKey: 'apps.contact',
+    descriptionKey: 'startMenu.descriptions.contact',
+    componentName: 'ContactApp',
+    icon: 'mail',
+  },
 ]

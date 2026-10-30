@@ -1,229 +1,230 @@
 {
-  "hero": {
-    "title": "Dobrodošli u moj portfolio",
-    "description": "Moderna portfolio tema koja kombinuje profesionalnu estetiku sa Windows 11 minimalizmom",
-    "buttons": {
-      "getStarted": "Počni",
-      "learnMore": "Saznaj Više"
-    }
+  "meta": {
+    "title": "Aleksa Nešić, frontend inženjer (Vue.js, Nuxt, TypeScript)"
   },
-  "taskbar": {
-    "menu": "Meni",
-    "home": "Početna",
-    "about": "O Meni",
+  "profile": {
+    "name": "Aleksa Nešić",
+    "photoAlt": "Aleksa Nesic",
+    "role": "Frontend inženjer (Vue.js, Nuxt, TypeScript)",
+    "available": "Otvoren za senior frontend i full-stack pozicije",
+    "location": "Beograd, Srbija",
+    "workMode": "Na daljinu ili hibridno u Beogradu",
+    "intro": "Pravim veb aplikacije u Vue.js-u i TypeScript-u. Od 2022. do 2026. radio sam u Euronet Worldwide-u na aplikacijama za slanje novca XE i Ria.",
+    "now": "Od 2026. sam tehnički lider i suosnivač Fair Assistanta, skenera vizitki za izlagače na sajmovima. Aplikacija je na Google Play-u."
+  },
+  "actions": {
+    "downloadCv": "Preuzmite CV",
+    "cvHint": "PDF, na engleskom",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "seeProject": "Pogledajte projekat",
+    "fullCv": "Ceo CV (PDF)"
+  },
+  "apps": {
+    "about": "O meni",
     "projects": "Projekti",
     "experience": "Iskustvo",
+    "education": "Obrazovanje",
     "contact": "Kontakt"
+  },
+  "desktop": {
+    "label": "Radna površina",
+    "cvFile": "CV.pdf"
   },
   "startMenu": {
     "title": "Start",
-    "comingSoon": "Uskoro",
-    "contentWillAppear": "Sadržaj će se pojaviti ovde kada interagujete sa stavkama",
-    "profile": "Profil",
-    "settings": "Podešavanja",
-    "close": "Zatvori",
-    "aboutDescription": "Saznajte više o meni i mom iskustvu",
-    "bio": "Biografija",
-    "bioDescription": "Moja priča i put",
-    "skills": "Veštine i Tehnologije",
-    "skillsDescription": "Tehnička ekspertiza i alati koje koristim",
-    "resume": "Preuzmi CV",
-    "resumeDescription": "Pogledaj ili preuzmi moj CV",
-    "projectsDescription": "Istraži moj portfolio i rad",
-    "webProjects": "Web Aplikacije",
-    "webProjectsDescription": "Full-stack web development projekti",
-    "mobileProjects": "Mobilne Aplikacije",
-    "mobileProjectsDescription": "iOS i Android aplikacije",
-    "openSource": "Open Source",
-    "openSourceDescription": "Doprinosi open source projektima",
-    "experienceDescription": "Moje profesionalno iskustvo i obrazovanje",
-    "workHistory": "Radno Iskustvo",
-    "workHistoryDescription": "Profesionalna karijera",
-    "education": "Obrazovanje",
-    "educationDescription": "Akademsko obrazovanje i diplome",
-    "certifications": "Certifikati",
-    "certificationsDescription": "Profesionalni certifikati i postignuća",
-    "contactDescription": "Stupi u kontakt sa mnom",
-    "email": "Email",
-    "linkedin": "LinkedIn",
-    "linkedinDescription": "Povežite se na LinkedIn-u",
-    "github": "GitHub",
-    "githubDescription": "Pogledajte moj kod i projekte",
-    "recycleBin": "Kanta za otpatke"
+    "label": "Start meni",
+    "descriptions": {
+      "about": "Ko sam i sa čim radim",
+      "projects": "Fair Assistant i raniji radovi",
+      "experience": "Fair Assistant, Euronet",
+      "education": "Fakultet i škole",
+      "contact": "Mejl, LinkedIn ili poruka",
+      "cv": "PDF, na engleskom"
+    }
+  },
+  "taskbar": {
+    "label": "Traka zadataka",
+    "start": "Otvorite Start meni",
+    "apps": "Aplikacije",
+    "language": "Jezik",
+    "github": "GitHub profil (otvara se u novoj kartici)",
+    "linkedin": "LinkedIn profil (otvara se u novoj kartici)"
+  },
+  "window": {
+    "minimize": "Umanji",
+    "maximize": "Uvećaj",
+    "restore": "Vrati",
+    "close": "Zatvori"
   },
   "about": {
-    "role": "Softverski Inženjer",
-    "bioText": "Ja sam posvećen softverski inženjer sa diplomom i snažnom pozadinom u izgradnji skalabilnih fintech platformi. Moja osnovna filozofija se vrti oko pisanja čistog, održivog i optimizovanog koda. Verujem da svaka linija koda treba da služi jasnoj svrsi i da bude lako razumljiva, osiguravajući da je razvoj održiv i kolaborativan. Sa višegodišnjim iskustvom u Vue.js ekosistemu, TypeScript-u i Agile metodologijama, fokusiram se na isporuku rešenja visokih performansi koja izdržavaju test vremena."
-  },
-  "education": {
-    "degree": "Diploma Osnovnih Akademskih Studija",
-    "field": "Računarske Nauke / Softversko Inženjerstvo",
-    "institution": "Fakultet tehničkih nauka u Čačku, Univerzitet u Kragujevcu",
-    "status": "Završeno",
-    "description": "Stečene čvrste inženjerske osnove kroz rigorozan rad na OOP (C, C++, Java), ASP.NET i Agile metodologijama. Stečeno praktično iskustvo u umrežavanju, timskom razvoju projekata pod kratkim rokovima i kompletnim ciklusima razvoja softvera.",
-    "courseworkTitle": "Ključni Predmeti",
-    "skillsTitle": "Tehničke Kompetencije",
-    "coursework": {
-      "dsa": "Strukture Podataka i Algoritmi",
-      "oop": "Objektno-Orijentisano Programiranje",
-      "db": "Baze Podataka (SQL, Dizajn)",
-      "web": "Web Tehnologije (HTML, CSS, JS)",
-      "os": "Operativni Sistemi i Mreže",
-      "se": "Softversko Inženjerstvo (Agile, Paterni)",
-      "git": "Kontrola Verzija (Git)",
-      "uiux": "UI/UX i Interakcija Čovek-Računar"
+    "bio": {
+      "p1": "Od 2022. profesionalno pravim veb aplikacije u Vue.js-u i TypeScript-u, prvo u Euronet Worldwide-u na aplikacijama za slanje novca XE i Ria. Na XE-u sam bio jedan od glavnih developera na prelasku sa Vue 2 i Vuex-a na Vue 3, Pinia i TypeScript, u timu od 10 ljudi.",
+      "p2": "Fair Assistant sam suosnovao 2026. i napravio ga uz AI agente za programiranje: Android aplikaciju na Google Play-u (od prvog commita do javnog izdanja oko tri meseca), Nuxt kontrolnu tablu za timove, Nuxt sajt na 22 jezika i API u Node.js-u i PostgreSQL-u.",
+      "p3": "Tražim senior frontend ili full-stack poziciju, na daljinu iz Beograda (radni odnos, EOR ili B2B ugovor) ili hibridno u Beogradu."
     },
-    "skills": {
-      "algo": "Algoritamsko Razmišljanje i Optimizacija",
-      "system": "Osnove Dizajna Sistema",
-      "db": "Modeliranje Baza Podataka",
-      "http": "HTTP, REST, Životni Ciklus Zahteva",
-      "security": "Bezbednost Aplikacija (OWASP)",
-      "testing": "Testiranje i Čist Kod",
-      "team": "Timska Saradnja i Upravljanje Projektima"
+    "skillsTitle": "Sa čim radim",
+    "skillGroups": {
+      "frontend": "Frontend",
+      "testing": "Testiranje",
+      "other": "Backend i mobilno"
     },
-    "highSchool": {
-      "title": "Srednja Škola",
-      "institution": "Tehnička Škola Smederevo",
-      "course": "Mašinski tehničar za kompjutersko konstruisanje",
-      "duration": "Završeno",
-      "description": "Tehničko obrazovanje sa fokusom na kompjutersko projektovanje, inženjerske principe i tehničko crtanje."
-    },
-    "musicSchool": {
-      "title": "Osnovna Muzička Škola (Gitara)",
-      "institution": "Kosta Manojlović",
-      "duration": "Završeno",
-      "description": "Učenje teorije muzike i sviranja gitare, što doprinosi kreativnosti i pažnji prema detaljima u UI/UX dizajnu.",
-      "note": "Sviram gitaru skoro 20 godina, što odražava dugoročnu disciplinu i posvećenost."
-    },
-    "drivingLicense": {
-      "title": "Vozačka Dozvola",
-      "category": "Kategorija B"
-    }
-  },
-  "contact": {
-    "subtitle": "Javite se za saradnju ili samo da kažete zdravo.",
-    "labels": {
-      "email": "Email",
-      "social": "Društvene mreže",
-      "linkedin": "LinkedIn",
-      "location": "Lokacija",
-      "name": "Ime",
-      "message": "Poruka"
-    },
-    "placeholders": {
-      "name": "Vaše Ime",
-      "email": "vas{'@'}email.com",
-      "message": "Kako mogu da vam pomognem?"
-    },
-    "buttons": {
-      "send": "Pošalji Poruku",
-      "sending": "Slanje...",
-      "retry": "Pokušaj Ponovo"
-    },
-    "success": "Poruka uspešno poslata!",
-    "error": "Slanje poruke nije uspelo. Pokušajte ponovo.",
-    "locationValue": "Evropa",
-    "validation": {
-      "nameRequired": "Ime je obavezno",
-      "nameMinLength": "Ime mora imati najmanje 2 karaktera",
-      "nameMaxLength": "Ime mora imati manje od 50 karaktera",
-      "emailRequired": "Email je obavezan",
-      "emailInvalid": "Unesite validnu email adresu",
-      "messageRequired": "Poruka je obavezna",
-      "messageMinLength": "Poruka mora imati najmanje 10 karaktera",
-      "messageMaxLength": "Poruka mora imati manje od 1000 karaktera"
-    }
+    "languagesTitle": "Jezici",
+    "languages": "srpski (maternji), engleski (tečno, C2)"
   },
   "experience": {
-    "subtitle": "Moje profesionalno putovanje i karijerni uspesi.",
-    "items": {
-      "item1": {
-        "role": "Softverski Inženjer",
-        "company": "Euronet Worldwide",
-        "period": "Jan 2022 - Danas",
-        "description": "Ključni saradnik u razvoju skalabilnih fintech platformi za glavne podružnice kao što su epay i XE. Specijalizovan za izgradnju sigurnih web aplikacija visokih performansi koristeći Vue.js ekosistem. Vodio veliku tehničku migraciju sa Vue 2/Vuex na Vue 3/Pinia i JavaScript na TypeScript. Duboko uključen u kompletan SDLC u Agile okruženju, koristeći Jira, CI/CD pajplajne (GitHub Actions) i alate za analitiku (Segment, LogRocket) kako bi se osigurao kvalitet koda i zadovoljstvo korisnika.",
-        "projects": {
-          "xe": {
-            "description": "Izgrađen od nule u timu visoko obrazovanih kolega.",
-            "achievements": [
-              "Naučen kompletan ciklus razvoja softvera",
-              "Savladan Git i GitHub Actions za CI/CD",
-              "Izgradnja sigurnog, čistog koda sa fokusom na integritet finansijskih podataka",
-              "Razvoj u Agile okruženju koristeći Scrum metodologiju",
-              "Implementacija alata za analitiku (Segment, LogRocket)",
-              "Potpuna migracija sa Vue 2 na Vue 3 i JS na TS",
-              "Implementacija sveobuhvatnog testiranja sa Vitest i Cypress",
-              "Optimizacija performansi kroz lazy loading i code splitting",
-              "Upravljanje globalnom lokalizacijom koristeći vue-i18n i Lokalise",
-              "Doprinos re-arhitekturi projekta i dizajn paternima komponenti"
-            ]
-          },
-          "ria": {
-            "description": "Kreiranje skalabilne moderne finansijske platforme za slanje novca.",
-            "achievements": [
-              "Razvoj koristeći Vue.js ekosistem sa Composition API",
-              "Implementacija strogih mera bezbednosti",
-              "Upravljanje kompleksnim stanjem pomoću Vuex-a",
-              "Osiguranje visokih performansi i skalabilnosti",
-              "Tranzicija stilizovanja sa SCSS na Tailwind CSS",
-              "Održavanje kvaliteta koda uz ESLint i Prettier",
-              "Sprovođenje rigoroznih pregleda koda sa fokusom na bezbednost i logiku"
-            ]
-          }
+    "title": "Iskustvo",
+    "stack": "Tehnologije",
+    "roles": {
+      "fa": {
+        "title": "Tehnički lider i suosnivač",
+        "period": "2026 – danas",
+        "intro": "Skener vizitki za izlagače na sajmovima. Aplikacija je na Google Play-u, sa kupovinom u aplikaciji.",
+        "bullets": {
+          "lead": "Od prvog commita do javnog izdanja na Google Play-u prošlo je oko tri meseca. Postavio sam pravac proizvoda i arhitekture i vodio izradu preko paralelnih Claude Code agenata. Prvo su išle specifikacije i API ugovori, a nijedno spajanje nije prošlo bez code review-a i zelenih testova.",
+          "android": "Objavio sam Android aplikaciju u Kotlinu i Jetpack Compose-u (Room, CameraX, ML Kit prepoznavanje teksta na uređaju, Google Play Billing), sa preko 2.000 unit testova.",
+          "web": "Dizajnirao sam 10 ekrana veb kontrolne table za timove (app.fairassistant.com) i napravio je kao Nuxt 4 single-page aplikaciju u TypeScript-u. Playwright end-to-end testovi rade nad mock API-jem. Redizajnirao sam i fairassistant.com u Nuxt-u sa renderovanjem na serveru: 22 jezika, katalog sajmova i aktuelne Google Play cene za 174 regiona.",
+          "api": "Napravio sam API za licence i plaćanja u TypeScript-u (Node.js, Fastify, PostgreSQL) po OpenAPI 3.1 ugovoru. Proverava kupovine na Google Play-u, potpisuje licencne tokene i ima skoro 1.000 Vitest testova. U produkciji je od septembra 2026."
+        },
+        "details": {
+          "summary": "Šifrovanje i AI čitanje vizitki, detaljnije",
+          "sync": "Sinhronizacija kontakata je šifrovana s kraja na kraj. Kontakti se šifruju AES-256-GCM-om na telefonu, ključ ostaje u podacima aplikacije na korisnikovom Google Drive-u, a ključevi tima putuju samo unutar QR pozivnice. Server čuva samo šifrovan sadržaj i metapodatke.",
+          "teamKey": "Telefon predaje ključ tima kontrolnoj tabli preko QR koda i ECDH P-256 razmene ključeva. Tabla dešifruje kontakte u Web Workeru i nikad ih ne čuva nešifrovane.",
+          "ai": "AI čitanje vizitki radi na Gemini vision modelima, sa strukturisanim JSON odgovorom. Odgovori su vraćali samo 3 od 12 polja. Problem je bio u abecednom redosledu polja u šemi odgovora. Rešio sam ga tako što sam redosled zadao eksplicitno. Sada odgovori vraćaju 11 ili 12 od 12 polja, za 1,4 do 2,7 sekundi."
         }
       },
-      "item2": {
-        "role": "Freelance Web Programer",
-        "company": "Samostalno",
-        "period": "Tokom Studija",
-        "description": "Saradnja sa različitim klijentima na dizajnu i razvoju modernih, responzivnih prezentacionih sajtova koristeći Vue.js. Upravljanje celokupnim ciklusom razvoja, od prikupljanja zahteva do inkrementalnih ažuriranja i finalnog postavljanja, uz osiguranje visokog zadovoljstva klijenata i vizuelnog kvaliteta."
+      "euronet": {
+        "title": "Softverski inženjer",
+        "period": "2022 – 2026",
+        "intro": "Frontend za veb platforme za slanje novca XE i Ria Money Transfer, uz poslove za epay. Scrum timovi, Jira i GitHub Actions.",
+        "xe": {
+          "build": "Kao deo Scrum tima pravio sam XE veb platformu od nule, uz posebnu pažnju na ispravnost finansijskih podataka.",
+          "migration": "Bio sam jedan od glavnih developera na prelasku sa Vue 2 i Vuex-a na Vue 3 i Pinia, i sa JavaScript-a na TypeScript, u timu od 10 ljudi.",
+          "tests": "Pisao sam unit i end-to-end testove u Vitest-u i Cypress-u i održavao CI/CD na GitHub Actions-u.",
+          "perf": "Ubrzao sam učitavanje pomoću lazy loadinga i code splittinga.",
+          "i18n": "Radio sam lokalizaciju proizvoda koji se koristi širom sveta, uz vue-i18n i Lokalise.",
+          "analytics": "Uveo sam Segment i LogRocket za analitiku proizvoda i snimke sesija.",
+          "arch": "Radio sam na novoj arhitekturi aplikacije i obrascima za komponente."
+        },
+        "ria": {
+          "features": "Pravio sam funkcionalnosti za Ria platformu za slanje novca i vodio složeno stanje aplikacije u Vuex-u.",
+          "tailwind": "Prebacio sam stilove sa SCSS-a na Tailwind CSS i uveo ESLint i Prettier za ujednačen stil koda.",
+          "review": "Radio sam code review sa fokusom na bezbednost i poslovnu logiku."
+        }
       }
     }
   },
   "projects": {
-    "subtitle": "Kolekcija mojih nedavnih radova i eksperimenata.",
-    "viewProject": "Pogledaj Projekat",
-    "viewCode": "Pogledaj Kod",
-    "viewFe": "Frontend",
-    "viewBe": "Backend",
-    "items": {
-      "item7": {
-        "title": "Tehnokan",
-        "description": "Korporativni sajt za kompaniju za trgovinu i marketing, sa pregledom usluga i kontakt informacijama."
-      },
-      "item1": {
-        "title": "Nexton E-Commerce",
-        "description": "Full-stack e-commerce platforma sa odvojenim frontend-om i backend-om. Funkcionalnosti upravljanja proizvodima, korpe i autentifikacije korisnika."
-      },
-      "item2": {
-        "title": "Vremenska Prognoza",
-        "description": "Čista i jednostavna aplikacija za vremensku prognozu koja pruža podatke u realnom vremenu."
-      },
-      "item3": {
-        "title": "Voka Kop",
-        "description": "Korporativni sajt za građevinsku firmu, prikazuje usluge i projekte."
-      },
-      "item4": {
-        "title": "Delta Graf",
-        "description": "Korporativni sajt za štampariju sa katalogom proizvoda i uslugama."
-      },
-      "item5": {
-        "title": "Mini Health App",
-        "description": "Android aplikacija razvijena u Kotlin-u za praćenje dnevnih koraka i fizičke aktivnosti."
-      },
-      "item6": {
-        "title": "Mikro-Cloud Sistem za Skladištenje Podataka",
-        "description": "Patentirani sistem koji koristi male računare poput Raspberry Pi u klaster konfiguraciji, koji funkcioniše kao server za obradu korisničkih zahteva za manipulaciju podacima skladištenim preko interneta."
-      },
-      "item8": {
-        "title": "Portfolio Sajt",
-        "description": "Moderan portfolio sajt izgrađen sa Vue 3 i TypeScript-om, sa desktop okruženjem inspirisanim Windows 11 i Matrix cyberpunk estetikom."
-      }
+    "title": "Projekti",
+    "lede": "Prvo ono na čemu sada radim, pa stariji sajtovi i lični projekti.",
+    "techLabel": "Napravljeno sa",
+    "screenshotAlt": "Početna strana sajta {site}",
+    "links": {
+      "website": "Sajt",
+      "play": "Google Play",
+      "dashboard": "Kontrolna tabla",
+      "code": "Kod",
+      "codeFe": "Frontend kod",
+      "codeBe": "Backend kod",
+      "gazette": "Glasnik intelektualne svojine, april 2022.",
+      "registry": "Registar patenata",
+      "pdf": "Patent (PDF)"
     },
-    "patent": "Patent",
-    "viewGazette": "Glasnik IS",
-    "searchRegistry": "Pretraži Registar",
-    "downloadPatent": "Preuzmi PDF"
+    "patentLabel": "Patent {number}",
+    "patentApplication": "Prijava {number}",
+    "items": {
+      "fairAssistant": {
+        "title": "Fair Assistant",
+        "period": "2026 – danas",
+        "description": "Skener vizitki za izlagače na sajmovima. Suosnivač sam i tehnički lider. Android aplikacija je na Google Play-u, sa kupovinom u aplikaciji, a kontakti se uz šifrovanje s kraja na kraj sinhronizuju sa veb kontrolnom tablom za timove. Sajt je preveden na 22 jezika."
+      },
+      "microcloud": {
+        "title": "Mikrocloud sistem za skladištenje podataka preko interneta",
+        "description": "Klaster Raspberry Pi računara koji čuva podatke i odgovara na zahteve korisnika preko interneta. Mali patent u Srbiji, objavljen u aprilu 2022. Jedan sam od pronalazača i naveden sam prvi. Nosilac patenta je Fakultet tehničkih nauka u Čačku."
+      },
+      "nexton": {
+        "title": "Nexton e-commerce",
+        "description": "Onlajn prodavnica sa odvojenim frontendom i backendom. Ima upravljanje proizvodima, korpu i prijavu korisnika."
+      },
+      "deltagraf": {
+        "title": "Delta Graf",
+        "description": "Sajt štamparije sa katalogom proizvoda u PHP-u i MySQL-u."
+      },
+      "vokakop": {
+        "title": "Voka Kop",
+        "description": "Sajt građevinske firme sa uslugama i projektima."
+      },
+      "tehnokan": {
+        "title": "Tehnokan",
+        "description": "Sajt moje firme Tehnokan d.o.o., koja pravi Fair Assistant."
+      },
+      "miniHealth": {
+        "title": "Mini Health App",
+        "description": "Android aplikacija u Kotlinu koja prati dnevne korake i fizičku aktivnost."
+      },
+      "weather": {
+        "title": "Vremenska prognoza",
+        "description": "Mala aplikacija koja prikazuje trenutno vreme i prognozu sa OpenWeather API-ja."
+      },
+      "portfolio": {
+        "title": "Ovaj portfolio",
+        "description": "Sajt na kome ste sada: mali desktop u pregledaču, sa prozorima koje možete da pomerate."
+      }
+    }
+  },
+  "education": {
+    "title": "Obrazovanje",
+    "degree": {
+      "title": "Osnovne akademske studije, računarske nauke i softversko inženjerstvo",
+      "place": "Fakultet tehničkih nauka u Čačku, Univerzitet u Kragujevcu",
+      "period": "2017 – 2021",
+      "description": "Programiranje u C-u, C++-u i Javi, uključujući objektno orijentisano, ASP.NET, računarske mreže i Agile metode, uz timske projekte sa kratkim rokovima."
+    },
+    "highSchool": {
+      "title": "Mašinski tehničar za kompjutersko konstruisanje",
+      "place": "Tehnička škola Smederevo",
+      "description": "Tehničko crtanje i projektovanje na računaru."
+    },
+    "musicSchool": {
+      "title": "Osnovna muzička škola, gitara",
+      "place": "Muzička škola Kosta Manojlović",
+      "note": "Gitaru sviram skoro 20 godina."
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "lede": "Najbrže ćete me dobiti mejlom. Može i preko LinkedIn-a, a poruku možete poslati i odavde.",
+    "formTitle": "Pošaljite poruku",
+    "labels": {
+      "email": "Mejl",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "location": "Lokacija",
+      "name": "Ime",
+      "message": "Poruka"
+    },
+    "locationValue": "Beograd, Srbija",
+    "placeholders": {
+      "name": "Vaše ime",
+      "email": "vi{'@'}firma.rs",
+      "message": "Par reči o poziciji ili projektu"
+    },
+    "buttons": {
+      "send": "Pošaljite poruku",
+      "sending": "Slanje...",
+      "retry": "Pokušajte ponovo"
+    },
+    "success": "Hvala, poruka je poslata.",
+    "error": "Poruka nije poslata. Pokušajte ponovo ili mi pišite direktno na mejl.",
+    "validation": {
+      "nameRequired": "Unesite ime",
+      "nameMinLength": "Ime mora imati bar 2 znaka",
+      "nameMaxLength": "Ime može imati najviše 50 znakova",
+      "emailRequired": "Unesite mejl adresu",
+      "emailInvalid": "Mejl adresa nije ispravna",
+      "messageRequired": "Napišite poruku",
+      "messageMinLength": "Poruka mora imati bar 10 znakova",
+      "messageMaxLength": "Poruka može imati najviše 1000 znakova"
+    }
   }
 }

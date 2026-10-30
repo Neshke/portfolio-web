@@ -1,37 +1,33 @@
-// Display interfaces (translated values)
-export interface Project {
+export interface ExternalLink {
+  text: string
+  href: string
+  labelKey?: string
+}
+
+export interface ExperienceGroup {
   name: string
-  url: string
-  image: string
-  description?: string
-  achievements?: string[]
-  tech?: string[]
+  link: ExternalLink
+  stack: string
+  bulletKeys: string[]
 }
 
-export interface Experience {
-  id: number
-  role: string
-  company: string
-  period: string
-  description: string
-  projects?: Project[]
+/** Extra technical detail, folded away so the main bullets stay short */
+export interface ExperienceDetails {
+  summaryKey: string
+  bulletKeys: string[]
 }
 
-// Data interfaces (i18n keys)
-export interface ProjectData {
-  name: string
-  url: string
-  image: string
-  descriptionKey?: string
-  achievementKeys?: string[]
-  tech?: string[]
-}
-
-export interface ExperienceData {
-  id: number
-  roleKey: string
-  companyKey: string
+export interface ExperienceRole {
+  id: string
+  titleKey: string
+  /** Company names are proper nouns; companyKey is used only when the name is translated. */
+  company?: string
+  companyKey?: string
   periodKey: string
-  descriptionKey: string
-  projects?: ProjectData[]
+  introKey?: string
+  links?: ExternalLink[]
+  bulletKeys?: string[]
+  details?: ExperienceDetails
+  groups?: ExperienceGroup[]
+  current?: boolean
 }

@@ -1,226 +1,267 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { computed } from 'vue'
-import { experiencesData } from '@/data/experience'
+import { experienceRoles } from '@/data/experience'
+import { cvFile } from '@/data/contact'
 import IconExternalLink from '@/assets/icons/IconExternalLink.vue'
-import type { Experience } from '@/models/ExperienceApp/interfaces'
+import IconDownload from '@/assets/icons/IconDownload.vue'
 
 const { t } = useI18n()
-
-const experiences = computed<Experience[]>(() =>
-  experiencesData.map(exp => ({
-    id: exp.id,
-    role: t(exp.roleKey),
-    company: t(exp.companyKey),
-    period: t(exp.periodKey),
-    description: t(exp.descriptionKey),
-    projects: exp.projects?.map(proj => ({
-      name: proj.name,
-      url: proj.url,
-      image: proj.image,
-      tech: proj.tech,
-      description: proj.descriptionKey ? t(proj.descriptionKey) : undefined,
-      achievements: proj.achievementKeys?.map(key => t(key))
-    }))
-  }))
-)
 </script>
 
 <template>
-  <div class="experience-container">
-    <div class="page-header">
-      <h1 class="page-title">{{ t('taskbar.experience') }}</h1>
-      <p class="page-subtitle">{{ t('experience.subtitle') }}</p>
-    </div>
+  <article class="page">
+    <header class="page-header">
+      <h2 class="page-title">{{ t('experience.title') }}</h2>
+      <a :href="cvFile.url" :download="cvFile.fileName" class="btn btn-sm">
+        <IconDownload aria-hidden="true" />
+        {{ t('actions.fullCv') }}
+      </a>
+    </header>
 
-    <div class="timeline">
-      <div v-for="exp in experiences" :key="exp.id" class="timeline-item group">
-        <div class="timeline-dot"></div>
-        <div class="experience-card">
-          <div class="card-header">
-            <h3 class="role-title">{{ exp.role }}</h3>
-            <span class="period-badge">{{ exp.period }}</span>
-          </div>
-          <h4 class="company-name">{{ exp.company }}</h4>
-          <p class="role-description">{{ exp.description }}</p>
+    <ol class="timeline">
+      <li
+        v-for="role in experienceRoles"
+        :key="role.id"
+        class="role"
+        :class="{ 'role-current': role.current }"
+      >
+        <span class="role-dot" aria-hidden="true"></span>
 
-          <div v-if="exp.projects" class="projects-grid">
-            <div v-for="project in exp.projects" :key="project.name" class="project-card group/project">
-              <a :href="project.url" target="_blank" rel="noopener noreferrer" class="project-image-link">
-                <img :src="project.image" :alt="project.name" class="project-image" />
-                <div class="project-overlay">
-                  <div class="view-project-button">
-                    {{ t('projects.viewProject') }}
-                    <IconExternalLink class="link-icon" />
-                  </div>
-                </div>
-              </a>
-              <div class="project-content">
-                <div class="project-header">
-                  <h5 class="project-name">{{ project.name }}</h5>
-                </div>
-
-                <p v-if="project.description" class="project-description">{{ project.description }}</p>
-
-                <ul v-if="project.achievements" class="achievements-list">
-                  <li v-for="(achievement, index) in project.achievements" :key="index" class="achievement-item">
-                    {{ achievement }}
-                  </li>
-                </ul>
-
-                <div v-if="project.tech" class="tech-tags">
-                  <span v-for="tech in project.tech" :key="tech" class="tech-tag">{{ tech }}</span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="role-head">
+          <h3 class="role-title">{{ t(role.titleKey) }}</h3>
+          <p class="role-period">{{ t(role.periodKey) }}</p>
         </div>
-      </div>
-    </div>
-  </div>
+        <p class="role-company">
+          {{ role.company ?? (role.companyKey ? t(role.companyKey) : '') }}
+        </p>
+
+        <p v-if="role.introKey" class="role-intro">{{ t(role.introKey) }}</p>
+
+        <ul v-if="role.links?.length" class="role-links">
+          <li v-for="link in role.links" :key="link.href">
+            <a :href="link.href" target="_blank" rel="noopener noreferrer" class="text-link">
+              {{ link.text }}
+              <IconExternalLink class="link-icon" aria-hidden="true" />
+            </a>
+          </li>
+        </ul>
+
+        <ul v-if="role.bulletKeys?.length" class="bullets role-bullets">
+          <li v-for="key in role.bulletKeys" :key="key">{{ t(key) }}</li>
+        </ul>
+
+        <details v-if="role.details" class="role-details">
+          <summary class="role-details-summary">{{ t(role.details.summaryKey) }}</summary>
+          <ul class="bullets">
+            <li v-for="key in role.details.bulletKeys" :key="key">{{ t(key) }}</li>
+          </ul>
+        </details>
+
+        <section v-for="group in role.groups" :key="group.name" class="role-group">
+          <div class="group-head">
+            <h4 class="group-name">{{ group.name }}</h4>
+            <a :href="group.link.href" target="_blank" rel="noopener noreferrer" class="text-link">
+              {{ group.link.text }}
+              <IconExternalLink class="link-icon" aria-hidden="true" />
+            </a>
+          </div>
+          <p class="group-stack">
+            <span class="group-stack-label">{{ t('experience.stack') }}:</span> {{ group.stack }}
+          </p>
+          <ul class="bullets">
+            <li v-for="key in group.bulletKeys" :key="key">{{ t(key) }}</li>
+          </ul>
+        </section>
+      </li>
+    </ol>
+  </article>
 </template>
 
 <style scoped>
 @reference "@/assets/main.css";
 
-.experience-container {
-  @apply p-6 text-text-base;
-}
-
-.page-header {
-  @apply mb-10 border-b border-primary/20 pb-4;
-}
-
-.page-title {
-  @apply font-display text-2xl text-primary m-0 mb-2;
-}
-
-.page-subtitle {
-  @apply text-sm text-text-secondary m-0;
-}
-
-/* Timeline */
 .timeline {
-  @apply relative pl-5;
+  @apply relative m-0 p-0 list-none;
+  padding-left: 28px;
 }
 
 .timeline::before {
   content: '';
-  @apply absolute left-0 top-0 bottom-0 w-0.5;
-  background: linear-gradient(to bottom, var(--color-primary), var(--color-primary-10));
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background-color: var(--color-border-strong);
 }
 
-.timeline-item {
-  @apply relative pl-8 mb-10 last:mb-0;
+.role {
+  position: relative;
 }
 
-.timeline-dot {
-  @apply absolute -left-[5px] top-0 w-3 h-3 bg-background-dark border-2 border-primary rounded-full z-10;
-  @apply shadow-primary/50;
-  @apply transition-all duration-300;
-  @apply group-hover:bg-primary group-hover:shadow-primary;
-  box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+.role + .role {
+  margin-top: 40px;
 }
 
-.timeline-dot:hover {
-  box-shadow: 0 0 15px rgba(96, 165, 250, 0.8);
+.role-dot {
+  position: absolute;
+  left: -28px;
+  top: 7px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: var(--color-background-elevated);
+  border: 2px solid var(--color-text-dim);
 }
 
-/* Experience Card */
-.experience-card {
-  @apply bg-primary/3 border border-primary/10 rounded-lg p-5;
-  @apply transition-all duration-300;
-  @apply group-hover:bg-primary/8 group-hover:border-primary/30 group-hover:translate-x-1;
+.role-current .role-dot {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
 }
 
-.card-header {
-  @apply flex justify-between items-start mb-1 flex-wrap gap-2;
+.role-head {
+  @apply flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1;
 }
 
 .role-title {
-  @apply font-display text-lg text-text-base m-0;
+  margin: 0;
+  font-family: var(--font-display);
+  font-stretch: 112%;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.25;
+  color: var(--color-text-base);
 }
 
-.period-badge {
-  @apply text-xs text-primary bg-primary/10 px-2 py-0.5 rounded-full border border-primary/20;
+.role-period {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
-.company-name {
-  @apply text-sm text-text-secondary m-0 mb-3 font-medium;
+.role-current .role-period {
+  color: var(--color-primary);
 }
 
-.role-description {
-  @apply text-sm leading-relaxed text-text-muted m-0;
+.role-company {
+  margin: 4px 0 0;
+  font-size: 15px;
+  font-weight: 550;
+  color: var(--color-text-secondary);
 }
 
-/* Projects Grid */
-.projects-grid {
-  @apply mt-6 grid grid-cols-1 gap-6;
+.role-intro {
+  margin: 12px 0 0;
+  max-width: 68ch;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
 }
 
-.project-card {
-  @apply bg-background-dark/40 border border-primary/10 rounded-lg overflow-hidden;
-  @apply hover:border-primary/40 transition-all;
+.role-links {
+  @apply flex flex-wrap gap-x-5 gap-y-1 list-none p-0;
+  margin: 10px 0 0;
+  font-size: 14px;
 }
 
-.project-image-link {
-  @apply block h-48 overflow-hidden relative border-b border-primary/5 no-underline;
-}
-
-.project-image {
-  @apply w-full h-full object-cover opacity-80;
-  @apply group-hover/project:opacity-100 group-hover/project:scale-105;
-  @apply transition-all duration-500;
-}
-
-.project-overlay {
-  @apply absolute inset-0 bg-black/20 flex items-center justify-center;
-  @apply group-hover/project:bg-transparent transition-colors;
-}
-
-.view-project-button {
-  @apply bg-black/60 backdrop-blur-sm px-4 py-2 rounded-full;
-  @apply border border-primary/30 text-primary text-sm font-medium;
-  @apply opacity-0 translate-y-2 flex items-center gap-2;
-  @apply group-hover/project:opacity-100 group-hover/project:translate-y-0;
-  @apply transition-all duration-300;
+.role-links a,
+.group-head a {
+  @apply inline-flex items-center gap-1;
 }
 
 .link-icon {
-  @apply w-3 h-3;
+  width: 12px;
+  height: 12px;
 }
 
-.project-content {
-  @apply p-5 bg-primary/5;
+.role-bullets {
+  margin-top: 16px;
 }
 
-.project-header {
-  @apply flex items-center justify-between mb-3;
+.role-details {
+  margin-top: 14px;
+  max-width: 70ch;
 }
 
-.project-name {
-  @apply text-base font-display text-text-base m-0;
+.role-details-summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  font-size: 14px;
+  font-weight: 550;
+  color: var(--color-primary);
+  cursor: pointer;
+  list-style: none;
 }
 
-.project-description {
-  @apply text-sm text-text-muted mb-4 leading-relaxed;
+.role-details-summary::-webkit-details-marker {
+  display: none;
 }
 
-/* Achievements */
-.achievements-list {
-  @apply m-0 pl-4 list-disc space-y-1.5 mb-4;
+/* A small chevron that turns when the fold opens */
+.role-details-summary::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 160ms ease;
 }
 
-.achievement-item {
-  @apply text-xs text-text-secondary leading-relaxed pl-1 marker:text-primary/70;
+.role-details[open] > .role-details-summary::before {
+  transform: rotate(45deg);
 }
 
-/* Tech Tags */
-.tech-tags {
-  @apply flex flex-wrap gap-1.5 pt-2 border-t border-primary/10;
+.role-details[open] > .bullets {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
 }
 
-.tech-tag {
-  @apply text-[10px] px-2 py-0.5 bg-primary/5 border border-primary/20 rounded-full text-primary/80;
+@media (max-width: 767px) {
+  .role-details-summary {
+    min-height: 44px;
+  }
+
+  .role-links {
+    row-gap: 0;
+  }
+
+  .role-links a,
+  .group-head a {
+    min-height: 44px;
+  }
+}
+
+.role-group {
+  margin-top: 22px;
+}
+
+.group-head {
+  @apply flex flex-wrap items-baseline gap-x-3 gap-y-1;
+  font-size: 14px;
+}
+
+.group-name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 650;
+  color: var(--color-text-base);
+}
+
+.group-stack {
+  margin: 4px 0 10px;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+}
+
+.group-stack-label {
+  color: var(--color-text-secondary);
+  font-weight: 550;
 }
 </style>

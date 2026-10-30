@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { reactive, computed, ref } from 'vue'
+import { computed, nextTick, ref } from 'vue'
 import { useVuelidate } from '@vuelidate/core'
 import { required, email, minLength, maxLength } from '@vuelidate/validators'
 import emailjs from '@emailjs/browser'
@@ -8,32 +8,31 @@ import IconEmail from '@/assets/icons/IconEmail.vue'
 import IconLinkedIn from '@/assets/icons/IconLinkedIn.vue'
 import IconLocation from '@/assets/icons/IconLocation.vue'
 import IconCheck from '@/assets/icons/IconCheck.vue'
+import IconGithub from '@/assets/icons/IconGithub.vue'
 import { contactInfo } from '@/data/contact'
-import type { ContactForm } from '@/models/ContactApp/interfaces'
+import { useContactDraftStore } from '@/store/contactDraft'
 
 const { t } = useI18n()
 
-const form = reactive<ContactForm>({
-  name: '',
-  email: '',
-  message: ''
-})
+// The draft lives in a store, so it survives closing and reopening the window
+const draft = useContactDraftStore()
+const form = draft.form
 
 const rules = computed(() => ({
   name: {
     required,
     minLength: minLength(2),
-    maxLength: maxLength(50)
+    maxLength: maxLength(50),
   },
   email: {
     required,
-    email
+    email,
   },
   message: {
     required,
     minLength: minLength(10),
-    maxLength: maxLength(1000)
-  }
+    maxLength: maxLength(1000),
+  },
 }))
 
 const v$ = useVuelidate(rules, form)
@@ -42,16 +41,25 @@ const isSubmitting = ref(false)
 const isSent = ref(false)
 const errorMessage = ref('')
 
+const fieldOrder = ['name', 'email', 'message'] as const
+
 const resetForm = () => {
-  form.name = ''
-  form.email = ''
-  form.message = ''
+  draft.clear()
   v$.value.$reset()
+}
+
+const focusFirstInvalidField = async () => {
+  await nextTick()
+  const firstInvalid = fieldOrder.find((field) => v$.value[field].$invalid)
+  if (firstInvalid) document.getElementById(`contact-${firstInvalid}`)?.focus()
 }
 
 const submitForm = async () => {
   const isFormValid = await v$.value.$validate()
-  if (!isFormValid) return
+  if (!isFormValid) {
+    await focusFirstInvalidField()
+    return
+  }
 
   isSubmitting.value = true
   errorMessage.value = ''
@@ -64,7 +72,7 @@ const submitForm = async () => {
         from_name: form.name,
         from_email: form.email,
         message: form.message,
-        to_name: 'Nenad'
+        to_name: 'Aleksa',
       },
       import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     )
@@ -86,206 +94,336 @@ const submitForm = async () => {
 </script>
 
 <template>
-  <div class="contact-container">
-    <div class="contact-header">
-      <h1 class="contact-title">{{ t('taskbar.contact') }}</h1>
-      <p class="contact-subtitle">{{ t('contact.subtitle') }}</p>
-    </div>
+  <article class="page">
+    <header class="page-header">
+      <div>
+        <h2 class="page-title">{{ t('contact.title') }}</h2>
+        <p class="page-lede">{{ t('contact.lede') }}</p>
+      </div>
+    </header>
 
     <div class="contact-grid">
-      <!-- Contact Info Cards -->
-      <div class="contact-info">
-        <a :href="`mailto:${contactInfo.email}`" class="contact-card">
-          <div class="contact-card-icon">
-            <IconEmail class="icon" />
-          </div>
-          <div>
-            <h3 class="contact-card-label">{{ t('contact.labels.email') }}</h3>
-            <p class="contact-card-value">{{ contactInfo.email }}</p>
-          </div>
-        </a>
+      <ul class="contact-info">
+        <li>
+          <a :href="`mailto:${contactInfo.email}`" class="contact-row">
+            <IconEmail class="contact-icon" aria-hidden="true" />
+            <span>
+              <span class="contact-label">{{ t('contact.labels.email') }}</span>
+              <span class="contact-value">{{ contactInfo.email }}</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            :href="contactInfo.linkedinUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-row"
+          >
+            <IconLinkedIn class="contact-icon" aria-hidden="true" />
+            <span>
+              <span class="contact-label">{{ t('contact.labels.linkedin') }}</span>
+              <span class="contact-value">linkedin.com/in/{{ contactInfo.linkedinHandle }}</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            :href="contactInfo.githubUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-row"
+          >
+            <IconGithub class="contact-icon" aria-hidden="true" />
+            <span>
+              <span class="contact-label">{{ t('contact.labels.github') }}</span>
+              <span class="contact-value">github.com/{{ contactInfo.githubHandle }}</span>
+            </span>
+          </a>
+        </li>
+        <li class="contact-row contact-row--static">
+          <IconLocation class="contact-icon" aria-hidden="true" />
+          <span>
+            <span class="contact-label">{{ t('contact.labels.location') }}</span>
+            <span class="contact-value">{{ t('contact.locationValue') }}</span>
+          </span>
+        </li>
+      </ul>
 
-        <a :href="contactInfo.linkedinUrl" target="_blank" rel="noopener noreferrer" class="contact-card">
-          <div class="contact-card-icon">
-            <IconLinkedIn class="icon" />
-          </div>
-          <div>
-            <h3 class="contact-card-label">{{ t('contact.labels.linkedin') }}</h3>
-            <p class="contact-card-value">{{ contactInfo.linkedinName }}</p>
-          </div>
-        </a>
+      <form class="contact-form" novalidate @submit.prevent="submitForm">
+        <h3 class="section-title">{{ t('contact.formTitle') }}</h3>
 
-        <div class="contact-card contact-card--static">
-          <div class="contact-card-icon">
-            <IconLocation class="icon" />
-          </div>
-          <div>
-            <h3 class="contact-card-label">{{ t('contact.labels.location') }}</h3>
-            <p class="contact-card-value">{{ t('contact.locationValue') }}</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Contact Form -->
-      <form @submit.prevent="submitForm" class="contact-form">
-        <div v-if="isSent" class="success-message">
-          <IconCheck class="success-icon" />
+        <div v-if="isSent" class="form-status form-status--success" role="status">
+          <IconCheck class="status-icon" aria-hidden="true" />
           {{ t('contact.success') }}
         </div>
 
-        <div v-else-if="errorMessage" class="error-message">
-          {{ errorMessage }}
-          <button type="button" class="retry-button" @click="errorMessage = ''">{{ t('contact.buttons.retry')
-            }}</button>
+        <div v-else-if="errorMessage" class="form-status form-status--error" role="alert">
+          <p class="status-text">{{ errorMessage }}</p>
+          <a :href="`mailto:${contactInfo.email}`" class="text-link">{{ contactInfo.email }}</a>
+          <button type="button" class="btn btn-sm" @click="errorMessage = ''">
+            {{ t('contact.buttons.retry') }}
+          </button>
         </div>
 
         <template v-else>
-          <div class="form-group">
-            <label for="name" class="form-label">{{ t('contact.labels.name') }}</label>
-            <input type="text" id="name" v-model="form.name" :placeholder="t('contact.placeholders.name')"
-              class="form-input" :class="{ 'form-input--error': v$.name.$error }" @blur="v$.name.$touch()" />
-            <div v-if="v$.name.$error" class="form-error">
-              <span v-if="v$.name.required.$invalid">{{ t('contact.validation.nameRequired') }}</span>
-              <span v-else-if="v$.name.minLength.$invalid">{{ t('contact.validation.nameMinLength') }}</span>
-              <span v-else-if="v$.name.maxLength.$invalid">{{ t('contact.validation.nameMaxLength') }}</span>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-name" class="form-label">{{ t('contact.labels.name') }}</label>
+              <input
+                id="contact-name"
+                v-model="form.name"
+                type="text"
+                autocomplete="name"
+                :placeholder="t('contact.placeholders.name')"
+                class="form-input"
+                :class="{ 'form-input--error': v$.name.$error }"
+                :aria-invalid="v$.name.$error"
+                aria-describedby="contact-name-error"
+                @blur="v$.name.$touch()"
+              />
+              <p id="contact-name-error" class="form-error" aria-live="polite">
+                <template v-if="v$.name.$error">
+                  <span v-if="v$.name.required.$invalid">{{
+                    t('contact.validation.nameRequired')
+                  }}</span>
+                  <span v-else-if="v$.name.minLength.$invalid">{{
+                    t('contact.validation.nameMinLength')
+                  }}</span>
+                  <span v-else-if="v$.name.maxLength.$invalid">{{
+                    t('contact.validation.nameMaxLength')
+                  }}</span>
+                </template>
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email" class="form-label">{{ t('contact.labels.email') }}</label>
+              <input
+                id="contact-email"
+                v-model="form.email"
+                type="email"
+                autocomplete="email"
+                :placeholder="t('contact.placeholders.email')"
+                class="form-input"
+                :class="{ 'form-input--error': v$.email.$error }"
+                :aria-invalid="v$.email.$error"
+                aria-describedby="contact-email-error"
+                @blur="v$.email.$touch()"
+              />
+              <p id="contact-email-error" class="form-error" aria-live="polite">
+                <template v-if="v$.email.$error">
+                  <span v-if="v$.email.required.$invalid">{{
+                    t('contact.validation.emailRequired')
+                  }}</span>
+                  <span v-else-if="v$.email.email.$invalid">{{
+                    t('contact.validation.emailInvalid')
+                  }}</span>
+                </template>
+              </p>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="email" class="form-label">{{ t('contact.labels.email') }}</label>
-            <input type="email" id="email" v-model="form.email" :placeholder="t('contact.placeholders.email')"
-              class="form-input" :class="{ 'form-input--error': v$.email.$error }" @blur="v$.email.$touch()" />
-            <div v-if="v$.email.$error" class="form-error">
-              <span v-if="v$.email.required.$invalid">{{ t('contact.validation.emailRequired') }}</span>
-              <span v-else-if="v$.email.email.$invalid">{{ t('contact.validation.emailInvalid') }}</span>
-            </div>
+            <label for="contact-message" class="form-label">{{
+              t('contact.labels.message')
+            }}</label>
+            <textarea
+              id="contact-message"
+              v-model="form.message"
+              :placeholder="t('contact.placeholders.message')"
+              rows="4"
+              class="form-input form-textarea"
+              :class="{ 'form-input--error': v$.message.$error }"
+              :aria-invalid="v$.message.$error"
+              aria-describedby="contact-message-error"
+              @blur="v$.message.$touch()"
+            ></textarea>
+            <p id="contact-message-error" class="form-error" aria-live="polite">
+              <template v-if="v$.message.$error">
+                <span v-if="v$.message.required.$invalid">{{
+                  t('contact.validation.messageRequired')
+                }}</span>
+                <span v-else-if="v$.message.minLength.$invalid">{{
+                  t('contact.validation.messageMinLength')
+                }}</span>
+                <span v-else-if="v$.message.maxLength.$invalid">{{
+                  t('contact.validation.messageMaxLength')
+                }}</span>
+              </template>
+            </p>
           </div>
 
-          <div class="form-group">
-            <label for="message" class="form-label">{{ t('contact.labels.message') }}</label>
-            <textarea id="message" v-model="form.message" :placeholder="t('contact.placeholders.message')" rows="4"
-              class="form-input form-textarea" :class="{ 'form-input--error': v$.message.$error }"
-              @blur="v$.message.$touch()"></textarea>
-            <div v-if="v$.message.$error" class="form-error">
-              <span v-if="v$.message.required.$invalid">{{ t('contact.validation.messageRequired') }}</span>
-              <span v-else-if="v$.message.minLength.$invalid">{{ t('contact.validation.messageMinLength') }}</span>
-              <span v-else-if="v$.message.maxLength.$invalid">{{ t('contact.validation.messageMaxLength') }}</span>
-            </div>
-          </div>
-
-          <button type="submit" class="submit-button" :disabled="isSubmitting || v$.$invalid">
+          <!-- Disabled only while sending: a click on an incomplete form shows what is missing -->
+          <button type="submit" class="btn btn-primary submit-button" :disabled="isSubmitting">
             <span v-if="isSubmitting">{{ t('contact.buttons.sending') }}</span>
             <span v-else>{{ t('contact.buttons.send') }}</span>
           </button>
         </template>
       </form>
     </div>
-  </div>
+  </article>
 </template>
 
 <style scoped>
 @reference "@/assets/main.css";
 
-.contact-container {
-  @apply p-6 text-text-base;
-}
-
-.contact-header {
-  @apply mb-8 border-b border-primary/20 pb-4;
-}
-
-.contact-title {
-  @apply font-display text-2xl text-primary m-0 mb-2;
-}
-
-.contact-subtitle {
-  @apply text-sm text-text-secondary m-0;
-}
-
 .contact-grid {
-  @apply grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-6 md:gap-10;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* Two columns when the window is wide enough, whatever the screen size */
+@container (min-width: 700px) {
+  .contact-grid {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.3fr);
+    gap: 36px;
+  }
 }
 
 .contact-info {
-  @apply flex flex-col gap-6;
+  @apply m-0 p-0 list-none flex flex-col;
 }
 
-.contact-card {
-  @apply flex items-center gap-4 p-4 bg-primary/5 border border-primary/10 rounded-lg no-underline cursor-pointer;
-  @apply hover:bg-primary/10 transition-colors duration-200;
+.contact-row {
+  @apply flex items-center gap-3.5 py-3 no-underline;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-base);
 }
 
-.contact-card--static {
-  @apply cursor-default hover:bg-primary/5;
+a.contact-row:hover .contact-value {
+  color: var(--color-primary);
 }
 
-.contact-card-icon {
-  @apply w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary;
+.contact-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--color-primary);
 }
 
-.contact-card-icon .icon {
-  @apply w-5 h-5;
+.contact-label {
+  display: block;
+  font-size: 13px;
+  color: var(--color-text-muted);
 }
 
-.contact-card-label {
-  @apply text-sm text-text-secondary m-0 mb-1;
-}
-
-.contact-card-value {
-  @apply text-[15px] text-text-base m-0;
+.contact-value {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+  transition: color 140ms ease;
 }
 
 .contact-form {
-  @apply bg-background-dark/40 p-6 rounded-lg border border-primary/10;
+  container-type: inline-size;
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background-color: var(--color-surface);
 }
 
-.success-message {
-  @apply flex flex-col items-center justify-center gap-4 h-[300px] text-primary text-lg font-medium;
+.form-status {
+  @apply flex flex-col items-start gap-3 py-6;
+  font-size: 15.5px;
+  font-weight: 500;
 }
 
-.success-icon {
-  @apply w-12 h-12;
+.form-status--success {
+  color: var(--color-available);
 }
 
-.error-message {
-  @apply flex flex-col items-center justify-center gap-4 h-[300px] text-red-500 text-lg font-medium text-center;
+.form-status--error {
+  color: var(--color-error);
 }
 
-.retry-button {
-  @apply px-4 py-2 bg-primary/20 text-primary border border-primary/30 rounded cursor-pointer;
-  @apply hover:bg-primary/30 transition-colors duration-200;
+.status-text {
+  margin: 0;
+}
+
+.status-icon {
+  width: 32px;
+  height: 32px;
+}
+
+/* Name and email side by side when the form has room for both */
+.form-row {
+  display: grid;
+  column-gap: 12px;
+}
+
+@container (min-width: 400px) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .form-group {
-  @apply mb-5;
+  margin-bottom: 12px;
 }
 
 .form-label {
-  @apply block text-sm text-primary mb-2;
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 550;
+  color: var(--color-text-secondary);
 }
 
 .form-input {
-  @apply w-full px-3 py-2.5 bg-black/30 border border-primary/20 rounded text-text-base font-sans;
-  @apply transition-all duration-200;
-  @apply focus:outline-none focus:border-primary focus:shadow-glow-sm;
+  @apply w-full px-3 py-2.5 rounded-lg;
+  border: 1px solid var(--color-border-input);
+  background-color: var(--color-input);
+  color: var(--color-text-base);
+  font: 400 15px/1.5 var(--font-sans);
+  caret-color: var(--color-primary);
+  transition: border-color 140ms ease;
+}
+
+.form-input::placeholder {
+  color: var(--color-text-dim);
+}
+
+.form-input:hover {
+  border-color: var(--color-text-dim);
+}
+
+.form-input:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 0;
+  border-color: var(--color-primary);
 }
 
 .form-textarea {
-  @apply resize-none;
+  @apply resize-y;
+  min-height: 104px;
 }
 
 .form-input--error {
-  @apply border-red-500 focus:border-red-500 focus:shadow-none;
+  border-color: var(--color-error);
 }
 
+/* Takes no space until there is an error to show */
 .form-error {
-  @apply text-red-500 text-xs mt-1;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--color-error);
+}
+
+.form-error:not(:empty) {
+  margin-top: 4px;
 }
 
 .submit-button {
-  @apply w-full p-3 bg-primary text-background-dark border-none rounded font-semibold cursor-pointer;
-  @apply transition-all duration-200;
-  @apply hover:bg-primary-light hover:shadow-glow;
-  @apply disabled:opacity-70 disabled:cursor-not-allowed;
+  @apply w-full justify-center;
+  min-height: 44px;
+}
+
+.submit-button:disabled {
+  @apply cursor-progress;
+  opacity: 0.7;
 }
 </style>

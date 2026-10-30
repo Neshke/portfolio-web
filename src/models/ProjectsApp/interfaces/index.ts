@@ -1,15 +1,39 @@
+export type ProjectLinkKind =
+  | 'website'
+  | 'play'
+  | 'dashboard'
+  | 'code'
+  | 'codeFe'
+  | 'codeBe'
+  | 'gazette'
+  | 'registry'
+  | 'pdf'
+
+export interface ProjectLink {
+  kind: ProjectLinkKind
+  href: string
+  download?: boolean
+}
+
+export interface ProjectImage {
+  src: string
+  width: number
+  height: number
+  /** The site in the screenshot, used in the alt text */
+  site: string
+}
+
 export interface Project {
-  id: number
-  title: string
-  description: string
+  id: string
+  titleKey: string
+  descriptionKey: string
   tech: string[]
-  repoFe?: string
-  repoBe?: string
-  repo?: string
-  link?: string
-  isPatent?: boolean
-  patentNumber?: string
-  patentPdf?: string
-  patentRegistry?: string
-  patentDocument?: string
+  links: ProjectLink[]
+  featured?: boolean
+  periodKey?: string
+  image?: ProjectImage
+  patent?: {
+    number: string
+    application: string
+  }
 }

@@ -1,136 +1,171 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useStartMenuStore } from '@/store/startMenu'
 import { useWindowsStore, type WindowItem } from '@/store/windows'
-import { useI18n } from 'vue-i18n'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
-import { startMenuItemsConfig } from '@/data/startMenu'
-import type { AppIconName } from '@/data/apps'
-import IconComputer from '@/assets/icons/IconComputer.vue'
-import IconFolder from '@/assets/icons/IconFolder.vue'
-import IconBriefcase from '@/assets/icons/IconBriefcase.vue'
-import IconMail from '@/assets/icons/IconMail.vue'
-import IconGraduation from '@/assets/icons/IconGraduation.vue'
-
-// Icon components mapping for taskbar
-const taskbarIcons: Record<AppIconName, typeof IconComputer> = {
-  computer: IconComputer,
-  folder: IconFolder,
-  briefcase: IconBriefcase,
-  mail: IconMail,
-  graduation: IconGraduation
-}
+import IconGithub from '@/assets/icons/IconGithub.vue'
+import IconLinkedIn from '@/assets/icons/IconLinkedIn.vue'
+import { appsConfig, type AppConfig } from '@/data/apps'
+import { contactInfo, cvFile } from '@/data/contact'
+import { useAppIcons } from '@/composables/useAppIcons'
+import type { StartMenuData } from '@/models/StartMenu/interfaces'
 
 const startMenuStore = useStartMenuStore()
 const windowsStore = useWindowsStore()
 const { t, locale } = useI18n()
-const dateNow = ref(new Date().toLocaleTimeString())
+const { appIcons } = useAppIcons()
+
+const now = ref(new Date())
 let intervalId: number | null = null
 
 onMounted(() => {
   intervalId = window.setInterval(() => {
-    dateNow.value = new Date().toLocaleTimeString()
-  }, 1000)
+    now.value = new Date()
+  }, 15000)
 })
 
 onUnmounted(() => {
-  if (intervalId !== null) {
-    clearInterval(intervalId)
-  }
+  if (intervalId !== null) clearInterval(intervalId)
 })
 
-const getStartMenuData = () => ({
+const intlLocale = computed(() => (locale.value === 'sr' ? 'sr-Latn-RS' : 'en-GB'))
+const timeText = computed(() =>
+  now.value.toLocaleTimeString(intlLocale.value, { hour: '2-digit', minute: '2-digit' })
+)
+const dateText = computed(() =>
+  now.value.toLocaleDateString(intlLocale.value, { day: 'numeric', month: 'short' })
+)
+
+const getStartMenuData = (): StartMenuData => ({
   app: 'start',
   title: t('startMenu.title'),
-  items: startMenuItemsConfig.map(item => ({
-    id: item.id,
-    title: t(item.titleKey),
-    description: t(item.descriptionKey),
-    type: 'app' as const,
-    icon: item.icon,
-    action: () => {
-      windowsStore.openWindow(item.id, t(item.titleKey), item.componentName, {}, item.icon)
-      startMenuStore.closeMenu()
-    }
-  }))
+  items: [
+    ...appsConfig.map((app) => ({
+      id: app.id,
+      title: t(app.titleKey),
+      description: t(app.descriptionKey),
+      type: 'app' as const,
+      icon: app.icon,
+      action: () => {
+        windowsStore.openWindow(app.id, app.titleKey, app.componentName, {}, app.icon)
+        startMenuStore.closeMenu()
+      },
+    })),
+    {
+      id: 'cv',
+      title: t('desktop.cvFile'),
+      description: t('startMenu.descriptions.cv'),
+      type: 'action' as const,
+      icon: 'document' as const,
+      href: cvFile.url,
+      download: true,
+    },
+  ],
 })
 
 const toggleStartMenu = () => {
   startMenuStore.toggleMenu(getStartMenuData())
 }
 
-// Watch for language changes and update the menu if it's open
 watch(locale, () => {
   if (startMenuStore.isOpen && startMenuStore.activeApp === 'start') {
     startMenuStore.openMenu(getStartMenuData())
   }
 })
 
-const handleTaskbarClick = (win: WindowItem) => {
-  if (windowsStore.activeWindowId === win.id && !win.isMinimized) {
-    windowsStore.minimizeWindow(win.id)
+const windowFor = (appId: string): WindowItem | undefined =>
+  windowsStore.openWindows.find((win) => win.id === appId)
+
+const isActive = (appId: string) => {
+  const win = windowFor(appId)
+  return !!win && !win.isMinimized && windowsStore.activeWindowId === appId
+}
+
+// Every app is pinned, like a desktop taskbar: open it, bring it forward, or minimize it
+const handleTaskbarClick = (app: AppConfig) => {
+  const win = windowFor(app.id)
+  if (!win) {
+    windowsStore.openWindow(app.id, app.titleKey, app.componentName, {}, app.icon)
+  } else if (isActive(app.id)) {
+    windowsStore.minimizeWindow(app.id)
+  } else if (win.isMinimized) {
+    windowsStore.openWindow(win.id, win.titleKey, win.component, win.props, win.icon)
   } else {
-    // Restore if minimized or just focus
-    if (win.isMinimized) {
-      windowsStore.openWindow(win.id, win.title, win.component, win.props, win.icon)
-    } else {
-      windowsStore.focusWindow(win.id)
-    }
+    windowsStore.focusWindow(app.id)
   }
 }
 </script>
 
 <template>
-  <!-- Windows Taskbar -->
-  <nav class="taskbar-wrapper">
+  <nav class="taskbar-wrapper" :aria-label="t('taskbar.label')">
     <div class="taskbar">
-      <!-- Start Button -->
-      <button class="start-button" @click="toggleStartMenu" :class="{ 'start-button-active': startMenuStore.isOpen }">
-        <svg class="start-icon" viewBox="0 0 24 24" fill="currentColor">
+      <button
+        type="button"
+        class="start-button"
+        :class="{ 'start-button-active': startMenuStore.isOpen }"
+        :aria-label="t('taskbar.start')"
+        :aria-expanded="startMenuStore.isOpen"
+        aria-haspopup="dialog"
+        @click="toggleStartMenu"
+      >
+        <svg class="start-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z" />
         </svg>
       </button>
 
-      <!-- Taskbar Apps -->
-      <div class="taskbar-apps">
-        <TransitionGroup enter-active-class="app-enter-active" leave-active-class="app-leave-active"
-          enter-from-class="app-enter-from" leave-to-class="app-leave-to">
-          <button v-for="win in windowsStore.openWindows" :key="win.id" @click="handleTaskbarClick(win)"
-            class="taskbar-app" :class="{
-              'taskbar-app-active': windowsStore.activeWindowId === win.id && !win.isMinimized,
-              'taskbar-app-minimized': win.isMinimized
-            }">
-            <div v-if="win.icon && taskbarIcons[win.icon]" class="app-icon-wrapper">
-              <component :is="taskbarIcons[win.icon]" class="app-icon" />
-            </div>
-            <div v-else class="app-icon-wrapper">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-              </svg>
-            </div>
-            <span class="app-title">{{ win.title }}</span>
+      <!-- Phones show the apps on the home screen, so here they only appear as a
+           window switcher once something is open -->
+      <ul
+        class="taskbar-apps"
+        :class="{ 'taskbar-apps-idle': windowsStore.openWindows.length === 0 }"
+        :aria-label="t('taskbar.apps')"
+      >
+        <li v-for="app in appsConfig" :key="app.id">
+          <button
+            type="button"
+            class="taskbar-app"
+            :data-app="app.id"
+            :class="{
+              'taskbar-app-open': !!windowFor(app.id),
+              'taskbar-app-active': isActive(app.id),
+            }"
+            :aria-label="t(app.titleKey)"
+            :aria-pressed="isActive(app.id)"
+            :title="t(app.titleKey)"
+            @click="handleTaskbarClick(app)"
+          >
+            <component :is="appIcons[app.icon]" class="app-icon" aria-hidden="true" />
           </button>
-        </TransitionGroup>
-      </div>
+        </li>
+      </ul>
 
-      <!-- System Tray -->
       <div class="system-tray">
+        <a
+          :href="contactInfo.githubUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="tray-button tray-button-desktop"
+          :aria-label="t('taskbar.github')"
+          :title="t('actions.github')"
+        >
+          <IconGithub class="tray-icon" aria-hidden="true" />
+        </a>
+        <a
+          :href="contactInfo.linkedinUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="tray-button tray-button-desktop"
+          :aria-label="t('taskbar.linkedin')"
+          :title="t('actions.linkedin')"
+        >
+          <IconLinkedIn class="tray-icon" aria-hidden="true" />
+        </a>
         <LanguageSwitcher />
-        <button class="tray-button tray-button-hidden">
-          <svg class="tray-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-          </svg>
-        </button>
-        <button class="tray-button tray-button-hidden">
-          <svg class="tray-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
-          </svg>
-        </button>
-        <div class="clock">
-          <span class="clock-time">{{ dateNow }}</span>
-        </div>
+        <time class="clock" :datetime="now.toISOString()">
+          <span class="clock-time">{{ timeText }}</span>
+          <span class="clock-date">{{ dateText }}</span>
+        </time>
       </div>
     </div>
   </nav>
@@ -139,137 +174,138 @@ const handleTaskbarClick = (win: WindowItem) => {
 <style scoped>
 @reference "@/assets/main.css";
 
-/* Taskbar Wrapper */
 .taskbar-wrapper {
-  @apply absolute bottom-0 left-0 right-0 mx-auto z-9002;
-  @apply w-full max-w-7xl flex justify-center;
-  @apply p-0 sm:p-2;
-  animation: slideUpFade 0.8s ease-out 1.2s both;
+  @apply absolute bottom-0 left-0 right-0 mx-auto z-9002 flex justify-center;
+  @apply w-full max-w-5xl p-0 md:p-2;
 }
 
-/* Taskbar */
 .taskbar {
-  @apply flex items-center gap-1 h-16;
-  @apply bg-background-elevated/85 backdrop-blur-xl;
-  @apply border border-primary/20 px-3;
-  @apply shadow-primary/10;
-  @apply w-full rounded-none border-x-0 border-b-0;
-  @apply sm:rounded-xl sm:border sm:w-auto;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  @apply flex items-center gap-1 h-16 w-full px-2;
+  background-color: rgb(12 20 38 / 0.94);
+  border-top: 1px solid var(--color-border-strong);
+  box-shadow: 0 -8px 24px rgb(0 0 0 / 0.35);
 }
 
-/* Start Button */
+@supports (backdrop-filter: blur(1px)) {
+  .taskbar {
+    background-color: rgb(12 20 38 / 0.82);
+    backdrop-filter: blur(18px) saturate(140%);
+  }
+}
+
+@media (min-width: 768px) {
+  .taskbar {
+    @apply w-auto min-w-[560px] px-3 rounded-xl;
+    border: 1px solid var(--color-border-strong);
+    box-shadow:
+      0 2px 6px rgb(0 0 0 / 0.3),
+      0 16px 40px -12px rgb(0 0 0 / 0.7);
+  }
+}
+
 .start-button {
-  @apply flex items-center justify-center p-2.5;
-  @apply bg-transparent border border-transparent rounded-lg;
-  @apply text-text-base cursor-pointer;
-  @apply transition-all duration-200;
-  @apply hover:bg-primary/25 active:scale-95;
+  @apply flex items-center justify-center w-11 h-11 rounded-lg shrink-0 cursor-pointer;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--color-primary);
+  transition: background-color 140ms ease;
 }
 
 .start-button:hover {
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+  background-color: var(--color-fill-hover);
 }
 
 .start-button-active {
-  @apply bg-primary/20 border-primary/40 shadow-glow;
+  background-color: var(--color-fill-active);
+  border-color: var(--color-border-accent);
 }
 
 .start-icon {
-  @apply w-5 h-5 text-primary shrink-0;
+  @apply w-5 h-5;
 }
 
-/* Taskbar Apps */
 .taskbar-apps {
-  @apply flex items-center gap-1 flex-1 ml-2 overflow-x-auto scrollbar-none;
+  @apply flex items-center gap-1 flex-1 min-w-0 ml-1 overflow-x-auto scrollbar-none list-none m-0 p-0;
 }
 
-/* App Transitions */
-.app-enter-active,
-.app-leave-active {
-  @apply transition-all duration-300;
-}
-
-.app-enter-active {
-  @apply ease-out;
-}
-
-.app-leave-active {
-  @apply ease-in;
-}
-
-.app-enter-from,
-.app-leave-to {
-  @apply opacity-0 translate-y-5 scale-75 w-0 p-0 m-0;
-}
-
-/* Taskbar App Button */
 .taskbar-app {
-  @apply flex items-center gap-2;
-  @apply bg-transparent border border-transparent rounded-lg;
-  @apply text-text-base cursor-pointer;
-  @apply transition-all duration-200 font-sans text-sm relative;
-  @apply hover:bg-white/5 hover:border-white/10 active:scale-95;
-  @apply p-2 md:px-4;
+  @apply relative flex items-center justify-center w-11 h-11 rounded-lg cursor-pointer;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--color-primary);
+  transition: background-color 140ms ease;
+}
+
+.taskbar-app:hover {
+  background-color: var(--color-fill-hover);
 }
 
 .taskbar-app-active {
-  @apply bg-white/5 border-white/10;
+  background-color: var(--color-fill-hover);
+  border-color: var(--color-border);
+}
+
+@media (max-width: 767px) {
+  .taskbar-apps-idle {
+    display: none;
+  }
+}
+
+/* Running indicator: short and grey for open windows, longer and blue for the active one */
+.taskbar-app-open::after {
+  content: '';
+  @apply absolute bottom-1 left-1/2 -translate-x-1/2 h-[3px] w-1.5 rounded-full;
+  background-color: var(--color-text-dim);
 }
 
 .taskbar-app-active::after {
-  content: '';
-  @apply absolute bottom-1 left-1/2 -translate-x-1/2;
-  @apply w-5 h-[3px] bg-primary rounded-full;
-  box-shadow: 0 0 8px rgba(59, 130, 246, 0.8);
-}
-
-.taskbar-app-minimized {
-  @apply opacity-70;
-}
-
-.app-icon-wrapper {
-  @apply w-5 h-5 text-primary shrink-0;
+  @apply w-4;
+  background-color: var(--color-primary);
 }
 
 .app-icon {
-  @apply w-full h-full;
+  @apply w-[22px] h-[22px];
 }
 
-.app-title {
-  @apply text-[13px] font-medium text-text-base whitespace-nowrap;
-  @apply hidden md:block;
-}
-
-/* System Tray */
 .system-tray {
-  @apply flex items-center ml-auto border-l border-primary/20 shrink-0;
-  @apply gap-1 pl-2 md:gap-2 md:pl-3;
+  @apply flex items-center ml-auto shrink-0 gap-0.5 pl-2;
+  border-left: 1px solid var(--color-border);
 }
 
 .tray-button {
-  @apply p-2 items-center justify-center;
-  @apply bg-transparent border border-transparent rounded-lg;
-  @apply text-text-base cursor-pointer;
-  @apply transition-all duration-200;
-  @apply hover:bg-primary/10 hover:border-primary/30 hover:shadow-glow-sm;
-  @apply active:scale-95;
+  @apply items-center justify-center w-10 h-10 rounded-lg;
+  color: var(--color-text-secondary);
+  transition:
+    background-color 140ms ease,
+    color 140ms ease;
 }
 
-.tray-button-hidden {
+.tray-button:hover {
+  background-color: var(--color-fill-hover);
+  color: var(--color-text-base);
+}
+
+.tray-button-desktop {
   @apply hidden md:flex;
 }
 
 .tray-icon {
-  @apply w-4 h-4 text-text-secondary shrink-0;
+  @apply w-[18px] h-[18px];
 }
 
-/* Clock */
 .clock {
-  @apply flex flex-col items-center px-3 font-mono text-primary whitespace-nowrap;
+  @apply hidden md:flex flex-col items-end justify-center px-3 whitespace-nowrap leading-tight;
+  font-variant-numeric: tabular-nums;
 }
 
 .clock-time {
-  @apply text-[13px] font-semibold;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-base);
+}
+
+.clock-date {
+  font-size: 12px;
+  color: var(--color-text-muted);
 }
 </style>

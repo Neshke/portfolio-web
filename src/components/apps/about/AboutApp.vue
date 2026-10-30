@@ -1,116 +1,95 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { skills } from '@/data/about'
-import IconDownload from '@/assets/icons/IconDownload.vue'
+import { skillGroups } from '@/data/about'
 
 const { t } = useI18n()
 </script>
 
 <template>
-  <div class="about-container">
-    <div class="about-header">
-      <img src="/src/assets/images/profile-picture.jpg" alt="Profile" class="profile-image" />
-      <div class="profile-info">
-        <h1 class="profile-name">{{ t('hero.title') }}</h1>
-        <p class="profile-role">{{ t('about.role') }}</p>
-      </div>
-    </div>
+  <!-- The name, photo and role are already on the desktop, so this window starts with the story -->
+  <article class="page" aria-labelledby="about-title">
+    <h2 id="about-title" class="sr-only">{{ t('apps.about') }}</h2>
 
-    <section class="about-section">
-      <h2 class="section-title">
-        <span class="section-indicator"></span>
-        {{ t('startMenu.bio') }}
-      </h2>
-      <p class="section-text">{{ t('about.bioText') }}</p>
+    <section class="prose-block about-bio">
+      <p class="about-lead">{{ t('about.bio.p1') }}</p>
+      <p>{{ t('about.bio.p2') }}</p>
+      <p>{{ t('about.bio.p3') }}</p>
     </section>
 
-    <section class="about-section">
-      <h2 class="section-title">
-        <span class="section-indicator"></span>
-        {{ t('startMenu.skills') }}
-      </h2>
-      <div class="skills-list">
-        <span v-for="skill in skills" :key="skill" class="skill-tag">{{ skill }}</span>
-      </div>
+    <section class="about-section" aria-labelledby="about-skills">
+      <h3 id="about-skills" class="section-title">{{ t('about.skillsTitle') }}</h3>
+      <dl class="skill-groups">
+        <div v-for="group in skillGroups" :key="group.labelKey" class="skill-group">
+          <dt class="skill-group-label">{{ t(group.labelKey) }}</dt>
+          <dd class="skill-group-items">{{ group.items.join(', ') }}</dd>
+        </div>
+      </dl>
     </section>
 
-    <section class="about-section">
-      <a href="/documents/Aleksa Nesic - CV.pdf" download class="resume-button">
-        <IconDownload class="button-icon" />
-        {{ t('startMenu.resume') }}
-      </a>
+    <section class="about-section" aria-labelledby="about-languages">
+      <h3 id="about-languages" class="section-title">{{ t('about.languagesTitle') }}</h3>
+      <p class="languages">{{ t('about.languages') }}</p>
     </section>
-  </div>
+  </article>
 </template>
 
 <style scoped>
 @reference "@/assets/main.css";
 
-.about-container {
-  @apply p-6 text-text-base;
-}
-
-.about-header {
-  @apply flex items-center gap-6 mb-8 pb-6 border-b border-primary/20;
-  @apply flex-col text-center sm:flex-row sm:text-left;
-}
-
-.profile-image {
-  @apply w-auto h-[150px] rounded-full border-[3px] border-primary;
-  @apply shadow-primary/30;
-  box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
-}
-
-.profile-info {
-  @apply flex-1;
-}
-
-.profile-name {
-  @apply font-display text-2xl text-primary m-0 mb-2;
-}
-
-.profile-role {
-  @apply text-base text-text-secondary m-0;
-}
-
-.profile-description {
-  @apply text-sm leading-relaxed text-text-base m-0;
+.about-bio p.about-lead {
+  max-width: 60ch;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-text-base);
 }
 
 .about-section {
-  @apply mb-8;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
 }
 
-.section-title {
-  @apply font-display text-lg text-primary m-0 mb-4 flex items-center gap-2;
-  @apply justify-center sm:justify-start;
+.skill-groups {
+  @apply grid m-0;
+  gap: 10px;
 }
 
-.section-indicator {
-  @apply hidden sm:block w-1 h-[18px] bg-primary rounded-sm;
+.skill-group {
+  @apply grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
 }
 
-.section-text {
-  @apply text-sm leading-relaxed text-text-muted m-0;
+@media (min-width: 640px) {
+  .skill-group {
+    grid-template-columns: 170px 1fr;
+    align-items: baseline;
+    gap: 16px;
+  }
 }
 
-.skills-list {
-  @apply flex flex-wrap gap-2;
+.skill-group-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-base);
 }
 
-.skill-tag {
-  @apply px-3 py-1.5 bg-primary/10 border border-primary/30 rounded-full;
-  @apply text-[13px] text-primary transition-all duration-200;
-  @apply hover:bg-primary/20 hover:-translate-y-0.5;
+.skill-group-items {
+  @apply m-0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
 }
 
-.resume-button {
-  @apply flex items-center gap-2 px-5 py-2.5 bg-primary text-background-dark;
-  @apply border-none rounded-md font-semibold cursor-pointer;
-  @apply transition-all duration-200 hover:bg-primary-light hover:shadow-glow;
+.languages {
+  margin: 0;
+  font-size: 15px;
+  color: var(--color-text-secondary);
 }
 
-.button-icon {
-  @apply w-[18px] h-[18px];
+@media (max-width: 640px) {
+  .about-bio p.about-lead {
+    font-size: 16.5px;
+  }
 }
 </style>

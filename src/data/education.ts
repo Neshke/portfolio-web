@@ -1,20 +1,32 @@
-export const coursework = [
-  'education.coursework.dsa',
-  'education.coursework.oop',
-  'education.coursework.db',
-  'education.coursework.web',
-  'education.coursework.os',
-  'education.coursework.se',
-  'education.coursework.git',
-  'education.coursework.uiux'
-]
+export interface EducationEntry {
+  id: string
+  titleKey: string
+  placeKey: string
+  periodKey?: string
+  descriptionKey?: string
+  noteKey?: string
+  primary?: boolean
+}
 
-export const skills = [
-  'education.skills.algo',
-  'education.skills.system',
-  'education.skills.db',
-  'education.skills.http',
-  'education.skills.security',
-  'education.skills.testing',
-  'education.skills.team'
+export const educationEntries: EducationEntry[] = [
+  {
+    id: 'university',
+    titleKey: 'education.degree.title',
+    placeKey: 'education.degree.place',
+    periodKey: 'education.degree.period',
+    descriptionKey: 'education.degree.description',
+    primary: true,
+  },
+  {
+    id: 'highSchool',
+    titleKey: 'education.highSchool.title',
+    placeKey: 'education.highSchool.place',
+    descriptionKey: 'education.highSchool.description',
+  },
+  {
+    id: 'musicSchool',
+    titleKey: 'education.musicSchool.title',
+    placeKey: 'education.musicSchool.place',
+    noteKey: 'education.musicSchool.note',
+  },
 ]
