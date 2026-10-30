@@ -78,7 +78,7 @@
     "roles": {
       "fa": {
         "title": "Technical Lead and Co-founder",
-        "period": "2026 – present",
+        "period": "Aug 2026 – present",
         "intro": "Business card scanner for trade show exhibitors, live on Google Play with in-app purchases.",
         "bullets": {
           "lead": "First commit to public Google Play release took about three months. I set the product and architecture direction and ran the work through parallel Claude Code agents. Specs and API contracts came first, and nothing was merged without code review and passing tests.",
@@ -95,7 +95,7 @@
       },
       "euronet": {
         "title": "Software Engineer",
-        "period": "2022 – 2026",
+        "period": "Jan 2022 – Aug 2026",
         "intro": "Frontend for the money transfer web platforms of XE and Ria Money Transfer, plus work for epay. Scrum teams with Jira and GitHub Actions.",
         "xe": {
           "build": "Built XE's web platform from the ground up as part of a Scrum team, with a focus on the integrity of financial data.",
@@ -135,7 +135,7 @@
     "items": {
       "fairAssistant": {
         "title": "Fair Assistant",
-        "period": "2026 – present",
+        "period": "Aug 2026 – present",
         "description": "A business card scanner for trade show exhibitors. I co-founded it and lead the technical side. The Android app is on Google Play with in-app purchases, and contacts sync with end-to-end encryption to a web dashboard for teams. The website is in 22 languages."
       },
       "microcloud": {

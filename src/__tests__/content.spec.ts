@@ -72,7 +72,10 @@ describe('translations', () => {
   it('has no em dashes, and en dashes only in year ranges', () => {
     for (const text of allText) {
       expect(text).not.toContain('—')
-      const withoutRanges = text.replace(/\d{4} – (\d{4}|present|danas)/g, '')
+      const withoutRanges = text.replace(
+        /(?:[A-Za-z]+ )?\d{4} – (?:[A-Za-z]+ )?(\d{4}|present|danas)/g,
+        ''
+      )
       expect(withoutRanges, text).not.toContain('–')
     }
   })
@@ -119,8 +122,8 @@ describe('facts match the CV', () => {
   it('Euronet ran from 2022 to 2026 and is not the current job', () => {
     const euronet = experienceRoles.find((role) => role.id === 'euronet')
     expect(euronet?.current).toBeFalsy()
-    expect(en.experience.roles.euronet.period).toBe('2022 – 2026')
-    expect(sr.experience.roles.euronet.period).toBe('2022 – 2026')
+    expect(en.experience.roles.euronet.period).toBe('Jan 2022 – Aug 2026')
+    expect(sr.experience.roles.euronet.period).toBe('januar 2022 – avgust 2026')
   })
 
   it('the migration is described as one of the main developers, not as leading it', () => {

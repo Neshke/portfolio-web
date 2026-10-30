@@ -78,7 +78,7 @@
     "roles": {
       "fa": {
         "title": "Tehnički lider i suosnivač",
-        "period": "2026 – danas",
+        "period": "avgust 2026 – danas",
         "intro": "Skener vizitki za izlagače na sajmovima. Aplikacija je na Google Play-u, sa kupovinom u aplikaciji.",
         "bullets": {
           "lead": "Od prvog commita do javnog izdanja na Google Play-u prošlo je oko tri meseca. Postavio sam pravac proizvoda i arhitekture i vodio izradu preko paralelnih Claude Code agenata. Prvo su išle specifikacije i API ugovori, a nijedno spajanje nije prošlo bez code review-a i zelenih testova.",
@@ -95,7 +95,7 @@
       },
       "euronet": {
         "title": "Softverski inženjer",
-        "period": "2022 – 2026",
+        "period": "januar 2022 – avgust 2026",
         "intro": "Frontend za veb platforme za slanje novca XE i Ria Money Transfer, uz poslove za epay. Scrum timovi, Jira i GitHub Actions.",
         "xe": {
           "build": "Kao deo Scrum tima pravio sam XE veb platformu od nule, uz posebnu pažnju na ispravnost finansijskih podataka.",
@@ -135,7 +135,7 @@
     "items": {
       "fairAssistant": {
         "title": "Fair Assistant",
-        "period": "2026 – danas",
+        "period": "avgust 2026 – danas",
         "description": "Skener vizitki za izlagače na sajmovima. Suosnivač sam i tehnički lider. Android aplikacija je na Google Play-u, sa kupovinom u aplikaciji, a kontakti se uz šifrovanje s kraja na kraj sinhronizuju sa veb kontrolnom tablom za timove. Sajt je preveden na 22 jezika."
       },
       "microcloud": {
