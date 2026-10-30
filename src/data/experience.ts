@@ -1,72 +1,69 @@
-import type { ExperienceData } from '@/models/ExperienceApp/interfaces'
+import type { ExperienceRole } from '@/models/ExperienceApp/interfaces'
 
-export const experiencesData: ExperienceData[] = [
+// Source of truth: the CV. Newest role first.
+export const experienceRoles: ExperienceRole[] = [
   {
-    id: 1,
-    roleKey: 'experience.items.item1.role',
-    companyKey: 'experience.items.item1.company',
-    periodKey: 'experience.items.item1.period',
-    descriptionKey: 'experience.items.item1.description',
-    projects: [
+    id: 'fa',
+    titleKey: 'experience.roles.fa.title',
+    company: 'Tehnokan d.o.o. (Fair Assistant)',
+    periodKey: 'experience.roles.fa.period',
+    introKey: 'experience.roles.fa.intro',
+    current: true,
+    links: [
+      { text: 'fairassistant.com', href: 'https://fairassistant.com' },
       {
-        name: 'XE.com',
-        url: 'https://www.xe.com/',
-        image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.xe.com%2F?w=600&h=400',
-        descriptionKey: 'experience.items.item1.projects.xe.description',
-        tech: ['Vue 3', 'TypeScript', 'Pinia', 'Tailwind', 'Vitest', 'Cypress', 'Axios', 'i18n'],
-        achievementKeys: [
-          'experience.items.item1.projects.xe.achievements[0]',
-          'experience.items.item1.projects.xe.achievements[1]',
-          'experience.items.item1.projects.xe.achievements[2]',
-          'experience.items.item1.projects.xe.achievements[3]',
-          'experience.items.item1.projects.xe.achievements[4]',
-          'experience.items.item1.projects.xe.achievements[5]',
-          'experience.items.item1.projects.xe.achievements[6]',
-          'experience.items.item1.projects.xe.achievements[7]',
-          'experience.items.item1.projects.xe.achievements[8]',
-          'experience.items.item1.projects.xe.achievements[9]'
-        ]
+        text: 'Google Play',
+        href: 'https://play.google.com/store/apps/details?id=com.fairassistant.app',
+      },
+      { text: 'app.fairassistant.com', href: 'https://app.fairassistant.com' },
+    ],
+    // At most four, each one leads with what shipped. The rest sits in the fold below.
+    bulletKeys: [
+      'experience.roles.fa.bullets.lead',
+      'experience.roles.fa.bullets.android',
+      'experience.roles.fa.bullets.web',
+      'experience.roles.fa.bullets.api',
+    ],
+    details: {
+      summaryKey: 'experience.roles.fa.details.summary',
+      bulletKeys: [
+        'experience.roles.fa.details.sync',
+        'experience.roles.fa.details.teamKey',
+        'experience.roles.fa.details.ai',
+      ],
+    },
+  },
+  {
+    id: 'euronet',
+    titleKey: 'experience.roles.euronet.title',
+    company: 'Euronet Worldwide',
+    periodKey: 'experience.roles.euronet.period',
+    introKey: 'experience.roles.euronet.intro',
+    groups: [
+      {
+        name: 'XE',
+        link: { text: 'xe.com', href: 'https://www.xe.com' },
+        stack: 'Vue 3, TypeScript, Pinia, Tailwind CSS, Vitest, Cypress',
+        bulletKeys: [
+          'experience.roles.euronet.xe.build',
+          'experience.roles.euronet.xe.migration',
+          'experience.roles.euronet.xe.tests',
+          'experience.roles.euronet.xe.perf',
+          'experience.roles.euronet.xe.i18n',
+          'experience.roles.euronet.xe.analytics',
+          'experience.roles.euronet.xe.arch',
+        ],
       },
       {
         name: 'Ria Money Transfer',
-        url: 'https://www.riamoneytransfer.com/en-us/',
-        image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.riamoneytransfer.com%2Fen-us%2F?w=600&h=400',
-        descriptionKey: 'experience.items.item1.projects.ria.description',
-        tech: ['Vue 2', 'Vuex', 'Composition API', 'SCSS', 'Tailwind'],
-        achievementKeys: [
-          'experience.items.item1.projects.ria.achievements[0]',
-          'experience.items.item1.projects.ria.achievements[1]',
-          'experience.items.item1.projects.ria.achievements[2]',
-          'experience.items.item1.projects.ria.achievements[3]',
-          'experience.items.item1.projects.ria.achievements[4]',
-          'experience.items.item1.projects.ria.achievements[5]',
-          'experience.items.item1.projects.ria.achievements[6]'
-        ]
-      }
-    ]
+        link: { text: 'riamoneytransfer.com', href: 'https://www.riamoneytransfer.com' },
+        stack: 'Vue.js Composition API, Vuex, Tailwind CSS',
+        bulletKeys: [
+          'experience.roles.euronet.ria.features',
+          'experience.roles.euronet.ria.tailwind',
+          'experience.roles.euronet.ria.review',
+        ],
+      },
+    ],
   },
-  {
-    id: 2,
-    roleKey: 'experience.items.item2.role',
-    companyKey: 'experience.items.item2.company',
-    periodKey: 'experience.items.item2.period',
-    descriptionKey: 'experience.items.item2.description',
-    projects: [
-      {
-        name: 'Tehnokan',
-        url: 'https://tehnokan.com/',
-        image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Ftehnokan.com%2F?w=600&h=400'
-      },
-      {
-        name: 'Delta Graf',
-        url: 'https://deltagraf.rs/',
-        image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Fdeltagraf.rs?w=600&h=400'
-      },
-      {
-        name: 'Voka Kop',
-        url: 'https://vokakop.com/',
-        image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Fvokakop.com?w=600&h=400'
-      }
-    ]
-  }
 ]
